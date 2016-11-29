@@ -1,0 +1,94 @@
+header {
+    text-align: center;
+/*    color: #fff;
+    background: #18bc9c;
+*/
+    /*position: fixed;*/
+    width:100%;
+    z-index: 1;
+    height: 88%;
+    /*overflow: hidden;*/
+    top: 0;
+    left: 0;
+}
+
+.content-wrapper{
+    background-color: white;
+    top: 87%;
+    min-height: 12%;
+    /*position:absolute;*/
+    z-index: 2;
+    width: 100%;
+}
+
+header .container {
+    padding-top: 100px;
+    /*padding-bottom: 50px;*/
+}
+
+header img {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+header .intro-text {
+    margin-bottom: 50px;
+}
+
+header .intro-text .name {
+    display: block;
+    /*text-transform: uppercase; ←大文字に変換する*/
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+header .intro-text .skills {
+    font-size: 1.25em;
+    font-weight: 300;
+}
+
+
+nav.navbar,
+nav.navbar-default {
+    background-color: white;
+}
+
+/* メッセージ部分のデザイン */
+.msg {
+  clear: both;
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.msg img {
+  float: left;
+  margin-right: 5px;
+
+}
+
+.msg p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.msg .day,
+.msg .day a {
+  font-size: 80%;
+  color: #999;
+}
+
+#pf-top {
+    background-color: white;
+}
+
+.content-main {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: rgb(240, 240, 240);
+}
+
+.content-margin-top {
+    background-color: white;
+    padding: 30px;
+}
