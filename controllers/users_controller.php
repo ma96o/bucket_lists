@@ -8,6 +8,12 @@
       case 'check':
         $controller->check();
         break;
+      case 'follow':
+        $controller->follow();
+        break;
+        case 'unfollow':
+          $controller->unfollow();
+          break;
       default:
         break;
     }
@@ -43,10 +49,17 @@
       }
       function update(){
       }
-      function follow(){
-        echo '斉藤さんだぞ';
+      function follow($option){
+        $this->action = 'follow';
+        $this->display();
+        $this->displayProf();
+        header('Location: ../index');
       }
-      function unfollow(){
+      function unfollow($option){
+        $this->action = 'unfollow';
+        $this->display();
+        $this->displayProf();
+        header('Location: ../index');
       }
       function followings(){
       }
