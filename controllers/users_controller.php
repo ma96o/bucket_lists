@@ -44,6 +44,7 @@
       function update(){
       }
       function follow(){
+        echo '斉藤さんだぞ';
       }
       function unfollow(){
       }
