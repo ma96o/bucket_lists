@@ -51,15 +51,45 @@
       }
       function follow($option){
         $this->action = 'follow';
-        $this->display();
         $this->displayProf();
-        header('Location: ../index');
+        switch($this->action){
+          case 'mypage':
+          header('Location: ../mypage');
+          break;
+          case 'followers':
+          header('Location: ../followers');
+          break;
+          case 'followings':
+          header('Location: ../followings');
+          break;
+          case 'doing':
+          header('Location: ../doing');
+          break;
+          case 'done':
+          header('Location: ../done');
+          break;
       }
       function unfollow($option){
         $this->action = 'unfollow';
-        $this->display();
         $this->displayProf();
-        header('Location: ../index');
+        switch($this->action){
+          case 'mypage':
+          header('Location: ../mypage');
+          break;
+          case 'followers':
+          header('Location: ../followers');
+          break;
+          case 'followings':
+          header('Location: ../followings');
+          break;
+          case 'doing':
+          header('Location: ../doing');
+          break;
+          case 'done':
+          header('Location: ../done');
+          break;
+        }
+        
       }
       function followings(){
       }
