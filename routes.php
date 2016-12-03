@@ -1,10 +1,11 @@
 <?php
+    session_start();
     require('functions.php');
 
     $para = explode('/', $_GET['url']);
 
 
-    $resourse = $para[0];
+    $resource = $para[0];
     $action = $para[1];
     $id = 1;
     $post = array();
@@ -15,6 +16,6 @@
       $post = $_POST;
     }
 
-    require('controllers/'.$resourse.'_controller.php');
+    require('controllers/'.$resource.'_controller.php');
 
 ?>
