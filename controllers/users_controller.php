@@ -110,7 +110,7 @@
         special_echo('Controllerのauth()が呼び出されました。');
         $login_flag = $this->user->auth($post);
         if ($login_flag) {
-            header('Location: ../blogs/index');
+            header('Location: ../items/trend');
             exit();
         } else {
             header('Location: login');
@@ -120,10 +120,7 @@
 
       function logout(){
         special_echo('Controllerのlogout()が呼び出されました。');
-        // セッション変数を全て解除する
         $_SESSION = array();
-        // セッションを切断するにはセッションクッキーも削除する。
-        // Note: セッション情報だけでなくセッションを破壊する。
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
             setcookie(session_name(), '', time() - 42000,
@@ -131,9 +128,9 @@
                 $params["secure"], $params["httponly"]
             );
         }
-        // 最終的に、セッションを破壊する
         session_destroy();
-        header('Location: /seed_blog/users/login');
+
+        header('Location: users/login');
         exit();
       }
 
