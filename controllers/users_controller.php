@@ -19,8 +19,13 @@
         $controller->thanks();
         break;
 
-      case 'login';
-        $controller->login();
+      case 'login':
+        if(!empty($post['email']) && !empty($post['password'])){
+          $controller->login($post);
+        } else {
+          header('location:');
+          exit();
+        }
         break;
 
       case 'auth';
@@ -101,10 +106,17 @@
         $this->action = 'thanks';
         $this->display();
       }
-      function login(){
+      function login($post){
         special_echo('Controllerのlogin()が呼び出されました。');
-        $this->action = 'login';
-        $this->display();
+        $login_flag = $this->user->login($post);
+        if($login_flag){
+          header('location: ');
+          exit();
+        } else {
+          header('location: ');
+          exit();
+        }
+
       }
       function auth(){
         special_echo('Controllerのauth()が呼び出されました。');
@@ -121,17 +133,20 @@
       function logout(){
         special_echo('Controllerのlogout()が呼び出されました。');
         $_SESSION = array();
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000,
-                $params["path"], $params["domain"],
-                $params["secure"], $params["httponly"]
+
+        if(ini_get("session.use_cookeis")){
+          $params = session_get_cookie_params();
+          setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
             );
         }
+
         session_destroy();
 
-        header('Location: users/login');
+        header('location:');
         exit();
+
       }
 
       function mypage(){
