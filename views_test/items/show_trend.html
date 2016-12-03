@@ -64,35 +64,21 @@
                 <div class="intro-text">
                 <h1 align="left" class="skills" id="list_name">旅リスト</h1>
                 <div class="hoge">
-                  <span class="name" id="detail_name">世界一周する<span class="glyphicon glyphicon-flag">50</span></span>
+                  <span class="name" id="detail_name">世界一周する<a href="#" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-plus-sign"></span></a></span>
                   <!-- <hr class="star-light"> -->
+                  <p id="detail">詳細が表示される</p>
                   <br>
-                  <form method="get" action="show.html" class="">
-                    <div class="takasa">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <textarea name="info" class="form-control" cols="20" rows="1" placeholder="2016/12/1までに出発したい"></textarea>
-                      </div>
-                    </div>
+                  <form method="get" action="" class="">
                     <!-- <span class="glyphicon glyphicon-star fa-5x"></span></a>
                         <span class="glyphicon glyphicon-star fa-5x"></span></a>
                         <span class="glyphicon glyphicon-star fa-5x"></span></a>
                         <span class="glyphicon glyphicon-star-empty fa-5x"></span></a>
                         <span class="glyphicon glyphicon-star-empty fa-5x"></span></a> -->
-                    <div class="row">
-                      <div class="col-lg-10">
                         <!-- <a href="#" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-edit fa-2x"></span></a>
                         <a href="#" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-trash fa-2x"></span></a>
                         <a href="#" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-star fa-2x"></span></a>
                         <a href="#" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-flag fa-2x"></span></a> -->
-                        <input type="text" name="name" class="form-control" placeholder="例 : 2016/12/1" value="" id="deadline">
-                      </div>
-                      <div class="col-lg-2">
                         <!-- <input type="checkbox" name="indefinite" value="indefinite" id="indefinite">無期限 -->
-                        <a href="#" class="btn btn-block btn-lg btn-default"><span class="glyphicon glyphicon-plus-sign"></span></a>
-                      </div>
-                    </div>
-                    </div>
                     <!-- <nav class="nav nav-tabs" style="width: 100%;">
                         <ul class="nav nav-tabs nav-justified">
                             <li><a href="">バケットリスト</a></li>
@@ -102,8 +88,14 @@
                             <li><a href="/bucket_lists/views_test/users/followers.html">フォロワー</a></li>
                         </ul>
                     </nav> -->
-                    <br>
-                    <input type="submit" class="btn btn-default" value="Give up">
+                    <div class="row">
+                      <div class="col-lg-6">
+                      <input type="submit" class="btn btn-block btn-sm btn-default" value="doing 50" id="row">
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                      <input type="submit" class="btn btn-block btn-sm btn-default" value="done 15" id="row">
+                    </div>
                     </div>
                   </form>
                 </div>

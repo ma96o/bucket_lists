@@ -108,6 +108,10 @@ nav.navbar-default {
   font-size:20px;
 }
 
+#dead {
+  font-size: 40px;
+}
+
 .hoge {
   width:700px;margin:auto;
 }
@@ -116,6 +120,6 @@ nav.navbar-default {
   size: 70px;
 }
 
-/*#fuga {
-  text-align: right;
-}*/
+#row {
+  font-size: 30px;
+}
