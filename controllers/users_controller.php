@@ -2,7 +2,7 @@
 
     require('models/user.php');
 
-    $controller = new UsersController($resourse, $action);
+    $controller = new UsersController($resource, $action);
 
     switch ($action) {
       case 'check':
@@ -15,13 +15,13 @@
 
     class UsersController{
       private $user;
-      private $resourse;
+      private $resource;
       private $action;
       private $viewOptions;
 
-      function __construct($resourse, $action){
+      function __construct($resource, $action){
         $this->user = new User();
-        $this->resourse = $resourse;
+        $this->resource = $resource;
         $this->action = $action;
         $this->viewOptions = array();
       }

@@ -17,8 +17,8 @@
       }
     }
 
-    function toLink($resourse, $action){
-      echo '/bucket_lists/'.$resourse.'/'.$action;
+    function toLink($resource, $action){
+      echo '/bucket_lists/'.$resource.'/'.$action;
     }
 
 ?>

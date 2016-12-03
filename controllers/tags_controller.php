@@ -2,7 +2,7 @@
 
     require('models/tag.php');
 
-    $controller = new TagsController($resourse, $action);
+    $controller = new TagsController($resource, $action);
 
     switch ($action) {
       case 'create':
@@ -17,13 +17,13 @@
 
     class TagsController{
       private $tag;
-      private $resourse;
+      private $resource;
       private $action;
       private $viewsOptions;
 
-      function __construct($resourse, $action){
+      function __construct($resource, $action){
         $this->tag = new Tag();
-        $this->resourse = $resourse;
+        $this->resource = $resource;
         $this->action = $action;
         $this->viewsOptions = array();
       }

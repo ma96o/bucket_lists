@@ -2,7 +2,7 @@
 
     require('models/item.php');
 
-    $controller = new ItemsController($resourse, $action);
+    $controller = new ItemsController($resource, $action);
 
     switch ($action) {
       case 'trend':
@@ -14,13 +14,13 @@
 
     class ItemsController{
       private $item;
-      private $resourse;
+      private $resource;
       private $action;
       private $viewsOptions;
 
-      function __construct($resourse, $action){
+      function __construct($resource, $action){
         $this->item = new Item();
-        $this->resourse = $resourse;
+        $this->resource = $resource;
         $this->action = $action;
         $this->viewsOptions = array();
       }

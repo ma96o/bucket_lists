@@ -1,8 +1,9 @@
 <?php
 
     require('models/action.php');
+    require('models/user.php');
 
-    $controller = new ActionsController($resourse, $action);
+    $controller = new ActionsController($resource, $action);
 
     switch ($action) {
       case 'index':
@@ -14,14 +15,14 @@
 
     class ActionsController{
       private $timeline;
-      private $resourse;
+      private $resource;
       private $action;
       private $viewsOptions;
 
-      function __construct($resourse, $action){
+      function __construct($resource, $action){
         $this->timeline = new Action();
-        $this->resourse = $resourse;
-        $this->action;
+        $this->resource = $resource;
+        $this->action = $action;
         $this->viewsOptions = array();
       }
       function index(){

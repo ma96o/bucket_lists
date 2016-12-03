@@ -56,7 +56,7 @@
     </nav>
 
 
-    <?php include('views/'.$this->resouce.'/'.$this->action.'.php'); ?>
+    <?php include('views/'.$this->resource.'/'.$this->action.'.php'); ?>
 
 
     <div class="content-wrapper">
