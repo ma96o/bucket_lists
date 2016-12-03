@@ -12,7 +12,7 @@
         if(!empty($post['email']) && !empty($post['password'])){
           $controller->login($post);
         } else {
-          header('location:');
+          header('location: /bucket_lists/');
           exit();
         }
         break;
@@ -47,17 +47,17 @@
       function login($post){
         $login_flag = $this->user->login($post);
         if($login_flag){
-          header('location: ');
+          header('location: /bicket_lists/items/trend');
           exit();
         } else {
-          header('location: ');
+          header('location: /bucket_lists/');
           exit();
         }
       }
       function logout(){
         $_SESSION = array();
 
-        if(ini_get("session.use_cookeis")){
+        if(ini_get("session.use_cookies")){
           $params = session_get_cookie_params();
           setcookie(session_name(), '', time() - 42000,
             $params["path"], $params["domain"],
@@ -67,7 +67,7 @@
 
         session_destroy();
 
-        header('location:');
+        header('location: /bucket_lists/');
         exit();
       }
       function mypage(){
