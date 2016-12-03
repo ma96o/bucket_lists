@@ -158,12 +158,23 @@
       function update(){
         special_echo('Controllerのupdate()が呼び出されました。');
       }
-      function follow(){
+
+      function follow($option){
         special_echo('Controllerのfollow()が呼び出されました。');
+        $this->action = 'follow';
+        $this->display();
+        $this->displayProf();
+        header('Location: ../index');
       }
-      function unfollow(){
+
+      function unfollow($option){
         special_echo('Controllerのunfollow()が呼び出されました。');
+        $this->action = 'unfollow';
+        $this->display();
+        $this->displayProf();
+        header('Location: ../index');
       }
+
       function followings(){
         special_echo('Controllerのfollowings()が呼び出されました。');
       }
