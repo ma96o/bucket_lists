@@ -8,6 +8,17 @@
       case 'check':
         $controller->check();
         break;
+      case 'login':
+        if(!empty($post['email']) && !empty($post['password'])){
+          $controller->login($post);
+        } else {
+          header('location:');
+          exit();
+        }
+        break;
+      case 'logout':
+        $controller->logout();
+        break;
       default:
         break;
     }
@@ -33,9 +44,31 @@
       }
       function thanks(){
       }
-      function login(){
+      function login($post){
+        $login_flag = $this->user->login($post);
+        if($login_flag){
+          header('location: ');
+          exit();
+        } else {
+          header('location: ');
+          exit();
+        }
       }
       function logout(){
+        $_SESSION = array();
+
+        if(ini_get("session.use_cookeis")){
+          $params = session_get_cookie_params();
+          setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+            );
+        }
+
+        session_destroy();
+
+        header('location:');
+        exit();
       }
       function mypage(){
       }
@@ -57,6 +90,7 @@
       function displayProf(){
         require('views/layouts/application_prof.php');
       }
+
     }
 
 ?>
