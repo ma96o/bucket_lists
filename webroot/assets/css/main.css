@@ -28,7 +28,6 @@ header .container {
 
 header img {
     display: block;
-    margin: 0 auto 20px;
 }
 
 header .intro-text {
@@ -58,13 +57,12 @@ nav.navbar-default {
 .msg {
   clear: both;
   border-top: 1px solid #ccc;
-  padding: 10px 0;
+  /*padding: 10px 0;*/
 }
 
 .msg img {
   float: left;
   margin-right: 5px;
-
 }
 
 .msg p {
@@ -82,8 +80,6 @@ nav.navbar-default {
     background-color: white;
 }
 
-
-
 .content-main {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -94,3 +90,32 @@ nav.navbar-default {
     background-color: white;
     padding: 30px;
 }
+
+#list_name {
+  margin-left:200px;
+  font-size: 50px;
+}
+
+#detail_name {
+  font-size: 70px;
+}
+
+#detail {
+  font-size: 40px;
+}
+
+#deadline {
+  font-size:20px;
+}
+
+.hoge {
+  width:700px;margin:auto;
+}
+
+#indefinite {
+  size: 70px;
+}
+
+/*#fuga {
+  text-align: right;
+}*/
