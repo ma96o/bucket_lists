@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -54,15 +53,39 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <div class="container">
+    <div class="container-fluid" id="pf-top">
       <div class="row">
         <div class="col-md-4 content-margin-top">
-
-    <?php include('views/'.$this->resource.'/'.$this->action.'.php'); ?>
-
+            <header id="page-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <img class="img-responsive img-circle" src="../image/plofile_fb_n.jpg" alt="" width="200" height="200">
+                            <div class="intro-text">
+                                <span class="name">masaaki kubo</span>
+                                <p class="skills">プロフィール文</p>
+                                <hr class="star-light">
+                            </div>
+                            <nav class="nav nav-tabs" style="width: 100%;">
+                                <ul class="nav nav-tabs nav-justified">
+                                    <li class="active"><a href="">バケットリスト</a></li>
+                                    <li><a href="">達成リスト</a></li>
+                                    <li><a href="">ゴミ箱リスト</a></li>
+                                    <li><a href="/bucket_lists/views_test/users/followings.html">フォロー</a></li>
+                                    <li><a href="/bucket_lists/views_test/users/followers.html">フォロワー</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
         </div>
       </div>
     </div>
+
+
+    <?php include('views/'.$this->resource.'/'.$this->action.'.php'); ?>
+
 
     <div class="content-wrapper">
 
