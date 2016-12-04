@@ -5,14 +5,20 @@
     $controller = new UsersController($resource, $action);
 
     switch ($action) {
-      case 'check':
+      case 'check';
         $controller->check();
         break;
-      case 'follow':
+      case 'follow';
         $controller->follow($option);
         break;
-      case 'unfollow':
-        $controller->unfollow($option);
+      case 'unfollow';
+        $controller->unfollow();
+        break;
+      case `following`;
+        $controller->following();
+        break;
+      case `following`;
+        $controller->follower();
         break;
       default:
         break;
@@ -87,29 +93,33 @@
         specialEcho('users_controllerのunfollow()が呼び出されました');
         $this->user->unfollow($option);
         $this->displayProf();
-        switch($this->action){
-          case 'mypage';
-          header('Location: mypage');
-          break;
-          case 'followers';
-          header('Location: followers');
-          break;
-          case 'followings';
-          header('Location: followings');
-          break;
-          case 'doing';
-          header('Location: doing');
-          break;
-          case 'done';
-          header('Location: done');
-          break;
-          default;
-          break;
-        }
+        // switch($this->action){
+        //   case 'mypage';
+        //   header('Location: mypage');
+        //   break;
+        //   case 'followers';
+        //   header('Location: followers');
+        //   break;
+        //   case 'followings';
+        //   header('Location: followings');
+        //   break;
+        //   case 'doing';
+        //   header('Location: doing');
+        //   break;
+        //   case 'done';
+        //   header('Location: done');
+        //   break;
+        //   default;
+        //   break;
+        // }
+         header('Location: mypage');
+        
       }
       function followings(){
+        $this->user->following();
       }
       function followers(){
+        $this->user->followers();
       }
       function display(){
         require('views/layouts/application.php');
