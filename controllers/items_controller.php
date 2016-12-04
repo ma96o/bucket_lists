@@ -59,7 +59,7 @@
       function update(){
       }
       function success($option){
-        // $this->viewsOptions = $this->item->success($option);
+        $this->viewsOptions = $this->item->success($option);
 
         $this->displayProf($option);
       }
@@ -70,7 +70,7 @@
       function undone(){
       }
       function trash($option){
-        // $this->viewsOptions = $this->item->trash($option);
+        $this->viewsOptions = $this->item->trash($option);
 
         $this->displayProf($option);
       }
