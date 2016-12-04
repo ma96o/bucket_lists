@@ -9,15 +9,6 @@
       }
 
       function trend(){
-        $sql = sprintf('SELECT * FROM `items` WHERE');
-        $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
-        $items = array();
-        while($table = mysqli_fetch_assoc($rec)) {
-            $items[] = $table;
-        }
-
-        return $items;
       }
       function show(){
       }
@@ -29,36 +20,13 @@
       }
       function create(){
       }
-      function index($option, $list_id){
-        $sql = sprintf('SELECT * FROM `items` WHERE `user_id`=%d AND `list_id`=%d AND `status`=1',
-            mysqli_real_escape_string($this->dbconnect, $option),
-            mysqli_real_escape_string($this->dbconnect, $list_id)
-            );
-        $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
-        $items = array();
-        while($table = mysqli_fetch_assoc($rec)){
-            $items[] = $table;
-        }
-
-        return $items;
+      function index(){
       }
       function edit(){
       }
       function update(){
       }
-      function success($option){
-        $sql = sprintf('SELECT * FROM `items` WHERE `user_id`=%d AND `status`=2',
-            mysqli_real_escape_string($this->dbconnect, $option)
-            );
-        $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
-        $items = array();
-        while($table = mysqli_fetch_assoc($rec)){
-            $items[] = $table;
-        }
-
-        return $items;
+      function success(){
       }
       function conglaturation(){
       }
@@ -66,18 +34,7 @@
       }
       function undone(){
       }
-      function trash($option){
-        $sql = sprintf('SELECT * FROM `items` WHERE `user_id`=%d AND `status`=3',
-            mysqli_real_escape_string($this->dbconnect, $option)
-            );
-        $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
-        $items = array();
-        while($table = mysqli_fetch_assoc($rec)){
-            $items[] = $table;
-        }
-
-        return $items;
+      function trash(){
       }
       function giveup(){
       }
