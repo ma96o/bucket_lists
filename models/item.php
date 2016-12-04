@@ -9,7 +9,7 @@
       }
 
       function trend(){
-        $sql = sprintf('SELECT * FROM `items` WHERE');
+        $sql = sprintf('SELECT * FROM `items` WHERE 1');
         $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
         $items = array();

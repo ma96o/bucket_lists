@@ -37,7 +37,7 @@
       function trend(){
         $this->viewsOptions = $this->item->trend();
 
-        $this->display();
+        require('views/items/trend.php');
       }
       function show(){
       }
@@ -59,7 +59,7 @@
       function update(){
       }
       function success($option){
-        $this->viewsOptions = $this->item->success($option);
+        // $this->viewsOptions = $this->item->success($option);
 
         $this->displayProf($option);
       }
@@ -70,7 +70,7 @@
       function undone(){
       }
       function trash($option){
-        $this->viewsOptions = $this->item->trash($option);
+        // $this->viewsOptions = $this->item->trash($option);
 
         $this->displayProf($option);
       }
@@ -89,7 +89,7 @@
       function display(){
         require('views/layouts/application.php');
       }
-      function displayProf(){
+      function displayProf($option){
         require('views/layouts/application_prof.php');
       }
     }
