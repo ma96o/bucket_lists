@@ -9,11 +9,11 @@
         $controller->check();
         break;
       case 'follow':
-        $controller->follow();
+        $controller->follow($option);
         break;
-        case 'unfollow':
-          $controller->unfollow();
-          break;
+      case 'unfollow':
+        $controller->unfollow($option);
+        break;
       default:
         break;
     }
@@ -50,46 +50,62 @@
       function update(){
       }
       function follow($option){
-        $this->action = 'follow';
-        $this->displayProf();
+        specialEcho('users_controllerのfollow()が呼び出されました');
+        // $this->user->follow($option);
+        // $this->displayProf();
         switch($this->action){
-          case 'mypage':
-          header('Location: ../mypage');
+          case 'mypage';
+          // $this->user->follow($option);
+          // $this->displayProf();
+          header('Location: mypage');
           break;
-          case 'followers':
-          header('Location: ../followers');
+          case 'followers';
+          // $this->user->follow($option);
+          // $this->displayProf();
+          header('Location: followers');
           break;
-          case 'followings':
-          header('Location: ../followings');
+          case 'followings';
+          // $this->user->follow($option);
+          // $this->displayProf();
+          header('Location: followings');
           break;
-          case 'doing':
-          header('Location: ../doing');
+          case 'doing';
+          // $this->user->follow($option);
+          // $this->displayProf();
+          header('Location: doing');
           break;
-          case 'done':
-          header('Location: ../done');
+          case 'done';
+          // $this->user->follow($option);
+          // $this->displayProf();
+          header('Location: done');
           break;
-      }
-      function unfollow($option){
-        $this->action = 'unfollow';
-        $this->displayProf();
-        switch($this->action){
-          case 'mypage':
-          header('Location: ../mypage');
-          break;
-          case 'followers':
-          header('Location: ../followers');
-          break;
-          case 'followings':
-          header('Location: ../followings');
-          break;
-          case 'doing':
-          header('Location: ../doing');
-          break;
-          case 'done':
-          header('Location: ../done');
+          default;
           break;
         }
-        
+      }
+      function unfollow($option){
+        specialEcho('users_controllerのunfollow()が呼び出されました');
+        $this->user->unfollow($option);
+        $this->displayProf();
+        switch($this->action){
+          case 'mypage';
+          header('Location: mypage');
+          break;
+          case 'followers';
+          header('Location: followers');
+          break;
+          case 'followings';
+          header('Location: followings');
+          break;
+          case 'doing';
+          header('Location: doing');
+          break;
+          case 'done';
+          header('Location: done');
+          break;
+          default;
+          break;
+        }
       }
       function followings(){
       }
