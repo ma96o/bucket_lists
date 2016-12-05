@@ -55,65 +55,21 @@
       }
       function update(){
       }
+      function get_last_referer(){
+      }
       function follow($option){
         specialEcho('users_controllerのfollow()が呼び出されました');
-        // $this->user->follow($option);
-        // $this->displayProf();
-        switch($this->action){
-          case 'mypage';
-          // $this->user->follow($option);
-          // $this->displayProf();
-          header('Location: mypage');
-          break;
-          case 'followers';
-          // $this->user->follow($option);
-          // $this->displayProf();
-          header('Location: followers');
-          break;
-          case 'followings';
-          // $this->user->follow($option);
-          // $this->displayProf();
-          header('Location: followings');
-          break;
-          case 'doing';
-          // $this->user->follow($option);
-          // $this->displayProf();
-          header('Location: doing');
-          break;
-          case 'done';
-          // $this->user->follow($option);
-          // $this->displayProf();
-          header('Location: done');
-          break;
-          default;
-          break;
-        }
+        $this->user->follow($option);
+        $this->displayProf();
+        $referer_action = get_last_referer();
+         header('Location: $referer_action');
       }
       function unfollow($option){
         specialEcho('users_controllerのunfollow()が呼び出されました');
         $this->user->unfollow($option);
         $this->displayProf();
-        // switch($this->action){
-        //   case 'mypage';
-        //   header('Location: mypage');
-        //   break;
-        //   case 'followers';
-        //   header('Location: followers');
-        //   break;
-        //   case 'followings';
-        //   header('Location: followings');
-        //   break;
-        //   case 'doing';
-        //   header('Location: doing');
-        //   break;
-        //   case 'done';
-        //   header('Location: done');
-        //   break;
-        //   default;
-        //   break;
-        // }
-         header('Location: mypage');
-        
+        $referer_action = get_last_referer();
+        header('Location: $referer_action');
       }
       function followings(){
         $this->user->following();
