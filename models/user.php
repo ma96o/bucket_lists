@@ -8,26 +8,43 @@
         $this->dbconnect = $db;
       }
 
-      function pre_check() {
-        try{
-          $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-          $statement = $dbh->prepare("INSERT INTO pre_members (url_token,email,date) VALUES (:url_token,:email,now() )");
-
-          $statement->bindValue(':url_token', $url_token, PDO::PARAM_STR);
-          $statement->bindValue(':email', $email, PDO::PARAM_STR);
-          $statement->execute();
-
-          $dbh = null;
-
-          } catch (PDOException $e){
-          echos('Error:'.$e->getMessage());
-          die();
+      function pre_signup_valid() {
+        $error = array();
+            if ($post['email'] == '') {
+                $error['email'] = 'blank';
+            }
+            if (!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email)) {
+                $error['mail_check'] = 'false';
           }
-      }
+            return $error;
+        }
 
-      function check(){
-      }
+      function pre_create() {
+        $sql = sprintf('INSERT INTO `pre_members` SET
+                `url_token`="%s",
+                `email`="%s",
+                `date`=NOW()',
+                mysqli_real_escape_string($db,$_SESSION['url_token']),
+                mysqli_real_escape_string($db,$_SESSION['email'])
+                );
+          mysqli_query($db,$sql) or die(mysqli_error($db)
+            );
+
+      function signup_valid($post) {
+            $error = array();
+
+            if ($post['nick_name'] == '') {
+                $error['nick_name'] = 'blank';
+            }
+            if ($post['password'] == '') {
+                $error['password'] = 'blank';
+            } elseif (strlen($post['password']) < 4) {
+                $error['password'] = 'length';
+            } else {
+                $password_hide = str_repeat('*', strlen($password));
+            }
+            return $error;
+        }
 
       function create(){
         $sql = sprintf('INSERT INTO `members` SET
@@ -47,9 +64,6 @@
               setcookie("PHPSESSID", '', time() - 1800, '/');
         }
         session_destroy();
-      }
-
-      function thanks(){
       }
 
       function login(){

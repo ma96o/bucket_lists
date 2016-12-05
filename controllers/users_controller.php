@@ -5,18 +5,28 @@
     $controller = new UsersController($resource, $action);
 
     switch ($action) {
-      case 'pre_check';
-        $controller->pre_check();
+      case 'pre_signup';
+        $controller->pre_signup();
+        break;
+
+      case 'pre_create';
+        $controller->pre_create();
+        break;
+
+      case 'signup';
+        $controller->signup();
         break;
 
       case 'check':
-        $controller->check();
+        if(!empty($post['nick_name']) && !empty($post['password'])) {
+            $controller->create($post);
+        } else {
+          header('Location: ');
+        }
         break;
 
       case 'create';
-      if(!empty($post['nick_name']) && !empty($post['password'])) {
-          $controller->create($post);
-        }
+        $controller->create($post);
         break;
 
       case 'thanks';
@@ -27,17 +37,8 @@
         if(!empty($post['email']) && !empty($post['password'])){
           $controller->login($post);
         } else {
-          header('location:');
+          header('Location: ');
           exit();
-        }
-        break;
-
-      case 'auth';
-        if (!empty($post['email']) && !empty($post['password'])) {
-            $controller->auth($post);
-        } else {
-            header('Location: login');
-            exit;
         }
         break;
 
@@ -83,55 +84,64 @@
       private $resource;
       private $action;
       private $viewOptions;
+      private $viewErrors;
 
       function __construct($resource, $action) {
         $this->user = new User();
         $this->resource = $resource;
         $this->action = $action;
-        $this->viewOptions = array('name' => '','email' => '','password' => '',);
+        $this->viewOptions = array();
       }
 
-      function pre_check() {
-        special_echo('Controllerのpre_check()が呼び出されました。');
-        $errors = array();
+      function pre_signup() {
+        special_echo('Controllerのpre_create()が呼び出されました。');
+        $this->action = 'pre_signup';
+        if (!empty($post)) {
+            $error = $this->user->pre_signup_valid($post);
+            if (!empty($error)) {
+              $this->viewOptions = $post;
+              $this->viewErrors = $error;
+              $this->display();
+          } else {
+              $_SESSION['users'] = $post;
+              header('Location: signup');
+              exit();
+                }
+            }
+                $this->display();
+            }
+      }
+
+      function pre_create() {
+        special_echo('Controllerのpre_create()が呼び出されました。');
+        $this->action = 'pre_create';
+        $error = $this->user->signup_valid($post);
 
         if(empty($_POST)) {
-          header("Location: ");
+          header("Location: / ");
           exit();
-        } else{
-
-        $email = isset($_POST['email']) ? $_POST['email'] : NULL;
-
-        if ($email == ''){
-          $errors['email'] = "メールが入力されていません。";
-        } else{
-          if(!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email)){
-            $errors['mail_check'] = "メールアドレスの形式が正しくありません。";
-          }
-          }
         }
 
-        if (count($errors) === 0){
-
+        if (count($error) === 0) {
         $url_token = hash('sha256',uniqid(rand(),1));
         $url = "http://bucket-list.sakura.ne.jp/reg_practice/reg_form.php"."?url_token=".$url_token;
 
-        //メールの宛先
         $emailTo = $email;
-        //Return-Pathに指定するメールアドレス
         $returnMail = 'bucket-lists@bucket-list.sakura.ne.jp';
         $nick_name = 'Bucket Lists.inc';
         $subject = '[Bucket Lists]新規アカウント登録用URLのお知らせ';
 
 $body = <<< EOM
-24時間以内に下記のURLからご登録下さい。
+仮登録が完了しました。
+24時間以内に下記のURLからご登録いただきますと、本登録が完了いたします。
+本登録が完了しましたら、本サービスの利用を開始することができますので、
+お手数ですが、引き続き登録作業よろしくお願いいたします！
 {$url}
 EOM;
 
         mb_language('ja');
         mb_internal_encoding('utf8');
 
-        //Fromヘッダーを作成
         $header = "MIME-Version: 1.0\n";
         $header .= "Content-Transfer-Encoding: 7bit\n";
         $header .= "Content-Type: text/plain; charset=ISO-2022-JP\n";
@@ -142,52 +152,69 @@ EOM;
         $header .= "X-Mailer: PHP/". phpversion();
 
         if(mb_send_mail($emailTo, $subject, $body, $header, '-f' . $returnMail)) {
-        //セッション変数を全て解除
+
         $_SESSION = array();
 
-        //クッキーの削除
         if (isset($_COOKIE["PHPSESSID"])) {
           setcookie("PHPSESSID", '', time() - 1800, '/');
         }
-        //セッションを破棄する
+
         session_destroy();
 
         $message = "メールを送信しました。24時間以内にメールに記載されたURLからご登録下さい。";
         } else {
-          echo $errors['email_error'] = "メールの送信に失敗しました。";
+          $errors['email_error'];
           }
+
+          $this->display();
         }
+
+      function signup($post, $option) {
+        special_echo('Controllerのsignup()が呼び出されました。');
+        $this->action = 'signup';
+        if (!empty($post)) {
+            $error = $this->user->signup_valid($post);
+            if (!empty($error)) {
+              $this->viewOptions = $post;
+              $this->viewErrors = $error;
+              $this->display();
+          } else {
+              $_SESSION['users'] = $post;
+              header('Location: check');
+              exit();
+                }
+            } else {
+            if ($option == 'rewrite') {
+                $this->viewOptions = $_SESSION['users'];
+            }
+                $this->display();
+            }
+      }
+
 
       function check() {
         special_echo('Controllerのcheck()が呼び出されました。');
+        $this->action = 'check';
+        $this->display();
+
         $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
         $token = $_SESSION['token'];
-        header('X-FRAME-OPTIONS: SAMEORIGIN');
 
         if ($_POST['token'] != $_SESSION['token']){
-          echo "不正アクセスの可能性あり";
-        exit();
+          exit();
         }
-
-        if ($nick_name == '') {
-          $errors['nick_name'] = "アカウントが入力されていません。";
-        } elseif(mb_strlen($nick_name)>15) {
-          $errors['nick_name_length'] = "アカウントは15文字以内で入力して下さい。";
-        }
-
-        //パスワード入力判定
-        if ($password == '') {
-          $errors['password'] = "パスワードが入力されていません。";
-        } elseif(!preg_match('/^[0-9a-zA-Z]{5,30}$/', $_POST["password"])) {
-          $errors['password_length'] = "パスワードは半角英数字の5文字以上30文字以下で入力して下さい。";
-        } else {
-          $password_hide = str_repeat('*', strlen($password));
-        }
-      }
 
         if (count($errors) === 0) {
           $_SESSION['nick_name'] = $nick_name;
           $_SESSION['password'] = $password;
+
+          $_SESSION = array();
+
+          if (isset($_COOKIE["PHPSESSID"])) {
+            setcookie("PHPSESSID", '', time() - 1800, '/');
+          }
+
+            session_destroy();
         }
       }
 
@@ -203,6 +230,7 @@ EOM;
         $this->action = 'thanks';
         $this->display();
       }
+
       function login($post){
         special_echo('Controllerのlogin()が呼び出されました。');
         $login_flag = $this->user->login($post);
@@ -212,18 +240,6 @@ EOM;
         } else {
           header('location: ');
           exit();
-        }
-
-      }
-      function auth(){
-        special_echo('Controllerのauth()が呼び出されました。');
-        $login_flag = $this->user->auth($post);
-        if ($login_flag) {
-            header('Location: ../items/trend');
-            exit();
-        } else {
-            header('Location: login');
-            exit();
         }
       }
 
