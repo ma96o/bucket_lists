@@ -1,3 +1,27 @@
+<?php
+    session_start();
+    require('../../dbconnect.php');
+        $sql = sprintf('SELECT * FROM `likes` WHERE `user_id`=%d',
+      mysqli_real_escape_string($db, $_SESSION['id'])
+      );
+    $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+    $like_items = array();
+    while($table = mysqli_fetch_assoc($rec)){
+      $like_items[] = $table['item_id'];
+    }
+
+    $sql = sprintf('SELECT COUNT(*) AS cnt FROM `likes` WHERE `item_id`=%d',
+      mysqli_real_escape_string($db, $item['item_id'])
+      );
+    $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+    if ($table =mysqli_fetch_assoc($rec)){
+      $like_cnt = $table['cnt'];
+    } else {
+      $like_cnt = 0;
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -11,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/main.css">
- 
+    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -34,18 +58,18 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
+                    <!-- <li class="hidden">
                         <a href="#page-top"></a>
-                    </li>
+                    </li> -->
                     <li class="page-scroll">
-                        <a href="#portfolio">マイページ</a>
+                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></a>
                     </li>
-                    <li class="page-scroll">
+                    <!-- <li class="page-scroll">
                         <a href="#about">タイムライン</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#contact">トレンディング</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -54,20 +78,54 @@
     </nav>
 
 
-    <div class="container-fluid" id="pf-top">
+    <!-- <div class="container-fluid" id="pf-top"> -->
       <div class="row">
-        <div class="col-md-4 content-margin-top">
+        <!-- <div class="col-md-4 content-margin-top"> -->
             <header id="page-top">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <img class="img-responsive img-circle" src="../image/plofile_fb_n.jpg" alt="" width="200" height="200">
-                            <div class="intro-text">
-                                <span class="name">masaaki kubo</span>
-                                <p class="skills">プロフィール文</p>
-                                <hr class="star-light">
-                            </div>
-                            <nav class="nav nav-tabs" style="width: 100%;">
+                            <!-- <img class="img-responsive img-circle" src="../image/plofile_fb_n.jpg" alt="" width="200" height="200"> -->
+                            <!-- <div class="intro-text"> -->
+                            <h1 align="left" class="skills" id="list_name">旅リスト</h1>
+                                <span class="name" id="detail_name">世界一周する<!-- 取得していた全ツイートデータの中からいいねが押される対象となるデータを取得 -->
+<?php if(in_array($item['item_id'], $like_items)): ?>
+  <!-- いいねが押されてたらオレンジで表示。ボタンを押したらアンライク発動 -->
+[<a href="likeaction.php?action=unlike&item_id=<?php echo $item['item_id']; ?>&user_id=<?php echo $_SESSION['id']; ?>" style="color: orange;"><i class="fa fa-flag"></i>
+
+<!-- いいねされている数をカウント↓ -->
+<?php echo $like_cnt; ?></a>]
+
+<?php else: ?>
+  <!-- いいねが押されてなければ無色のまま。ボタンを押したらライク発動 -->
+[<a href="likeaction.php?action=like&item_id=<?php echo $item['item_id']; ?>&user_id=<?php echo $_SESSION['id']; ?>"><i class="fa fa-flag"></i>
+
+<!-- いいねされている数をカウント↓ -->
+<?php echo $like_cnt; ?></a>]
+
+<!-- in_array終了↓ -->
+<?php endif; ?>
+<!-- いいね機能の終了 --></span></span>
+                                <br>
+                                <a href="#" class="btn btn btn-default"><span class="glyphicon glyphicon-tags"></span> タグ</a>
+                                <a href="#" class="btn btn btn-default"><span class="glyphicon glyphicon-tags"></span> タグ</a>
+                                <a href="#" class="btn btn btn-default"><span class="glyphicon glyphicon-tags"></span> タグ</a>
+                                <a href="#" class="btn btn btn-default"><span class="glyphicon glyphicon-tags"></span> タグ</a>
+                                <!-- <hr class="star-light"> -->
+                                <p id="detail">詳細が表示される</p>
+                                <span class="glyphicon glyphicon-star fa-5x"></span></a>
+                                <span class="glyphicon glyphicon-star fa-5x"></span></a>
+                                <span class="glyphicon glyphicon-star fa-5x"></span></a>
+                                <span class="glyphicon glyphicon-star-empty fa-5x"></span></a>
+                                <span class="glyphicon glyphicon-star-empty fa-5x"></span></a>
+                                <div></div>
+                                <a href="#" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-edit fa-2x"></span></a>
+                                <a href="#" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-trash fa-2x"></span></a>
+                                <a href="#" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-star fa-2x"></span></a>
+                                <a href="#" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-flag fa-2x"></span></a>
+                                <p id="deadline">2016/12/1</p>
+                            <!-- </div> -->
+                            <!-- <nav class="nav nav-tabs" style="width: 100%;">
                                 <ul class="nav nav-tabs nav-justified">
                                     <li><a href="">バケットリスト</a></li>
                                     <li class="active"><a href="">達成リスト</a></li>
@@ -75,17 +133,16 @@
                                     <li><a href="/bucket_lists/views_test/users/followings.html">フォロー</a></li>
                                     <li><a href="/bucket_lists/views_test/users/followers.html">フォロワー</a></li>
                                 </ul>
-                            </nav>
+                            </nav> -->
                         </div>
                     </div>
                 </div>
             </header>
-
-        </div>
+        <!-- </div> -->
       </div>
-    </div>
+    <!-- </div> -->
 
-    <div class="container-fluid content-main">
+    <!-- <div class="container-fluid content-main">
       <div class="row">
         <div class="col-md-4">
         </div>
@@ -101,7 +158,7 @@
                                 <tr>
                                     <th></th>
                                     <th>項目</th>
-                                    <th>達成日</th>
+                                    <th>達成日時</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -141,11 +198,11 @@
 
 
         <footer class="container-fluid" style="min-height:200px; background-color:#18bc9c;color:#fff;text-align:center;padding-top:50px;">
-            BUCKET LISTS 
+            BUCKET LISTS
         </footer>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
+    <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script> -->
   </body>
 </html>

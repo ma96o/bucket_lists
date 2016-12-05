@@ -42,9 +42,23 @@
       }
       function undelete(){
       }
-      function like(){
+      function like($option){
+        $sql = sprintf('INSERT INTO `likes`
+                        SET `user_id`=%d, `item_id`=%d',
+                        mysqli_real_escape_string($this->db, $_SESSION['id']),
+                        mysqli_real_escape_string($this->db, $option)
+                        );
+        mysqli_query($this->db, $sql) or die(mysqli_error($this->db));
       }
-      function unlike(){
+
+      function unlike($option){
+        $sql = sprintf('DELETE FROM `likes`
+                        WHERE `user_id`=%d
+                        AND`item_id`=%d',
+                        mysqli_real_escape_string($this->db, $_SESSION['id']),
+                        mysqli_real_escape_string($this->db, $option)
+                        );
+        mysqli_query($this->db, $sql) or die(mysqli_error($this->db));
       }
       function search(){
       }
