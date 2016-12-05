@@ -60,16 +60,17 @@
       function follow($option){
         specialEcho('users_controllerのfollow()が呼び出されました');
         $this->user->follow($option);
-        $this->displayProf();
+        // $this->displayProf();
         $referer_action = get_last_referer();
-         header('Location: $referer_action');
+         header("Location: ". $referer_action);
       }
       function unfollow($option){
         specialEcho('users_controllerのunfollow()が呼び出されました');
         $this->user->unfollow($option);
-        $this->displayProf();
+        // $this->displayProf();
         $referer_action = get_last_referer();
-        header('Location: $referer_action');
+        echo $referer_action;
+        header("Location: ". $referer_action);
       }
       function followings(){
         $this->user->following();
