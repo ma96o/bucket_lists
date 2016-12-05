@@ -8,7 +8,7 @@
         $this->dbconnect = $db;
       }
 
-      function pre_signup_valid() {
+      function pre_check_valid() {
         $error = array();
             if ($post['email'] == '') {
                 $error['email'] = 'blank';
@@ -29,8 +29,35 @@
                 );
           mysqli_query($db,$sql) or die(mysqli_error($db)
             );
+      }
 
       function signup_valid($post) {
+        $errors = array();
+
+        if(empty($_GET)) {
+            header("Location: reg_email_form.php");
+            exit();
+         } else{
+            //GETデータを変数に入れる
+            $url_token = isset($_GET['url_token']) ? $_GET['url_token'] : NULL;
+            //メール入力判定
+        if ($url_token == ''){
+          $errors['url_token'] = "もう一度登録をやりなおして下さい。";
+        } else {
+          $sql = sprintf('SELECT `email` from `pre_members` WHERE
+                 `url_token` = "%s" AND date > now() - interval 24 hour');
+                 `email`="%s",
+                `date`=NOW()',
+                mysqli_real_escape_string($db,$_SESSION['url_token']),
+                mysqli_real_escape_string($db,$_SESSION['email'])
+                );
+          mysqli_query($db,$sql) or die(mysqli_error($db)
+            );
+          }
+        }
+      }
+
+      function check($post) {
             $error = array();
 
             if ($post['nick_name'] == '') {

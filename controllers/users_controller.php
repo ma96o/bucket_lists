@@ -5,24 +5,24 @@
     $controller = new UsersController($resource, $action);
 
     switch ($action) {
-      case 'pre_signup';
-        $controller->pre_signup();
+      case 'pre_check';
+        $controller->pre_check($post);
         break;
 
       case 'pre_create';
-        $controller->pre_create();
+        $controller->pre_create($post);
+        break;
+
+      case 'pre_thanks';
+        $controller->pre_thanks();
         break;
 
       case 'signup';
-        $controller->signup();
+        $controller->signup($post,$option);
         break;
 
       case 'check':
-        if(!empty($post['nick_name']) && !empty($post['password'])) {
-            $controller->create($post);
-        } else {
-          header('Location: ');
-        }
+        $controller->check();
         break;
 
       case 'create';
@@ -34,12 +34,7 @@
         break;
 
       case 'login':
-        if(!empty($post['email']) && !empty($post['password'])){
           $controller->login($post);
-        } else {
-          header('Location: ');
-          exit();
-        }
         break;
 
       case 'logout';
@@ -93,38 +88,37 @@
         $this->viewOptions = array();
       }
 
-      function pre_signup() {
-        special_echo('Controllerのpre_create()が呼び出されました。');
-        $this->action = 'pre_signup';
+      function pre_check() {
+        special_echo('Controllerのpre_check()が呼び出されました。');
+        $this->action = 'pre_check';
+        $this->viewOptions = $_SESSION['users'];
+
         if (!empty($post)) {
-            $error = $this->user->pre_signup_valid($post);
+          $error = $this->user->pre_check_valid($post);
             if (!empty($error)) {
               $this->viewOptions = $post;
               $this->viewErrors = $error;
               $this->display();
           } else {
               $_SESSION['users'] = $post;
-              header('Location: signup');
+              header('Location: users/pre_thanks');
               exit();
                 }
             }
-                $this->display();
-            }
+              $this->display();
       }
 
       function pre_create() {
         special_echo('Controllerのpre_create()が呼び出されました。');
         $this->action = 'pre_create';
-        $error = $this->user->signup_valid($post);
+        $this->user->pre_create($post);
 
-        if(empty($_POST)) {
-          header("Location: / ");
+        if(empty($post)) {
+          header("Location: /home ");
           exit();
-        }
-
-        if (count($error) === 0) {
-        $url_token = hash('sha256',uniqid(rand(),1));
-        $url = "http://bucket-list.sakura.ne.jp/reg_practice/reg_form.php"."?url_token=".$url_token;
+        } elseif(count($error) === 0) {
+            $url_token = hash('sha256',uniqid(rand(),1));
+            $url = "http://bucket-list.sakura.ne.jp/reg_practice/reg_form.php"."?url_token=".$url_token;
 
         $emailTo = $email;
         $returnMail = 'bucket-lists@bucket-list.sakura.ne.jp';
@@ -162,12 +156,23 @@ EOM;
         session_destroy();
 
         $message = "メールを送信しました。24時間以内にメールに記載されたURLからご登録下さい。";
+
+        header('Location: users/pre_thanks')
+          exit();
+
         } else {
           $errors['email_error'];
           }
 
           $this->display();
         }
+      }
+
+      function pre_thanks() {
+        special_echo('Controllerのpre_thanks()が呼び出されました。');
+        $this->action = 'pre_thanks';
+        $this->display();
+      }
 
       function signup($post, $option) {
         special_echo('Controllerのsignup()が呼び出されました。');
@@ -180,7 +185,7 @@ EOM;
               $this->display();
           } else {
               $_SESSION['users'] = $post;
-              header('Location: check');
+              header('Location: users/check');
               exit();
                 }
             } else {
@@ -191,7 +196,6 @@ EOM;
             }
       }
 
-
       function check() {
         special_echo('Controllerのcheck()が呼び出されました。');
         $this->action = 'check';
@@ -201,6 +205,7 @@ EOM;
         $token = $_SESSION['token'];
 
         if ($_POST['token'] != $_SESSION['token']){
+          header('Location: users/signup');
           exit();
         }
 
