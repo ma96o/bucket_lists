@@ -136,7 +136,8 @@
                                     <td>
                                         <i class="fa fa-flag" aria-hidden="true">&nbsp;1
                                         <!-- 取得していた全ツイートデータの中からいいねが押される対象となるデータを取得 -->
-<?php if(in_array($item['item_id'], $like_items)): ?>
+<?php foreach($this->viewOptions as $viewOption): ?>
+<?php if(in_array($viewOption['item_id'], $like_items)): ?>
   <!-- いいねが押されてたらオレンジで表示。ボタンを押したらアンライク発動 -->
 [<a href=<?php echo "/bucket_lists/items/unlike/".$option ?> style="color: orange;"><i class="fa fa-flag" aria-hidden="true"></i>
 
@@ -171,7 +172,7 @@
                 </div>
             </div>
         </div>
-
+<?php endforeach; ?>
 
       <div class="row">
         <div class="col-md-4">
