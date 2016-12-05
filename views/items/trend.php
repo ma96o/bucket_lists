@@ -76,12 +76,21 @@
                         <!--並べ替え-->
                     <div class="dropdown">
                       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<<<<<<< HEAD
                         並び替え
                         <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li class='active'><a href="#">人気度順</a></li>
                         <li><a href="#">新着順</a></li>
+=======
+                        Dropdown
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+>>>>>>> master
                         <li><a href="#">Something else here</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Separated link</a></li>
@@ -116,7 +125,6 @@
             </p>
         　</article>
 <?php endforeach; ?>
-
 
         </section>
         </div>
