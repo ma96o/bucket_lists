@@ -1,3 +1,13 @@
+<?php
+
+    if(!empty($_SESSION['id']) && $option == $_SESSION['id']){
+        $user_flag = 0;
+    } else {
+        $user_flag = 1;
+    }
+    $user = aboutUser($option);
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -38,13 +48,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">マイページ</a>
+                        <a href="/bucket_lists/users/mypage/1">マイページ</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">タイムライン</a>
+                        <a href="/bucket_lists/actions/index/1">タイムライン</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">トレンディング</a>
+                        <a href="/bucket_lists/items/trend">トレンディング</a>
                     </li>
                 </ul>
             </div>
@@ -60,19 +70,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <img class="img-responsive img-circle" src="../image/plofile_fb_n.jpg" alt="" width="200" height="200">
+                            <img class="img-responsive img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" alt="" width="200" height="200">
                             <div class="intro-text">
-                                <span class="name">masaaki kubo</span>
-                                <p class="skills">プロフィール文</p>
+                                <span class="name"><?php echo $user['nick_name']; ?></span>
+                                <p class="skills"><?php echo $user['description']; ?></p>
                                 <hr class="star-light">
                             </div>
                             <nav class="nav nav-tabs" style="width: 100%;">
                                 <ul class="nav nav-tabs nav-justified">
                                     <li class="active"><a href="">バケットリスト</a></li>
-                                    <li><a href="">達成リスト</a></li>
-                                    <li><a href="">ゴミ箱リスト</a></li>
-                                    <li><a href="/bucket_lists/views_test/users/followings.html">フォロー</a></li>
-                                    <li><a href="/bucket_lists/views_test/users/followers.html">フォロワー</a></li>
+                                    <li><a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>">達成リスト</a></li>
+                                    <li><a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>">ゴミ箱リスト</a></li>
+                                    <li><a href="/bucket_lists/users/followings/<?php echo $user['user_id']; ?>">フォロー <?php echo countFollowing($user['user_id']); ?></a></li>
+                                    <li><a href="/bucket_lists/users/followers/<?php echo $user['user_id']; ?>">フォロワー <?php echo countFollower($user['user_id']); ?></a></li>
                                 </ul>
                             </nav>
                         </div>

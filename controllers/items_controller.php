@@ -37,7 +37,7 @@
       function trend(){
         $this->viewsOptions = $this->item->trend();
 
-        require('views/items/trend.php');
+        $this->display();
       }
       function show(){
       }

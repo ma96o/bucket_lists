@@ -1,65 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Bucket Lists</title>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../webroot/assets/js/bootstrap.min.js"></script>
-    <!--content style-->
-    <script src="../webroot/assets/js/pin.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="../webroot/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../webroot/assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../webroot/assets/css/main.css">
-    <link rel="stylesheet" type="text/css" href="../webroot/assets/css/trending.css">
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-  </head>
-  <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#page-top">BUCKET LISTS</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="users_mypage.html">マイページ</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="actions_index.html">タイムライン</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="tranding.html">トレンディング</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    
-       
     <div class="container">
         <section class="content-main">
             <div class="center-block">
@@ -76,21 +14,12 @@
                         <!--並べ替え-->
                     <div class="dropdown">
                       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-<<<<<<< HEAD
                         並び替え
                         <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li class='active'><a href="#">人気度順</a></li>
                         <li><a href="#">新着順</a></li>
-=======
-                        Dropdown
-                        <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
->>>>>>> master
                         <li><a href="#">Something else here</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Separated link</a></li>
@@ -195,8 +124,7 @@
                                 </div>
                             </div>
                         </div>
-                            
-                
+
             </div>
             <button type="button" class="btn btn-default btn-circle btn-lg center-block">
                 <i class="fa fa-plus" aria-hidden="true"></i>
@@ -209,31 +137,3 @@
                 </div-->
             </div>
             <div id="modal-result"></div>
-
-    <script>
-        /*表示　モーダルにidを渡す*/
-        $('#myModal-data').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var recipient = button.data('name');
-            var modal = $(this);
-            modal.find('.modal-title').text(recipient);
-        });
-        /*表示　モーダルからデータを渡す*/
-        $("#modal-save").click(function () {
-        var input1 = $("#exampleInput1").val();
-        var input2 = $("#exampleInput2").val();
-     
-        if (!$.isNumeric(input1) || !$.isNumeric(input2)) {
-            alert("数値を入力してください");
-            return false;
-        }
-     
-        var sum = parseInt(input1) + parseInt(input2);
-        $("#modal-result").html("<p>足すと " + sum + "になります。</p>");
-    });
-
-    </script>
-
-        
-  </body>
-</html>
