@@ -1,5 +1,5 @@
 <?php
-
+echo('Modelのitem.phpが呼ばれました');
     class Item{
       private $dbconnect;
 
@@ -10,7 +10,21 @@
 
       function trend(){
       }
-      function show(){
+      function show($option) {
+            echo('モデルのshowメソッド呼び出し');
+            echo('$idは' . $option . 'です(モデル内)');
+                $user = isLogin();
+                $sql = sprintf('SELECT i.*, l.`u_id` AS `is_like` FROM `items` AS i LEFT JOIN `likes` AS l
+                                        ON i.`id`=l.`i_id` AND l.`u_id`=%d
+                                        WHERE i.`item_id` = %d',
+                                  mysqli_real_escape_string($this->$user['1']),
+                                  mysqli_real_escape_string($this->$option)
+                              );
+
+                $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+
+            $rtn = mysqli_fetch_assoc($results);
+            return $rtn;
       }
       function doing(){
       }
@@ -43,8 +57,9 @@
       function undelete(){
       }
       function like($option){
+        echo 'モデルのlikeメソッド呼び出し';
         $sql = sprintf('INSERT INTO `likes`
-                        SET `user_id`=%d, `item_id`=%d',
+                        SET `u_id`=%d, `i_id`=%d',
                         mysqli_real_escape_string($this->db, $_SESSION['id']),
                         mysqli_real_escape_string($this->db, $option)
                         );
@@ -53,8 +68,8 @@
 
       function unlike($option){
         $sql = sprintf('DELETE FROM `likes`
-                        WHERE `user_id`=%d
-                        AND`item_id`=%d',
+                        WHERE `u_id`=%d
+                        AND`i_id`=%d',
                         mysqli_real_escape_string($this->db, $_SESSION['id']),
                         mysqli_real_escape_string($this->db, $option)
                         );

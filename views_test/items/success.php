@@ -10,16 +10,6 @@
       $like_items[] = $table['item_id'];
     }
 
-    $sql = sprintf('SELECT COUNT(*) AS cnt FROM `likes` WHERE `item_id`=%d',
-      mysqli_real_escape_string($db, $item['item_id'])
-      );
-    $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
-    if ($table =mysqli_fetch_assoc($rec)){
-      $like_cnt = $table['cnt'];
-    } else {
-      $like_cnt = 0;
-    }
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -135,18 +125,19 @@
                                     <td>2016/11/02</td>
                                     <td>
                                         <i class="fa fa-flag" aria-hidden="true">&nbsp;1
-                                        <!-- 取得していた全ツイートデータの中からいいねが押される対象となるデータを取得 -->
+
+<!-- 取得していた全ツイートデータの中からいいねが押される対象となるデータを取得 -->
 <?php foreach($this->viewOptions as $viewOption): ?>
 <?php if(in_array($viewOption['item_id'], $like_items)): ?>
   <!-- いいねが押されてたらオレンジで表示。ボタンを押したらアンライク発動 -->
-[<a href=<?php echo "/bucket_lists/items/unlike/".$option ?> style="color: orange;"><i class="fa fa-flag" aria-hidden="true"></i>
+[<a href="<?php echo "/bucket_lists/items/unlike/".$option ?>" style="color: orange;"><i class="fa fa-flag" aria-hidden="true"></i>
 
 <!-- いいねされている数をカウント↓ -->
 <?php echo $like_cnt; ?></a>]
 
 <?php else: ?>
   <!-- いいねが押されてなければ無色のまま。ボタンを押したらライク発動 -->
-[<a href=<?php echo "/bucket_lists/items/like/".$option ?>"><i class="fa fa-flag" aria-hidden="true"></i>
+[<a href="<?php echo "/bucket_lists/items/like/".$option ?>"><i class="fa fa-flag" aria-hidden="true"></i>
 
 <!-- いいねされている数をカウント↓ -->
 <?php echo $like_cnt; ?></a>]
