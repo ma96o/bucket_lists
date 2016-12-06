@@ -12,13 +12,16 @@
         $controller->follow($option);
         break;
       case 'unfollow';
-        $controller->unfollow();
+        $controller->unfollow($option);
         break;
       case `following`;
         $controller->following();
         break;
-      case `following`;
+      case `follower`;
         $controller->follower();
+        break;
+      case 'mypage':
+        $controller->mypage($option);
         break;
       default:
         break;
@@ -49,28 +52,34 @@
       }
       function logout(){
       }
-      function mypage(){
+      function mypage($option){
+        require('views/users/mypage.php');
       }
       function edit(){
       }
       function update(){
       }
-      function get_last_referer(){
-      }
       function follow($option){
         specialEcho('users_controllerのfollow()が呼び出されました');
         $this->user->follow($option);
         // $this->displayProf();
-        $referer_action = get_last_referer();
-         header("Location: ". $referer_action);
+        $referer = get_last_referer();
+        $referer_resource = $referer[4];
+        $referer_action = $referer[5];
+        $referer_option = $referer[6];
+        specialVarDump($referer);
+        header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
       function unfollow($option){
         specialEcho('users_controllerのunfollow()が呼び出されました');
         $this->user->unfollow($option);
         // $this->displayProf();
-        $referer_action = get_last_referer();
-        echo $referer_action;
-        header("Location: ". $referer_action);
+        $referer = get_last_referer();
+        $referer_resource = $referer[4];
+        $referer_action = $referer[5];
+        $referer_option = $referer[6];
+        specialVarDump($referer);
+        header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
       function followings(){
         $this->user->following();
