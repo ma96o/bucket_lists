@@ -1,21 +1,17 @@
-<div class="msg">
-  <form method="post" action="" class="form-horizontal" role="form">
-    <div class="form-group">
-      <label for="name" class="col-md-3 control-label">タイトル</label>
-      <div class="col-md-9">
-        <?php echo $this->viewOptions['item_name']; ?>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="name" class="col-md-3 control-label">本文</label>
-      <div class="col-md-9">
-        <?php echo $this->viewOptions['body']; ?>
-      </div>
-    </div>
-    <div class="form-group">
-      <p>
-        <a href="/seed_blog/blogs/index" class="btn btn-default">戻る</a>&nbsp;&nbsp;
-      </p>
-    </div>
-  </form>
-</div>
+
+<a href="/bucket_lists/items/like/1">いいねする</a>
+<a href="/bucket_lists/items/unlike/1">いいねを外す</a>
+
+<?php foreach($this->viewOptions as $viewOption): ?>
+<?php if(!$viewOption['is_like']): ?>
+<?php if($user['id'] == $viewOption['item_id']): ?>
+
+        [<a href="/bucket_lists/items/like/1">いいねする<i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>]
+
+<?php else: ?>
+<!-- とりあえずlikeができてからunlikeの修正する -->
+        [<a href="unlike/<?php echo $viewOption['id']; ?>">いいねを外す<i class="fa fa-thumbs-up" aria-hidden="true"></i></a>]
+
+<?php endif; ?>
+<?php endif; ?>
+<?php endforeach; ?>

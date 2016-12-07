@@ -18,11 +18,11 @@ echo "items_controllerが呼び出されました。";
         break;
 
       case 'like':
-        $controller->like();
+        $controller->like($option);
         break;
 
       case 'unlike':
-        $controller->unlike();
+        $controller->unlike($option);
         break;
 
       default:
@@ -49,12 +49,10 @@ echo "items_controllerが呼び出されました。";
 
             echo('Controllerのshow()が呼び出されました。');
             echo('$idは' . $option . 'です。');
-
-            $this->viewOptions = $this->item->show($option); // 戻り値 $rtnを受け取る
-            // special_var_dump($this->viewOptions);
-            $this->action = 'show';
-            $this->display();
-        }
+// 下記修正加えたからあとで直す
+            $this->viewOptions;
+            require('views/items/show.php');
+}
       function doing(){
       }
       function done(){
@@ -91,33 +89,32 @@ echo "items_controllerが呼び出されました。";
           // is_login();
 
           echo('Controllerのlike()が呼び出されました。');
-          $this->blog->like($option);
+          $this->item->like($option);
+          $this->viewOptions;
+          $referer = get_last_referer();
 
-          // 遷移元がindexかlikes_indexかで遷移先をわける
-          // $referer_action = get_last_referer();
-
-          // if ($referer_action == 'likes_index') {
-          //     header('Location: ../likes_index');
-          // } else {
-          //     header('Location: ../index');
-          // }
+          $referer_resource = $referer[4];
+          $referer_action = $referer[5];
+          $referer_option = $referer[6];
+          var_dump($referer);
+          header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
 
       function unlike($option) {
           // is_login();
 
           echo('Controllerのunlike()が呼び出されました。');
-          $this->blog->unlike($option);
+          $this->item->unlike($option);
 
-          // 遷移元がindexかlikes_indexかで遷移先をわける
-          // $referer_action = get_last_referer();
+          $referer = get_last_referer();
 
-          // if ($referer_action == 'likes_index') {
-          //     header('Location: ../likes_index');
-          // } else {
-          //     header('Location: ../index');
-          // }
+          $referer_resource = $referer[4];
+          $referer_action = $referer[5];
+          $referer_option = $referer[6];
+          var_dump($referer);
+          header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
+
       function search(){
       }
       function display(){
