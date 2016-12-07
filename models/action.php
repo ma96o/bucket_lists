@@ -13,7 +13,7 @@
         $following_id[] = 1;
         $id_string = implode(',', $following_id);
 
-        $sql = 'SELECT * FROM `actions` WHERE `user_id` IN ('.$id_string.')';
+        $sql = 'SELECT * FROM `actions` WHERE `user_id` IN ('.$id_string.') ORDER BY `created` DESC';
         $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
         $actions = array();
