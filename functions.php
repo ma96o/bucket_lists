@@ -112,4 +112,32 @@
 
       return $row['cnt'];
     }
+
+//フォローしているユーザのIdを取ってくる
+    function followingsId($follower_id){
+      require('dbconnect.php');
+      $sql = sprintf('SELECT DISTINCT `following_id` FROM `followings` WHERE `follower_id`=%d',
+        mysqli_real_escape_string($db, $follower_id)
+        );
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+      $following_id = array();
+      while($table = mysqli_fetch_assoc($rec)){
+        $following_id[] = $table['following_id'];
+      }
+
+      return $following_id;
+    }
+
+    function aboutItem($item_id){
+      require('dbconnect.php');
+      $sql = sprintf('SELECT * FROM `items` WHERE `id`=%d',
+        mysqli_real_escape_string($db, $item_id)
+        );
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+      $items = mysqli_fetch_assoc($rec);
+
+      return $items;
+    }
 ?>

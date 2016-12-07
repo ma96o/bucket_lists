@@ -7,61 +7,46 @@
   
                 <div class="timeline_list">
                     <h4><i class="fa fa-tags" aria-hidden="true"></i>  timeline</h4>
-                        <div class="timeline">
-                              <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
-                              <p>umaibomentaiaji</p>
-                              <span class="date">date</span>
-                              <span class="detail"><a href="users_mypage.html">nickname</a>ちゃんが<a href="items_show.html">item_name</a>をhogehogeに追加しました。
-                            </span>
-                        </div>
+
+                    <?php foreach($this->viewsOptions as $action): $user = aboutUser($action['user_id']); $item = aboutItem($action['item_id']); ?>
+                      <?php if($action['user_id'] == 1): ?>
+
+                            <div class="timeline">
+                                  <img class="img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" width="50" height="50">
+                                  <p>自分！！！！</p>
+                                  <span class="date"><?php echo $action['created']; ?></span>
+                          <?php if($action['status_id'] == 1): ?>
+                                  <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが<a href="items_show.html"><?php echo $item['item_name']; ?></a>をバケットリストに追加しました。
+                                </span>
+                          <?php elseif($action['status_id'] == 2): ?>
+                                  <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが<a href="items_show.html"><?php echo $item['item_name']; ?></a>を達成リストに追加しました。
+                                </span>
+                          <?php elseif($action['status_id'] == 3): ?>
+                                  <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが<a href="items_show.html"><?php echo $item['item_name']; ?></a>をゴミ箱リストに追加しました。
+                                </span>
+                          <?php endif; ?>
+                            </div>
+
+                      <?php else: ?>
 
                         <div class="timeline">
-                              <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
-                              <p>umaibomentaiaji</p>
-                              <span class="date">date</span>
-                              <span class="detail"><a href="users_mypage.html">nickname</a>ちゃんが<a href="items_show.html">item_name</a>をhogehogeに追加しました。
+                              <img class="img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" width="50" height="50">
+                              <p><?php echo $user['nick_name']; ?></p>
+                              <span class="date"><?php echo $action['created']; ?></span>
+                      <?php if($action['status_id'] == 1): ?>
+                              <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが<a href="items_show.html"><?php echo $item['item_name']; ?></a>をバケットリストに追加しました。
                             </span>
+                      <?php elseif($action['status_id'] == 2): ?>
+                              <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが<a href="items_show.html"><?php echo $item['item_name']; ?></a>を達成リストに追加しました。
+                            </span>
+                      <?php elseif($action['status_id'] == 3): ?>
+                              <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが<a href="items_show.html"><?php echo $item['item_name']; ?></a>をゴミ箱リストに追加しました。
+                            </span>
+                      <?php endif; ?>
                         </div>
 
-                        <div class="timeline">
-                              <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
-                              <p>umaibomentaiaji</p>
-                              <span class="date">date</span>
-                              <span class="detail"><a href="users_mypage.html">nickname</a>ちゃんが<a href="items_show.html">item_name</a>をhogehogeに追加しました。
-                            </span>
-                        </div>
-
-                         <div class="timeline">
-                              <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
-                              <p>umaibomentaiaji</p>
-                              <span class="date">date</span>
-                              <span class="detail"><a href="users_mypage.html">nickname</a>ちゃんが<a href="items_show.html">item_name</a>をhogehogeに追加しました。
-                            </span>
-                        </div>
-
-                         <div class="timeline">
-                              <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
-                              <p>umaibomentaiaji</p>
-                              <span class="date">date</span>
-                              <span class="detail"><a href="users_mypage.html">nickname</a>ちゃんが<a href="items_show.html">item_name</a>をhogehogeに追加しました。
-                            </span>
-                        </div>
-
-                         <div class="timeline">
-                              <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
-                              <p>umaibomentaiaji</p>
-                              <span class="date">date</span>
-                              <span class="detail"><a href="users_mypage.html">nickname</a>ちゃんが<a href="items_show.html">item_name</a>をhogehogeに追加しました。
-                            </span>
-                        </div>
-
-                         <div class="timeline">
-                              <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
-                              <p>umaibomentaiaji</p>
-                              <span class="date">date</span>
-                              <span class="detail"><a href="users_mypage.html">nickname</a>ちゃんが<a href="items_show.html">item_name</a>をhogehogeに追加しました。
-                            </span>
-                        </div>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
 
             </section>
           </div>
