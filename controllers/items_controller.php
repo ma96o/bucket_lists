@@ -9,12 +9,20 @@
         $controller->trend();
         break;
 
+      case 'show':
+        $controller->show($option);
+        break;
+
       case 'success':
         $controller->success();
         break;
 
-      case 'show':
-        $controller->show($option);
+      case 'create':
+        if (!empty($post['item_name']) && !empty($post['deadline']) && (!empty($post['comment'])) {
+            $controller->create($post);
+        } else {
+            $controller->add();
+        }
         break;
 
       case 'like':
@@ -46,20 +54,23 @@
         $this->item->trend();
       }
       function show($option) {
-            specialEcho('hoge');
-            specialEcho('Controllerのshow()が呼び出されました。');
-            specialEcho('$idは' . $option . 'です。');
-            $this->viewOptions = $this->item->show($option);
-            specialVarDump($this->viewOptions);
-            $this->action = 'show';
-            $this->display();
+        specialEcho('Controllerのshow()が呼び出されました。');
+        specialEcho('$idは' . $option . 'です。');
+        $this->viewOptions = $this->item->show($option);
+        specialVarDump($this->viewOptions);
+        $this->action = 'show';
+        $this->display();
 
 }
       function doing(){
       }
       function done(){
       }
-      function add(){
+      function add($option){
+        specialEcho('Controllerのadd()が呼び出されました。');
+        specialEcho('$idは' . $option . 'です。');
+        $this->action = 'add';
+        $this->display();
       }
       function create(){
       }
