@@ -24,7 +24,7 @@
 
 //ログイン判定
     function isLogin(){
-      require('dbconnect.php');
+      require('dbconnects.php');
       if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
         $_SESSION['time'] = time();
 
@@ -42,7 +42,7 @@
 
 //指定したユーザについての情報を配列データとして返す
     function aboutUser($user_id){
-      require('dbconnect.php');
+      require('dbconnects.php');
 
         $sql = sprintf('SELECT * FROM `users` WHERE `user_id`=%d',
                         mysqli_real_escape_string($db, $user_id)
@@ -55,7 +55,7 @@
 
 //フォロー数
     function countFollowing($user_id){
-      require('dbconnect.php');
+      require('dbconnects.php');
       $sql = sprintf('SELECT COUNT(*) AS `cnt` FROM `followings` WHERE `following_id`=%d',
         mysqli_real_escape_string($db, $user_id)
         );
@@ -67,7 +67,7 @@
 
 //フォロワー数
     function countFollower($user_id){
-      require('dbconnect.php');
+      require('dbconnects.php');
       $sql = sprintf('SELECT COUNT(*) AS `cnt` FROM `followings` WHERE `follower_id`=%d',
         mysqli_real_escape_string($db, $user_id)
         );
@@ -79,7 +79,7 @@
 
 //doingユーザ数
     function countDoing($item_id){
-      require('dbconnect.php');
+      require('dbconnects.php');
       $sql = sprintf('SELECT COUNT(*) AS `cnt` FROM `items` WHERE `item_id`=%d AND `status`=1',
         mysqli_real_escape_string($db, $item_id)
         );
@@ -91,7 +91,7 @@
 
 //doneユーザ数
     function countDone($item_id){
-      require('dbconnect.php');
+      require('dbconnects.php');
       $sql = sprintf('SELECT COUNT(*) AS `cnt` FROM `items` WHERE `item_id`=%d AND `status`=2',
         mysqli_real_escape_string($db, $item_id)
         );
@@ -103,7 +103,7 @@
 
 //いいね数
     function countLike($item_id){
-      require('dbconnect.php');
+      require('dbconnects.php');
       $sql = sprintf('SELECT COUNT(*) AS `cnt` FROM `likes` WHERE `item_id`=%d',
         mysqli_real_escape_string($db, $item_id)
         );

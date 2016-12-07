@@ -5,8 +5,8 @@
     $controller = new UsersController($resource, $action);
 
     switch ($action) {
-      case 'pre_check';
-        $controller->pre_check($post);
+      case 'home';
+        $controller->home($post);
         break;
 
       case 'pre_create';
@@ -73,7 +73,6 @@
         break;
     }
 
-
     class UsersController {
       private $user;
       private $resource;
@@ -88,37 +87,29 @@
         $this->viewOptions = array();
       }
 
-      function pre_check() {
-        special_echo('Controllerのpre_check()が呼び出されました。');
-        $this->action = 'pre_check';
-        $this->viewOptions = $_SESSION['users'];
-
+      function home($post) {
         if (!empty($post)) {
-          $error = $this->user->pre_check_valid($post);
+          $error = $this->user->home_valid($post);
             if (!empty($error)) {
               $this->viewOptions = $post;
               $this->viewErrors = $error;
               $this->display();
           } else {
               $_SESSION['users'] = $post;
-              header('Location: users/pre_thanks');
+              header('Location: pre_create');
               exit();
                 }
-            }
-              $this->display();
+        }
+            $this->display();
       }
 
-      function pre_create() {
-        special_echo('Controllerのpre_create()が呼び出されました。');
+      function pre_create($post) {
         $this->action = 'pre_create';
         $this->user->pre_create($post);
 
-        if(empty($post)) {
-          header("Location: /home ");
-          exit();
-        } elseif(count($error) === 0) {
-            $url_token = hash('sha256',uniqid(rand(),1));
-            $url = "http://bucket-list.sakura.ne.jp/reg_practice/reg_form.php"."?url_token=".$url_token;
+        $email = isset($post['email']) ? $post['email'] : NULL;
+        $url_token = hash('sha256',uniqid(rand(),1));
+        $url = "http://bucket-list.sakura.ne.jp/bucket_lists/users/signup"."?url_token=".$url_token;
 
         $emailTo = $email;
         $returnMail = 'bucket-lists@bucket-list.sakura.ne.jp';
@@ -126,10 +117,10 @@
         $subject = '[Bucket Lists]新規アカウント登録用URLのお知らせ';
 
 $body = <<< EOM
-仮登録が完了しました。
-24時間以内に下記のURLからご登録いただきますと、本登録が完了いたします。
+仮登録が完了しました!
+24時間以内に下記のURLからご登録いただきますと、本登録となります。
 本登録が完了しましたら、本サービスの利用を開始することができますので、
-お手数ですが、引き続き登録作業よろしくお願いいたします！
+お手数ですが、引き続き登録作業よろしくお願い致します。
 {$url}
 EOM;
 
@@ -150,33 +141,27 @@ EOM;
         $_SESSION = array();
 
         if (isset($_COOKIE["PHPSESSID"])) {
-          setcookie("PHPSESSID", '', time() - 1800, '/');
+            setcookie("PHPSESSID", '', time() - 1800, '/');
         }
-
         session_destroy();
-
-        $message = "メールを送信しました。24時間以内にメールに記載されたURLからご登録下さい。";
-
-        header('Location: users/pre_thanks')
-          exit();
-
-        } else {
-          $errors['email_error'];
-          }
-
+        header('Location: pre_thanks');
+        exit();
+        }
           $this->display();
         }
-      }
 
       function pre_thanks() {
-        special_echo('Controllerのpre_thanks()が呼び出されました。');
         $this->action = 'pre_thanks';
         $this->display();
       }
 
       function signup($post, $option) {
-        special_echo('Controllerのsignup()が呼び出されました。');
         $this->action = 'signup';
+
+        if (!empty($_GET)) {
+          $url_token = isset($_GET['url_token']) ? $_GET['url_token'] : NULL;
+        }
+
         if (!empty($post)) {
             $error = $this->user->signup_valid($post);
             if (!empty($error)) {
@@ -185,42 +170,23 @@ EOM;
               $this->display();
           } else {
               $_SESSION['users'] = $post;
-              header('Location: users/check');
+              header('Location: check');
               exit();
                 }
             } else {
             if ($option == 'rewrite') {
                 $this->viewOptions = $_SESSION['users'];
             }
-                $this->display();
+
+              $this->display();
             }
       }
 
       function check() {
         special_echo('Controllerのcheck()が呼び出されました。');
+        $this->viewOptions = $_SESSION['users'];
         $this->action = 'check';
         $this->display();
-
-        $_SESSION['token'] = base64_encode(openssl_random_pseudo_bytes(32));
-        $token = $_SESSION['token'];
-
-        if ($_POST['token'] != $_SESSION['token']){
-          header('Location: users/signup');
-          exit();
-        }
-
-        if (count($errors) === 0) {
-          $_SESSION['nick_name'] = $nick_name;
-          $_SESSION['password'] = $password;
-
-          $_SESSION = array();
-
-          if (isset($_COOKIE["PHPSESSID"])) {
-            setcookie("PHPSESSID", '', time() - 1800, '/');
-          }
-
-            session_destroy();
-        }
       }
 
       function create($post) {
@@ -234,6 +200,8 @@ EOM;
         special_echo('Controllerのthanks()が呼び出されました。');
         $this->action = 'thanks';
         $this->display();
+        header('Location: login');
+        exit();
       }
 
       function login($post){

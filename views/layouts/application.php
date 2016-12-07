@@ -63,7 +63,7 @@
 
 
         <footer class="container-fluid" style="min-height:200px; background-color:#18bc9c;color:#fff;text-align:center;padding-top:50px;">
-            BUCKET LISTS 
+            BUCKET LISTS
         </footer>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
