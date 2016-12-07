@@ -48,9 +48,13 @@
       function show(){
       }
       function doing($option){
+        $this->viewsOptions = $this->item->doing($option);
+
         $this->display($option);
       }
       function done($option){
+        $this->viewsOptions = $this->item->done($option);
+
         $this->display($option);
       }
       function add(){

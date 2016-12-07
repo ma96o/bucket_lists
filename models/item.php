@@ -12,7 +12,7 @@
 
         if($option == 'hot'){
           if(!empty($post['search_word'])){
-            $sql = sprintf('SELECT * FROM `items` WHERE `item_name` LIKE "%%%s%%" UNION SELECT COUNT(`item_id`) AS `cnt` FROM `items` ORDER BY `cnt` ASC',
+            $sql = sprintf('SELECT *, COUNT(`item_id`) AS `cnt` FROM `items` WHERE `item_name` LIKE "%%%s%%" GROUP BY `items`.`item_id` ORDER BY `cnt` DESC',
               mysqli_real_escape_string($this->dbconnect, $post['search_word'])
               );
           } else {
@@ -40,9 +40,27 @@
       }
       function show(){
       }
-      function doing(){
+      function doing($option){
+        $sql = sprintf('SELECT `user_id` FROM `items` WHERE `item_id`=%d AND `status`=1',
+                mysqli_real_escape_string($this->dbconnect, $option)
+                );
+        $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        $doing = array();
+        while($table = mysqli_fetch_assoc($rec)){
+          $doing[] = $table;
+        }
+        return $doing;
       }
-      function done(){
+      function done($option){
+        $sql = sprintf('SELECT `user_id` FROM `items` WHERE `item_id`=%d AND `status`=2',
+                mysqli_real_escape_string($this->dbconnect, $option)
+                );
+        $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        $done = array();
+        while($table = mysqli_fetch_assoc($rec)){
+          $done[] = $table;
+        }
+        return $done;
       }
       function add(){
       }
