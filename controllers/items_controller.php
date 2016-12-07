@@ -8,6 +8,7 @@
       case 'trend':
         $controller->trend();
         break;
+<<<<<<< HEAD
 
       case 'show':
         $controller->show($option);
@@ -33,6 +34,14 @@
         $controller->unlike($option);
         break;
 
+=======
+      case 'doing':
+        $controller->doing($option);
+        break;
+      case 'done':
+        $controller->done($option);
+        break;
+>>>>>>> master
       default:
         break;
     }
@@ -53,6 +62,7 @@
       function trend(){
         $this->item->trend();
       }
+<<<<<<< HEAD
       function show($option) {
         specialEcho('Controllerのshow()が呼び出されました。');
         specialEcho('$idは' . $option . 'です。');
@@ -63,8 +73,15 @@
 
 }
       function doing(){
+=======
+      function show(){
       }
-      function done(){
+      function doing($option){
+        $this->display($option);
+>>>>>>> master
+      }
+      function done($option){
+        $this->display($option);
       }
       function add($option){
         specialEcho('Controllerのadd()が呼び出されました。');
@@ -130,10 +147,10 @@
 
       function search(){
       }
-      function display(){
+      function display($option){
         require('views/layouts/application.php');
       }
-      function displayProf(){
+      function displayProf($option){
         require('views/layouts/application_prof.php');
       }
     }

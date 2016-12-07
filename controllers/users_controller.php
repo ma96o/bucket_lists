@@ -8,6 +8,12 @@
       case 'check':
         $controller->check();
         break;
+      case 'followings':
+        $controller->followings($option);
+        break;
+      case 'followers':
+        $controller->followers($option);
+        break;
       default:
         break;
     }
@@ -47,14 +53,16 @@
       }
       function unfollow(){
       }
-      function followings(){
+      function followings($option){
+        $this->displayProf($option);
       }
-      function followers(){
+      function followers($option){
+        $this->displayProf($option);
       }
-      function display(){
+      function display($option){
         require('views/layouts/application.php');
       }
-      function displayProf(){
+      function displayProf($option){
         require('views/layouts/application_prof.php');
       }
     }
