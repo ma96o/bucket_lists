@@ -17,6 +17,12 @@
       case 'trash':
         $controller->trash($option);
         break;
+      case 'doing':
+        $controller->doing($option);
+        break;
+      case 'done':
+        $controller->done($option);
+        break;
       default:
         break;
     }
@@ -41,9 +47,11 @@
       }
       function show(){
       }
-      function doing(){
+      function doing($option){
+        $this->display($option);
       }
-      function done(){
+      function done($option){
+        $this->display($option);
       }
       function add(){
       }

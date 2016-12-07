@@ -1,4 +1,7 @@
 
+/*---all----------------------------------------------------*/
+
+
 body{
   background-color: #eee;
 }
@@ -10,17 +13,27 @@ a:focus{
   color: #5e5e5e;
 }
 
-/*profile*/
+/*---profile----------------------------------------------------*/
+
+.info{
+  margin-bottom: 15px;
+}
 .info h3{
   text-align: center;
+  margin-top: 10px;
 }
 
 .info p{
   text-align: center;
 }
 
+.info span{
+  margin-left: 30px;
+  font-size: 16px;
+}
 
-/*tab*/
+/*---tab----------------------------------------------------*/
+
 .nav-pills li{
   margin: 15px auto;
 }
@@ -43,7 +56,127 @@ a:focus{
     box-shadow: none;
 }
 
-/*sidebar*/
+/*---timeline----------------------------------------------------*/
+
+.timeline_list {
+  margin: 10px auto;
+}
+
+.timeline_list h4{
+  color:#5e5e5e;
+}
+
+.timeline_list h4 i{
+  padding-left: 15px;
+  color: #00bcd4;
+}
+
+.timeline{
+  padding: 10px;
+  border-bottom: 1px dotted #5e5e5e;
+  clear: both;
+}
+
+.timeline img{
+  float: left;
+  margin-right: 10px;
+}
+
+.timeline p{
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.timeline span.date{
+  color:#888; 
+}
+
+.timeline span.detail{
+  display: block;
+  padding: 0px;
+}
+
+.timeline span.detail a{
+  font-weight: bold;
+  color: #00bcd4;
+
+}
+
+/*---item_detail----------------------------------------------------*/
+
+.item {
+  margin: 10px auto;
+  padding: 15px;
+}
+
+.item h4{
+  color:#5e5e5e;
+}
+
+.item h4 i{
+  padding-left: 10px;
+  color: #00bcd4;
+}
+
+.item label{
+  color:#888;
+  display: block;
+}
+
+.item p{
+  color:#888;
+}
+
+.item .action_icons{
+  color: #888;
+  border-bottom: 1px dotted #888;
+  padding-bottom: 15px;
+}
+
+.item hr{
+  border: 1px dotted #888;
+}
+
+.item_detail label{
+  color:#5e5e5e;
+}
+
+.timeline{
+  padding: 10px;
+  border-bottom: 1px dotted #5e5e5e;
+  clear: both;
+}
+
+.timeline img{
+  float: left;
+  margin-right: 10px;
+}
+
+.timeline p{
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.timeline span.date{
+  color:#888; 
+}
+
+.timeline span.detail{
+  display: block;
+  padding: 0px;
+}
+
+.timeline span.detail a{
+  font-weight: bold;
+  color: #00bcd4;
+
+}
+
+
+
+
+/*---sidebar(mypage)----------------------------------------------------*/
+
 .sidebar{
   background-color: #fafafa;
 }
@@ -74,11 +207,11 @@ a:focus{
   background-color: #b2edf2;
 }
 
-/*main-content*/
+/*---main-content(mypage)----------------------------------------------------*/
 
 .main-content{
   background-color: #f5f5f5;
-  padding-top: 20px;
+  padding:10px;
 }
 
 .main-content ul{
@@ -102,6 +235,30 @@ a:focus{
   content: '\f24a'; /* アイコンのunicode */
   margin-right: 10px;
 }
+
+.main-content li dt.success:before{
+  display: inline;
+  font-family: FontAwesome;
+  content: '\f05d'; /* アイコンのunicode */
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.main-content li dt.trash:before{
+  display: inline;
+  font-family: FontAwesome;
+  content: '\f014'; /* アイコンのunicode */
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+
+.main-content li dt{
+font-weight: 300;
+display: inline;
+
+}
+
 
 .main-content li dt{
 font-weight: 300;
@@ -134,6 +291,178 @@ margin-left: 15px;
 .main-content li:focus{
   background-color: #b2edf2;
 }
+
+/*---follow follower----------------------------------------------------*/
+
+.follow_list {
+  margin-top: 10px;
+}
+
+.follow_list div{
+  padding: 10px;
+  border-bottom: 1px dotted #5e5e5e;
+}
+
+.follow_list img{
+  display: inline;
+  margin-right: 10px;
+}
+
+.follow_list span{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/*
+.follow_list a:hover,
+.follow_list a:focus{
+ background-color: #b2edf2; 
+}
+*/
+
+/*---doing done----------------------------------------------------*/
+
+.do_list {
+  margin-top: 10px;
+}
+
+.do_list h4{
+  color:#5e5e5e;
+}
+
+.do_list h4 i{
+  padding-left: 15px;
+  color: #00bcd4;
+}
+
+.do_list div{
+  padding: 10px;
+  border-bottom: 1px dotted #5e5e5e;
+}
+
+.do_list img{
+  display: inline;
+  margin-right: 10px;
+}
+
+.do_list span{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.do_list div:hover,
+.do_list div:focus{
+ background-color: #b2edf2; 
+}
+
+
+
+/*---add btn----------------------------------------------------*/
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+/*---btn pink----------------------------------------------------*/
+
+.btn-pink {
+  color: #ffffff;
+  background-color: #ff4081;
+  border-color: #ff4081;
+}
+.btn-pink:hover,
+.btn-pink:focus,
+.btn-pink:active,
+.btn-pink.active,
+.open .dropdown-toggle.btn-pink {
+  color: #ffffff;
+  background-color: #ff4081;
+  border-color: #ff4081;
+}
+.btn-pink:active,
+.btn-pink.active,
+.open .dropdown-toggle.btn-pink {
+  background-image: none;
+}
+.btn-pink.disabled,
+.btn-pink[disabled],
+fieldset[disabled] .btn-pink,
+.btn-pink.disabled:hover,
+.btn-pink[disabled]:hover,
+fieldset[disabled] .btn-pink:hover,
+.btn-pink.disabled:focus,
+.btn-pink[disabled]:focus,
+fieldset[disabled] .btn-pink:focus,
+.btn-pink.disabled:active,
+.btn-pink[disabled]:active,
+fieldset[disabled] .btn-pink:active,
+.btn-pink.disabled.active,
+.btn-pink[disabled].active,
+fieldset[disabled] .btn-pink.active {
+  background-color: #ff4081;
+  border-color: #ff4081;
+}
+
+/*---img circel----------------------------------------------------*/
+
+.thumbnail_circle img {
+  border-radius: 50px;
+  height: 40px;
+  width: 40px;
+}
+
+/*---modal----------------------------------------------------*/
+
+.modal-box{
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 15px;
+}
+
+/*---star----------------------------------------------------*/
+
+.starRating img{
+  width:auto;
+}
+
+/*---footer----------------------------------------------------*/
+
+.footer{
+  margin-top: 50px;
+  background-color:#00bcd4;
+  text-align:center;
+  padding-top:20px;
+  padding-bottom: 20px;
+  color:#fff;
+}
+
+
+
+
+
+
 
 
 header {
@@ -223,7 +552,7 @@ nav.navbar-default {
 
 
 .content-main {
-  padding-top: 100px;
+  padding-top: 80px;
   padding-bottom: 0px;
   background-color: rgb(240, 240, 240);
 }
@@ -234,46 +563,7 @@ nav.navbar-default {
 }
 
 
-/*addボタン*/
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
-.btn-circle.btn-lg {
-  width: 50px;
-  height: 50px;
-  padding: 10px 16px;
-  font-size: 18px;
-  line-height: 1.33;
-  border-radius: 25px;
-}
-.btn-circle.btn-xl {
-  width: 70px;
-  height: 70px;
-  padding: 10px 16px;
-  font-size: 24px;
-  line-height: 1.33;
-  border-radius: 35px;
-}
 
-/*画像丸*/
-.thumbnail_circle img {
-  border-radius: 50px;
-  height: 40px;
-  width: 40px;
-}
-
-/*modal*/
-.modal-box{
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  padding: 15px;
-}
 
 /*wakuwaku*/
 .starRating img{

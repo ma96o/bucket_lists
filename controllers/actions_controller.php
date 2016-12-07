@@ -7,7 +7,7 @@
 
     switch ($action) {
       case 'index':
-        $controller->index();
+        $controller->index($option);
         break;
       default:
         break;
@@ -27,8 +27,9 @@
       }
       function index(){
         $this->timeline->index();
+        $this->display($option);
       }
-      function display(){
+      function display($option){
         require('views/layouts/application.php');
       }
     }

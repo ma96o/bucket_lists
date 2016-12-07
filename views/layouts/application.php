@@ -23,6 +23,14 @@
 
 ?>
 
+<?php
+    if($this->action == 'trend'){
+        echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/trending.css">';
+    } elseif($this->resource == 'actions' && $this->action == 'index') {
+        echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">';
+    }
+
+?>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -70,11 +78,10 @@
 
 <?php
     if($this->action != 'trend'){
-        echo '<div class="content-wrapper">
-            <footer class="container-fluid" style="min-height:200px; background-color:#18bc9c;color:#fff;text-align:center;padding-top:50px;">
-                BUCKET LISTS 
-            </footer>
-        </div>';
+
+        echo '<div class="footer container-fluid">
+                 BUCKET LISTS
+              </div>';
     }
 ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -82,7 +89,8 @@
 <?php
     if($this->action == 'trend'){
         echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="../webroot/assets/js/pin.js"></script>
+            <script src="/bucket_lists/webroot/assets/js/pin.js"></script>
+
             <script>
                 /*表示　モーダルにidを渡す*/
                 $("#myModal-data").on("show.bs.modal", function (event) {
@@ -109,5 +117,7 @@
     }
 ?>
 
+
 </body>
 </html>
+
