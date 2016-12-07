@@ -16,6 +16,9 @@
       $post = $_POST;
     }
 
+    // 仮ユーザーとしてログインしている
+    $_SESSION['id'] = 1;
+
     require('controllers/'.$resource.'_controller.php');
 
 ?>

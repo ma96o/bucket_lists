@@ -25,7 +25,8 @@
       function update(){
       }
       function follow($option){
-        $sql = sprintf('INSERT INTO `followings`
+        
+        $sql = sprintf('INSERT INTO `followings` 
                         SET `follower_id` = %d, `following_id` = %d',
                         mysqli_real_escape_string($this->dbconnect,$_SESSION['id']),
                         mysqli_real_escape_string($this->dbconnect,$option)
@@ -41,6 +42,7 @@
                         mysqli_real_escape_string($this->dbconnect,$option)
                         );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+
 
       }
       function followings(){
