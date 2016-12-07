@@ -274,8 +274,6 @@ display: inline;
 .main-content div.status-icon p{
   display: inline;
   font-size: 12px;
-  color:#666;
-<<<<<<< HEAD
   font-weight: bold;
 }
 
@@ -283,22 +281,12 @@ display: inline;
 =======
 }
 
->>>>>>> 90c124d73633bb529a3e30f20bb407cb1fba55f8
-.main-content div.starRating{
-display: inline;
-margin-left: 15px;
-}
-<<<<<<< HEAD
+
 */
 
 .main-content div img{
   width:85px;
   vertical-align: top;
-=======
-
-.main-content div.starRating img{
-  width:17px;
->>>>>>> 90c124d73633bb529a3e30f20bb407cb1fba55f8
 }
 
 .main-content li:hover,
