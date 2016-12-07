@@ -8,8 +8,15 @@
       case 'trend':
         $controller->trend();
         break;
-<<<<<<< HEAD
 
+      
+
+      case 'doing':
+        $controller->doing($option);
+        break;
+      case 'done':
+        $controller->done($option);
+        break;
       case 'show':
         $controller->show($option);
         break;
@@ -19,7 +26,7 @@
         break;
 
       case 'create':
-        if (!empty($post['item_name']) && !empty($post['deadline']) && (!empty($post['comment'])) {
+        if (!empty($post['item_name']) && !empty($post['deadline']) && !empty($post['comment'])) {
             $controller->create($post);
         } else {
             $controller->add();
@@ -33,15 +40,6 @@
       case 'unlike':
         $controller->unlike($option);
         break;
-
-=======
-      case 'doing':
-        $controller->doing($option);
-        break;
-      case 'done':
-        $controller->done($option);
-        break;
->>>>>>> master
       default:
         break;
     }
@@ -62,23 +60,8 @@
       function trend(){
         $this->item->trend();
       }
-<<<<<<< HEAD
-      function show($option) {
-        specialEcho('Controllerのshow()が呼び出されました。');
-        specialEcho('$idは' . $option . 'です。');
-        $this->viewOptions = $this->item->show($option);
-        specialVarDump($this->viewOptions);
-        $this->action = 'show';
-        $this->display();
-
-}
-      function doing(){
-=======
-      function show(){
-      }
       function doing($option){
         $this->display($option);
->>>>>>> master
       }
       function done($option){
         $this->display($option);
@@ -143,6 +126,15 @@
           $referer_option = $referer[6];
           specialVarDump($referer);
           header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
+      }
+
+      function show($option) {
+        specialEcho('Controllerのshow()が呼び出されました。');
+        specialEcho('$idは' . $option . 'です。');
+        $this->viewOptions = $this->item->show($option);
+        specialVarDump($this->viewOptions);
+        $this->action = 'show';
+        $this->display();
       }
 
       function search(){
