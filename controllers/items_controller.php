@@ -37,7 +37,7 @@
       function trend($option, $post){
         $this->viewsOptions = $this->item->trend($option, $post);
 
-        $this->display();
+        $this->display($option);
       }
       function show(){
       }
@@ -86,7 +86,7 @@
       }
       function search(){
       }
-      function display(){
+      function display($option){
         require('views/layouts/application.php');
       }
       function displayProf($option){
