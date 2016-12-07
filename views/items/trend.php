@@ -4,26 +4,14 @@
                 <div class="col-md-10 col-xs-offset-1">
                     <!--search box-->
                     <div class="input-group">
+                    <form action="" method="post">
                       <input type="text" class="form-control">
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="submit">
                           <i class='glyphicon glyphicon-search'></i>
                         </button>
                       </span>
-                    </div>
-                        <!--並べ替え-->
-                    <div class="dropdown">
-                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        並び替え
-                        <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li class='active'><a href="#">人気度順</a></li>
-                        <li><a href="#">新着順</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                      </ul>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -32,7 +20,17 @@
 
 
 <br>
+<div class="container">
+    <div class="center-block">
+    <div class="col-md-8 col-xs-offset-2">
+          <ul class="nav nav-pills nav-justified">
+              <li><a href="/bucket_lists/items/trend">NEW</a></li>
+              <li><a href="/bucket_lists/items/trend/hot">HOT</a></li>
+            </ul>
 
+    </div>
+    </div>
+</div>
  
     <div class="container">
       <div class="row">
@@ -43,8 +41,8 @@
         　<article class="white-panel">
             <a href="items_add.html">
                 <h4><i class="fa fa-sticky-note-o" aria-hidden="true"></i><?php echo $item['item_name']; ?></h4>
-                <span><i class="fa fa-star-half-o" aria-hidden="true"></i> doing 15</span>
-                <span><i class="fa fa-star" aria-hidden="true"></i> done 3</span>
+                <span><i class="fa fa-star-half-o" aria-hidden="true"></i> doing <?php echo countDoing($item['item_id']); ?></span>
+                <span><i class="fa fa-star" aria-hidden="true"></i> done <?php echo countDone($item['item_id']); ?></span>
             </a>
 
             <p>

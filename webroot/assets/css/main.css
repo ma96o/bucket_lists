@@ -1,3 +1,141 @@
+
+body{
+  background-color: #eee;
+}
+
+a,
+a:hover,
+a:focus{
+  text-decoration: none;
+  color: #5e5e5e;
+}
+
+/*profile*/
+.info h3{
+  text-align: center;
+}
+
+.info p{
+  text-align: center;
+}
+
+
+/*tab*/
+.nav-pills li{
+  margin: 15px auto;
+}
+
+.nav-pills li a{
+    border-radius:0;
+    color: #555;
+    font-weight: bold;
+}
+
+.nav-pills li.active a,
+.nav-pills li.active a:hover,
+.nav-pills li.active a:focus {
+    background: #eee;
+    color: #333;
+    border-radius: none !important;
+    border-bottom: 5px #00BCD4 solid;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+/*sidebar*/
+.sidebar{
+  background-color: #fafafa;
+}
+
+.sidebar ul{
+  padding: 10px;
+}
+
+.sidebar li{
+  line-height: 2.8em;
+  font-size: 16px;
+  padding: 5px;
+
+}
+
+.sidebar p{
+  float: right;
+}
+
+.sidebar li:before {
+  font-family: FontAwesome;
+  content: '\f24a'; /* アイコンのunicode */
+  margin-right: 10px;
+}
+
+.sidebar li:hover,
+.sidebar li:focus{
+  background-color: #b2edf2;
+}
+
+/*main-content*/
+
+.main-content{
+  background-color: #f5f5f5;
+  padding-top: 20px;
+}
+
+.main-content ul{
+  margin-top: 10px;
+}
+
+.main-content li{
+  padding: 10px;
+  border-bottom: 1px dotted #5e5e5e;
+}
+
+.main-content dl{
+  margin: 0px 0px 5px 0px;
+  font-size: 15px;
+  overflow:hidden;
+}
+
+.main-content li dt:before{
+  display: inline;
+  font-family: FontAwesome;
+  content: '\f24a'; /* アイコンのunicode */
+  margin-right: 10px;
+}
+
+.main-content li dt{
+font-weight: 300;
+display: inline;
+}
+
+.main-content li dd{
+  float: right;
+}
+
+.main-content div.status-icon{
+  overflow: hidden;
+}
+.main-content div.status-icon p{
+  display: inline;
+  font-size: 12px;
+  color:#666;
+}
+
+.main-content div.starRating{
+display: inline;
+margin-left: 15px;
+}
+
+.main-content div.starRating img{
+  width:17px;
+}
+
+.main-content li:hover,
+.main-content li:focus{
+  background-color: #b2edf2;
+}
+
+
 header {
     text-align: center;
 /*    color: #fff;
@@ -31,11 +169,11 @@ header img {
     margin: 0 auto 20px;
 }
 
-header .intro-text {
+.intro-text {
     margin-bottom: 50px;
 }
 
-header .intro-text .name {
+.intro-text .name {
     display: block;
     /*text-transform: uppercase; ←大文字に変換する*/
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -43,7 +181,7 @@ header .intro-text .name {
     font-weight: 700;
 }
 
-header .intro-text .skills {
+.intro-text .skills {
     font-size: 1.25em;
     font-weight: 300;
 }
@@ -85,8 +223,8 @@ nav.navbar-default {
 
 
 .content-main {
-  padding-top: 70px;
-  padding-bottom: 50px;
+  padding-top: 100px;
+  padding-bottom: 0px;
   background-color: rgb(240, 240, 240);
 }
 
@@ -137,6 +275,7 @@ nav.navbar-default {
   padding: 15px;
 }
 
-
-
-
+/*wakuwaku*/
+.starRating img{
+  width:auto;
+}

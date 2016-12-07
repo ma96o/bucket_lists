@@ -16,7 +16,7 @@
 
 <?php 
     if($this->action == 'trend'){
-        echo '<link rel="stylesheet" type="text/css" href="../webroot/assets/css/trending.css">';
+        echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/trending.css">';
     } elseif($this->resource == 'actions' && $this->action == 'index') {
         echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">';
     }
@@ -49,13 +49,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="../users/mypage/1">マイページ</a>
+                        <a href="/bucket_lists/users/mypage/1">マイページ</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="../actions/index/1">タイムライン</a>
+                        <a href="/bucket_lists/actions/index/1">タイムライン</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="../items/trend">トレンディング</a>
+                        <a href="/bucket_lists/items/trend">トレンディング</a>
                     </li>
                 </ul>
             </div>

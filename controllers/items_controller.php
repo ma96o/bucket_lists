@@ -6,7 +6,7 @@
 
     switch ($action) {
       case 'trend':
-        $controller->trend();
+        $controller->trend($option, $post);
         break;
       case 'index':
         $controller->index($option, $list_id);
@@ -34,8 +34,8 @@
         $this->viewsOptions = array();
       }
 
-      function trend(){
-        $this->viewsOptions = $this->item->trend();
+      function trend($option, $post){
+        $this->viewsOptions = $this->item->trend($option, $post);
 
         $this->display();
       }
