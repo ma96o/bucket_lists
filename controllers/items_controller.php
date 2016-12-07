@@ -9,20 +9,20 @@
         $controller->trend();
         break;
 
-      
-
       case 'doing':
         $controller->doing($option);
         break;
+
       case 'done':
         $controller->done($option);
         break;
-      case 'show':
-        $controller->show($option);
+
+      case 'add':
+        $controller->add();
         break;
 
-      case 'success':
-        $controller->success();
+      case 'show':
+        $controller->show($option);
         break;
 
       case 'create':
@@ -68,11 +68,14 @@
       }
       function add($option){
         specialEcho('Controllerのadd()が呼び出されました。');
-        specialEcho('$idは' . $option . 'です。');
         $this->action = 'add';
         $this->display();
       }
-      function create(){
+      function create($post){
+            specialEcho('Controllerのcreate()が呼び出されました。');
+            $this->item->create($post);
+            // header('Location: index');
+            header('Location: add');
       }
       function index(){
       }
@@ -81,8 +84,6 @@
       function update(){
       }
       function success(){
-        specialEcho('items_contorllerのsuccessメソッドが呼び出されました');
-
       }
       function conglaturation(){
       }
