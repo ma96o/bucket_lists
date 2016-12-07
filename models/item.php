@@ -59,7 +59,8 @@ echo('Modelのitem.phpが呼ばれました');
       function like($option){
         echo 'モデルのlikeメソッド呼び出し';
         $sql = sprintf('INSERT INTO `likes`
-                        SET `user_id`=1, `item_id`=%d',
+                        SET `user_id`=%d, `item_id`=%d',
+                        mysqli_real_escape_string($this->dbconnect, $_SESSION['id']),
                         mysqli_real_escape_string($this->dbconnect, $option)
                         );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
@@ -70,8 +71,9 @@ echo('Modelのitem.phpが呼ばれました');
 
       function unlike($option){
         $sql = sprintf('DELETE FROM `likes`
-                        WHERE `user_id`=1
+                        WHERE `user_id`=%d,
                         AND`item_id`=%d',
+                        mysqli_real_escape_string($this->dbconnect, $_SESSION['id']),
                         mysqli_real_escape_string($this->dbconnect, $option)
                         );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
