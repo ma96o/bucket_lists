@@ -39,89 +39,79 @@
             <section class="col-sm-8 main-content">
                 <!--項目追加-->
                  <div class="input-group">
-                    <from>
+                    <from class="form-inline">
+                    <div class="form-group">
                     <input type="text" class="form-control" placeholder="+項目を追加する">
                         <span class="input-group-btn">
                             <button class="btn btn-pink" type="button" data-toggle="modal" data-target="#add_new" data-name="item_id">add</button>
                         </span>
+                    </div>
                     </form>
                 </div>
                 <!--項目一覧-->
                  <ul class="list-unstyled">
-                    <a href="items_show.html">
                     <li>
                         <dl>
                             <dt>これおわんないんやけど</dt>
-                            <dd>2016/7/10</dd>
+                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-name="item_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#trash_item" data-name="item_id"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#success_item" data-name="item_id"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
                         </dl>
                         <div class="status-icon">
-                            <p><i class="fa fa-flag" aria-hidden="true">&nbsp;26</i></p>
-                            <img src="/bucket_lists/views/image/0.png">
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2016/7/10</p>
+                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;26</p>
+                            <p><img src="/bucket_lists/views/image/0.png"></p>
                         </div>
                     </li>
-                    </a>
-                </ul>
 
-                <ul class="list-unstyled">
-                    <a href="items_show.html">
                     <li>
                         <dl>
-                            <dt>なんか変なバランスやねん</dt>
-                            <dd>2016/7/10</dd>
+                            <dt>絶対どっかおかしい</dt>
+                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-name="item_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#trash_item" data-name="item_id"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#success_item" data-name="item_id"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
                         </dl>
                         <div class="status-icon">
-                            <p><i class="fa fa-flag" aria-hidden="true">&nbsp;26 </i></p>
-                            <img src="/bucket_lists/views/image/1.png">
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2016/7/10</p>
+                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;26</p>
+                            <p><img src="/bucket_lists/views/image/1.png"></p>
                         </div>
                     </li>
-                    </a>
-                </ul>
 
-                <ul class="list-unstyled">
-                    <a href="items_show.html">
                     <li>
                         <dl>
-                            <dt>どないしよか</dt>
-                            <dd>2016/7/10</dd>
+                            <dt>first-child後で修正</dt>
+                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-name="item_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#trash_item" data-name="item_id"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#success_item" data-name="item_id"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
                         </dl>
                         <div class="status-icon">
-                            <p><i class="fa fa-flag" aria-hidden="true">&nbsp;26</i></p>
-                            <img src="/bucket_lists/views/image/2.png">
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2016/7/10</p>
+                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;26</p>
+                            <p><img src="/bucket_lists/views/image/2.png"></p>
                         </div>
                     </li>
-                    </a>
-                </ul>
 
-                <ul class="list-unstyled">
-                    <a href="items_show.html">
                     <li>
                         <dl>
-                            <dt>どないしよか</dt>
-                            <dd>2016/7/10</dd>
+                            <dt>たぶんclearできてない</dt>
+                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-name="item_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#trash_item" data-name="item_id"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#success_item" data-name="item_id"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
                         </dl>
                         <div class="status-icon">
-                            <p><i class="fa fa-flag" aria-hidden="true">&nbsp;5</i></p>
-                            <img src="/bucket_lists/views/image/3.png">
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2016/7/10</p>
+                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;26</p>
+                            <p><img src="/bucket_lists/views/image/4.png"></p>
                         </div>
                     </li>
-                    </a>
+
+                    
+
                 </ul>
 
-                <ul class="list-unstyled">
-                    <a href="items_show.html">
-                    <li>
-                        <dl>
-                            <dt>どないしよか</dt>
-                            <dd>2016/7/10</dd>
-                        </dl>
-                        <div class="status-icon">
-                            <p><i class="fa fa-flag" aria-hidden="true">&nbsp;6</i></p>
-                            <img src="/bucket_lists/views/image/4.png">
-                        </div>
-                    </li>
-                    </a>
-                </ul>
-
+                
+                
             </section>
           </div>
         </div>
@@ -150,6 +140,23 @@
           <?php include('views/users/edit.php'); ?>
         </div>
 
+        <!--modal success_item-->
+
+         <div class="modal fade" id="success_item" tabindex="-1" role="dialog">
+          <?php include('views/items/conglaturation.php'); ?>
+        </div>
+
+        <!--modal trash_item-->
+
+         <div class="modal fade" id="trash_item" tabindex="-1" role="dialog">
+          <?php include('views/items/giveup.php'); ?>
+        </div> 
+
+         <!--modal edit_item-->
+
+         <div class="modal fade" id="edit_item" tabindex="-1" role="dialog">
+          <?php include('views/items/edit.php'); ?>
+        </div> 
 
   
 

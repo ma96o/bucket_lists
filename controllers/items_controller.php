@@ -24,7 +24,14 @@
         $controller->giveup($option);
         break;
       case 'conglaturation';
-        $controller->conglaturation($option)
+        $controller->conglaturation($option);
+        break;
+      case 'add':
+        $controller->add($option);
+        break;
+      case 'success':
+        $controller->success($option);
+
       default:
         break;
     }
@@ -55,6 +62,7 @@
         $this->display($option);
       }
       function add(){
+        $this->display($option);
       }
       function create(){
       }
@@ -65,7 +73,8 @@
       }
       function update(){
       }
-      function success(){
+      function success($option){
+        $this->display($option);
       }
       function conglaturation($option){
         $this->display($option);

@@ -12,21 +12,16 @@
                                             <label for="exampleInput3">説明</label>
                                             <input type="text" class="form-control" id="exampleInput2" placeholder="数値を入力してください">
                                         </div>
-
-                                        <div class="dropdown">
-                                        <label>リスト選択</label>
-                                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                list
-                                                <span class="caret"></span>
-                                              </button>
-                                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                <li><a href="#">hogehoge</a></li>
-                                                <li><a href="#">hogehoge</a></li>
-                                                <li><a href="#">hogehoge</a></li>
-                                                <li role="separator" class="divider"></li>
-                                              </ul>
-                                        </div>
-                                        <br>
+                                        <br />
+                                        <label>バケットリスト選択</label>
+                                        <select class="custom-select">
+                                          <option selected>リスト</option>
+                                          <option value="1">One</option>
+                                          <option value="2">Two</option>
+                                          <option value="3">Three</option>
+                                        </select>
+                                        <br />
+                                        <br />
                                         <div class="form-group">
                                             <label for="exampleInput1">期限</label>
                                             <input type="date" class="form-control" id="exampleInput1" placeholder="数値を入力してください">
@@ -44,20 +39,4 @@
               </div>
          </div>
 
-    <script src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
-
-
-    <script>
-    /*ワクワク度表示*/
-    $.fn.raty.defaults.path = "image";
-    $('.starRating').raty({
-      // hints: [0,1,2,3,4,5]
-      // click: function($score, $evt) {
-      //          $.post('result.php',{score:$score, url:$evt.currentTarget.baseURI},
-      //                 function(data){
-      //                   location.href = 'result.php';
-      //                 }
-      //                );
-      // }
-    });
-    </script>
+   

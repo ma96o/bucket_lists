@@ -44,17 +44,3 @@
               </div>
          </div>
 
-  <script>
-    /*ワクワク度表示*/
-    $.fn.raty.defaults.path = "/bucket_lists/views/image";
-    $('.starRating').raty({
-      // hints: [0,1,2,3,4,5]
-      // click: function($score, $evt) {
-      //          $.post('result.php',{score:$score, url:$evt.currentTarget.baseURI},
-      //                 function(data){
-      //                   location.href = 'result.php';
-      //                 }
-      //                );
-      // }
-    });
-   </script>

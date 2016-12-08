@@ -255,6 +255,7 @@ a:focus{
 .main-content li dt{
 font-weight: 300;
 display: inline;
+color:#555;
 
 }
 
@@ -266,14 +267,27 @@ display: inline;
 
 .main-content li dd{
   float: right;
+  font-size: 17px;
+  margin-left:20px; 
+}
+
+.main-content li dd i{
+  color:#888;
 }
 
 .main-content div.status-icon{
   overflow: hidden;
 }
+
 .main-content div.status-icon p{
-  display: inline;
-  font-size: 12px;
+  display: inline-block;
+  font-size: 14px;
+  color:#888;
+  margin-right: 5px;
+  margin-bottom: 0px;
+}
+
+.main-content div.status-icon p.bl{
   font-weight: bold;
 }
 
@@ -289,9 +303,9 @@ display: inline;
   vertical-align: top;
 }
 
-.main-content li:hover,
-.main-content li:focus{
-  background-color: #b2edf2;
+.main-content dd i:hover,
+.main-content dd i:focus{
+  color: #00bcd4;
 }
 
 /*---follow follower----------------------------------------------------*/
