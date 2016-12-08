@@ -66,7 +66,7 @@
       function done($option){
         $this->display($option);
       }
-      function add($option){
+      function add(){
         specialEcho('Controllerのadd()が呼び出されました。');
         $this->action = 'add';
         $this->display();
@@ -74,7 +74,7 @@
       function create($post){
             specialEcho('Controllerのcreate()が呼び出されました。');
             $this->item->create($post);
-            // header('Location: index');
+            // あとでindexに飛ぶように戻す。location:addは消す。header('Location: index');
             header('Location: add');
       }
       function index(){
