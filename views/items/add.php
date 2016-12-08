@@ -44,6 +44,9 @@
               </div>
          </div>
 
+    <script src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
+
+
     <script>
     /*ワクワク度表示*/
     $.fn.raty.defaults.path = "image";
