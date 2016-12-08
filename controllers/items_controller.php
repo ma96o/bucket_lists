@@ -14,6 +14,17 @@
       case 'done':
         $controller->done($option);
         break;
+      case 'show':
+        $controller->show($option);
+        break;
+      case 'edit':
+        $controller->edit($option);
+        break;
+      case 'giveup':
+        $controller->giveup($option);
+        break;
+      case 'conglaturation';
+        $controller->conglaturation($option)
       default:
         break;
     }
@@ -34,7 +45,8 @@
       function trend(){
         $this->item->trend();
       }
-      function show(){
+      function show($option){
+        $this->display($option);
       }
       function doing($option){
         $this->display($option);
@@ -48,13 +60,15 @@
       }
       function index(){
       }
-      function edit(){
+      function edit($option){
+        $this->display($option);
       }
       function update(){
       }
       function success(){
       }
-      function conglaturation(){
+      function conglaturation($option){
+        $this->display($option);
       }
       function tassei(){
       }
@@ -62,7 +76,8 @@
       }
       function trash(){
       }
-      function giveup(){
+      function giveup($option){
+        $this->display($option);
       }
       function delete(){
       }

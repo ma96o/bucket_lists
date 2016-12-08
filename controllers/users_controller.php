@@ -14,6 +14,8 @@
       case 'followers':
         $controller->followers($option);
         break;
+      case 'mypage':
+        $controller->mypage($option);
       default:
         break;
     }
@@ -43,7 +45,8 @@
       }
       function logout(){
       }
-      function mypage(){
+      function mypage($option){
+        $this->displayProf($option);
       }
       function edit(){
       }
