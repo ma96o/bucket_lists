@@ -274,16 +274,19 @@ display: inline;
 .main-content div.status-icon p{
   display: inline;
   font-size: 12px;
-  color:#666;
+  font-weight: bold;
 }
 
-.main-content div.starRating{
-display: inline;
-margin-left: 15px;
+/*
+=======
 }
 
-.main-content div.starRating img{
-  width:17px;
+
+*/
+
+.main-content div img{
+  width:85px;
+  vertical-align: top;
 }
 
 .main-content li:hover,
