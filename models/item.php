@@ -32,12 +32,39 @@
       }
       function add(){
       }
+
+      function create_valid($post) {
+          $error = array();
+          // バリデーション
+          if ($item_id == '') {
+            $error['item_id'] = 'blank';
+          }
+          if ($item_name == '') {
+            $error['item_name'] = 'blank';
+          }
+          if ($deadline == '') {
+            $error['deadline'] = 'blank';
+          }
+          if ($comment == '') {
+            $error['comment'] = 'blank';
+          }
+          if ($list_id == '') {
+            $error['list_id'] = 'blank';
+          }
+          if ($user_id == '') {
+            $error['user_id'] = 'blank';
+          }
+          if ($tag_id == '') {
+            $error['tag_id'] = 'blank';
+          }
+          return $error;
+      }
+
       function create($post){
             $sql = sprintf('INSERT INTO `items` SET `item_id` = %d,
                                                     `item_name` = "%s",
                                                     `deadline` = "%s",
                                                     `comment` = "%s",
-                                                    `status` = %d,
                                                     `priority` = %d,
                                                     `list_id` = %d,
                                                     `user_id` = %d,
@@ -47,7 +74,6 @@
                         mysqli_real_escape_string($this->dbconnect,$post['item_name']),
                         mysqli_real_escape_string($this->dbconnect,$post['deadline']),
                         mysqli_real_escape_string($this->dbconnect,$post['comment']),
-                        mysqli_real_escape_string($this->dbconnect,$post['status']),
                         mysqli_real_escape_string($this->dbconnect,$post['priority']),
                         mysqli_real_escape_string($this->dbconnect,$post['list_id']),
                         mysqli_real_escape_string($this->dbconnect,$post['user_id']),
@@ -57,10 +83,29 @@
         }
       function index(){
       }
-      function edit(){
-      }
-      function update(){
-      }
+      function edit($option) {
+            $sql = 'SELECT * FROM `items` WHERE `id` = ' . $option;
+            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+
+            $rtn = mysqli_fetch_assoc($results);
+            return $rtn;
+        }
+      function update($post) {
+            $sql = sprintf('UPDATE `items` SET `deadline` = "%s",
+                                               `comment` = "%s",
+                                               `priority` = %d,
+                                               `list_id` = %d,
+                                               `tag_id` = %d
+                                           WHERE `id` = %d',
+                        mysqli_real_escape_string($this->dbconnect,$post['deadline']),
+                        mysqli_real_escape_string($this->dbconnect,$post['comment']),
+                        mysqli_real_escape_string($this->dbconnect,$post['priority']),
+                        mysqli_real_escape_string($this->dbconnect,$post['list_id']),
+                        mysqli_real_escape_string($this->dbconnect,$post['tag_id']),
+                        $post['id']
+                    );
+            mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        }
       function success(){
       }
       function conglaturation(){

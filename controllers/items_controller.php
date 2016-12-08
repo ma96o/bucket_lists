@@ -33,6 +33,14 @@
         }
         break;
 
+      case 'edit':
+        $controller->edit($option);
+        break;
+
+      case 'update':
+        $controller->update($post);
+        break;
+
       case 'like':
         $controller->like($option);
         break;
@@ -71,18 +79,42 @@
         $this->action = 'add';
         $this->display();
       }
-      function create($post){
-            specialEcho('Controllerのcreate()が呼び出されました。');
-            $this->item->create($post);
-            // あとでindexに飛ぶように戻す。location:addは消す。header('Location: index');
-            header('Location: add');
+      function create($post, $option){
+          specialEcho('Controllerのcreate()が呼び出されました。');
+
+          if (!empty($post)) {
+              // 登録ボタンが押された時
+              $error = $this->item->create_valid($post);
+              if (!empty($error)) {
+                // エラーがあった場合
+                $this->viewOptions = $post;
+                $this->viewErrors = $error;
+                $this->display();
+              } else {
+                  // エラーがなかった場合
+                $this->item->create($post);
+              // あとでindexに飛ぶように戻す。location:addは消す。header('Location: index');
+              header('Location: add');
+              }
+          }
       }
       function index(){
       }
-      function edit(){
-      }
-      function update(){
-      }
+      function edit($option) {
+
+            specialEcho('Controllerのedit()が呼び出されました。');
+
+            // model処理
+            $this->viewOptions = $this->item->edit($option);
+
+            $this->action = 'edit';
+            $this->display();
+        }
+      function update($post) {
+            $this->item->update($post);
+            // あとでindexに飛ぶように戻す。location:editは消す。header('Location: index');
+            header('Location: edit');
+        }
       function success(){
       }
       function conglaturation(){

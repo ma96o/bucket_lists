@@ -8,6 +8,7 @@
         $this->dbconnect = $db;
       }
 
+      
       function create($post){$sql = sprintf('INSERT INTO `lists` SET `list_id` = %d,
 				                                                     `list_name` = "%s",
 				                                                     `user_id` = %d,
