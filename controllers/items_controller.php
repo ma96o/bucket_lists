@@ -8,20 +8,35 @@
       case 'trend':
         $controller->trend($option, $post);
         break;
-      case 'index':
-        $controller->index($option, $list_id);
-        break;
-      case 'success':
-        $controller->success($option);
-        break;
-      case 'trash':
-        $controller->trash($option);
+      case 'show':
+        $controller->show($option);
         break;
       case 'doing':
         $controller->doing($option);
         break;
       case 'done':
         $controller->done($option);
+        break;
+      case 'add':
+        $controller->add($option);
+        break;
+      case 'index':
+        $controller->index($option, $list_id);
+        break;
+      case 'edit':
+        $controller->edit($option);
+        break;
+      case 'success':
+        $controller->success($option);
+        break;
+      case 'conglaturation':
+        $controller->conglaturation($option);
+        break;
+      case 'trash':
+        $controller->trash($option);
+        break;
+      case 'giveup':
+        $controller->giveup($option);
         break;
       default:
         break;
@@ -45,7 +60,9 @@
 
         $this->display($option);
       }
-      function show(){
+      function show($option){
+        $this->viewsOptions = $this->item->show($option);
+
       }
       function doing($option){
         $this->viewsOptions = $this->item->doing($option);
