@@ -30,7 +30,7 @@
                 </a>
                 
               </ul>
-              <button class="btn btn-default" type="button" data-toggle="modal" data-target="#add_list">リストを追加</button>
+              <button class="btn btn-pink" type="button" data-toggle="modal" data-target="#add_list">リストを追加</button>
 
               
             </section>
@@ -135,52 +135,13 @@
         <!--modal add_list-->
 
         <div class="modal fade" id="add_list" tabindex="-1" role="dialog">
-          <div class="modal-dialog modal-lg">  
-              <div class="modal-content">
-                <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>リスト追加</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12 ">
-                            <label>リスト名</label>
-                            <input type="text" class="form-control" id="exampleInput2" placeholder="リスト名を入力してください">
-                        </div>
-                    </div>
-                </div>
-                        <br>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-pink" id="modal-save" data-dismiss="modal">add</button>
-                </div>
-              </div>
-          </div>
+          <?php include('views/lists/add.php'); ?>
         </div>
 
         <!--modal edit_list-->
 
         <div class="modal fade" id="edit_list" tabindex="-1" role="dialog">
-          <div class="modal-dialog modal-lg">  
-              <div class="modal-content">
-                 <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title">リスト編集</h4>
-                </div>
-               
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12 ">
-                            <label></label>
-                            <input type="text" class="form-control" id="exampleInput2" placeholder="" value="編集前のリスト名を表示">
-                        </div>
-                    </div>
-                </div>
-                        <br>
-                <div class="modal-footer">
-                    <button type="button" class="btn" id="modal-save" data-dismiss="modal">更新</button>
-                </div>
-              </div>
-          </div>
+          <?php include('views/lists/edit.php'); ?>
         </div>
         
         <!--modal edit_prof-->
@@ -189,22 +150,6 @@
           <?php include('views/users/edit.php'); ?>
         </div>
 
-    <script>
-        
-
-    /*ワクワク度表示*/
-    $.fn.raty.defaults.path = "image";
-    $('.starRating').raty({
-      // hints: [0,1,2,3,4,5]
-      // click: function($score, $evt) {
-      //          $.post('result.php',{score:$score, url:$evt.currentTarget.baseURI},
-      //                 function(data){
-      //                   location.href = 'result.php';
-      //                 }
-      //                );
-      // }
-    });
-    </script>
 
   
 
