@@ -156,6 +156,24 @@
           modal.find('.modal-body input#deadline').val(recipientDeadline)
           });
         </script>
+        <script>
+          $('#show_item').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientId = button.data('id')
+          var recipientComment = button.data('comment')
+          var recipientDeadline = button.data('deadline')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-title').text(recipientTitle)
+          modal.find('.modal-body h4#item_name').text(recipientTitle)
+          // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          modal.find('.modal-body p#item_comment').text(recipientComment)
+          modal.find('.modal-body span#item_deadline').text(recipientDeadline)
+          });
+        </script>
 <!--          ";
     } -->
   </body>

@@ -36,6 +36,7 @@
                 <!--項目一覧-->
                  <ul class="list-unstyled">
                  <?php foreach($this->viewsOptions as $item): ?>
+                <a data-toggle="modal" href="" data-target="#show_item" data-name="item_id" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>">
                     <li>
                         <dl>
                             <dt><?php echo $item['item_name']; ?></dt>
@@ -44,11 +45,12 @@
                             <dd><a data-toggle="modal" href="" data-target="#success_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
                         </dl>
                         <div class="status-icon">
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2016/7/10</p>
-                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;26</p>
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<?php echo $item['deadline']; ?></p>
+                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;<?php echo countLike($item['id']); ?></p>
                             <p><img src="/bucket_lists/views/image/0.png"></p>
                         </div>
                     </li>
+                </a>
                 <?php endforeach; ?>
                 </ul>
 
@@ -96,3 +98,5 @@
          <div class="modal fade" id="edit_item" tabindex="-1" role="dialog">
           <?php include('views/items/edit.php'); ?>
         </div> 
+
+          <?php include('views/items/show.php'); ?>
