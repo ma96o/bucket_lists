@@ -1,4 +1,5 @@
-<div class="modal-dialog modal-lg">  
+<div class="modal fade" id="edit_list" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">  
               <div class="modal-content">
                  <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -18,4 +19,5 @@
                     <button type="button" class="btn btn-pink" id="modal-save" data-dismiss="modal">更新</button>
                 </div>
               </div>
-          </div>
+  </div>
+</div>

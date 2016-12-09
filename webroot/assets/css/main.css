@@ -197,7 +197,7 @@ a:focus{
 
 .sidebar li:before {
   font-family: FontAwesome;
-  content: '\f24a'; /* アイコンのunicode */
+  content: '\f0f6'; /* アイコンのunicode */
   margin-right: 10px;
 }
 

@@ -1,4 +1,5 @@
-<div class="modal-dialog modal-lg">  
+<div class="modal fade" id="success_item" tabindex="-1" role="dialog">
+ <div class="modal-dialog modal-lg">  
               <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -15,4 +16,5 @@
                     <button type="button" class="btn btn-pink" id="modal-save" data-dismiss="modal"><i class="fa fa-check-circle-o" aria-hidden="true"></i>&times;success</button>
                 </div>
               </div>
-          </div>
+</div>
+</div>
