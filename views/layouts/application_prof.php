@@ -1,3 +1,13 @@
+<?php
+
+    if(!empty($_SESSION['id']) && $option == $_SESSION['id']){
+        $user_flag = 0;
+    } else {
+        $user_flag = 1;
+    }
+    $user = aboutUser($option);
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -53,47 +63,39 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <div class="container-fluid" id="pf-top">
-      <div class="row">
-        <div class="col-md-4 content-margin-top">
-            <header id="page-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <img class="img-responsive img-circle" src="../image/plofile_fb_n.jpg" alt="" width="200" height="200">
-                            <div class="intro-text">
-                                <span class="name">masaaki kubo</span>
-                                <p class="skills">プロフィール文</p>
-                                <hr class="star-light">
-                            </div>
-                            <nav class="nav nav-tabs" style="width: 100%;">
-                                <ul class="nav nav-tabs nav-justified">
-                                    <li class="active"><a href="">バケットリスト</a></li>
-                                    <li><a href="">達成リスト</a></li>
-                                    <li><a href="">ゴミ箱リスト</a></li>
-                                    <li><a href="/bucket_lists/views_test/users/followings.html">フォロー</a></li>
-                                    <li><a href="/bucket_lists/views_test/users/followers.html">フォロワー</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+    <div class="container">
+        <section class="content-main info">
+            <div class="row">
+                <div class="col-md-10 col-xs-offset-1">
+                    <img class="center-block img-responsive img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
+                    <h3><?php echo $user['nick_name']; ?><span class="edit_info"><a data-toggle="modal" href="#edit_prof" data-target="#edit_info" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    </span></h3>
+                    <p><?php echo $user['description']; ?></p>
                 </div>
-            </header>
-        </div>
-      </div>
-    </div>
+            </div>
+        </section>
+
+        <!--タブ-->
+        <section class="row">
+            <div class="col-md-8 col-xs-offset-2">
+                  <ul class="nav nav-pills nav-justified">
+                    <li class="active"><a href="">バケットリスト</a></li>
+                    <li><a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>">達成リスト</a></li>
+                    <li><a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>">ゴミ箱リスト</a></li>
+                    <li><a href="/bucket_lists/users/followings/<?php echo $user['user_id']; ?>">フォロー <?php echo countFollowing($user['user_id']); ?></a></li>
+                    <li><a href="/bucket_lists/users/followers/<?php echo $user['user_id']; ?>">フォロワー <?php echo countFollower($user['user_id']); ?></a></li>
+                  </ul>
+            </div>
+        </section>
+        <br>
 
 
     <?php include('views/'.$this->resource.'/'.$this->action.'.php'); ?>
 
-
-    <div class="content-wrapper">
-
-
-        <footer class="container-fluid" style="min-height:200px; background-color:#18bc9c;color:#fff;text-align:center;padding-top:50px;">
+    </div>
+        <footer class="container-fluid" style="min-height:200px; background-color:#00bcd4;color:#fff;text-align:center;padding-top:50px;">
             BUCKET LISTS 
         </footer>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
   </body>

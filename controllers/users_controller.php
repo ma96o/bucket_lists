@@ -276,10 +276,10 @@ EOM;
       function followers(){
         special_echo('Controllerのfpllowers()が呼び出されました。');
       }
-      function display(){
+      function display($option){
         require('views/layouts/application.php');
       }
-      function displayProf(){
+      function displayProf($option){
         require('views/layouts/application_prof.php');
       }
     }

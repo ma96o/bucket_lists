@@ -8,12 +8,18 @@
     <title>Bucket Lists</title>
 
 
-
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">
 
+<?php 
+    if($this->action == 'trend'){
+        echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/trending.css">';
+    } elseif($this->resource == 'actions' && $this->action == 'index') {
+        echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">';
+    }
+
+?>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -59,6 +65,7 @@
     <?php include('views/'.$this->resource.'/'.$this->action.'.php'); ?>
 
 
+
     <div class="content-wrapper">
 
 
@@ -66,7 +73,38 @@
             BUCKET LISTS
         </footer>
     </div>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
+<?php
+    if($this->action == 'trend'){
+        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="/bucket_lists/webroot/assets/js/pin.js"></script>
+            <script>
+                /*表示　モーダルにidを渡す*/
+                $("#myModal-data").on("show.bs.modal", function (event) {
+                    var button = $(event.relatedTarget);
+                    var recipient = button.data("name");
+                    var modal = $(this);
+                    modal.find(".modal-title").text(recipient);
+                });
+                /*表示　モーダルからデータを渡す*/
+                $("#modal-save").click(function () {
+                var input1 = $("#exampleInput1").val();
+                var input2 = $("#exampleInput2").val();
+
+                if (!$.isNumeric(input1) || !$.isNumeric(input2)) {
+                    alert("数値を入力してください");
+                    return false;
+                }
+
+                var sum = parseInt(input1) + parseInt(input2);
+                $("#modal-result").html("<p>足すと " + sum + "になります。</p>");
+                });
+            </script>
+        ';
+    }
+?>
   </body>
 </html>

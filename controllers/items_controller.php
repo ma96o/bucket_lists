@@ -8,6 +8,12 @@
       case 'trend':
         $controller->trend();
         break;
+      case 'doing':
+        $controller->doing($option);
+        break;
+      case 'done':
+        $controller->done($option);
+        break;
       default:
         break;
     }
@@ -30,9 +36,11 @@
       }
       function show(){
       }
-      function doing(){
+      function doing($option){
+        $this->display($option);
       }
-      function done(){
+      function done($option){
+        $this->display($option);
       }
       function add(){
       }
@@ -66,10 +74,10 @@
       }
       function search(){
       }
-      function display(){
+      function display($option){
         require('views/layouts/application.php');
       }
-      function displayProf(){
+      function displayProf($option){
         require('views/layouts/application_prof.php');
       }
     }
