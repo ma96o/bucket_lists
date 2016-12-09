@@ -12,7 +12,7 @@
               <br>
               <div class="row">
                 <div class="col-sm-4">
-                  <label><i class="fa fa-calendar" aria-hidden="true"></i></i>&nbsp;期限</label><span id="item_deadline"></span>
+                  <label><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;期限</label><span id="item_deadline"></span>
                 </div>
 
                 <div class="col-sm-4">
@@ -24,7 +24,9 @@
                   <!--0-1の画像で出し分け-->
                   <img src="/bucket_lists/views/image/3.png">
                 </div>
+
               </div>
+
             </div>
                    <br>
                    <br>

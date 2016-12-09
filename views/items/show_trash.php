@@ -1,4 +1,4 @@
-<div class="modal fade" id="item_success" tabindex="-1" role="dialog">
+<div class="modal fade" id="item_trash" tabindex="-1" role="dialog">
 <div class="modal-dialog modal-lg">  
               <div class="modal-content">
                   <div class="modal-header">
