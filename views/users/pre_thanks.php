@@ -1,4 +1,4 @@
-<div class="msg" style="margin-left: 20px;">
+<div class="msg" style="margin:50px 0px 0px 20px;">
     <h1>メール確認画面</h1>
     <?php if (count($this->viewErrors['email']) === 0) : ?>
       <p>メールを送信しました。24時間以内にメールに記載されたURLからご登録ください。</p>

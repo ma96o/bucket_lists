@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="email" class="col-md-3 control-label">メールアドレス</label>
       <div class="col-md-9">
-        <input type="text" class="form-control" name="email" value="<?php //echo $this->viewOptions['email']; ?>">
+        <input type="text" class="form-control" name="email" value="<?php echo $this->viewOptions['email']; ?>">
         <?php if(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'blank'): ?>
           <p style="color:red;">* メールアドレスを入力してください</p>
         <?php elseif(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'false'): ?>

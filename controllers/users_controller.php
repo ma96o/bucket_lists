@@ -84,8 +84,8 @@
         $this->user = new User();
         $this->resource = $resource;
         $this->action = $action;
-        $this->viewOptions = array();
-      }
+        $this->viewOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
+        }
 
       function home($post) {
         if (!empty($post)) {
@@ -99,17 +99,24 @@
               header('Location: pre_create');
               exit();
                 }
-        }
+        } else {
+           if ($option == 'rewrite') {
+            $this->viewOptions = $_SESSION['users'];
+              }
+
             $this->display();
+        }
       }
 
       function pre_create($post) {
         $this->action = 'pre_create';
-        $this->user->pre_create($post);
 
         $email = isset($post['email']) ? $post['email'] : NULL;
         $url_token = hash('sha256',uniqid(rand(),1));
         $url = "http://bucket-list.sakura.ne.jp/bucket_lists/users/signup"."?url_token=".$url_token;
+
+        $_SESSION['url_token'] = $url_token;
+        $this->user->pre_create($post);
 
         $emailTo = $email;
         $returnMail = 'bucket-lists@bucket-list.sakura.ne.jp';
@@ -131,10 +138,10 @@ EOM;
         $header .= "Content-Transfer-Encoding: 7bit\n";
         $header .= "Content-Type: text/plain; charset=ISO-2022-JP\n";
         $header .= "Message-Id: <" . md5(uniqid(microtime())) . "@gmail.com>\n";
-        $header .= 'From: bucket-lists@bucket-list.sakura.ne.jp';
         $header .= "Reply-To: bucket-lists@bucket-list.sakura.ne.jp\n";
         $header .= "Return-Path: bucket-lists@bucket-list.sakura.ne.jp\n";
         $header .= "X-Mailer: PHP/". phpversion();
+        $header .= 'From: bucket-lists@bucket-list.sakura.ne.jp';
 
         if(mb_send_mail($emailTo, $subject, $body, $header, '-f' . $returnMail)) {
 
@@ -148,6 +155,7 @@ EOM;
         exit();
         }
           $this->display();
+
         }
 
       function pre_thanks() {
@@ -157,10 +165,7 @@ EOM;
 
       function signup($post, $option) {
         $this->action = 'signup';
-
-        if (!empty($_GET)) {
-          $url_token = isset($_GET['url_token']) ? $_GET['url_token'] : NULL;
-        }
+        $this->viewOptions = $this->user->signup_valid($post);
 
         if (!empty($post)) {
             $error = $this->user->signup_valid($post);
@@ -172,32 +177,32 @@ EOM;
               $_SESSION['users'] = $post;
               header('Location: check');
               exit();
-                }
-            } else {
+            }
+        } else {
             if ($option == 'rewrite') {
                 $this->viewOptions = $_SESSION['users'];
             }
-
+            if (!empty($_GET)) {
+               $url_token = $_GET['url_token'];
+            }
               $this->display();
             }
       }
 
       function check() {
-        special_echo('Controllerのcheck()が呼び出されました。');
         $this->viewOptions = $_SESSION['users'];
         $this->action = 'check';
         $this->display();
+
       }
 
       function create($post) {
-        special_echo('Controllerのcreate()が呼び出されました。');
         $this->user->create($post);
         header('Location: thanks');
         exit();
       }
 
       function thanks(){
-        special_echo('Controllerのthanks()が呼び出されました。');
         $this->action = 'thanks';
         $this->display();
         header('Location: login');

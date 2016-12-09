@@ -24,14 +24,13 @@
 
       function pre_create($post) {
         $email = isset($post['email']) ? $post['email'] : NULL;
-        $url_token = hash('sha256',uniqid(rand(),1));
-        $url = "http://bucket-list.sakura.ne.jp/bucket_lists/users/signup"."?url_token=".$url_token;
+        $url = "http://bucket-list.sakura.ne.jp/bucket_lists/users/signup"."?url_token=".$_SESSION['url_token'];
 
         $sql = sprintf('INSERT INTO `pre_users` SET
                 `url_token`="%s",
                 `email`="%s",
                 `created`=NOW()',
-                mysqli_real_escape_string($this->dbconnect,$url_token),
+                mysqli_real_escape_string($this->dbconnect,$_SESSION['url_token']),
                 mysqli_real_escape_string($this->dbconnect,$post['email'])
                 );
           mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect)
@@ -41,35 +40,47 @@
       function signup_valid($post) {
         $error = array();
 
-        if ($post['nick_name'] == '') {
+        if(isset($_GET['url_token'])) {
+            $url_token = $_GET['url_token'];
+        }
+        if(isset($post['nick_name']) && $post['nick_name'] == '') {
               $error['nick_name'] = 'blank';
          }
-        if ($post['password'] == '') {
+        if(isset($post['password']) && $post['password'] == '') {
               $error['password'] = 'blank';
-          } elseif (strlen($post['password']) < 4) {
+          } elseif (isset($post['password']) && strlen($post['password']) < 4) {
               $error['password'] = 'length';
         }
-        if ($_GET['url_token'] == '') {
+        if ($url_token == '') {
               $error['url_token'] = 'blank';
         }
 
-          $sql = sprintf('SELECT `email` from `pre_users`
+          $sql = sprintf('SELECT `email` FROM `pre_users`
                           WHERE `url_token` = "%s"
-                          AND date > now() - interval 24 hour,
-                              `date`=NOW()',
-                mysqli_real_escape_string($this->dbconnect,$_SESSION['url_token']),
-          $record = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect))
+                          ',
+              mysqli_real_escape_string($this->dbconnect,$url_token));
+          $record = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect)
           );
-          $record_count = mysqli_fetch_assoc($record);
+          $rtn = mysqli_fetch_assoc($record);
 
-          if($record_count == 1){
-            $email_array = $statement->fetch();
-            $email = $email_array['email'];
-            $_SESSION['email'] = $email;
-          } else{
-            $error['urltoken_timeover'] = 'over';
-          }
+          $_SESSION['email'] = $rtn;
 
+          return $_SESSION['email'];
+          return $error;
+      }
+
+      function check(){
+        $sql = sprintf('SELECT `email` FROM `pre_users`
+                          WHERE `url_token` = "%s"
+                          ',
+              mysqli_real_escape_string($this->dbconnect,$url_token));
+          $record = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect)
+          );
+          $rtn = mysqli_fetch_assoc($record);
+
+          $_SESSION['email'] = $rtn;
+
+          return $_SESSION['email'];
           return $error;
       }
 
