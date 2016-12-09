@@ -26,7 +26,7 @@
         break;
 
       case 'create':
-        if (!empty($post['item_name']) && !empty($post['deadline']) && !empty($post['comment'])) {
+        if (!empty($post['list_id']) && !empty($post['comment']) && !empty($post['deadline'])) {
             $controller->create($post);
         } else {
             $controller->add();
@@ -79,24 +79,10 @@
         $this->action = 'add';
         $this->display();
       }
-      function create($post, $option){
+      function create($post) {
           specialEcho('Controllerのcreate()が呼び出されました。');
-
-          if (!empty($post)) {
-              // 登録ボタンが押された時
-              $error = $this->item->create_valid($post);
-              if (!empty($error)) {
-                // エラーがあった場合
-                $this->viewOptions = $post;
-                $this->viewErrors = $error;
-                $this->display();
-              } else {
-                  // エラーがなかった場合
-                $this->item->create($post);
-              // あとでindexに飛ぶように戻す。location:addは消す。header('Location: index');
-              header('Location: add');
-              }
-          }
+          $this->item->create($post);
+          header('Location: add');
       }
       function index(){
       }

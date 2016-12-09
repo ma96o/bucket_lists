@@ -1,7 +1,6 @@
-<?php if($tweet = mysqli_fetch_assoc($rec)): ?>
 <form method="post" action="/bucket_lists/items/create" class="form-horizontal" role="form">
       <label for="name" class="col-md-3 control-label">item_id</label>
-        <textarea name="item_id" class="form-control" cols="30" rows="1"><?php echo $item['tweet']; ?></textarea>
+        <textarea name="item_id" class="form-control" cols="30" rows="1"><?php echo $this->viewOptions['comment']; ?></textarea>
       <label for="name" class="col-md-3 control-label">item_name</label>
         <textarea name="item_name" class="form-control" cols="30" rows="1"></textarea>
         <label for="name" class="col-md-3 control-label">deadline</label>
@@ -24,4 +23,3 @@
         <input type="submit" class="btn btn-success" value="投稿する">
       </p>
 </form>
-<?php endif; ?>
