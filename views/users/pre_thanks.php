@@ -15,11 +15,6 @@
                     <br />
                     <br />
 
-                      <a href="login" class="btn btn-pink" style="float: right;">ログインへ</a>
-                      
-                    <br />
-                    <br />
-
                       
                   </div>
             </section>
