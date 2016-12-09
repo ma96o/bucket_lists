@@ -66,10 +66,9 @@
       }
       function create(){
       }
-      function index($option, $list_id){
-        $sql = sprintf('SELECT * FROM `items` WHERE `user_id`=%d AND `list_id`=%d AND `status`=1',
-            mysqli_real_escape_string($this->dbconnect, $option),
-            mysqli_real_escape_string($this->dbconnect, $list_id)
+      function index($option){
+        $sql = sprintf('SELECT * FROM `items` WHERE `user_id`=%d AND `status`=1',
+            mysqli_real_escape_string($this->dbconnect, $option)
             );
         $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 

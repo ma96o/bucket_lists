@@ -21,7 +21,7 @@
         $controller->add($option);
         break;
       case 'index':
-        $controller->index($option, $list_id);
+        $controller->index($option);
         break;
       case 'edit':
         $controller->edit($option);
@@ -78,8 +78,8 @@
       }
       function create(){
       }
-      function index($option, $list_id){
-        $this->viewsOptions = $this->item->index($option, $list_id);
+      function index($option){
+        $this->viewsOptions = $this->item->index($option);
 
         $this->displayProf($option);
       }

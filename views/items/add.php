@@ -1,16 +1,18 @@
+<form method="post" action="/bucket_lists/items/create" class="form-horizontal" role="form">
+<div class="modal fade" id="add_new" tabindex="-1" role="dialog">
 <div class="modal-dialog modal-lg">  
               <div class="modal-content">
                   <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>item_name</h4>
+                      <h4 class="modal-title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></h4>
                   </div>
                   <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-12 ">
-                                    
+                                    <input type="hidden" id="hidden" name="item_id">
                                         <div class="form-group">
-                                            <label for="exampleInput3">説明</label>
-                                            <input type="text" class="form-control" id="exampleInput2" placeholder="数値を入力してください">
+                                            <label for="exampleInput3">内容詳細</label>
+                                            <input type="text" class="form-control" id="exampleInput2" name="comment">
                                         </div>
 
                                         <div class="dropdown">
@@ -23,13 +25,12 @@
                                                 <li><a href="#">hogehoge</a></li>
                                                 <li><a href="#">hogehoge</a></li>
                                                 <li><a href="#">hogehoge</a></li>
-                                                <li role="separator" class="divider"></li>
                                               </ul>
                                         </div>
                                         <br>
                                         <div class="form-group">
                                             <label for="exampleInput1">期限</label>
-                                            <input type="date" class="form-control" id="exampleInput1" placeholder="数値を入力してください">
+                                            <input type="date" class="form-control" id="exampleInput1" name="deadline">
                                         </div>
 
                                         <label>わくわく度</label>
@@ -39,22 +40,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-pink" id="modal-save" data-dismiss="modal">add</button>
+                            <button type="submit" class="btn btn-pink" id="modal-save" data-dismiss="modal">add</button>
                         </div>
               </div>
          </div>
-
-    <script>
-    /*ワクワク度表示*/
-    $.fn.raty.defaults.path = "image";
-    $('.starRating').raty({
-      // hints: [0,1,2,3,4,5]
-      // click: function($score, $evt) {
-      //          $.post('result.php',{score:$score, url:$evt.currentTarget.baseURI},
-      //                 function(data){
-      //                   location.href = 'result.php';
-      //                 }
-      //                );
-      // }
-    });
-    </script>
+</div>
+</form>

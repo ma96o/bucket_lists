@@ -16,6 +16,8 @@
       $post = $_POST;
     }
 
+    $_SESSION['id'] = 1;
+
     require('controllers/'.$resource.'_controller.php');
 
 ?>

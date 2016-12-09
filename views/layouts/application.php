@@ -76,34 +76,24 @@
 ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
-<?php
-    if($this->action == 'trend'){
-        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
             <script src="/bucket_lists/webroot/assets/js/pin.js"></script>
 
-            <script>
-                /*表示　モーダルにidを渡す*/
-                $("#myModal-data").on("show.bs.modal", function (event) {
-                    var button = $(event.relatedTarget);
-                    var recipient = button.data("name");
-                    var modal = $(this);
-                    modal.find(".modal-title").text(recipient);
-                });
-                /*表示　モーダルからデータを渡す*/
-                $("#modal-save").click(function () {
-                var input1 = $("#exampleInput1").val();
-                var input2 = $("#exampleInput2").val();
+<?php
+    if($action == 'trend'){
+        echo "<script>
+          $('#add_new').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientId = button.data('id')
+          //Ajaxの処理はここに
 
-                if (!$.isNumeric(input1) || !$.isNumeric(input2)) {
-                    alert("数値を入力してください");
-                    return false;
-                }
-
-                var sum = parseInt(input1) + parseInt(input2);
-                $("#modal-result").html("<p>足すと " + sum + "になります。</p>");
-                });
-            </script>
-        ';
+          var modal = $(this)  //モーダルを取得
+          modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          // modal.find('.comment').text(recipientComment)
+          modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          });
+        </script>";
     }
 ?>
 

@@ -5,29 +5,14 @@
             <!--sidebar　左ページ　リスト一覧-->
             <section class="col-sm-4 sidebar">
               <ul class="list-unstyled">
-                <a href="hogehoge/list_id">
-                    <li class="active">new list
-                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
-                    </li>
-                </a>
-                
-                <a href="list_id">
-                    <li class="active">死ぬまでにやる
-                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
-                    </li>
-                </a>
 
-                <a href="list_id">
-                    <li class="active">20代やることリスト
-                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
+              <?php $lists = getList($_SESSION['id']); foreach($lists as $list): ?>
+                <a href="<?php echo $list['id']; ?>">
+                    <li class="active"><?php echo $list['list_name'] ?>
+                    <p><a id="button" data-toggle="modal" href="" data-target="#edit_list" data-title="<?php echo $list['list_name']; ?>" data-id="<?php echo $list['list_id']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
                     </li>
                 </a>
-
-                <a href="list_id">
-                    <li class="active">プライベート
-                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
-                    </li>
-                </a>
+              <?php endforeach; ?>
                 
               </ul>
               <button class="btn btn-pink" type="button" data-toggle="modal" data-target="#add_list">リストを追加</button>
@@ -118,8 +103,8 @@
 
 
     <!--modal add_new-->
-
           <?php include('views/items/add.php'); ?>
+
 
         <!--modal add_list-->
 

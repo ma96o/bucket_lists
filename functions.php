@@ -140,4 +140,16 @@
 
       return $items;
     }
+    function getList($user_id){
+      require('dbconnect.php');
+      $sql = sprintf('SELECT * FROM `lists` WHERE `user_id`=%d',
+        mysqli_real_escape_string($db, $user_id)
+        );
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+      $lists = array();
+      while($table = mysqli_fetch_assoc($rec)){
+        $lists[] = $table;
+      }
+      return $lists;
+    }
 ?>
