@@ -1,5 +1,5 @@
 <div class="msg" style="margin-top: 75px;">
-  <form method="post" action="/bucket_lists/users/signup" class="form-horizontal" role="form">
+  <form method="post" action="/bucket_lists/users/create" class="form-horizontal" role="form">
     <div class="form-group">
       <label for="nick_name" class="col-md-3 control-label">名前</label>
       <div class="col-md-9">

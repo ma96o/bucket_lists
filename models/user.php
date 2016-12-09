@@ -69,30 +69,15 @@
           return $error;
       }
 
-      function check(){
-        $sql = sprintf('SELECT `email` FROM `pre_users`
-                          WHERE `url_token` = "%s"
-                          ',
-              mysqli_real_escape_string($this->dbconnect,$url_token));
-          $record = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect)
-          );
-          $rtn = mysqli_fetch_assoc($record);
-
-          $_SESSION['email'] = $rtn;
-
-          return $_SESSION['email'];
-          return $error;
-      }
-
-      function create(){
+      function create($post){
         $sql = sprintf('INSERT INTO `users` SET
                 `nick_name`="%s",
                 `email`="%s",
                 `password`="%s",
                 `created`=NOW()',
-                mysqli_real_escape_string($this->dbconnect,$_SESSION['nick_name']),
+                mysqli_real_escape_string($this->dbconnect,$post['nick_name']),
                 mysqli_real_escape_string($this->dbconnect,$_SESSION['email']),
-                mysqli_real_escape_string($this->dbconnect,sha1($_SESSION['password']))
+                mysqli_real_escape_string($this->dbconnect,sha1($post['password']))
                 );
             mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
 

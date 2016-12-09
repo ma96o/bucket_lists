@@ -205,8 +205,6 @@ EOM;
       function thanks(){
         $this->action = 'thanks';
         $this->display();
-        header('Location: login');
-        exit();
       }
 
       function login($post){
