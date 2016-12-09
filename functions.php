@@ -24,7 +24,7 @@
 
 //ログイン判定
     function isLogin(){
-      require('dbconnects.php');
+      require('dbconnect.php');
       if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
         $_SESSION['time'] = time();
 
@@ -35,7 +35,7 @@
         $user = mysqli_fetch_assoc($rec);
         return $user;
       } else {
-        header('location: ');
+        header('location: /bucket_lists/users/login');
         exit();
       }
     }

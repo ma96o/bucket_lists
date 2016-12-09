@@ -63,9 +63,7 @@
           );
           $rtn = mysqli_fetch_assoc($record);
 
-          $_SESSION['email'] = $rtn;
-
-          return $_SESSION['email'];
+          return $rtn;
           return $error;
       }
 
@@ -76,14 +74,14 @@
                 `password`="%s",
                 `created`=NOW()',
                 mysqli_real_escape_string($this->dbconnect,$post['nick_name']),
-                mysqli_real_escape_string($this->dbconnect,$_SESSION['email']),
+                mysqli_real_escape_string($this->dbconnect,$post['email']),
                 mysqli_real_escape_string($this->dbconnect,sha1($post['password']))
                 );
             mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
 
         $sql = sprintf('UPDATE `pre_users` SET
                        `reg_flag` = 1 WHERE `email` = "%s"',
-                  mysqli_real_escape_string($this->dbconnect,$_SESSION['email'])
+                  mysqli_real_escape_string($this->dbconnect,$post['email'])
                   );
                 mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
@@ -93,12 +91,28 @@
               setcookie("PHPSESSID", '', time() - 1800, '/');
         }
         session_destroy();
+
+        header('Location: thanks');
+        exit();
       }
 
-      function login(){
+      function auth($post) {
+         $sql = sprintf('SELECT * FROM `users` WHERE `email`="%s" AND `password`="%s"',
+                           mysqli_real_escape_string($this->dbconnect,$post['email']),
+                           mysqli_real_escape_string($this->dbconnect, sha1($post['password']))
+                  );
+            $record = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($db));
+            $login_flag = false;
+            if ($table = mysqli_fetch_assoc($record)) {
+                $_SESSION['user_id'] = $table['user_id'];
+                $_SESSION['time'] = time();
+                $login_flag = true;
+            } else {
+                $login_flag = false;
+            }
+            return $login_flag;
       }
-      function logout(){
-      }
+
       function mypage(){
       }
       function edit(){

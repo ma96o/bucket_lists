@@ -37,6 +37,15 @@
           $controller->login($post);
         break;
 
+      case 'auth':
+        if (!empty($post['email']) && !empty($post['password'])) {
+            $controller->auth($post);
+        } else {
+            header('Location: login');
+            exit();
+        }
+        break;
+
       case 'logout';
         $controller->logout();
         break;
@@ -100,10 +109,6 @@
               exit();
                 }
         } else {
-           if ($option == 'rewrite') {
-            $this->viewOptions = $_SESSION['users'];
-              }
-
             $this->display();
         }
       }
@@ -198,8 +203,6 @@ EOM;
 
       function create($post) {
         $this->user->create($post);
-        header('Location: thanks');
-        exit();
       }
 
       function thanks(){
@@ -207,20 +210,23 @@ EOM;
         $this->display();
       }
 
-      function login($post){
-        special_echo('Controllerのlogin()が呼び出されました。');
-        $login_flag = $this->user->login($post);
-        if($login_flag){
-          header('location: ');
-          exit();
-        } else {
-          header('location: ');
-          exit();
-        }
+      function login(){
+        $this->action = 'login';
+        $this->display();
       }
 
-      function logout(){
-        special_echo('Controllerのlogout()が呼び出されました。');
+      function auth($post) {
+            $login_flag = $this->user->auth($post);
+            if ($login_flag) {
+                header('Location: home');
+                exit();
+            } else {
+                header('Location: login');
+                exit();
+            }
+        }
+
+      function logout() {
         $_SESSION = array();
 
         if(ini_get("session.use_cookeis")){
