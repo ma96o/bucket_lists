@@ -176,6 +176,20 @@
       }
       function search(){
       }
+      function updateSuccess($post){
+        $sql = sprintf('UPDATE `items` SET `comment`="%s" WHERE `id`=%d',
+          mysqli_real_escape_string($this->dbconnect, $post['comment']),
+          mysqli_real_escape_string($this->dbconnect, $post['id'])
+          );
+        mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+      }
+      function updateTrash($post){
+        $sql = sprintf('UPDATE `items` SET `comment`="%s" WHERE `id`=%d',
+          mysqli_real_escape_string($this->dbconnect, $post['comment']),
+          mysqli_real_escape_string($this->dbconnect, $post['id'])
+          );
+        mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+      }
 
     }
 

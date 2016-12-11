@@ -36,6 +36,12 @@
       case 'unlike':
         $controller->unlike($option);
         break;
+      case 'updateSuccess':
+        $controller->updateSuccess($post);
+        break;
+      case 'updateTrash':
+        $controller->updateTrash($post);
+        break;
       default:
         break;
     }
@@ -156,6 +162,14 @@
       }
 
       function search(){
+      }
+      function updateSuccess($post){
+        $this->item->updateSuccess($post);
+        header('location: /bucket_lists/items/success/'.$_SESSION['id']);
+      }
+      function updateTrash($post){
+        $this->item->updateTrash($post);
+        header('location: /bucket_lists/items/trash/'.$_SESSION['id']);
       }
       function display($option){
         require('views/layouts/application.php');
