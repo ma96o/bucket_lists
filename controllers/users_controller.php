@@ -8,6 +8,9 @@
       case 'check':
         $controller->check();
         break;
+      case 'mypage':
+        $controller->mypage($option, $list_id);
+        break;
       case 'followings':
         $controller->followings($option);
         break;
@@ -43,7 +46,15 @@
       }
       function logout(){
       }
-      function mypage(){
+      function mypage($option, $list_id){
+        if($list_id == 0){
+          $list_id = getFirstListId($option);
+          header('location: /bucket_lists/users/mypage/'.$option.'/'.$list_id);
+        }
+
+        $this->viewsOptions = $this->user->mypage($option, $list_id);
+
+        $this->displayProf($option, $list_id);
       }
       function edit(){
       }
@@ -62,7 +73,7 @@
       function display($option){
         require('views/layouts/application.php');
       }
-      function displayProf($option){
+      function displayProf($option, $list_id){
         require('views/layouts/application_prof.php');
       }
     }

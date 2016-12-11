@@ -18,7 +18,6 @@
         </section>
     </div>
 
-
 <br>
 <div class="container">
     <div class="center-block">
@@ -60,4 +59,5 @@
         </section>
         </div>
     </div>
+
     <?php include('views/items/add.php'); ?>

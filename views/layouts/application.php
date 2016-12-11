@@ -17,6 +17,8 @@
 <?php 
     if($this->action == 'trend'){
         echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/trending.css">';
+    } elseif($this->resource == 'actions' && $this->action == 'index') {
+        echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">';
     }
 
 ?>
@@ -38,7 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top">BUCKET LISTS</a>
+                <a class="navbar-brand" href="/bucket_lists/items/trend">BUCKET LISTS</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -47,10 +49,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/users/mypage/1">マイページ</a>
+                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['id']; ?>/<?php echo getFirstListId($_SESSION['id']); ?>">マイページ</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/actions/index/1">タイムライン</a>
+                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
                     </li>
                     <li class="page-scroll">
                         <a href="/bucket_lists/items/trend">トレンディング</a>
@@ -76,12 +78,27 @@
 ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
+    <script>
+    /*ワクワク度表示*/
+    $.fn.raty.defaults.path = "/bucket_lists/views/image";
+    $('.starRating').raty({
+      // hints: [0,1,2,3,4,5]
+      // click: function($score, $evt) {
+      //          $.post('result.php',{score:$score, url:$evt.currentTarget.baseURI},
+      //                 function(data){
+      //                   location.href = 'result.php';
+      //                 }
+      //                );
+      // }
+    });
+    </script>
 
-            <script src="/bucket_lists/webroot/assets/js/pin.js"></script>
 
-<?php
-    if($action == 'trend'){
-        echo "<script>
+<!--      if($this->action == 'trend'){
+         echo "
+ -->
+        <script src='/bucket_lists/webroot/assets/js/pin.js'></script>
+        <script>
           $('#add_new').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
           var recipientTitle = button.data('title') //data-whatever の値を取得
@@ -93,9 +110,10 @@
           // modal.find('.comment').text(recipientComment)
           modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
           });
-        </script>";
-    }
-?>
+        </script>
+<!--          ";
+      }
+ -->
 
 
 </body>

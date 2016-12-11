@@ -1,36 +1,22 @@
-
-
         <div class="container-fluid">
           <div class="row" style="background-color:#fafafa;">
             <!--sidebar　左ページ　リスト一覧-->
             <section class="col-sm-4 sidebar">
               <ul class="list-unstyled">
-                <a href="hogehoge/list_id">
-                    <li class="active">new list
-                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
-                    </li>
-                </a>
-                
-                <a href="list_id">
-                    <li class="active">死ぬまでにやる
-                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
-                    </li>
-                </a>
 
-                <a href="list_id">
-                    <li class="active">20代やることリスト
-                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
+              <?php $lists = getList($option); foreach($lists as $list): ?>
+                <a href="/bucket_lists/users/mypage/<?php echo $option; ?>/<?php echo $list['list_id']; ?>">
+                    <li<?php if($list_id == $list['list_id']){echo ' class="active"';} ?>><?php echo $list['list_name'] ?>
+                    <?php if($user_flag == 0): ?>
+                    <p><a id="button" data-toggle="modal" href="" data-target="#edit_list" data-title="<?php echo $list['list_name']; ?>" data-id="<?php echo $list['list_id']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
+                    <?php endif; ?>
                     </li>
                 </a>
-
-                <a href="list_id">
-                    <li class="active">プライベート
-                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
-                    </li>
-                </a>
-                
+              <?php endforeach; ?>
               </ul>
+              <?php if($user_flag == 0): ?>
               <button class="btn btn-pink" type="button" data-toggle="modal" data-target="#add_list">リストを追加</button>
+              <?php endif; ?>
 
               
             </section>
@@ -38,6 +24,7 @@
             <!--main 右ページ　項目一覧-->
             <section class="col-sm-8 main-content">
                 <!--項目追加-->
+              <?php if($user_flag == 0): ?>
                  <div class="input-group">
                     <form class="form-inline">
                     <div class="form-group">
@@ -48,111 +35,59 @@
                     </div>
                     </form>
                 </div>
+              <?php endif; ?>
                 <!--項目一覧-->
                  <ul class="list-unstyled">
+                 <?php foreach($this->viewsOptions as $item): ?>
+                <a data-toggle="modal" href="" data-target="#show_item" data-name="item_id" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>">
                     <li>
                         <dl>
-                            <dt>これおわんないんやけど</dt>
-                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-name="item_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
-                            <dd><a data-toggle="modal" href="" data-target="#trash_item" data-name="item_id"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
-                            <dd><a data-toggle="modal" href="" data-target="#success_item" data-name="item_id"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
+                            <dt><?php echo $item['item_name']; ?></dt>
+                        <?php if($user_flag == 0): ?>
+                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#trash_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id'] ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#success_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
+                        <?php endif; ?>
                         </dl>
                         <div class="status-icon">
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2016/7/10</p>
-                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;26</p>
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<?php echo $item['deadline']; ?></p>
+                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;<?php echo countLike($item['id']); ?></p>
                             <p><img src="/bucket_lists/views/image/0.png"></p>
                         </div>
                     </li>
-
-                    <li>
-                        <dl>
-                            <dt>絶対どっかおかしい</dt>
-                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-name="item_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
-                            <dd><a data-toggle="modal" href="" data-target="#trash_item" data-name="item_id"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
-                            <dd><a data-toggle="modal" href="" data-target="#success_item" data-name="item_id"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
-                        </dl>
-                        <div class="status-icon">
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2016/7/10</p>
-                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;26</p>
-                            <p><img src="/bucket_lists/views/image/1.png"></p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <dl>
-                            <dt>first-child後で修正</dt>
-                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-name="item_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
-                            <dd><a data-toggle="modal" href="" data-target="#trash_item" data-name="item_id"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
-                            <dd><a data-toggle="modal" href="" data-target="#success_item" data-name="item_id"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
-                        </dl>
-                        <div class="status-icon">
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2016/7/10</p>
-                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;26</p>
-                            <p><img src="/bucket_lists/views/image/2.png"></p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <dl>
-                            <dt>たぶんclearできてない</dt>
-                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-name="item_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
-                            <dd><a data-toggle="modal" href="" data-target="#trash_item" data-name="item_id"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
-                            <dd><a data-toggle="modal" href="" data-target="#success_item" data-name="item_id"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
-                        </dl>
-                        <div class="status-icon">
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2016/7/10</p>
-                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;26</p>
-                            <p><img src="/bucket_lists/views/image/4.png"></p>
-                        </div>
-                    </li>
-
-                    
-
+                </a>
+                <?php endforeach; ?>
                 </ul>
 
-                
-                
             </section>
           </div>
         </div>
 
 
-    <!--modal add_new-->
-
+        <!--modal add_new-->
           <?php include('views/items/add.php'); ?>
 
         <!--modal add_list-->
 
-        <div class="modal fade" id="add_list" tabindex="-1" role="dialog">
           <?php include('views/lists/add.php'); ?>
-        </div>
 
         <!--modal edit_list-->
 
-        <div class="modal fade" id="edit_list" tabindex="-1" role="dialog">
           <?php include('views/lists/edit.php'); ?>
-        </div>
-        
-        <!--modal edit_prof-->
 
-        <div class="modal fade" id="edit_info" tabindex="-1" role="dialog">
-          <?php include('views/users/edit.php'); ?>
-        </div>
 
         <!--modal success_item-->
 
-         <div class="modal fade" id="success_item" tabindex="-1" role="dialog">
           <?php include('views/items/conglaturation.php'); ?>
-        </div>
 
-        <!--modal trash_item-->
+        <!--modal giveup_item-->
 
-         <div class="modal fade" id="trash_item" tabindex="-1" role="dialog">
           <?php include('views/items/giveup.php'); ?>
-        </div> 
 
          <!--modal edit_item-->
 
-         <div class="modal fade" id="edit_item" tabindex="-1" role="dialog">
           <?php include('views/items/edit.php'); ?>
-        </div> 
+
+         <!--modal show_item-->
+
+          <?php include('views/items/show.php'); ?>

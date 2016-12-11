@@ -1,3 +1,4 @@
+<div class="modal fade" id="edit_list" tabindex="-1" role="dialog">
 <div class="modal-dialog modal-lg">  
               <div class="modal-content">
                  <div class="modal-header">
@@ -11,6 +12,7 @@
                             <label></label>
                             <input type="text" class="form-control" id="list_title" name="list_name" value="">
                             <input type="hidden" id="hidden" name="list_id">
+                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
                         </div>
                     </div>
                 </div>
@@ -21,3 +23,4 @@
               </form>
               </div>
           </div>
+        </div>

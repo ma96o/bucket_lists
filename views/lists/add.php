@@ -1,3 +1,4 @@
+<div class="modal fade" id="add_list" tabindex="-1" role="dialog">
 <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
@@ -21,3 +22,4 @@
               </form>
               </div>
           </div>
+        </div>

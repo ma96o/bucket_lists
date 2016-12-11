@@ -1,3 +1,4 @@
+<div class="modal fade" id="edit_item" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg">  
               <div class="modal-content">
                   <div class="modal-header">
@@ -10,23 +11,17 @@
                                 <div class="col-sm-12 ">
                                     
                                         <div class="form-group">
-                                            <label for="exampleInput3">説明</label>
+                                            <label for="exampleInput3">内容詳細</label>
                                             <input type="text" class="form-control" id="comment" name="comment">
                                         </div>
 
-                                        <div class="dropdown">
                                         <label>リスト選択</label>
-                                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                list
-                                                <span class="caret"></span>
-                                              </button>
-                                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                <li><a href="#">hogehoge</a></li>
-                                                <li><a href="#">hogehoge</a></li>
-                                                <li><a href="#">hogehoge</a></li>
-                                                <li role="separator" class="divider"></li>
-                                              </ul>
-                                        </div>
+                                       <select class="custom-select">
+                                          <option selected>リスト</option>
+                                          <option value="1">One</option>
+                                          <option value="2">Two</option>
+                                          <option value="3">Three</option>
+                                        </select>
                                         <br>
                                         <div class="form-group">
                                             <label for="exampleInput1">期限</label>
@@ -39,11 +34,12 @@
                                         <input type="hidden" id="hidden" name="id">
                                 </div>
                             </div>
-                        </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-pink" id="modal-save">更新</button>
                         </div>
                   </form>
               </div>
          </div>
+         </div>
+        </div>
 

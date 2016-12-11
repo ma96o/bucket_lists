@@ -152,4 +152,15 @@
       }
       return $lists;
     }
+
+    function getFirstListId($user_id){
+      require('dbconnect.php');
+      $sql = sprintf('SELECT `list_id` FROM `lists` WHERE `user_id`=%d',
+        mysqli_real_escape_string($db, $user_id)
+        );
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+      $table = mysqli_fetch_assoc($rec);
+      $first_list_id = $table['list_id'];
+      return $first_list_id;
+    }
 ?>

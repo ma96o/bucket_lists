@@ -63,14 +63,5 @@ stylize any heading tags withing white-panel below
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/*tab*/
-.nav-pills li{
-  margin: 15px auto;
-}
 
-.nav-pills li a{
-    border-radius:0;
-    color: #555;
-    font-weight: bold;
-}
 

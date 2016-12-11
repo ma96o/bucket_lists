@@ -20,9 +20,6 @@
       case 'add':
         $controller->add($option);
         break;
-      case 'index':
-        $controller->index($option);
-        break;
       case 'edit':
         $controller->edit($option);
         break;
@@ -78,10 +75,7 @@
       }
       function create(){
       }
-      function index($option){
-        $this->viewsOptions = $this->item->index($option);
-
-        $this->displayProf($option);
+      function index(){
       }
       function edit(){
       }
