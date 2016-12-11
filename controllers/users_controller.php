@@ -90,15 +90,11 @@
         specialEcho('users_controllerのfollowings()が呼び出されました');
         $this->followings = $this->user->followings();
         require('views/users/followings.php');
-
       }
       function followers(){
         specialEcho('users_controllerのfollowers()が呼び出されました');
         $this->followers = $this->user->followers();
-        
-        
         require('views/users/followers.php');
-
       }
       function display($option){
         require('views/layouts/application.php');
