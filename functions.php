@@ -177,4 +177,20 @@
       return $referer;
     }
 
+//いいね判定 0->いいねしてない、1->いいねしてる
+    function isLike($item_id){
+      require('dbconnect.php');
+      $sql = sprintf('SELECT * FROM `likes` WHERE `user_id`=%d AND `item_id`=%d',
+        mysqli_real_escape_string($db, $_SESSION['id']),
+        mysqli_real_escape_string($db, $item_id)
+        );
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+      $like_flag = 0;
+      if($table = mysqli_fetch_assoc($rec)){
+        $like_flag = 1;
+      }
+
+      return $like_flag;
+    }
+
 ?>

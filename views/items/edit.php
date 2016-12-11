@@ -16,11 +16,11 @@
                                         </div>
 
                                         <label>リスト選択</label>
-                                       <select class="custom-select">
-                                          <option selected>リスト</option>
-                                          <option value="1">One</option>
-                                          <option value="2">Two</option>
-                                          <option value="3">Three</option>
+                                          <select name="list_id" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">list
+                                          <span class="caret"></span>
+                                      <?php $lists = getList($_SESSION['id']); foreach($lists as $list): ?>
+                                            <option value="<?php echo $list['list_id']; ?>"><?php echo $list['list_name']; ?></option>
+                                      <?php endforeach; ?>
                                         </select>
                                         <br>
                                         <div class="form-group">

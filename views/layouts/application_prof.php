@@ -72,6 +72,8 @@
 <?php if($user_flag == 0): ?>
                     <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </span>
+<?php else: ?>
+                    <a href="/bucket_lists/users/follow/<?php echo $user['user_id']; ?>" class="btn btn-pink" style="float: right;">フォロー</a>
 <?php endif; ?>
                     </h3>
                     <p><?php echo $user['description']; ?></p>
@@ -214,6 +216,37 @@
           modal.find('.modal-body span#item_deadline').text(recipientDeadline)
           });
         </script>
+        <script>
+          $('#edit_trash').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientComment = button.data('comment')
+          var recipientId = button.data('id')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-title').text(recipientTitle)
+          modal.find('.modal-body input#comment').val(recipientComment)
+          modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          });
+        </script>
+        <script>
+          $('#edit_success').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientComment = button.data('comment')
+          var recipientId = button.data('id')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-title').text(recipientTitle)
+          modal.find('.modal-body input#comment').val(recipientComment)
+          modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          });
+        </script>
+
 <!--          ";
     } -->
   </body>

@@ -3,13 +3,6 @@
     $_SESSION['id'] = 1;
     require('functions.php');
 
-specialEcho('<br>');
-    specialEcho('<br>');
-    specialEcho('<br>');
-    specialEcho('<br>');
-    specialEcho('<br>');
-    specialEcho('<br>');
-    
     $para = explode('/', $_GET['url']);
 
 

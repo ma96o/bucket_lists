@@ -3,31 +3,18 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i> item_detail</h4>
+                            <h4 class="modal-title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-12 ">
                                     
                                         <label>内容：</label>
-                                        <p>ホゲホゲおホゲホゲホゲホゲホゲホゲホゲホゲホゲおホゲホゲホゲホゲホゲホゲホゲっす！</p>
+                                        <p id="item_comment"></p>
 
-                                        <div class="dropdown">
-                                        <label>リスト選択</label>
-                                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                list
-                                                <span class="caret"></span>
-                                              </button>
-                                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                <li><a href="#">hogehoge</a></li>
-                                                <li><a href="#">hogehoge</a></li>
-                                                <li><a href="#">hogehoge</a></li>
-                                                <li role="separator" class="divider"></li>
-                                              </ul>
-                                        </div>
                                         <br>
                                         <div class="col-sm-6 ">
-                                            <label><i class="fa fa-star-half-o" aria-hidden="true"></i> 35 doing </label>
+                                            <label><i class="fa fa-star-half-o" aria-hidden="true"></i> <span id="doing"></span> doing </label>
                                             <div class="thumbnail_circle">
                                                 <a href="users_mypage"><img src="image/plofile_fb_n.jpg"></a>
                                                 <a href="users_mypage"><img src="image/plofile_fb_n.jpg"></a>
@@ -40,7 +27,7 @@
                                         </div>
 
                                         <div class="col-sm-6 ">
-                                            <label><i class="fa fa-star" aria-hidden="true"></i> 6 done </label>
+                                            <label><i class="fa fa-star" aria-hidden="true"></i> <span id="done"></span> done </label>
                                             <div class="thumbnail_circle">
                                                 <a href="users_mypage"><img src="image/plofile_fb_n.jpg"></a>
                                                 <a href="users_mypage"><img src="image/plofile_fb_n.jpg"></a>

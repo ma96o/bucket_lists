@@ -24,7 +24,7 @@
         if (!empty($post['list_id']) && !empty($post['comment']) && !empty($post['deadline'])) {
             $controller->create($post);
         } else {
-            $controller->add();
+            $controller->success($option);
         }
         break;
       case 'update':
@@ -76,7 +76,7 @@
       function create($post) {
           specialEcho('Controllerのcreate()が呼び出されました。');
           $this->item->create($post);
-          header('Location: add');
+          header('Location: /bucket_lists/users/mypage/'.$_SESSION['id'].'/'.$post['list_id']);
       }
       function index(){
       }
@@ -84,11 +84,11 @@
         $this->viewsOptions = $this->item->success($option);
 
         $this->displayProf($option);
+      }
       function update($post) {
             $this->item->update($post);
             // あとでindexに飛ぶように戻す。location:editは消す。header('Location: index');
-            header('Location: edit');
-        }
+          header('Location: /bucket_lists/users/mypage/'.$_SESSION['id'].'/'.$post['list_id']);
       }
       function conglaturation(){
       }
@@ -106,20 +106,25 @@
       function delete(){
       }
       function undelete(){
+
       }
       function like($option) {
           // is_login();
 
           specialEcho('Controllerのlike()が呼び出されました。');
           $this->item->like($option);
-          $this->viewOptions;
+
           $referer = get_last_referer();
 
           $referer_resource = $referer[4];
           $referer_action = $referer[5];
           $referer_option = $referer[6];
-          specialVarDump($referer);
+          if(isset($referer[7])){
+          $referer_list_id = $referer[7];
+          header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option.'/'.$referer_list_id);
+          } else {
           header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
+          }
       }
 
       function unlike($option) {
@@ -133,8 +138,12 @@
           $referer_resource = $referer[4];
           $referer_action = $referer[5];
           $referer_option = $referer[6];
-          specialVarDump($referer);
+          if(isset($referer[7])){
+          $referer_list_id = $referer[7];
+          header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option.'/'.$referer_list_id);
+          } else {
           header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
+          }
       }
 
       function show($option) {

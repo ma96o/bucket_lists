@@ -12,16 +12,15 @@
                                     <input type="hidden" id="hidden" name="item_id">
                                         <div class="form-group">
                                             <label for="exampleInput3">内容詳細</label>
+                                            <input type="hidden" id="title" name="item_name">
                                             <input type="text" class="form-control" id="exampleInput2" name="comment">
                                         </div>
                                         <label>リスト選択</label>
                                           <select name="list_id" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">list
                                           <span class="caret"></span>
-                                            <option value="1">リスト1</option>
-                                            <option value="2">リスト2</option>
-                                            <option value="3">リスト3</option>
-                                            <option value="4">リスト4</option>
-                                            <option value="5">リスト5</option>
+                                      <?php $lists = getList($_SESSION['id']); foreach($lists as $list): ?>
+                                            <option value="<?php echo $list['list_id']; ?>"><?php echo $list['list_name']; ?></option>
+                                      <?php endforeach; ?>
                                           </select>
                                         <br />
                                         <br />
@@ -40,7 +39,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-pink" id="modal-save" data-dismiss="modal">add</button>
+                            <button type="submit" class="btn btn-pink" id="modal-save">add</button>
                         </div>
                         </form>
               </div>

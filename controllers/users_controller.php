@@ -64,11 +64,11 @@
       }
       function unfollow(){
       }
-      function followings($option){
-        $this->displayProf($option);
+      function followings($option, $list_id){
+        $this->displayProf($option, $list_id);
       }
-      function followers($option){
-        $this->displayProf($option);
+      function followers($option, $list_id){
+        $this->displayProf($option, $list_id);
       }
       function display($option){
         require('views/layouts/application.php');

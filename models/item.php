@@ -79,37 +79,24 @@
       function add(){
       }
 
-      // function create_valid($post) {
-      //     //     // バリデーション
-      //     if (!empty($post['item_name']) && !empty($post['deadline']) && !empty($post['comment'])) {
-      //           $controller->create($post);
-      //       } else {
-      //           $controller->add();
-      //       }
-      //       $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
-      //       $rtn = mysqli_fetch_assoc($results);
-      //       return $rtn;
-      // }
       function create($post){
             $sql = sprintf('INSERT INTO `items` SET `item_id` = %d,
                                                     `item_name` = "%s",
                                                     `deadline` = "%s",
                                                     `comment` = "%s",
                                                     `status` = 1,
-                                                    `priority` = %d,
                                                     `list_id` = %d,
                                                     `user_id` = %d,
-                                                    `tag_id` = %d,
+                                                    `tag_id` = 1,
                                                     `created` = NOW()',
                         mysqli_real_escape_string($this->dbconnect,$post['item_id']),
                         mysqli_real_escape_string($this->dbconnect,$post['item_name']),
                         mysqli_real_escape_string($this->dbconnect,$post['deadline']),
                         mysqli_real_escape_string($this->dbconnect,$post['comment']),
-                        mysqli_real_escape_string($this->dbconnect,$post['score']),
+                        // mysqli_real_escape_string($this->dbconnect,$post['score']),
                         mysqli_real_escape_string($this->dbconnect,$post['list_id']),
-                        mysqli_real_escape_string($this->dbconnect,$post['user_id']),
-                        mysqli_real_escape_string($this->dbconnect,$post['tag_id'])
+                        mysqli_real_escape_string($this->dbconnect,$_SESSION['id'])
+                        // mysqli_real_escape_string($this->dbconnect,$post['tag_id'])
                     );
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
         }
@@ -131,15 +118,14 @@
       function update($post) {
             $sql = sprintf('UPDATE `items` SET `deadline` = "%s",
                                                `comment` = "%s",
-                                               `priority` = %d,
-                                               `list_id` = %d,
-                                               `tag_id` = %d
+                                               `list_id` = $d,
+                                               `tag_id` = 1
                                            WHERE `id` = %d',
                         mysqli_real_escape_string($this->dbconnect,$post['deadline']),
                         mysqli_real_escape_string($this->dbconnect,$post['comment']),
-                        mysqli_real_escape_string($this->dbconnect,$post['priority']),
+                        // mysqli_real_escape_string($this->dbconnect,$post['priority']),
                         mysqli_real_escape_string($this->dbconnect,$post['list_id']),
-                        mysqli_real_escape_string($this->dbconnect,$post['tag_id']),
+                        // mysqli_real_escape_string($this->dbconnect,$post['tag_id']),
                         $post['id']
                     );
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
@@ -178,9 +164,6 @@
                         );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
       }
-
-      // 本来はいいねする際sprintf('INSERT INTO `likes` SET `user_id`=%d, `item_id`=%d', mysqli_real_escape_string($this->dbconnect, $_SESSION['id']), mysqli_real_escape_string($this->dbconnect, $option));
-      // mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
       function unlike($option){
         $sql = sprintf('DELETE FROM `likes`

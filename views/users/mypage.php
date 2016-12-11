@@ -39,7 +39,7 @@
                 <!--項目一覧-->
                  <ul class="list-unstyled">
                  <?php foreach($this->viewsOptions as $item): ?>
-                <a data-toggle="modal" href="" data-target="#show_item" data-name="item_id" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>">
+                <a data-toggle="modal" href="" data-target="#show_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>">
                     <li>
                         <dl>
                             <dt><?php echo $item['item_name']; ?></dt>
@@ -51,7 +51,13 @@
                         </dl>
                         <div class="status-icon">
                             <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<?php echo $item['deadline']; ?></p>
-                            <p><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;<?php echo countLike($item['id']); ?></p>
+
+                  <?php if(isLike($item['id']) == 0): ?>
+                          <p><a href="/bucket_lists/items/like/<?php echo $item['id'] ?>"><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
+                  <?php else: ?>
+                          <p><a href="/bucket_lists/items/unlike/<?php echo $item['id'] ?>"><i class="fa fa-flag" aria-hidden="true" style="color: red;"></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
+                  <?php endif; ?>
+
                             <p><img src="/bucket_lists/views/image/0.png"></p>
                         </div>
                     </li>
