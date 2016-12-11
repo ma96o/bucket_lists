@@ -118,7 +118,7 @@
       function update($post) {
             $sql = sprintf('UPDATE `items` SET `deadline` = "%s",
                                                `comment` = "%s",
-                                               `list_id` = $d,
+                                               `list_id` = %d,
                                                `tag_id` = 1
                                            WHERE `id` = %d',
                         mysqli_real_escape_string($this->dbconnect,$post['deadline']),

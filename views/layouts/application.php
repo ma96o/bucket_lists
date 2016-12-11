@@ -71,9 +71,9 @@
 <?php
     if($this->action != 'trend'){
 
-        echo '<div class="footer container-fluid">
-                 BUCKET LISTS
-              </div>';
+        echo '<footer class="container-fluid" style="min-height:200px; background-color:#00bcd4;color:#fff;text-align:center;padding-top:50px;">
+            BUCKET LISTS 
+        </footer>';
     }
 ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
