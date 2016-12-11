@@ -73,7 +73,7 @@
                     <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </span>
 <?php else: ?>
-                    <a href="/bucket_lists/users/follow/<?php echo $user['user_id']; ?>" class="btn btn-pink" style="float: right;">フォロー</a>
+                    <a href="/bucket_lists/users/follow/<?php echo $user['user_id']; ?>" class="btn btn-pink">フォロー</a>
 <?php endif; ?>
                     </h3>
                     <p><?php echo $user['description']; ?></p>

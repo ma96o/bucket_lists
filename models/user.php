@@ -34,7 +34,14 @@
       }
       function edit(){
       }
-      function update(){
+      function update($post){
+        $sql = sprintf('UPDATE `users` SET `nick_name`="%s", `description`="%s" WHERE `user_id`=%d',
+          mysqli_real_escape_string($this->dbconnect, $post['nick_name']),
+          // mysqli_real_escape_string($this->dbconnect, $post['picture_path']),
+          mysqli_real_escape_string($this->dbconnect, $post['description']),
+          mysqli_real_escape_string($this->dbconnect, $_SESSION['id'])
+          );
+        mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
       }
       function follow(){
       }

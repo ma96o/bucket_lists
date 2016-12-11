@@ -17,6 +17,12 @@
       case 'followers':
         $controller->followers($option);
         break;
+      case 'edit':
+        $controller->edit($option);
+        break;
+      case 'update':
+        $controller->update($post);
+        break;
       default:
         break;
     }
@@ -56,9 +62,13 @@
 
         $this->displayProf($option, $list_id);
       }
-      function edit(){
+      function edit($option){
+        $this->user->edit($option);
+        $this->display($option);
       }
-      function update(){
+      function update($post){
+        $this->user->update($post);
+        header('location: /bucket_lists/users/mypage/'.$_SESSION['id']);
       }
       function follow(){
       }

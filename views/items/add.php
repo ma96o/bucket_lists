@@ -33,7 +33,7 @@
         <textarea name="tag_id" class="form-control" cols="30" rows="1"></textarea>
 
                                         <label>わくわく度</label>
-                                        <div class="starRating" class="form-control" id="exampleInput2">
+                                        <div class="starRating">
                                             </div>
                                 </div>
                             </div>
@@ -47,8 +47,7 @@
 </div>
 
 
-<script src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
-
+<script type="text/javascript" src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
 
 <script>
     /*ワクワク度表示*/
