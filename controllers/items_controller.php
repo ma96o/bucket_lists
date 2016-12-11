@@ -50,7 +50,7 @@
       }
 
       function trend(){
-        $this->item->trend();
+        $this->display($option);
       }
       function show($option){
         $this->display($option);

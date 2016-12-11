@@ -16,6 +16,10 @@
         break;
       case 'mypage':
         $controller->mypage($option);
+        break;
+      case 'edit':
+        $controller->edit($option);
+
       default:
         break;
     }
@@ -49,6 +53,7 @@
         $this->displayProf($option);
       }
       function edit(){
+        $this->display($option);
       }
       function update(){
       }
