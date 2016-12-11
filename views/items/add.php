@@ -88,7 +88,7 @@
 
 
             <label for="name" class="col-md-3 control-label">item_id</label>
-        <textarea name="item_id" class="form-control" cols="30" rows="1"></textarea>
+            <textarea name="item_id" class="form-control" cols="30" rows="1"></textarea>
 
 
       <label for="name" class="col-md-3 control-label">item_name</label>

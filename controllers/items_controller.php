@@ -1,5 +1,4 @@
 <?php
-
     require('models/item.php');
     specialEcho ("items_controllerが呼び出されました。");
     $controller = new ItemsController($resource, $action);
@@ -95,7 +94,7 @@
 
             $this->action = 'edit';
             $this->display();
-        }
+      }
       function update($post) {
             $this->item->update($post);
             // あとでindexに飛ぶように戻す。location:editは消す。header('Location: index');

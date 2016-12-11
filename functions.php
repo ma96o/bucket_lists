@@ -122,4 +122,12 @@
       return $referer;
     }
 
+    function getLists($user_id){
+      $sql = 'SELECT i.*, l.* FROM `items` AS i LEFT JOIN `lists` AS l ON i.`list_id` = l.`list_id` AND i.`item_id` = ' . $option;
+        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+
+      $lists = mysqli_fetch_assoc($results);
+      return $lists;
+    }
+
 ?>
