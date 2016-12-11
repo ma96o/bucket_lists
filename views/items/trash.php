@@ -11,7 +11,7 @@
         <?php echo $i++; ?>
                         <dl>
                             <dt class="success"><?php echo $item['item_name']; ?></dt>
-                            <dd><?php echo $item['created']; ?></dd>
+                            <dd><?php echo $item['deadline']; ?></dd>
                         </dl>
                     </li>
                     </a>
