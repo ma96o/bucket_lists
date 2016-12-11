@@ -117,9 +117,28 @@
     function get_last_referer() {
       specialEcho('get_last_referer関数が呼び出されました');
       $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null; // 遷移元のURLが存在すれば取得
-      // var_dump($referer);
       $referer = explode('/', $referer);
       return $referer;
+    }
+
+    // followingsテーブルからデータを取得
+    function follow_all(){
+       specialEcho('follow_all関数が呼び出されました');
+       require('dbconnect.php');
+       $sql = sprintf('SELECT *
+                       FROM `followings`
+                       WHERE `follower_id` = %d',
+              mysqli_real_escape_string($db, $_SESSION['id'])
+               );
+       $results = mysqli_query($db, $sql) or die(mysqli_error($db));
+       $followall = array();
+       while($result = mysqli_fetch_assoc($results)){
+               $followall[] = $result;
+       }
+       // echo '<pre>';
+       // var_dump($followall);
+       // echo '</pre>';
+       return $followall;
     }
 
 ?>

@@ -9,20 +9,25 @@ $sql = sprintf('SELECT * FROM `followings`
 $rec = mysqli_query($db,$sql) or die(mysqli_error($db));
 $follows = array();
  while($table = mysqli_fetch_assoc($rec)){
-     $follows[] = $table['following_id'];
+     $follower[] = $table['follower_id'];
+     $following[] = $table['following_id'];
  }
 
-$sql = 'SELECT u.* 
-        FROM u.`users`
-        WHERE u.`user_id`=f.`following_id`'
-                
-                
-                ;
+$sql = sprintf('SELECT * 
+                FROM `users`
+                WHERE `user_id` = %d',
+        mysqli_real_escape_string($db,$option)
+        );
+
 $users = mysqli_query($db,$sql) or die(mysqli_error($db));
 
 while($user = mysqli_fetch_assoc($users)){
 
-    if(in_array($user['']))
+    if($follower[`follower_id`] == 1 && $following[`following_id`] == 3){
+        echo '<a href="http://192.168.33.10/bucket_lists/users/follow/3">フォローする</a>';
+    }else{
+        echo '<a href="http://192.168.33.10/bucket_lists/users/unfollow/3">フォローを外す</a>';
+    }
 }
 
  ?>

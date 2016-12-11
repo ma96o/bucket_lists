@@ -14,11 +14,11 @@
       case 'unfollow';
         $controller->unfollow($option);
         break;
-      case `following`;
-        $controller->following();
+      case 'followings':
+        $controller->followings();
         break;
-      case `follower`;
-        $controller->follower();
+      case 'followers';
+        $controller->followers();
         break;
       case 'mypage':
         $controller->mypage($option);
@@ -33,12 +33,16 @@
       private $resource;
       private $action;
       private $viewOptions;
+      private $followings;
+      private $followers;
 
       function __construct($resource, $action){
         $this->user = new User();
         $this->resource = $resource;
         $this->action = $action;
         $this->viewOptions = array();
+        $this->followings = array();
+        $this->followers = array();
       }
 
       function check(){
@@ -81,16 +85,25 @@
         specialVarDump($referer);
         header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
+
       function followings(){
-        $this->user->following();
+        specialEcho('users_controllerのfollowings()が呼び出されました');
+        $this->followings = $this->user->followings();
+        require('views/users/followings.php');
+
       }
       function followers(){
-        $this->user->followers();
+        specialEcho('users_controllerのfollowers()が呼び出されました');
+        $this->followers = $this->user->followers();
+        $followall = follow_all();
+        
+        require('views/users/followers.php');
+
       }
-      function display(){
+      function display($option){
         require('views/layouts/application.php');
       }
-      function displayProf(){
+      function displayProf($option){
         require('views/layouts/application_prof.php');
       }
     }
