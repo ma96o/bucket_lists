@@ -8,6 +8,9 @@
       case 'create':
         $controller->create($post);
         break;
+      case 'update':
+        $controller->update($post);
+        break;
       default:
         break;
     }
@@ -27,6 +30,10 @@
 
       function create($post){
         $this->list->create($post);
+        header('Location: /bucket_lists/users/mypage/'.$_SESSION['id']);
+      }
+      function update($post){
+        $this->list->update($post);
         header('Location: /bucket_lists/users/mypage/'.$_SESSION['id']);
       }
     }
