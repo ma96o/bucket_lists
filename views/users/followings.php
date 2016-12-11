@@ -9,7 +9,7 @@
                     <div>
                         <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
                         <span>umaibomentaiaji</span>
-                        <a href="" class="btn btn-default" style="float: right;">
+                        <a href="" class="btn btn-pink" style="float: right;">
                             フォローする
                         </a>
                     </div>
