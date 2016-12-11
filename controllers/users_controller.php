@@ -95,7 +95,7 @@
       function followers(){
         specialEcho('users_controllerのfollowers()が呼び出されました');
         $this->followers = $this->user->followers();
-        $followall = follow_all();
+        
         
         require('views/users/followers.php');
 

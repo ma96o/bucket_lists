@@ -122,23 +122,19 @@
     }
 
     // followingsテーブルからデータを取得
-    function follow_all(){
+    function follow_all($user_id){
        specialEcho('follow_all関数が呼び出されました');
        require('dbconnect.php');
        $sql = sprintf('SELECT *
                        FROM `followings`
-                       WHERE `follower_id` = %d',
-              mysqli_real_escape_string($db, $_SESSION['id'])
+                       WHERE `follower_id` = %d
+                       AND `following_id` = %d',
+              mysqli_real_escape_string($db, $_SESSION['id']),
+              mysqli_real_escape_string($db, $user_id)
                );
        $results = mysqli_query($db, $sql) or die(mysqli_error($db));
-       $followall = array();
-       while($result = mysqli_fetch_assoc($results)){
-               $followall[] = $result;
-       }
-       // echo '<pre>';
-       // var_dump($followall);
-       // echo '</pre>';
-       return $followall;
+       $rtn = mysqli_fetch_assoc($results);
+       return $rtn;
     }
 
 ?>
