@@ -98,9 +98,9 @@
     <?php include('views/'.$this->resource.'/'.$this->action.'.php'); ?>
 
     </div>
-      <div class="footer container-fluid">
-          BUCKET LISTS
-      </div>
+        <footer class="container-fluid" style="min-height:200px; background-color:#00bcd4;color:#fff;text-align:center;padding-top:50px;">
+            BUCKET LISTS 
+        </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
 <!--      if($this->action == "index"){

@@ -113,7 +113,7 @@
       return $row['cnt'];
     }
 
-//フォローしているユーザのIdを取ってくる
+//フォローしているユーザのIdを取得
     function followingsId($follower_id){
       require('dbconnect.php');
       $sql = sprintf('SELECT DISTINCT `following_id` FROM `followings` WHERE `follower_id`=%d',
@@ -129,6 +129,7 @@
       return $following_id;
     }
 
+//指定した項目の情報を取得
     function aboutItem($item_id){
       require('dbconnect.php');
       $sql = sprintf('SELECT * FROM `items` WHERE `id`=%d',
@@ -140,6 +141,8 @@
 
       return $items;
     }
+
+//指定したユーザのリストを取得
     function getList($user_id){
       require('dbconnect.php');
       $sql = sprintf('SELECT * FROM `lists` WHERE `user_id`=%d',
@@ -153,6 +156,7 @@
       return $lists;
     }
 
+//指定したユーザの一番上のリストのIDを取得
     function getFirstListId($user_id){
       require('dbconnect.php');
       $sql = sprintf('SELECT `list_id` FROM `lists` WHERE `user_id`=%d',
@@ -163,4 +167,14 @@
       $first_list_id = $table['list_id'];
       return $first_list_id;
     }
+
+// 前アクション参照用関数
+    function get_last_referer() {
+      specialEcho('get_last_referer関数が呼び出されました');
+      $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null; // 遷移元のURLが存在すれば取得
+      // var_dump($referer);
+      $referer = explode('/', $referer);
+      return $referer;
+    }
+
 ?>

@@ -76,7 +76,8 @@
               </div>';
     }
 ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
     <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
     <script>
     /*ワクワク度表示*/

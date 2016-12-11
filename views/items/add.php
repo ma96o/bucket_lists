@@ -15,18 +15,23 @@
                                             <input type="text" class="form-control" id="exampleInput2" name="comment">
                                         </div>
                                         <label>リスト選択</label>
-                                        <select class="custom-select">
-                                          <option selected>リスト</option>
-                                          <option value="1">One</option>
-                                          <option value="2">Two</option>
-                                          <option value="3">Three</option>
-                                        </select>
+                                          <select name="list_id" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">list
+                                          <span class="caret"></span>
+                                            <option value="1">リスト1</option>
+                                            <option value="2">リスト2</option>
+                                            <option value="3">リスト3</option>
+                                            <option value="4">リスト4</option>
+                                            <option value="5">リスト5</option>
+                                          </select>
                                         <br />
                                         <br />
                                         <div class="form-group">
                                             <label for="exampleInput1">期限</label>
                                             <input type="date" class="form-control" id="exampleInput1" name="deadline">
                                         </div>
+
+        <label for="name" class="col-md-3 control-label">tag_id</label>
+        <textarea name="tag_id" class="form-control" cols="30" rows="1"></textarea>
 
                                         <label>わくわく度</label>
                                         <div class="starRating" class="form-control" id="exampleInput2">
@@ -41,3 +46,22 @@
               </div>
          </div>
 </div>
+
+
+<script src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
+
+
+<script>
+    /*ワクワク度表示*/
+    $.fn.raty.defaults.path = "image";
+    $('.starRating').raty({
+      hints: [0,1,2,3,4,5]
+      click: function($score, $evt) {
+               $.post('/bucket_lists/items/create',{score:$score, url:$evt.currentTarget.baseURI},
+                      function(data){
+                        location.href = '/bucket_lists/items/create';
+                      }
+                     );
+      }
+    });
+</script>

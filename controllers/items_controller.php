@@ -1,15 +1,12 @@
 <?php
 
     require('models/item.php');
-
+    specialEcho ("items_controllerが呼び出されました。");
     $controller = new ItemsController($resource, $action);
 
     switch ($action) {
       case 'trend':
         $controller->trend($option, $post);
-        break;
-      case 'show':
-        $controller->show($option);
         break;
       case 'doing':
         $controller->doing($option);
@@ -17,23 +14,27 @@
       case 'done':
         $controller->done($option);
         break;
-      case 'add':
-        $controller->add($option);
-        break;
-      case 'edit':
-        $controller->edit($option);
-        break;
       case 'success':
         $controller->success($option);
-        break;
-      case 'conglaturation':
-        $controller->conglaturation($option);
         break;
       case 'trash':
         $controller->trash($option);
         break;
-      case 'giveup':
-        $controller->giveup($option);
+      case 'create':
+        if (!empty($post['list_id']) && !empty($post['comment']) && !empty($post['deadline'])) {
+            $controller->create($post);
+        } else {
+            $controller->add();
+        }
+        break;
+      case 'update':
+        $controller->update($post);
+        break;
+      case 'like':
+        $controller->like($option);
+        break;
+      case 'unlike':
+        $controller->unlike($option);
         break;
       default:
         break;
@@ -57,10 +58,6 @@
 
         $this->display($option);
       }
-      function show($option){
-        $this->viewsOptions = $this->item->show($option);
-
-      }
       function doing($option){
         $this->viewsOptions = $this->item->doing($option);
 
@@ -72,19 +69,26 @@
         $this->display($option);
       }
       function add(){
+        specialEcho('Controllerのadd()が呼び出されました。');
+        $this->action = 'add';
+        $this->display();
       }
-      function create(){
+      function create($post) {
+          specialEcho('Controllerのcreate()が呼び出されました。');
+          $this->item->create($post);
+          header('Location: add');
       }
       function index(){
-      }
-      function edit(){
-      }
-      function update(){
       }
       function success($option){
         $this->viewsOptions = $this->item->success($option);
 
         $this->displayProf($option);
+      function update($post) {
+            $this->item->update($post);
+            // あとでindexに飛ぶように戻す。location:editは消す。header('Location: index');
+            header('Location: edit');
+        }
       }
       function conglaturation(){
       }
@@ -103,10 +107,45 @@
       }
       function undelete(){
       }
-      function like(){
+      function like($option) {
+          // is_login();
+
+          specialEcho('Controllerのlike()が呼び出されました。');
+          $this->item->like($option);
+          $this->viewOptions;
+          $referer = get_last_referer();
+
+          $referer_resource = $referer[4];
+          $referer_action = $referer[5];
+          $referer_option = $referer[6];
+          specialVarDump($referer);
+          header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
-      function unlike(){
+
+      function unlike($option) {
+          // is_login();
+
+          specialEcho('Controllerのunlike()が呼び出されました。');
+          $this->item->unlike($option);
+
+          $referer = get_last_referer();
+
+          $referer_resource = $referer[4];
+          $referer_action = $referer[5];
+          $referer_option = $referer[6];
+          specialVarDump($referer);
+          header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
+
+      function show($option) {
+        specialEcho('Controllerのshow()が呼び出されました。');
+        specialEcho('$idは' . $option . 'です。');
+        $this->viewOptions = $this->item->show($option);
+        specialVarDump($this->viewOptions);
+        $this->action = 'show';
+        $this->display();
+      }
+
       function search(){
       }
       function display($option){

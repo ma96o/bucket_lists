@@ -291,12 +291,6 @@ display: inline;
   font-weight: bold;
 }
 
-/*
-=======
-}
-
-
-*/
 
 .main-content div img{
   width:85px;
@@ -511,7 +505,6 @@ header .container {
 
 header img {
     display: block;
-    margin: 0 auto 20px;
 }
 
 .intro-text {
@@ -541,13 +534,12 @@ nav.navbar-default {
 .msg {
   clear: both;
   border-top: 1px solid #ccc;
-  padding: 10px 0;
+  /*padding: 10px 0;*/
 }
 
 .msg img {
   float: left;
   margin-right: 5px;
-
 }
 
 .msg p {
@@ -565,8 +557,6 @@ nav.navbar-default {
     background-color: white;
 }
 
-
-
 .content-main {
   padding-top: 80px;
   padding-bottom: 0px;
@@ -578,9 +568,71 @@ nav.navbar-default {
     padding: 30px;
 }
 
+/*addボタン*/
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+/*画像丸*/
+.thumbnail_circle img {
+  border-radius: 50px;
+  height: 40px;
+  width: 40px;
+}
 
 
 
+#list_name {
+  margin-left:200px;
+  font-size: 50px;
+}
 
+#detail_name {
+  font-size: 70px;
+}
 
+#detail {
+  font-size: 40px;
+}
 
+#deadline {
+  font-size:20px;
+}
+
+#dead {
+  font-size: 40px;
+}
+
+.hoge {
+  width:700px;margin:auto;
+}
+
+#indefinite {
+  size: 70px;
+}
+
+#row {
+  font-size: 30px;
+}
