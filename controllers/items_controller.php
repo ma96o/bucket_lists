@@ -42,6 +42,12 @@
       case 'updateTrash':
         $controller->updateTrash($post);
         break;
+      case 'tassei':
+        $controller->tassei($post);
+        break;
+      case 'delete':
+        $controller->delete($post);
+        break;
       default:
         break;
     }
@@ -98,7 +104,9 @@
       }
       function conglaturation(){
       }
-      function tassei(){
+      function tassei($post){
+        $this->item->tassei($post);
+        header('location: /bucket_lists/items/success/'.$_SESSION['id']);
       }
       function undone(){
       }
@@ -109,7 +117,9 @@
       }
       function giveup(){
       }
-      function delete(){
+      function delete($post){
+        $this->item->delete($post);
+        header('location: /bucket_lists/items/trash/'.$_SESSION['id']);
       }
       function undelete(){
 
