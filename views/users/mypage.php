@@ -8,20 +8,18 @@
                     <li class="active">new list
                     <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
                     </li>
-                
-                    <li class="active">死ぬまでにやる
-                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
-                    </li>
-         
-                    <li class="active">20代やることリスト
-                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
-                    </li>
 
-                <a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id">
-                    <li class="active">プライベート
+                    <li>死ぬまでにやる
                     <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
                     </li>
-                </a>
+                
+                    <li>20代やることリスト
+                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
+                    </li>
+               
+                    <li>プライベート
+                    <p><a data-toggle="modal" href="#edit_list" data-target="#edit_list" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
+                    </li>
                 
               </ul>
               <button class="btn btn-pink" type="button" data-toggle="modal" data-target="#add_list">リストを追加</button>
@@ -44,7 +42,7 @@
                     
                 <!--項目一覧-->
             <ul class="list-unstyled">
-                <a data-toggle="modal" href="" data-target="#show_item" data-name="item_id">
+                <a data-toggle="modal" href="#show_item" data-target="#show_item" data-name="item_id">
                     <li>
                         <dl>
                             <dt>これおわんないんやけど</dt>
@@ -60,7 +58,7 @@
                     </li>
                 </a>
 
-                <a data-toggle="modal" href="" data-target="#show_item" data-name="item_id">
+                <a data-toggle="modal" href="#show_item" data-target="#show_item" data-name="item_id">
                     <li>
                         <dl>
                             <dt>絶対どっかおかしい</dt>
@@ -76,7 +74,7 @@
                     </li>
                 </a>
 
-                <a data-toggle="modal" href="" data-target="#show_item" data-name="item_id">
+                <a data-toggle="modal" href="#show_item" data-target="#show_item" data-name="item_id">
                     <li>
                         <dl>
                             <dt>first-child後で修正</dt>
@@ -92,7 +90,7 @@
                     </li>
                 </a>
 
-                <a data-toggle="modal" href="#item_show" data-target="#item_show" data-name="item_id">
+                <a data-toggle="modal" href="#show_item" data-target="#show_item" data-name="item_id">
                     <li>
                         <dl>
                             <dt>たぶんclearできてない</dt>
