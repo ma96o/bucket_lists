@@ -6,7 +6,10 @@
 
     switch ($action) {
       case 'create':
-        $controller->create();
+        $controller->create($post);
+        break;
+      case 'update':
+        $controller->update($post);
         break;
       default:
         break;
@@ -25,8 +28,13 @@
         $this->viewOptions = array();
       }
 
-      function create(){
-        $this->list->create();
+      function create($post){
+        $this->list->create($post);
+        header('Location: /bucket_lists/users/mypage/'.$_SESSION['id']);
+      }
+      function update($post){
+        $this->list->update($post);
+        header('Location: /bucket_lists/users/mypage/'.$_SESSION['id']);
       }
     }
 

@@ -39,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top">BUCKET LISTS</a>
+                <a class="navbar-brand" href="/bucket_lists/items/trend">BUCKET LISTS</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,13 +48,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">マイページ</a>
+                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['id']; ?>/<?php echo getFirstListId($_SESSION['id']); ?>">マイページ</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">タイムライン</a>
+                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">トレンディング</a>
+                        <a href="/bucket_lists/items/trend">トレンディング</a>
                     </li>
                 </ul>
             </div>
@@ -68,9 +68,16 @@
             <div class="row">
                 <div class="col-md-10 col-xs-offset-1">
                     <img class="center-block img-responsive img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
-                    <h3><?php echo $user['nick_name']; ?><span class="edit_info"><a data-toggle="modal" href="#edit_prof" data-target="#edit_info" data-name="list_id"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    </span></h3>
+                    <h3><?php echo $user['nick_name']; ?>
+<?php if($user_flag == 0): ?>
+                    <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    </span>
+<?php else: ?>
+                    <a href="/bucket_lists/users/follow/<?php echo $user['user_id']; ?>" class="btn btn-pink">フォロー</a>
+<?php endif; ?>
+                    </h3>
                     <p><?php echo $user['description']; ?></p>
+
                 </div>
             </div>
         </section>
@@ -79,11 +86,11 @@
         <section class="row">
             <div class="col-md-8 col-xs-offset-2">
                   <ul class="nav nav-pills nav-justified">
-                    <li class="active"><a href="">バケットリスト</a></li>
-                    <li><a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>">達成リスト</a></li>
-                    <li><a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>">ゴミ箱リスト</a></li>
-                    <li><a href="/bucket_lists/users/followings/<?php echo $user['user_id']; ?>">フォロー <?php echo countFollowing($user['user_id']); ?></a></li>
-                    <li><a href="/bucket_lists/users/followers/<?php echo $user['user_id']; ?>">フォロワー <?php echo countFollower($user['user_id']); ?></a></li>
+                    <li<?php if($this->action == 'mypage'){echo ' class="active"';} ?>><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>/<?php echo getFirstListId($user['user_id']); ?>">バケットリスト</a></li>
+                    <li<?php if($this->action == 'success'){echo ' class="active"';} ?>><a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>">達成リスト</a></li>
+                    <li<?php if($this->action == 'trash'){echo ' class="active"';} ?>><a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>">ゴミ箱リスト</a></li>
+                    <li<?php if($this->action == 'followings'){echo ' class="active"';} ?>><a href="/bucket_lists/users/followings/<?php echo $user['user_id']; ?>">フォロー <?php echo countFollowing($user['user_id']); ?></a></li>
+                    <li<?php if($this->action == 'followers'){echo ' class="active"';} ?>><a href="/bucket_lists/users/followers/<?php echo $user['user_id']; ?>">フォロワー <?php echo countFollower($user['user_id']); ?></a></li>
                   </ul>
             </div>
         </section>
@@ -98,5 +105,151 @@
         </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
+<!--      if($this->action == "index"){
+         echo "
+ -->
+        <script>
+          $('#edit_list').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientId = button.data('id')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-body input#list_title').val(recipientTitle)
+          modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          });
+        </script>
+        <script>
+          $('#trash_item').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientId = button.data('id')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          });
+        </script>
+        <script>
+          $('#success_item').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientId = button.data('id')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          });
+        </script>
+        <script>
+          $('#edit_item').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientId = button.data('id')
+          var recipientComment = button.data('comment')
+          var recipientDeadline = button.data('deadline')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-title').text(recipientTitle)
+          modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          modal.find('.modal-body input#comment').val(recipientComment)
+          modal.find('.modal-body input#deadline').val(recipientDeadline)
+          });
+        </script>
+        <script>
+          $('#show_item').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientId = button.data('id')
+          var recipientComment = button.data('comment')
+          var recipientDeadline = button.data('deadline')
+          var recipientStatus = button.data('status')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-title').text(recipientTitle)
+          modal.find('.modal-body h4#item_name').text(recipientTitle)
+          // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          modal.find('.modal-body p#item_comment').text(recipientComment)
+          modal.find('.modal-body span#item_deadline').text(recipientDeadline)
+          modal.find('.modal-body span#status').text(recipientStatus)
+          });
+        </script>
+        <script>
+          $('#item_success').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientId = button.data('id')
+          var recipientComment = button.data('comment')
+          var recipientCreated = button.data('created')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-title').text(recipientTitle)
+          modal.find('.modal-body h4#item_name').text(recipientTitle)
+          // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          modal.find('.modal-body p#item_comment').text(recipientComment)
+          modal.find('.modal-body span#item_created').text(recipientCreated)
+          });
+        </script>
+        <script>
+          $('#item_trash').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientId = button.data('id')
+          var recipientComment = button.data('comment')
+          var recipientCreated = button.data('created')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-title').text(recipientTitle)
+          modal.find('.modal-body h4#item_name').text(recipientTitle)
+          // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          modal.find('.modal-body p#item_comment').text(recipientComment)
+          modal.find('.modal-body span#item_created').text(recipientCreated)
+          });
+        </script>
+        <script>
+          $('#edit_trash').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientComment = button.data('comment')
+          var recipientId = button.data('id')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-title').text(recipientTitle)
+          modal.find('.modal-body input#comment').val(recipientComment)
+          modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          });
+        </script>
+        <script>
+          $('#edit_success').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientComment = button.data('comment')
+          var recipientId = button.data('id')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-title').text(recipientTitle)
+          modal.find('.modal-body input#comment').val(recipientComment)
+          modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          });
+        </script>
+
+<!--          ";
+    } -->
   </body>
 </html>

@@ -112,4 +112,85 @@
 
       return $row['cnt'];
     }
+
+//フォローしているユーザのIdを取得
+    function followingsId($follower_id){
+      require('dbconnect.php');
+      $sql = sprintf('SELECT DISTINCT `following_id` FROM `followings` WHERE `follower_id`=%d',
+        mysqli_real_escape_string($db, $follower_id)
+        );
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+      $following_id = array();
+      while($table = mysqli_fetch_assoc($rec)){
+        $following_id[] = $table['following_id'];
+      }
+
+      return $following_id;
+    }
+
+//指定した項目の情報を取得
+    function aboutItem($item_id){
+      require('dbconnect.php');
+      $sql = sprintf('SELECT * FROM `items` WHERE `id`=%d',
+        mysqli_real_escape_string($db, $item_id)
+        );
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+      $items = mysqli_fetch_assoc($rec);
+
+      return $items;
+    }
+
+//指定したユーザのリストを取得
+    function getList($user_id){
+      require('dbconnect.php');
+      $sql = sprintf('SELECT * FROM `lists` WHERE `user_id`=%d',
+        mysqli_real_escape_string($db, $user_id)
+        );
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+      $lists = array();
+      while($table = mysqli_fetch_assoc($rec)){
+        $lists[] = $table;
+      }
+      return $lists;
+    }
+
+//指定したユーザの一番上のリストのIDを取得
+    function getFirstListId($user_id){
+      require('dbconnect.php');
+      $sql = sprintf('SELECT `list_id` FROM `lists` WHERE `user_id`=%d',
+        mysqli_real_escape_string($db, $user_id)
+        );
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+      $table = mysqli_fetch_assoc($rec);
+      $first_list_id = $table['list_id'];
+      return $first_list_id;
+    }
+
+// 前アクション参照用関数
+    function get_last_referer() {
+      specialEcho('get_last_referer関数が呼び出されました');
+      $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null; // 遷移元のURLが存在すれば取得
+      // var_dump($referer);
+      $referer = explode('/', $referer);
+      return $referer;
+    }
+
+//いいね判定 0->いいねしてない、1->いいねしてる
+    function isLike($item_id){
+      require('dbconnect.php');
+      $sql = sprintf('SELECT * FROM `likes` WHERE `user_id`=%d AND `item_id`=%d',
+        mysqli_real_escape_string($db, $_SESSION['id']),
+        mysqli_real_escape_string($db, $item_id)
+        );
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+      $like_flag = 0;
+      if($table = mysqli_fetch_assoc($rec)){
+        $like_flag = 1;
+      }
+
+      return $like_flag;
+    }
+
 ?>

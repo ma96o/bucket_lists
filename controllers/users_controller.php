@@ -50,8 +50,8 @@
         $controller->logout();
         break;
 
-      case 'mypage';
-        $controller->mypage();
+      case 'mypage':
+        $controller->mypage($option, $list_id);
         break;
 
       case 'edit';
@@ -78,6 +78,12 @@
         $controller->followers();
         break;
 
+      case 'edit':
+        $controller->edit($option);
+        break;
+      case 'update':
+        $controller->update($post);
+        break;
       default:
         break;
     }
@@ -243,15 +249,23 @@ EOM;
         exit();
 
       }
+      function mypage($option, $list_id){
+        if($list_id == 0){
+          $list_id = getFirstListId($option);
+          header('location: /bucket_lists/users/mypage/'.$option.'/'.$list_id);
+        }
 
-      function mypage(){
-        special_echo('Controllerのmypage()が呼び出されました。');
+        $this->viewsOptions = $this->user->mypage($option, $list_id);
+
+        $this->displayProf($option, $list_id);
       }
-      function edit(){
-        special_echo('Controllerのedit()が呼び出されました。');
+      function edit($option){
+        $this->user->edit($option);
+        $this->display($option);
       }
-      function update(){
-        special_echo('Controllerのupdate()が呼び出されました。');
+      function update($post){
+        $this->user->update($post);
+        header('location: /bucket_lists/users/mypage/'.$_SESSION['id']);
       }
 
       function follow($option){
@@ -270,16 +284,16 @@ EOM;
         header('Location: ../index');
       }
 
-      function followings(){
-        special_echo('Controllerのfollowings()が呼び出されました。');
+      function followings($option, $list_id){
+        $this->displayProf($option, $list_id);
       }
-      function followers(){
-        special_echo('Controllerのfpllowers()が呼び出されました。');
+      function followers($option, $list_id){
+        $this->displayProf($option, $list_id);
       }
       function display($option){
         require('views/layouts/application.php');
       }
-      function displayProf($option){
+      function displayProf($option, $list_id){
         require('views/layouts/application_prof.php');
       }
     }

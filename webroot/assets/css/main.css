@@ -5,12 +5,135 @@ body{
   background-color: #eee;
 }
 
+
 a,
 a:hover,
 a:focus{
   text-decoration: none;
   color: #5e5e5e;
 }
+
+
+/*---ギザギザ----------------------------------------------------*/
+
+.offset {
+  background: #f9f9f9;
+}
+.jagged-border {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  padding-top: 20px;
+}
+.jagged-border:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -10px;
+  width: 100%;
+  height: 10px;
+}
+.yellow-bg {
+  background: #FFE599;
+}
+.yellow-bg:before {
+  background: -webkit-linear-gradient(45deg, transparent 33.333%, #FFE599 33.333%, #FFE599 66.667%, transparent 66.667%), -webkit-linear-gradient(135deg, transparent 33.333%, #FFE599 33.333%, #FFE599 66.667%, transparent 66.667%);
+  background: linear-gradient(45deg, transparent 33.333%, #ecf0f1 33.333%, #FFE599 66.667%, transparent 66.667%), linear-gradient(-45deg, transparent 33.333%, #FFE599 33.333%, #FFE599 66.667%, transparent 66.667%);
+  background-size: 20px 40px;
+}
+.pink-bg {
+  background: #FFBFBF;
+}
+.pink-bg:before {
+  background: -webkit-linear-gradient(45deg, transparent 33.333%, #FFBFBF 33.333%, #FFBFBF 66.667%, transparent 66.667%), -webkit-linear-gradient(135deg, transparent 33.333%, #FFBFBF 33.333%, #FFBFBF 66.667%, transparent 66.667%);
+  background: linear-gradient(45deg, transparent 33.333%, #FFBFBF 33.333%, #FFBFBF 66.667%, transparent 66.667%), linear-gradient(-45deg, transparent 33.333%, #FFBFBF 33.333%, #FFBFBF 66.667%, transparent 66.667%);
+  background-size: 20px 40px;
+}
+.blue-bg {
+  background: #BFEFFF;
+}
+.blue-bg:before {
+  background: -webkit-linear-gradient(45deg, transparent 33.333%, #BFEFFF 33.333%, #BFEFFF 66.667%, transparent 66.667%), -webkit-linear-gradient(135deg, transparent 33.333%, #BFEFFF 33.333%, #BFEFFF 66.667%, transparent 66.667%);
+  background: linear-gradient(45deg, transparent 33.333%, #BFEFFF 33.333%, #BFEFFF 66.667%, transparent 66.667%), linear-gradient(-45deg, transparent 33.333%, #BFEFFF 33.333%, #BFEFFF 66.667%, transparent 66.667%);
+  background-size: 20px 40px;
+}
+
+
+
+/*---home----------------------------------------------------*/
+
+.navbar-header a{
+  font-family: 'Rancho';
+}
+
+.bg{
+  background-image:url("../../../views_test/image/home2.jpg"); 
+  background-size: cover; 
+  min-height: 800px;
+}
+
+.site_info h1{
+  color:#5e5e5e;
+  font-size: 60px;
+  /*letter-spacing: 1px;*/
+  /*font-family: 'Cabin Sketch', cursive;*/
+  font-family: 'Rancho';
+  /*font-family: 'Special Elite', cursive;*/
+  /*font-family: 'Droid Serif', serif;
+  font-family: 'Roboto Slab', serif;
+  font-weight: bold;*/
+}
+
+.site_info p{
+  color:#fff;
+  font-size: 16px;
+}
+.side_content {
+  margin: 5px auto;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-radius: 3px;
+}
+
+.side_content h4{
+  color:#888;
+  margin: 0 0 10px 0;
+  font-size: 15px;
+}
+
+.side_content h4 i{
+  color: #00bcd4;
+}
+
+.side_content p{
+  color:#888;
+  font-size: 13px;
+}
+
+.side_content p{
+  color:#888;
+}
+
+.side_content .pd{
+  margin-bottom: 10px;
+}
+
+.side_content p.bl{
+  font-weight: bold;
+}
+.side_content .action_icons{
+  color: #888;
+  border-bottom: 1px dotted #888;
+  padding-bottom: 15px;
+}
+
+.bg_middle{
+  background-image:url("../../../views_test/image/home.jpg"); 
+  background-size: cover; 
+  min-height: 800px;
+}
+
+
 
 /*---profile----------------------------------------------------*/
 
@@ -22,6 +145,14 @@ a:focus{
   margin-top: 10px;
 }
 
+.info h3 .name{
+  font-size: 25px;
+}
+
+.info h3 .button{
+  vertical-align: -3px;
+}
+
 .info p{
   text-align: center;
 }
@@ -30,6 +161,36 @@ a:focus{
   margin-left: 30px;
   font-size: 16px;
 }
+
+.info img{
+  margin-bottom: 20px;
+}
+
+/*.file {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  padding: .5em;
+}
+
+.file input[type="file"] {
+  opacity: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  font-size: 100px;
+  cursor: pointer;
+}
+
+.preview{
+  border-radius: 50px;
+  height: 150px;
+  width: 150px;
+  text-align: center;
+
+}*/
 
 /*---tab----------------------------------------------------*/
 
@@ -126,6 +287,9 @@ a:focus{
   color:#888;
 }
 
+.item p.bl{
+  font-weight: bold;
+}
 .item .action_icons{
   color: #888;
   border-bottom: 1px dotted #888;
@@ -202,7 +366,8 @@ a:focus{
 }
 
 .sidebar li:hover,
-.sidebar li:focus{
+.sidebar li:focus,
+.sidebar li.active{
   background-color: #b2edf2;
 }
 
@@ -266,6 +431,7 @@ display: inline;
 
 .main-content li dd{
   float: right;
+  margin-left: 10px;
 }
 
 .main-content div.status-icon{
@@ -273,15 +439,16 @@ display: inline;
 }
 .main-content div.status-icon p{
   display: inline;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 13px;
+  color:#666;
+  margin-right: 10px;
 }
 
 /*
-=======
+.main-content div.starRating{
+display: inline;
+margin-left: 15px;
 }
-
-
 */
 
 .main-content div img{
@@ -289,9 +456,15 @@ display: inline;
   vertical-align: top;
 }
 
+/*
 .main-content li:hover,
 .main-content li:focus{
   background-color: #b2edf2;
+}*/
+
+.main-content li i:hover,
+.main-content li i:focus{
+  color: #00BCD4;
 }
 
 /*---follow follower----------------------------------------------------*/
@@ -438,7 +611,7 @@ fieldset[disabled] .btn-pink.active {
 /*---modal----------------------------------------------------*/
 
 .modal-box{
-  background-color: #fff;
+  background-color: #f5f5f5;
   border: 1px solid #e5e5e5;
   padding: 15px;
 }
@@ -451,14 +624,53 @@ fieldset[disabled] .btn-pink.active {
 
 /*---footer----------------------------------------------------*/
 
-.footer{
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -60px;
+}
+ 
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+  height: 60px;
+}
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+  }
+}
+
+#footer {
+  background-color: #00bcd4;
+  text-align: center;
+  color:#fff;
+  padding-top:20px; 
+}
+
+
+
+/*.footer{
   margin-top: 50px;
   background-color:#00bcd4;
   text-align:center;
   padding-top:20px;
   padding-bottom: 20px;
   color:#fff;
-}
+}*/
 
 
 
@@ -556,7 +768,7 @@ nav.navbar-default {
 .content-main {
   padding-top: 80px;
   padding-bottom: 0px;
-  background-color: rgb(240, 240, 240);
+  /*background-color: rgb(240, 240, 240);*/
 }
 
 .content-margin-top {
