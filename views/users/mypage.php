@@ -39,7 +39,7 @@
                 <!--項目一覧-->
                  <ul class="list-unstyled">
                  <?php $i = 1; foreach($this->viewsOptions as $item): ?>
-                <a data-toggle="modal" href="" data-target="#show_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>">
+                <a data-toggle="modal" href="" data-target="#show_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>" <?php if($item['status'] == 1){echo 'data-status="doing"';}else{echo 'data-status="done"';} ?>>
                     <li>
                  <?php echo $i++; ?>
                         <dl>

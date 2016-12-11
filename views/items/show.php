@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="col-sm-4">
-                  <label><i class="fa fa-play-circle-o" aria-hidden="true"></i>&nbsp;status</label>doing
+                  <label><i class="fa fa-play-circle-o" aria-hidden="true"></i>&nbsp;status</label><span id="status"></span>
                 </div>
 
                 <div class="col-sm-4">

@@ -169,6 +169,7 @@
           var recipientId = button.data('id')
           var recipientComment = button.data('comment')
           var recipientDeadline = button.data('deadline')
+          var recipientStatus = button.data('status')
           //Ajaxの処理はここに
 
           var modal = $(this)  //モーダルを取得
@@ -178,6 +179,7 @@
           // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
           modal.find('.modal-body p#item_comment').text(recipientComment)
           modal.find('.modal-body span#item_deadline').text(recipientDeadline)
+          modal.find('.modal-body span#status').text(recipientStatus)
           });
         </script>
         <script>
