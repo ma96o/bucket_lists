@@ -38,11 +38,12 @@
               <?php endif; ?>
                 <!--項目一覧-->
                  <ul class="list-unstyled">
-                 <?php foreach($this->viewsOptions as $item): ?>
+                 <?php $i = 1; foreach($this->viewsOptions as $item): ?>
                 <a data-toggle="modal" href="" data-target="#show_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>">
                     <li>
+                 <?php echo $i++; ?>
                         <dl>
-                            <dt><?php echo $item['item_name']; ?></dt>
+                            <dt<?php if($item['status'] == 2){echo ' class="success"';}elseif($item['status'] == 3){echo ' class="trash"';} ?>><?php echo $item['item_name']; ?></dt>
                         <?php if($user_flag == 0): ?>
                             <dd><a data-toggle="modal" href="" data-target="#edit_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
                             <dd><a data-toggle="modal" href="" data-target="#trash_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id'] ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
