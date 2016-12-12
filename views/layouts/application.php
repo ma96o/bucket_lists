@@ -8,6 +8,8 @@
     <title>Bucket Lists</title>
 
 
+
+
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/main.css">
@@ -20,6 +22,7 @@
     }
 
 ?>
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -37,7 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top">BUCKET LISTS</a>
+                <a class="navbar-brand" href="/bucket_lists/items/trend">BUCKET LISTS</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -46,13 +49,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">マイページ</a>
+                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['id']; ?>/<?php echo getFirstListId($_SESSION['id']); ?>">マイページ</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">タイムライン</a>
+                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">トレンディング</a>
+                        <a href="/bucket_lists/items/trend">トレンディング</a>
                     </li>
                 </ul>
             </div>
@@ -67,41 +70,56 @@
 
 <?php
     if($this->action != 'trend'){
-        echo '<div class="footer container-fluid">
-                 BUCKET LISTS
-              </div>';
+
+        echo '<footer class="container-fluid" style="min-height:200px; background-color:#00bcd4;color:#fff;text-align:center;padding-top:50px;">
+            BUCKET LISTS 
+        </footer>';
     }
 ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
-<?php
-    if($this->action == 'trend'){
-        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="/bucket_lists/webroot/assets/js/pin.js"></script>
-            <script>
-                /*表示　モーダルにidを渡す*/
-                $("#myModal-data").on("show.bs.modal", function (event) {
-                    var button = $(event.relatedTarget);
-                    var recipient = button.data("name");
-                    var modal = $(this);
-                    modal.find(".modal-title").text(recipient);
-                });
-                /*表示　モーダルからデータを渡す*/
-                $("#modal-save").click(function () {
-                var input1 = $("#exampleInput1").val();
-                var input2 = $("#exampleInput2").val();
 
-                if (!$.isNumeric(input1) || !$.isNumeric(input2)) {
-                    alert("数値を入力してください");
-                    return false;
-                }
+<!--      if($this->action == 'trend'){
+         echo "
+ -->
+        <script src='/bucket_lists/webroot/assets/js/pin.js'></script>
+        <script>
+          $('#add_new').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientId = button.data('id')
+          //Ajaxの処理はここに
 
-                var sum = parseInt(input1) + parseInt(input2);
-                $("#modal-result").html("<p>足すと " + sum + "になります。</p>");
-                });
-            </script>
-        ';
-    }
-?>
-  </body>
+          var modal = $(this)  //モーダルを取得
+          modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          // modal.find('.comment').text(recipientComment)
+          modal.find('.modal-body input#title').val(recipientTitle) 
+          modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          });
+        </script>
+        <script>
+          $('#item_detail').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
+          var recipientTitle = button.data('title') //data-whatever の値を取得
+          var recipientComment = button.data('comment')
+          var recipientDoing = button.data('doing')
+          var recipientDone = button.data('done')
+          //Ajaxの処理はここに
+
+          var modal = $(this)  //モーダルを取得
+          //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+          modal.find('.modal-title').text(recipientTitle)
+          // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+          modal.find('.modal-body span#doing').text(recipientDoing)
+          modal.find('.modal-body span#done').text(recipientDone)
+          modal.find('.modal-body p#item_comment').text(recipientComment)
+          });
+        </script>
+<!--          ";
+      }
+ -->
+
+
+</body>
 </html>
+

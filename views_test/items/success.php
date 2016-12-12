@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    require('../../dbconnect.php');
+        $sql = sprintf('SELECT * FROM `likes` WHERE `user_id`=%d',
+      mysqli_real_escape_string($db, $_SESSION['id'])
+      );
+    $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+    $like_items = array();
+    while($table = mysqli_fetch_assoc($rec)){
+      $like_items[] = $table['item_id'];
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -111,7 +124,28 @@
                                     <td><strong>世界一周する</strong></td>
                                     <td>2016/11/02</td>
                                     <td>
-                                        <i class="fa fa-flag" aria-hidden="true">&nbsp;1</i>
+                                        <i class="fa fa-flag" aria-hidden="true">&nbsp;1
+
+<!-- 取得していた全ツイートデータの中からいいねが押される対象となるデータを取得 -->
+<?php foreach($this->viewOptions as $viewOption): ?>
+<?php if(in_array($viewOption['item_id'], $like_items)): ?>
+  <!-- いいねが押されてたらオレンジで表示。ボタンを押したらアンライク発動 -->
+[<a href="<?php echo "/bucket_lists/items/unlike/".$option ?>" style="color: orange;"><i class="fa fa-flag" aria-hidden="true"></i>
+
+<!-- いいねされている数をカウント↓ -->
+<?php echo $like_cnt; ?></a>]
+
+<?php else: ?>
+  <!-- いいねが押されてなければ無色のまま。ボタンを押したらライク発動 -->
+[<a href="<?php echo "/bucket_lists/items/like/".$option ?>"><i class="fa fa-flag" aria-hidden="true"></i>
+
+<!-- いいねされている数をカウント↓ -->
+<?php echo $like_cnt; ?></a>]
+
+<!-- in_array終了↓ -->
+<?php endif; ?>
+<!-- いいね機能の終了 -->
+</i>
                                         &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i>
                                     </td>
                                 </tr>
@@ -129,7 +163,7 @@
                 </div>
             </div>
         </div>
-
+<?php endforeach; ?>
 
       <div class="row">
         <div class="col-md-4">

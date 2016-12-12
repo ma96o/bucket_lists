@@ -26,10 +26,11 @@
         $this->viewsOptions = array();
       }
       function index(){
-        $this->timeline->index();
-        $this->display($option);
+        $this->viewsOptions = $this->timeline->index();
+
+        $this->display();
       }
-      function display($option){
+      function display(){
         require('views/layouts/application.php');
       }
     }
