@@ -191,6 +191,7 @@
        $results = mysqli_query($db, $sql) or die(mysqli_error($db));
        $rtn = mysqli_fetch_assoc($results);
        return $rtn;
+    }
 
 //いいね判定 0->いいねしてない、1->いいねしてる
     function isLike($item_id){

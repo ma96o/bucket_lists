@@ -64,11 +64,11 @@
         break;
 
       case 'follow';
-        $controller->follow();
+        $controller->follow($option);
         break;
 
       case 'unfollow';
-        $controller->unfollow();
+        $controller->unfollow($option);
         break;
 
       case 'followings';
@@ -283,7 +283,6 @@ EOM;
         $referer_resource = $referer[4];
         $referer_action = $referer[5];
         $referer_option = $referer[6];
-        specialVarDump($referer);
         header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
       function unfollow($option){
@@ -292,7 +291,6 @@ EOM;
         $referer_resource = $referer[4];
         $referer_action = $referer[5];
         $referer_option = $referer[6];
-        specialVarDump($referer);
         header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
 

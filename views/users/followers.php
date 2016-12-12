@@ -13,7 +13,7 @@
                      <div>
                             <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
                             <span><?php echo $follower['nick_name']; ?></span>
-                            <a href="/bucket_lists/users/follow/<?php echo $follower['user_id'] ?>" class="btn btn-pink" style="float: right;">
+                            <a href="/bucket_lists/users/follow/<?php echo $follower['user_id']; ?>" class="btn btn-pink" style="float: right;">
                                 フォロー
                             </a>
                         </div>
