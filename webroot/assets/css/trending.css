@@ -19,19 +19,50 @@ body {
   width: 100%;
 }
 
-#pinBoot a{
+#pinBoot a,
+#pinBoot a:hover,
+#pinBoot a:focus{
+  outline: none;
   text-decoration: none;
   color:#5e5e5e;
+  display: block;
 }
 
-#pinBoot h4{
+#pinBoot h4.item_name{
   padding-bottom:10px;
   border-bottom: 1px dotted #e1e1e1;
   word-wrap: break-word;
+
+}
+
+#pinBoot h4.item_name:before{
+  font-family: FontAwesome;
+  content: '\f02e'; /* アイコンのunicode */
+  margin-right: 10px;
+  color:#00bcd4;
+}
+
+#pinBoot span.doing:before{
+  font-family: FontAwesome;
+  content: '\f0f6'; /* アイコンのunicode */
+  margin-right: 10px;
+  color:#00bcd4;
+}
+
+#pinBoot span.done:before{
+  font-family: FontAwesome;
+  content: '\f05d'; /* アイコンのunicode */
+  margin-right: 10px;
+  color:#00bcd4;
 }
 
 #pinBoot p{
   margin:10px auto 0 auto;
+}
+
+#pinBoot p button:hover,
+#pinBoot p button:focus{
+  outline:none; 
 }
 
 img {

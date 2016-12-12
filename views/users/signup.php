@@ -10,25 +10,26 @@
                     <br />
                     <p>ここから本登録だよ。情報を入力してねん</p>
                     <br />
-                    <form method="post" action="/bucket_lists/users/signup?url_token=$_GET['url_token']" class="form-horizontal" role="form">
+                    <form method="post" action="/bucket_lists/users/signup?url_token=$_GET['url_token']" role="form">
+                          <div>
                             <div class="form-group">
                             <label>E-mail</label>
-                            <p>メールアドレス：<?php echo $this->viewOptions['email']; ?></p>
+                            <p><?php echo $this->viewOptions['email']; ?></p>
                             <input type="hidden" class="form-control" name="email" value="<?php echo $this->viewOptions['email']; ?>">
                             <br />
-                            <p>アカウント名：
+                            <label>アカウント名</label>
                             <input type="text" class="form-control" name="nick_name" value="<?php //echo $this->viewOptions['nick_name']; ?>">
                             <?php if(isset($this->viewErrors['nick_name']) && $this->viewErrors['nick_name'] == 'blank'): ?>
-                            <p style="color:red;">* アカウント名を入力してください</p>
+                            <span class="blue">アカウント名を入力してください</p>
                             <?php endif; ?>
                             </p>
-                            <p>パスワード:
+                            <label>パスワード</label>
                              <input type="password" class="form-control" name="password" value="<?php //echo $this->viewOptions['password']; ?>">
                             <?php if(isset($this->viewErrors['password']) && $this->viewErrors['password'] == 'blank'): ?>
-                              <p style="color:red;">* パスワードを入力してください</p>
+                              <span class="blue">パスワードを入力してください</p>
                             <?php endif; ?>
                             <?php if(isset($this->viewErrors['password']) && $this->viewErrors['password'] == 'length'): ?>
-                              <p style="color:red;">* パスワードは４文字以上で入力してください</p>
+                              <span class="blue">パスワードは４文字以上で入力してください</p>
                             <?php endif; ?>
                             </p>
                         </div>
