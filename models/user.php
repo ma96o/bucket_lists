@@ -4,7 +4,7 @@
       private $dbconnect;
 
       function __construct(){
-        require('dbconnects.php');
+        require('dbconnect.php');
         $this->dbconnect = $db;
       }
 
