@@ -47,19 +47,4 @@
 </div>
 
 
-<script type="text/javascript" src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
 
-<script>
-    /*ワクワク度表示*/
-    $.fn.raty.defaults.path = "image";
-    $('.starRating').raty({
-      hints: [0,1,2,3,4,5]
-      click: function($score, $evt) {
-               $.post('/bucket_lists/items/create',{score:$score, url:$evt.currentTarget.baseURI},
-                      function(data){
-                        location.href = '/bucket_lists/items/create';
-                      }
-                     );
-      }
-    });
-</script>

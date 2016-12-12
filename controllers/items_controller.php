@@ -162,13 +162,7 @@
           }
       }
 
-      function show($option) {
-        specialEcho('Controllerのshow()が呼び出されました。');
-        specialEcho('$idは' . $option . 'です。');
-        $this->viewOptions = $this->item->show($option);
-        specialVarDump($this->viewOptions);
-        $this->action = 'show';
-        $this->display();
+      function show() {
       }
 
       function search(){

@@ -22,7 +22,7 @@
                 <div class="col-sm-4">
                   <label><i class="fa fa-star" aria-hidden="true"></i>&nbsp;ワクワク度</label>
                   <!--0-1の画像で出し分け-->
-                  <img src="/bucket_lists/views/image/3.png">
+                  <img id="wkwk" src="">
                 </div>
 
               </div>

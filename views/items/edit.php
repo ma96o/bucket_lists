@@ -9,7 +9,7 @@
                   <form method="post" action="/bucket_lists/items/update">
                             <div class="row">
                                 <div class="col-sm-12 ">
-                                    
+
                                         <div class="form-group">
                                             <label for="exampleInput3">内容詳細</label>
                                             <input type="text" class="form-control" id="comment" name="comment">

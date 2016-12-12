@@ -38,21 +38,7 @@
         // specialVarDump($items);
         return $items;
       }
-      function show($option) {
-            specialEcho('モデルのshowメソッド呼び出し');
-            specialEcho('$idは' . $option . 'です(モデル内)');
-
-            $sql = sprintf('SELECT i.*, l.`user_id` AS `is_like` FROM `items` AS i LEFT JOIN `likes` AS l
-                                    ON i.`id`=l.`item_id` AND l.`user_id`=%d
-                                    WHERE i.`id` = %d',
-                              mysqli_real_escape_string($this->dbconnect, $_SESSION['id']),
-                              mysqli_real_escape_string($this->dbconnect, $option)
-                        );
-
-            $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-
-            $rtn = mysqli_fetch_assoc($results);
-            return $rtn;
+      function show() {
       }
       function doing($option){
         $sql = sprintf('SELECT `user_id` FROM `items` WHERE `item_id`=%d AND `status`=1',
@@ -84,6 +70,7 @@
                                                     `item_name` = "%s",
                                                     `deadline` = "%s",
                                                     `comment` = "%s",
+                                                    `priority` = %d,
                                                     `status` = 1,
                                                     `list_id` = %d,
                                                     `user_id` = %d,
@@ -93,7 +80,7 @@
                         mysqli_real_escape_string($this->dbconnect,$post['item_name']),
                         mysqli_real_escape_string($this->dbconnect,$post['deadline']),
                         mysqli_real_escape_string($this->dbconnect,$post['comment']),
-                        // mysqli_real_escape_string($this->dbconnect,$post['score']),
+                        mysqli_real_escape_string($this->dbconnect,$post['score']),
                         mysqli_real_escape_string($this->dbconnect,$post['list_id']),
                         mysqli_real_escape_string($this->dbconnect,$_SESSION['id'])
                         // mysqli_real_escape_string($this->dbconnect,$post['tag_id'])
@@ -118,12 +105,13 @@
       function update($post) {
             $sql = sprintf('UPDATE `items` SET `deadline` = "%s",
                                                `comment` = "%s",
+                                               `priority` = %d,
                                                `list_id` = %d,
                                                `tag_id` = 1
                                            WHERE `id` = %d',
                         mysqli_real_escape_string($this->dbconnect,$post['deadline']),
                         mysqli_real_escape_string($this->dbconnect,$post['comment']),
-                        // mysqli_real_escape_string($this->dbconnect,$post['priority']),
+                        mysqli_real_escape_string($this->dbconnect,$post['score']),
                         mysqli_real_escape_string($this->dbconnect,$post['list_id']),
                         // mysqli_real_escape_string($this->dbconnect,$post['tag_id']),
                         $post['id']
