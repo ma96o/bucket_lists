@@ -46,8 +46,6 @@
 
       }
       function followings(){
-        specialEcho('usersのfollowings()が呼び出されました');
-        // フォローしている人の一覧
         $sql = sprintf('SELECT u.*, f.`following_id` 
                         FROM `users`
                         AS u
@@ -66,8 +64,6 @@
 
       }
       function followers(){
-        specialEcho('usersのfollowers()が呼び出されました');
-        // フォローされている人の一覧
         $sql = sprintf('SELECT u.*,f.`follower_id`, f.`following_id`
                         FROM `users`
                         AS u
@@ -82,11 +78,7 @@
         while($result = mysqli_fetch_assoc($results)){
                 $rtn[] = $result;
         }
-        // echo '<pre>';
-        // var_dump($rtn);
-        // echo '</pre>';
         return $rtn;
-
 
       }
    }

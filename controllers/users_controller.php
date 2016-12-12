@@ -64,9 +64,7 @@
       function update(){
       }
       function follow($option){
-        specialEcho('users_controllerのfollow()が呼び出されました');
         $this->user->follow($option);
-        // $this->displayProf();
         $referer = get_last_referer();
         $referer_resource = $referer[4];
         $referer_action = $referer[5];
@@ -75,9 +73,7 @@
         header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
       function unfollow($option){
-        specialEcho('users_controllerのunfollow()が呼び出されました');
         $this->user->unfollow($option);
-        // $this->displayProf();
         $referer = get_last_referer();
         $referer_resource = $referer[4];
         $referer_action = $referer[5];
@@ -87,12 +83,10 @@
       }
 
       function followings(){
-        specialEcho('users_controllerのfollowings()が呼び出されました');
         $this->followings = $this->user->followings();
         require('views/users/followings.php');
       }
       function followers(){
-        specialEcho('users_controllerのfollowers()が呼び出されました');
         $this->followers = $this->user->followers();
         require('views/users/followers.php');
       }
