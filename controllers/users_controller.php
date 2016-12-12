@@ -233,6 +233,7 @@ EOM;
         }
 
       function logout() {
+        isLogin();
         $_SESSION = array();
 
         if(ini_get("session.use_cookeis")){
@@ -250,6 +251,7 @@ EOM;
 
       }
       function mypage($option, $list_id){
+        isLogin();
         if($list_id == 0){
           $list_id = getFirstListId($option);
           header('location: /bucket_lists/users/mypage/'.$option.'/'.$list_id);
@@ -260,15 +262,18 @@ EOM;
         $this->displayProf($option, $list_id);
       }
       function edit($option){
+        isLogin();
         $this->user->edit($option);
         $this->display($option);
       }
       function update($post){
+        isLogin();
         $this->user->update($post);
         header('location: /bucket_lists/users/mypage/'.$_SESSION['id']);
       }
 
       function follow($option){
+        isLogin();
         special_echo('Controllerのfollow()が呼び出されました。');
         $this->action = 'follow';
         $this->display();
@@ -277,6 +282,7 @@ EOM;
       }
 
       function unfollow($option){
+        isLogin();
         special_echo('Controllerのunfollow()が呼び出されました。');
         $this->action = 'unfollow';
         $this->display();
@@ -285,9 +291,11 @@ EOM;
       }
 
       function followings($option, $list_id){
+        isLogin();
         $this->displayProf($option, $list_id);
       }
       function followers($option, $list_id){
+        isLogin();
         $this->displayProf($option, $list_id);
       }
       function display($option){
