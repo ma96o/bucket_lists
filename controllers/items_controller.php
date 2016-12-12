@@ -40,6 +40,14 @@
         $controller->update($post);
         break;
 
+      case 'conglaturation':
+        $controller->conglaturation($post);
+        break;
+
+      case 'tassei':
+        $controller->tassei($post);
+        break;
+
       case 'like':
         $controller->like($option);
         break;
@@ -102,10 +110,21 @@
         }
       function success(){
       }
-      function conglaturation(){
+      function conglaturation($option){
+
+            specialEcho('Controllerのconglaturation()が呼び出されました。');
+
+            // // model処理
+            $this->viewOptions = $this->item->conglaturation($option);
+
+            $this->action = 'conglaturation';
+            $this->display();
       }
-      function tassei(){
-      }
+      function tassei($post) {
+            $this->item->update($post);
+            // あとでindexに飛ぶように戻す。location:editは消す。header('Location: index');
+            header('Location: conglaturation');
+        }
       function undone(){
       }
       function trash(){
