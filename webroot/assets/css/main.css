@@ -16,49 +16,6 @@ a:focus{
 
 /*---ギザギザ----------------------------------------------------*/
 
-.offset {
-  background: #f9f9f9;
-}
-.jagged-border {
-  position: relative;
-  width: 100%;
-  height: 50px;
-  padding-top: 20px;
-}
-.jagged-border:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -10px;
-  width: 100%;
-  height: 10px;
-}
-.yellow-bg {
-  background: #FFE599;
-}
-.yellow-bg:before {
-  background: -webkit-linear-gradient(45deg, transparent 33.333%, #FFE599 33.333%, #FFE599 66.667%, transparent 66.667%), -webkit-linear-gradient(135deg, transparent 33.333%, #FFE599 33.333%, #FFE599 66.667%, transparent 66.667%);
-  background: linear-gradient(45deg, transparent 33.333%, #ecf0f1 33.333%, #FFE599 66.667%, transparent 66.667%), linear-gradient(-45deg, transparent 33.333%, #FFE599 33.333%, #FFE599 66.667%, transparent 66.667%);
-  background-size: 20px 40px;
-}
-.pink-bg {
-  background: #FFBFBF;
-}
-.pink-bg:before {
-  background: -webkit-linear-gradient(45deg, transparent 33.333%, #FFBFBF 33.333%, #FFBFBF 66.667%, transparent 66.667%), -webkit-linear-gradient(135deg, transparent 33.333%, #FFBFBF 33.333%, #FFBFBF 66.667%, transparent 66.667%);
-  background: linear-gradient(45deg, transparent 33.333%, #FFBFBF 33.333%, #FFBFBF 66.667%, transparent 66.667%), linear-gradient(-45deg, transparent 33.333%, #FFBFBF 33.333%, #FFBFBF 66.667%, transparent 66.667%);
-  background-size: 20px 40px;
-}
-.blue-bg {
-  background: #BFEFFF;
-}
-.blue-bg:before {
-  background: -webkit-linear-gradient(45deg, transparent 33.333%, #BFEFFF 33.333%, #BFEFFF 66.667%, transparent 66.667%), -webkit-linear-gradient(135deg, transparent 33.333%, #BFEFFF 33.333%, #BFEFFF 66.667%, transparent 66.667%);
-  background: linear-gradient(45deg, transparent 33.333%, #BFEFFF 33.333%, #BFEFFF 66.667%, transparent 66.667%), linear-gradient(-45deg, transparent 33.333%, #BFEFFF 33.333%, #BFEFFF 66.667%, transparent 66.667%);
-  background-size: 20px 40px;
-}
-
-
 
 /*---home----------------------------------------------------*/
 
@@ -67,13 +24,13 @@ a:focus{
 }
 
 .bg{
-  background-image:url("../../../views_test/image/home2.jpg"); 
+  background-image:url("/bucket_lists/views/image/home2.jpg"); 
   background-size: cover; 
-  min-height: 800px;
+  min-height: 600px;
 }
 
 .site_info h1{
-  color:#5e5e5e;
+  color:#fff;
   font-size: 60px;
   /*letter-spacing: 1px;*/
   /*font-family: 'Cabin Sketch', cursive;*/
@@ -127,10 +84,32 @@ a:focus{
   padding-bottom: 15px;
 }
 
+.bg_w{
+  background-color: #fff;
+}
+
 .bg_middle{
-  background-image:url("../../../views_test/image/home.jpg"); 
-  background-size: cover; 
-  min-height: 800px;
+  background-image:url("/bucket_lists/views/image/note.jpg");
+  background-repeat: repeat; 
+  /*background-size: cover; 
+  min-height: 800px;*/
+  padding: 15px;
+  color:#888;
+  text-align: center;
+}
+
+.dis h2{
+  font-family: 'Rancho';
+  font-size: 50px;
+}
+
+.dis span{
+  font-size: 15px;
+}
+
+.dis p{
+  font-size:18px;
+  margin: 20px auto;
 }
 
 
@@ -366,8 +345,7 @@ a:focus{
 }
 
 .sidebar li:hover,
-.sidebar li:focus,
-.sidebar li.active{
+.sidebar li:focus{
   background-color: #b2edf2;
 }
 
@@ -431,7 +409,6 @@ display: inline;
 
 .main-content li dd{
   float: right;
-  margin-left: 10px;
 }
 
 .main-content div.status-icon{
@@ -439,9 +416,9 @@ display: inline;
 }
 .main-content div.status-icon p{
   display: inline;
-  font-size: 13px;
+  font-size: 12px;
   color:#666;
-  margin-right: 10px;
+  font-weight: bold;
 }
 
 /*
@@ -456,15 +433,9 @@ margin-left: 15px;
   vertical-align: top;
 }
 
-/*
 .main-content li:hover,
 .main-content li:focus{
   background-color: #b2edf2;
-}*/
-
-.main-content li i:hover,
-.main-content li i:focus{
-  color: #00BCD4;
 }
 
 /*---follow follower----------------------------------------------------*/
