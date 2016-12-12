@@ -54,14 +54,6 @@
         $controller->mypage($option, $list_id);
         break;
 
-      case 'edit';
-        $controller->edit();
-        break;
-
-      case 'update';
-        $controller->update();
-        break;
-
       case 'follow';
         $controller->follow();
         break;
