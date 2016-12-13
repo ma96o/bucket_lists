@@ -127,14 +127,6 @@
         return $items;
       }
       function edit(){
-        // $sql = sprintf('SELECT * FROM `users`
-        //                 WHERE `user_id` = %d',
-        //        mysqli_real_escape_string($this->dbconnect, $_SESSION['id'])
-        // );
-        // $results = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
-
-        // $rtn = mysqli_fetch_assoc($results);
-        // return $rtn;
       }
       function update($post){
         $sql = sprintf('UPDATE `users` SET `nick_name`="%s", `description`="%s" WHERE `user_id`=%d',
