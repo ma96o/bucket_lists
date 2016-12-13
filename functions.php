@@ -177,6 +177,20 @@
       return $referer;
     }
 
+    // followingsテーブルからデータを取得
+    function follow_all($option){
+       require('dbconnect.php');
+       $sql = sprintf('SELECT *
+                       FROM `followings`
+                       WHERE `follower_id` = %d
+                       AND `following_id` = %d',
+              mysqli_real_escape_string($db, $_SESSION['id']),
+              mysqli_real_escape_string($db, $option)
+               );
+       $results = mysqli_query($db, $sql) or die(mysqli_error($db));
+       $rtn = mysqli_fetch_assoc($results);
+       return $rtn;
+    }
 
 //いいね判定 0->いいねしてない、1->いいねしてる
     function isLike($item_id){
