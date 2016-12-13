@@ -67,7 +67,7 @@
         <section class="content-main info">
             <div class="row">
                 <div class="col-md-10 col-xs-offset-1">
-                    <img class="center-block img-responsive img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
+                    <img class="center-block img-responsive img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
                     <h3><?php echo $user['nick_name']; ?>
 <?php if($user_flag == 0): ?>
                     <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>

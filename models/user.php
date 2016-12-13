@@ -71,13 +71,19 @@
         $sql = sprintf('INSERT INTO `users` SET
                 `nick_name`="%s",
                 `email`="%s",
+                `picture_path`="0.jpg",
                 `password`="%s",
                 `created`=NOW()',
                 mysqli_real_escape_string($this->dbconnect,$post['nick_name']),
                 mysqli_real_escape_string($this->dbconnect,$post['email']),
                 mysqli_real_escape_string($this->dbconnect,sha1($post['password']))
                 );
-            mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+        mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+
+        $sql = sprintf('INSERT INTO `lists` SET `list_name`="新規リスト１", `user_id`=%d',
+          mysqli_real_escape_string($this->dbconnect, getLastUser())
+          );
+        mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
         $sql = sprintf('UPDATE `pre_users` SET
                        `reg_flag` = 1 WHERE `email` = "%s"',
@@ -129,20 +135,23 @@
       function edit(){
       }
       function update($post){
-        if(empty($post['picture_path'])){
-          $me = aboutUser($_SESSION['id'])
-          $post['picture_path'] = $me['picture_path'];
-        }
+
+        $picture_path = date('YmdHis') . $post['picture_path'];
+        echo $post['tmp_picture_path'];
+
+        move_uploaded_file($post['tmp_picture_path'], '/bucket_lists/views/pf_image/'.$picture_path);
+
         $sql = sprintf('UPDATE `users` SET `nick_name`="%s", `picture_path`="%s", `description`="%s" WHERE `user_id`=%d',
           mysqli_real_escape_string($this->dbconnect, $post['nick_name']),
-          mysqli_real_escape_string($this->dbconnect, $post['picture_path']),
+          mysqli_real_escape_string($this->dbconnect, $picture_path),
           mysqli_real_escape_string($this->dbconnect, $post['description']),
           mysqli_real_escape_string($this->dbconnect, $_SESSION['id'])
           );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
       }
+
       function follow($option){
-        
+
         $sql = sprintf('INSERT INTO `followings` 
                         SET `follower_id` = %d, `following_id` = %d',
                         mysqli_real_escape_string($this->dbconnect,$_SESSION['id']),
@@ -167,5 +176,4 @@
       function followers(){
       }
    }
-
 ?>

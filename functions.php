@@ -195,4 +195,16 @@
 
     }
 
+    function getLastUser(){
+      require('dbconnect.php');
+      $sql = 'SELECT `user_id` FROM `users` WHERE 1';
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+      $last_id = 0;
+      while($table = mysqli_fetch_assoc($rec)){
+        $last_id = $table;
+      }
+      return ++$last_id['user_id'];
+    }
+
 ?>

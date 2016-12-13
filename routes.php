@@ -16,6 +16,11 @@
     if(!empty($_POST)){
       $post = $_POST;
     }
+    //pf画像users/update
+    if(!empty($_FILES['picture_path']['name'])){
+      $post['picture_path'] = $_FILES['picture_path']['name'];
+      $post['tmp_picture_path'] = $_FILES['picture_path']['tmp_name'];
+    }
     if(isset($para[3])){
       $list_id = $para[3];
     }
