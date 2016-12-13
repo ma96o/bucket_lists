@@ -11,11 +11,12 @@
                                 <div class="col-sm-12 ">
                                     <input type="hidden" id="hidden" name="item_id">
                                         <div class="form-group">
+                                            <input type="hidden" name="item_id" id="title" value="<?php echo getLast(); ?>">
                                             <label for="exampleInput3">項目名</label>
                                             <input type="hidden" id="title" name="item_name">
                                             <input type="text" class="form-control" id="exampleInput2" name="item_name">
                                             <label for="exampleInput3">内容詳細</label>
-                                            <input type="hidden" id="title" name="item_name">
+                                            <input type="hidden" id="title" name="comment">
                                             <input type="text" class="form-control" id="exampleInput2" name="comment">
                                         </div>
                                         <label>リスト選択</label>
@@ -32,8 +33,9 @@
                                             <input type="date" class="form-control" id="exampleInput1" name="deadline">
                                         </div>
 
-        <label for="name" class="col-md-3 control-label">tag_id</label>
-        <textarea name="tag_id" class="form-control" cols="30" rows="1"></textarea>
+        <!-- <label for="name" class="col-md-3 control-label">tag_id</label> -->
+        <input type="hidden" id="title" name="tag_id">
+        <!-- <textarea name="tag_id" class="form-control" cols="30" rows="1"></textarea> -->
 
                                         <label>わくわく度</label>
                                         <div class="starRating">
