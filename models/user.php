@@ -159,40 +159,8 @@
 
       }
       function followings(){
-        $sql = sprintf('SELECT u.*, f.`following_id` 
-                        FROM `users`
-                        AS u
-                        LEFT JOIN `followings`
-                        AS f
-                        ON u.`user_id` = f.`following_id`
-                        WHERE u.`user_id` = f.`following_id`
-                        AND f.`follower_id` = %d',
-               mysqli_real_escape_string($this->dbconnect,$_SESSION['id']));
-        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-        $rtn = array();
-        while($result = mysqli_fetch_assoc($results)){
-                $rtn[] = $result;
-        }
-        return $rtn;
-
       }
       function followers(){
-        $sql = sprintf('SELECT u.*,f.`follower_id`, f.`following_id`
-                        FROM `users`
-                        AS u
-                        LEFT JOIN `followings`
-                        AS f
-                        ON u.`user_id` = f.`follower_id`
-                        WHERE u.`user_id` = f.`follower_id`
-                        AND f.`following_id` = %d',
-               mysqli_real_escape_string($this->dbconnect,$_SESSION['id']));
-        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-        $rtn = array();
-        while($result = mysqli_fetch_assoc($results)){
-                $rtn[] = $result;
-        }
-        return $rtn;
-
       }
    }
 
