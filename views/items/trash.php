@@ -8,14 +8,15 @@
         <?php $i = 1; foreach($this->viewsOptions as $item): ?>
                     <a data-toggle="modal" href="" data-target="#item_trash" data-name="item_id" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-created="<?php echo $item['created']; ?>" data-priority="<?php echo $item['priority']; ?>">
                     <li>
-        <?php echo $i++; ?>
                         <dl>
-                            <dt class="trash"><?php echo $item['item_name']; ?></dt>
+                            <dt class="trash"><span><?php echo $i++; ?></span><?php echo $item['item_name']; ?></dt>
 <?php if($user_flag == 0): ?>
                             <dd><a data-toggle="modal" href="" data-target="#edit_trash" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>" data-id="<?php echo $item['id']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
 <?php endif; ?>
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;<?php echo $item['created']; ?></p>
                         </dl>
+                        <div class="status-icon">
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;<?php echo $item['created']; ?></p>
+                        </div>
                     </li>
                     </a>
         <?php endforeach; ?>

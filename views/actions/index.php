@@ -3,10 +3,10 @@
         <div class="container-fluid">
           <div class="row">
             <div class="content-main">
-              <section class="col-sm-10 col-xs-offset-1 main-content">
+              <section class="col-sm-8 col-xs-offset-2 main-content">
   
                 <div class="timeline_list">
-                    <h4><i class="fa fa-tags" aria-hidden="true"></i>  timeline</h4>
+                    <h4><i class="fa fa-clock-o" aria-hidden="true"></i>  timeline</h4>
 
                     <?php foreach($this->viewsOptions as $action): $user = aboutUser($action['user_id']); $item = aboutItem($action['item_id']); ?>
                       <?php if($action['user_id'] == 1): ?>

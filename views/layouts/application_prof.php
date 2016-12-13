@@ -84,13 +84,13 @@
 
         <!--タブ-->
         <section class="row">
-            <div class="col-md-8 col-xs-offset-2">
+            <div class="col-md-10 col-xs-offset-1">
                   <ul class="nav nav-pills nav-justified">
-                    <li<?php if($this->action == 'mypage'){echo ' class="active"';} ?>><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>/<?php echo getFirstListId($user['user_id']); ?>">バケットリスト</a></li>
-                    <li<?php if($this->action == 'success'){echo ' class="active"';} ?>><a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>">達成リスト</a></li>
-                    <li<?php if($this->action == 'trash'){echo ' class="active"';} ?>><a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>">ゴミ箱リスト</a></li>
-                    <li<?php if($this->action == 'followings'){echo ' class="active"';} ?>><a href="/bucket_lists/users/followings/<?php echo $user['user_id']; ?>">フォロー <?php echo countFollowing($user['user_id']); ?></a></li>
-                    <li<?php if($this->action == 'followers'){echo ' class="active"';} ?>><a href="/bucket_lists/users/followers/<?php echo $user['user_id']; ?>">フォロワー <?php echo countFollower($user['user_id']); ?></a></li>
+                    <li<?php if($this->action == 'mypage'){echo ' class="active"';} ?>><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>/<?php echo getFirstListId($user['user_id']); ?>"><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;バケットリスト</a></li>
+                    <li<?php if($this->action == 'success'){echo ' class="active"';} ?>><a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>"><i class="fa fa-check-circle-o" aria-hidden="true"></i>達成リスト</a></li>
+                    <li<?php if($this->action == 'trash'){echo ' class="active"';} ?>><a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i>ゴミ箱リスト</a></li>
+                    <li<?php if($this->action == 'followings'){echo ' class="active"';} ?>><a href="/bucket_lists/users/followings/<?php echo $user['user_id']; ?>"><i class="fa fa-user-circle" aria-hidden="true"></i>フォロー <?php echo countFollowing($user['user_id']); ?></a></li>
+                    <li<?php if($this->action == 'followers'){echo ' class="active"';} ?>><a href="/bucket_lists/users/followers/<?php echo $user['user_id']; ?>"><i class="fa fa-user-circle-o" aria-hidden="true"></i>フォロワー <?php echo countFollower($user['user_id']); ?></a></li>
                   </ul>
             </div>
         </section>

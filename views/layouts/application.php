@@ -18,7 +18,7 @@
     if($this->action == 'trend'){
         echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/trending.css">';
     } elseif($this->resource == 'actions' && $this->action == 'index') {
-        echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">';
+        //echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">';
     }
 
 ?>
