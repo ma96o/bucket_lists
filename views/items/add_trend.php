@@ -1,4 +1,4 @@
-<div class="modal fade" id="add_new" tabindex="-1" role="dialog">
+<div class="modal fade" id="add_trend" tabindex="-1" role="dialog">
 <div class="modal-dialog modal-lg">  
               <div class="modal-content">
                   <div class="modal-header">
@@ -11,9 +11,6 @@
                                 <div class="col-sm-12 ">
                                     <input type="hidden" id="hidden" name="item_id">
                                         <div class="form-group">
-                                            <label for="exampleInput3">項目名</label>
-                                            <input type="hidden" id="title" name="item_name">
-                                            <input type="text" class="form-control" id="exampleInput2" name="item_name">
                                             <label for="exampleInput3">内容詳細</label>
                                             <input type="hidden" id="title" name="item_name">
                                             <input type="text" class="form-control" id="exampleInput2" name="comment">

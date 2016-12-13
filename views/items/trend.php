@@ -48,7 +48,7 @@
                 <span class="done">done <?php echo countDone($item['item_id']); ?></span>
             </a>
             <p>
-            <button type="button" class="btn btn-pink btn-circle center-block" data-toggle="modal" data-target="#add_new" data-id="<?php echo $item['item_id']; ?>" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>">
+            <button type="button" class="btn btn-pink btn-circle center-block" data-toggle="modal" data-target="#add_trend" data-id="<?php echo $item['item_id']; ?>" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>">
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
             </p>
@@ -60,6 +60,6 @@
         </div>
     </div>
 
-    <?php include('views/items/add.php'); ?>
+    <?php include('views/items/add_trend.php'); ?>
 
     <?php include('views/items/show_trend.php'); ?>
