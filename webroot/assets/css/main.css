@@ -237,20 +237,25 @@ span.blue:before{
     box-shadow: none;
 }
 
-/*---timeline----------------------------------------------------*/
+/*---page_default----------------------------------------------------*/
 
-.timeline_list {
+.timeline_list,
+.follow_follower_list{
   margin: 10px auto;
 }
 
-.timeline_list h4{
+.timeline_list h4,
+.follow_follower_list{
   color:#5e5e5e;
 }
 
-.timeline_list h4 i{
+.timeline_list h4 i,
+.follow_follower_list h4 i{
   padding-left: 15px;
   color: #00bcd4;
 }
+
+/*---timeline----------------------------------------------------*/
 
 .timeline{
   padding: 10px;
@@ -259,30 +264,65 @@ span.blue:before{
   color:#888;
 }
 
+.timeline{
+  background-color: #f5f5f5;
+}
+
+.timeline.bg_w{
+  background-color: #fafafa;
+}
+
 .timeline img{
   float: left;
   margin-right: 10px;
 }
 
-.timeline p{
-  font-size: 15px;
+.timeline p.name{
+  font-size: 13px;
   margin-bottom: 0;
 }
 
-.timeline span.date{
-  color:#888; 
+.timeline p.name a{
+  color: #0097a7;
 }
 
-.timeline span.detail{
-  display: block;
-  padding: 0px;
+.timeline p.date{
+  color:#888;
+  font-size: 12px;
+  margin-bottom: 0; 
 }
 
-.timeline span.detail a{
-  font-weight: bold;
-  color: #00bcd4;
-
+.timeline span.detail_trash:before,
+.timeline span.detail_done:before,
+.timeline span.detail_doing:before{
+  margin-right: 10px;
+  color:#888;
 }
+
+.timeline span.detail_trash a,
+.timeline span.detail_done a,
+.timeline span.detail_doing a{
+  color: #0097a7;
+  font-size: 13px;
+}
+
+
+.timeline span.detail_trash:before{
+  font-family: FontAwesome;
+  content: '\f014'; /* アイコンのunicode */  
+}
+
+.timeline span.detail_done:before{
+  font-family: FontAwesome;
+  content: '\f00c'; /* アイコンのunicode */
+}
+
+.timeline span.detail_doing:before{
+  font-family: FontAwesome;
+  content: '\f0f6'; /* アイコンのunicode */
+}
+
+
 
 /*---item_detail----------------------------------------------------*/
 
@@ -325,41 +365,6 @@ span.blue:before{
 .item_detail label{
   color:#5e5e5e;
 }
-
-.timeline{
-  padding: 10px;
-  border-bottom: 1px dotted #5e5e5e;
-  clear: both;
-}
-
-.timeline img{
-  float: left;
-  margin-right: 10px;
-}
-
-.timeline p{
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 0;
-}
-
-.timeline span.date{
-  color:#888; 
-  font-size: 13px;
-}
-
-.timeline span.detail{
-  display: block;
-  padding: 0px;
-}
-
-.timeline span.detail a{
-  font-weight: bold;
-  color: #00bcd4;
-
-}
-
-
 
 
 /*---sidebar(mypage)----------------------------------------------------*/
@@ -510,13 +515,14 @@ font-size: 16px;
 
 /*---follow follower----------------------------------------------------*/
 
-.follow_follower{
-
-}
-
+    
 .follow_follower{
   padding: 10px;
   border-bottom: 1px dotted #5e5e5e; 
+}
+
+.follow_follower a{
+  display: inline-block;
 }
 
 .follow_follower img{

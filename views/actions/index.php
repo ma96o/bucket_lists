@@ -10,37 +10,36 @@
 
                     <?php foreach($this->viewsOptions as $action): $user = aboutUser($action['user_id']); $item = aboutItem($action['item_id']); ?>
                       <?php if($action['user_id'] == 1): ?>
-
                             <div class="timeline">
                                   <img class="img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" width="50" height="50">
-                                  <p>自分！！！！</p>
-                                  <span class="date"><?php echo $action['created']; ?></span>
+                                  <p class="name"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>">Your action</a></p>
+                                  <p class="date"><?php echo $action['created']; ?></p>
                           <?php if($action['status_id'] == 1): ?>
-                                  <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが「<?php echo $item['item_name']; ?>」を<a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>">バケットリスト</a>に追加しました。
+                                  <span class="detail_doing"><q><?php echo $item['item_name']; ?></q>を<a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>">バケットリスト</a>に追加しました。
                                 </span>
                           <?php elseif($action['status_id'] == 2): ?>
-                                  <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが「<?php echo $item['item_name']; ?>」を<a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>">達成リスト</a>に追加しました。
+                                  <span class="detail_done"><q><?php echo $item['item_name']; ?></q>を<a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>">達成リスト</a>に追加しました。
                                 </span>
                           <?php elseif($action['status_id'] == 3): ?>
-                                  <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが「<?php echo $item['item_name']; ?>」を<a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>">ゴミ箱リスト</a>に追加しました。
+                                  <span class="detail_trash"><q><?php echo $item['item_name']; ?></q>を<a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>">ゴミ箱リスト</a>に追加しました。
                                 </span>
                           <?php endif; ?>
                             </div>
 
                       <?php else: ?>
 
-                        <div class="timeline">
+                        <div class="timeline bg_w">
                               <img class="img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" width="50" height="50">
-                              <p><?php echo $user['nick_name']; ?></p>
-                              <span class="date"><?php echo $action['created']; ?></span>
+                              <p class="name"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a></p>
+                              <p class="date"><?php echo $action['created']; ?></p>
                       <?php if($action['status_id'] == 1): ?>
-                              <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが「<?php echo $item['item_name']; ?>」を<a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>">バケットリスト</a>に追加しました。
+                              <span class="detail_doing"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが<q><?php echo $item['item_name']; ?></q>を<a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>">バケットリスト</a>に追加しました。
                                 </span>
                       <?php elseif($action['status_id'] == 2): ?>
-                              <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが「<?php echo $item['item_name']; ?>」を<a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>">達成リスト</a>に追加しました。
+                              <span class="detail_done"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが「<?php echo $item['item_name']; ?>」を<a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>">達成リスト</a>に追加しました。
                                 </span>
                       <?php elseif($action['status_id'] == 3): ?>
-                              <span class="detail"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが「<?php echo $item['item_name']; ?>」を<a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>">ゴミ箱リスト</a>に追加しました。
+                              <span class="detail_trash"><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>"><?php echo $user['nick_name']; ?></a>ちゃんが「<?php echo $item['item_name']; ?>」を<a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>">ゴミ箱リスト</a>に追加しました。
                                 </span>
                       <?php endif; ?>
                         </div>

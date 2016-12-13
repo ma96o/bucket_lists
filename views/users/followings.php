@@ -1,22 +1,28 @@
-       <!-- フォローしている人の一覧 -->
+<!-- フォローしている人の一覧 -->
+   <div class="container">
+
         <div class="container-fluid">
           <div class="row">
-            
-            <section class="col-sm-10 col-xs-offset-1 main-content">
-                <!--フォロー一覧-->
+            <div class="content-main">
+              <section class="col-sm-8 col-xs-offset-2 main-content">
+  
+                <div class="follow_follower_list">
+                    <h4><i class="fa fa-user-circle" aria-hidden="true"></i>  follow</h4>
 
-                <?php foreach($this->followings as $following): ?>
-                    <div class="follow_list">
-                        <div>
+                <ul class="list-unstyled">
+                     <?php foreach($this->followings as $following): ?>
+                        <a href="">
+                        <li class="follow_followers">
                             <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
                             <span><?php echo $following['nick_name']; ?></span>
-                            <a href="/bucket_lists/users/unfollow/<?php echo $following['user_id'] ?>" class="btn btn-default" style="float: right;">
-                                フォローを外す
-                            </a>
-                        </div>
+                            <a href="/bucket_lists/users/unfollow/<?php echo $following['user_id'] ?>" class="btn btn-default" style="float: right;">フォローを外す</a>
+                        </li>
+                        </a>
                     <?php endforeach; ?>
+                </ul>
                 </div>
-
-            </section>
+             </section>
+            </div>
           </div>
         </div>
+   </div>
