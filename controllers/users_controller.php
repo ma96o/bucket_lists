@@ -74,9 +74,12 @@
       case 'edit':
         $controller->edit($option);
         break;
+
       case 'update':
         $controller->update($post);
-
+        break;
+      case 'search':
+        $controller->search($post);
         break;
       default:
         break;
@@ -279,12 +282,16 @@ EOM;
 
       function followings($option){
         $this->followings = $this->user->followings();
-        $this->displayProf($option, $list_id);
+        $this->displayProf($option, 0);
       }
 
       function followers($option){
         $this->followers = $this->user->followers();
-        $this->displayProf($option, $list_id);
+        $this->displayProf($option, 0);
+      }
+      function search($post){
+        $this->viewsOptions = $this->user->search($post);
+        $this->display($post['search_word']);
       }
       function display($option){
         require('views/layouts/application.php');

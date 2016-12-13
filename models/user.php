@@ -208,6 +208,19 @@
         return $rtn;
       }
 
+      function search($post){
+        $sql = sprintf('SELECT * FROM `users` WHERE `nick_name` LIKE "%%%s%%"',
+          mysqli_real_escape_string($this->dbconnect, $post['search_word'])
+          );
+        $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+
+        $users = array();
+        while ($table = mysqli_fetch_assoc($rec)){
+          $users[] = $table;
+        }
+        return $users;
+      }
+
     }
 
 ?>
