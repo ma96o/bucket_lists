@@ -63,6 +63,14 @@
         $controller->unfollow($option);
         break;
 
+      case 'followings';
+        $controller->followings($option);
+        break;
+
+      case 'followers';
+        $controller->followers($option);
+        break;
+
       case 'edit':
         $controller->edit($option);
         break;
@@ -105,7 +113,7 @@
               exit();
                 }
         } else {
-            $this->display();
+            $this->display($option);
         }
       }
 
@@ -208,7 +216,7 @@ EOM;
 
       function login(){
         $this->action = 'login';
-        $this->display();
+        $this->display($option);
       }
 
       function auth($post) {
@@ -278,9 +286,14 @@ EOM;
         header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
 
-      function followings(){
+      function followings($option){
+        $this->followings = $this->user->followings();
+        $this->displayProf($option, $list_id);
       }
-      function followers(){
+
+      function followers($option){
+        $this->followers = $this->user->followers();
+        $this->displayProf($option, $list_id);
       }
       function display($option){
         require('views/layouts/application.php');
@@ -289,5 +302,4 @@ EOM;
         require('views/layouts/application_prof.php');
       }
     }
-
 ?>
