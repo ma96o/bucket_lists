@@ -9,14 +9,11 @@
                   <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-12 ">
-                                    <input type="hidden" id="hidden" name="item_id">
                                         <div class="form-group">
                                             <input type="hidden" name="item_id" id="title" value="<?php echo getLast(); ?>">
                                             <label for="exampleInput3">項目名</label>
-                                            <input type="hidden" id="title" name="item_name">
                                             <input type="text" class="form-control" id="exampleInput2" name="item_name">
                                             <label for="exampleInput3">内容詳細</label>
-                                            <input type="hidden" id="title" name="comment">
                                             <input type="text" class="form-control" id="exampleInput2" name="comment">
                                         </div>
                                         <label>リスト選択</label>
