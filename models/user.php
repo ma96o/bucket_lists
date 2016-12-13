@@ -158,6 +158,7 @@
 
 
       }
+
       function followings(){
         $sql = sprintf('SELECT u.*, f.`following_id`
                         FROM `users`
@@ -174,8 +175,8 @@
                 $rtn[] = $result;
         }
         return $rtn;
-
       }
+
       function followers(){
         $sql = sprintf('SELECT u.*,f.`follower_id`, f.`following_id`
                         FROM `users`
@@ -192,8 +193,6 @@
                 $rtn[] = $result;
         }
         return $rtn;
-
       }
-   }
 
 ?>

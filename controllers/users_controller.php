@@ -302,5 +302,4 @@ EOM;
         require('views/layouts/application_prof.php');
       }
     }
-
 ?>
