@@ -268,8 +268,8 @@ EOM;
         $this->displayProf($option, $list_id);
 
       }
-      function edit($option){
-        $this->user->edit($option);
+      function edit(){
+        $this->user->edit();
         $this->display($option);
       }
       function update($post){
