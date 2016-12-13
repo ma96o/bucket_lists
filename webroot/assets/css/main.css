@@ -81,9 +81,9 @@ span.blue:before{
 }
 
 .bg{
-  background-image:url("../../../views_test/image/home2.jpg"); 
+  background-image:url("/bucket_lists/views/image/home2.jpg"); 
   background-size: cover; 
-  min-height: 800px;
+  min-height: 600px;
 }
 
 .site_info h1{
@@ -142,7 +142,7 @@ span.blue:before{
 }
 
 .bg_middle{
-  background-image:url("../../../views_test/image/home.jpg"); 
+  background-image:url("/bucket_lists/views/image/home.jpg"); 
   background-size: cover; 
   min-height: 800px;
 }
@@ -498,11 +498,10 @@ font-size: 16px;
   padding-right: 5px;
 }
 
-/*
-.main-content div img{
+.main-content div.status-icon p img{
   width:85px;
   vertical-align: top;
-}*/
+}
 
 .main-content li i:hover,
 .main-content li i:focus{
