@@ -5,6 +5,7 @@
             <section class="col-sm-10 col-xs-offset-1 main-content">
                 <!--フォロー一覧-->
 
+
                 <?php foreach($this->followings as $following): ?>
                     <div class="follow_list">
                         <div>

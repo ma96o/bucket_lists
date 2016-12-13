@@ -171,7 +171,6 @@
 
 // 前アクション参照用関数
     function get_last_referer() {
-      specialEcho('get_last_referer関数が呼び出されました');
       $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null; // 遷移元のURLが存在すれば取得
       $referer = explode('/', $referer);
       return $referer;

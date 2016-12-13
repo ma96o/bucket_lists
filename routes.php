@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION['id'] = 1;
+    $_SESSION['id'] = 5;
     require('functions.php');
 
     $para = explode('/', $_GET['url']);
@@ -21,9 +21,6 @@
       $list_id = $para[3];
     }
 
-
-    // 仮ユーザーとしてログインしている
-    $_SESSION['id'] = 1;
 
     require('controllers/'.$resource.'_controller.php');
 

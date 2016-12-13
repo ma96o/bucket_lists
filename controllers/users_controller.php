@@ -63,6 +63,14 @@
         $controller->unfollow($option);
         break;
 
+      case 'followings';
+        $controller->followings($option);
+        break;
+
+      case 'followers';
+        $controller->followers($option);
+        break;
+
       case 'edit':
         $controller->edit($option);
         break;
@@ -279,8 +287,12 @@ EOM;
       }
 
       function followings(){
+        $this->followings = $this->user->followings();
+        $this->displayProf($option, $list_id);
       }
       function followers(){
+        $this->followers = $this->user->followers();
+        $this->displayProf($option, $list_id);
       }
       function display($option){
         require('views/layouts/application.php');
