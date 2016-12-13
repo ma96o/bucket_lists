@@ -288,12 +288,12 @@ EOM;
 
       function followings($option){
         $this->followings = $this->user->followings();
-        $this->display($option);
+        $this->displayProf($option, $list_id);
       }
 
       function followers($option){
         $this->followers = $this->user->followers();
-        $this->display($option);
+        $this->displayProf($option, $list_id);
       }
       function display($option){
         require('views/layouts/application.php');
