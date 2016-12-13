@@ -64,11 +64,11 @@
         break;
 
       case 'followings';
-        $controller->followings();
+        $controller->followings($option);
         break;
 
       case 'followers';
-        $controller->followers();
+        $controller->followers($option);
         break;
 
       case 'edit':
@@ -113,7 +113,7 @@
               exit();
                 }
         } else {
-            $this->display();
+            $this->display($option);
         }
       }
 
@@ -216,7 +216,7 @@ EOM;
 
       function login(){
         $this->action = 'login';
-        $this->display();
+        $this->display($option);
       }
 
       function auth($post) {
@@ -286,14 +286,14 @@ EOM;
         header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
 
-      function followings(){
+      function followings($option){
         $this->followings = $this->user->followings();
-        require('views/users/followings.php');
+        $this->display($option);
       }
-      function followers(){
-        $this->followers = $this->user->followers();
-        require('views/users/followers.php');
 
+      function followers($option){
+        $this->followers = $this->user->followers();
+        $this->display($option);
       }
       function display($option){
         require('views/layouts/application.php');
