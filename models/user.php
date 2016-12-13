@@ -104,7 +104,7 @@
             $record = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($db));
             $login_flag = false;
             if ($table = mysqli_fetch_assoc($record)) {
-                $_SESSION['user_id'] = $table['user_id'];
+                $_SESSION['id'] = $table['user_id'];
                 $_SESSION['time'] = time();
                 $login_flag = true;
             } else {
@@ -129,9 +129,13 @@
       function edit(){
       }
       function update($post){
-        $sql = sprintf('UPDATE `users` SET `nick_name`="%s", `description`="%s" WHERE `user_id`=%d',
+        if(empty($post['picture_path'])){
+          $me = aboutUser($_SESSION['id'])
+          $post['picture_path'] = $me['picture_path'];
+        }
+        $sql = sprintf('UPDATE `users` SET `nick_name`="%s", `picture_path`="%s", `description`="%s" WHERE `user_id`=%d',
           mysqli_real_escape_string($this->dbconnect, $post['nick_name']),
-          // mysqli_real_escape_string($this->dbconnect, $post['picture_path']),
+          mysqli_real_escape_string($this->dbconnect, $post['picture_path']),
           mysqli_real_escape_string($this->dbconnect, $post['description']),
           mysqli_real_escape_string($this->dbconnect, $_SESSION['id'])
           );

@@ -21,11 +21,7 @@
         $controller->trash($option);
         break;
       case 'create':
-        if (!empty($post['list_id']) && !empty($post['comment']) && !empty($post['deadline'])) {
-            $controller->create($post);
-        } else {
-            $controller->success($option);
-        }
+        $controller->create($post);
         break;
       case 'update':
         $controller->update($post);
@@ -86,6 +82,10 @@
         $this->display();
       }
       function create($post) {
+          if (empty($post['list_id']) || empty($post['comment']) || empty($post['deadline'])) {
+              header('location: /bucket_lists/users/mypage/'.$_SESSION['id']);
+              exit();
+          }
           specialEcho('Controllerのcreate()が呼び出されました。');
           $this->item->create($post);
           header('Location: /bucket_lists/users/mypage/'.$_SESSION['id'].'/'.$post['list_id']);
