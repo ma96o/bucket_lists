@@ -98,5 +98,9 @@
 
          <!--modal show_item-->
 
+<<<<<<< HEAD
           <?php include('views/items/show.php'); ?>
 
+=======
+          <?php include('views/items/show.php'); ?>
+>>>>>>> master

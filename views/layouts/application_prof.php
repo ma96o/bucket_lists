@@ -6,6 +6,7 @@
         $user_flag = 1;
     }
     $user = aboutUser($option);
+    $rtn = follow_all($option);
 
 ?>
 <!DOCTYPE html>
@@ -72,8 +73,10 @@
 <?php if($user_flag == 0): ?>
                     <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </span>
-<?php else: ?>
+<?php elseif($user_flag == 1 && empty($rtn)): ?>
                     <a href="/bucket_lists/users/follow/<?php echo $user['user_id']; ?>" class="btn btn-pink">フォロー</a>
+<?php elseif($user_flag == 1 && !empty($rtn)): ?>
+                    <a href="/bucket_lists/users/unfollow/<?php echo $user['user_id'] ?>" class="btn btn-pink">フォローを外す</a>
 <?php endif; ?>
                     </h3>
                     <p><?php echo $user['description']; ?></p>
