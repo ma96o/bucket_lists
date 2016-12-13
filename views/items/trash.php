@@ -6,7 +6,7 @@
                 <!--項目一覧-->
                  <ul class="list-unstyled">
         <?php $i = 1; foreach($this->viewsOptions as $item): ?>
-                    <a data-toggle="modal" href="" data-target="#item_trash" data-name="item_id" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-created="<?php echo $item['created']; ?>">
+                    <a data-toggle="modal" href="" data-target="#item_trash" data-name="item_id" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-created="<?php echo $item['created']; ?>" data-priority="<?php echo $item['priority']; ?>">
                     <li>
         <?php echo $i++; ?>
                         <dl>

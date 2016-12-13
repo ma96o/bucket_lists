@@ -40,13 +40,13 @@
                 <!--項目一覧-->
                  <ul class="list-unstyled">
                  <?php $i = 1; foreach($this->viewsOptions as $item): ?>
-                <a data-toggle="modal" href="" data-target="#show_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>" <?php if($item['status'] == 1){echo 'data-status="doing"';}else{echo 'data-status="done"';} ?>>
+                <a data-toggle="modal" href="" data-target="#show_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>" <?php if($item['status'] == 1){echo 'data-status="doing"';}else{echo 'data-status="done"';} ?> data-priority="<?php echo $item['priority']; ?>">
                     <li>
                  <?php echo $i++; ?>
                         <dl>
                             <dt<?php if($item['status'] == 2){echo ' class="success"';}elseif($item['status'] == 3){echo ' class="trash"';} ?>><?php echo $item['item_name']; ?></dt>
                         <?php if($user_flag == 0): ?>
-                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
+                            <dd><a data-toggle="modal" href="" data-target="#edit_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>" data-priority="<?php echo $item['priority']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
                             <dd><a data-toggle="modal" href="" data-target="#trash_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id'] ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
                             <dd><a data-toggle="modal" href="" data-target="#success_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
                         <?php endif; ?>
@@ -60,7 +60,7 @@
                           <p><a href="/bucket_lists/items/unlike/<?php echo $item['id'] ?>"><i class="fa fa-flag" aria-hidden="true" style="color: red;"></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
                   <?php endif; ?>
 
-                            <p><img src="/bucket_lists/views/image/0.png"></p>
+                            <p><img src="/bucket_lists/views/image/<?php echo $item['priority']; ?>.png"></p>
                         </div>
                     </li>
                 </a>

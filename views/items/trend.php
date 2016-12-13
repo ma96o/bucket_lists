@@ -42,7 +42,7 @@
           <!--content-->  
 <?php foreach($this->viewsOptions as $item): ?>
         　<article class="white-panel">
-            <a href="" data-toggle="modal" data-target="#item_detail" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>" data-done="<?php echo countDone($item['item_id']); ?>" data-doing="<?php echo countDoing($item['item_id']); ?>">
+            <a href="" data-toggle="modal" data-target="#item_detail" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>" data-done="<?php echo countDone($item['item_id']); ?>" data-doing="<?php echo countDoing($item['item_id']); ?>" data-id="<?php echo $item['item_id']; ?>">
                 <h4><i class="fa fa-sticky-note-o" aria-hidden="true"></i><?php echo $item['item_name']; ?></h4>
                 <span><i class="fa fa-star-half-o" aria-hidden="true"></i> doing <?php echo countDoing($item['item_id']); ?></span>
                 <span><i class="fa fa-star" aria-hidden="true"></i> done <?php echo countDone($item['item_id']); ?></span>
