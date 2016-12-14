@@ -5,8 +5,9 @@
     $controller = new UsersController($resource, $action);
 
     switch ($action) {
+
       case 'home';
-        $controller->home($post);
+        $controller->home($post,$option);
         break;
 
       case 'pre_create';
@@ -54,28 +55,20 @@
         $controller->mypage($option, $list_id);
         break;
 
-      case 'edit';
-        $controller->edit();
-        break;
-
-      case 'update';
-        $controller->update();
-        break;
-
       case 'follow';
-        $controller->follow();
+        $controller->follow($option);
         break;
 
       case 'unfollow';
-        $controller->unfollow();
+        $controller->unfollow($option);
         break;
 
       case 'followings';
-        $controller->followings();
+        $controller->followings($option);
         break;
 
       case 'followers';
-        $controller->followers();
+        $controller->followers($option);
         break;
 
       case 'edit':
@@ -83,6 +76,7 @@
         break;
       case 'update':
         $controller->update($post);
+
         break;
       default:
         break;
@@ -93,29 +87,33 @@
       private $resource;
       private $action;
       private $viewOptions;
+      private $followings;
+      private $followers;
       private $viewErrors;
 
       function __construct($resource, $action) {
         $this->user = new User();
         $this->resource = $resource;
         $this->action = $action;
+        $this->followings = array();
+        $this->followers = array();
         $this->viewOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
         }
 
-      function home($post) {
+      function home($post,$option) {
         if (!empty($post)) {
           $error = $this->user->home_valid($post);
             if (!empty($error)) {
               $this->viewOptions = $post;
               $this->viewErrors = $error;
-              $this->display();
+              $this->display($option);
           } else {
               $_SESSION['users'] = $post;
               header('Location: pre_create');
               exit();
                 }
         } else {
-            $this->display();
+            $this->display($option);
         }
       }
 
@@ -171,7 +169,7 @@ EOM;
 
       function pre_thanks() {
         $this->action = 'pre_thanks';
-        $this->display();
+        $this->display($option);
       }
 
       function signup($post, $option) {
@@ -218,7 +216,7 @@ EOM;
 
       function login(){
         $this->action = 'login';
-        $this->display();
+        $this->display($option);
       }
 
       function auth($post) {
@@ -250,6 +248,8 @@ EOM;
         exit();
 
       }
+
+
       function mypage($option, $list_id){
         isLogin();
         if($list_id == 0){
@@ -260,6 +260,7 @@ EOM;
         $this->viewsOptions = $this->user->mypage($option, $list_id);
 
         $this->displayProf($option, $list_id);
+
       }
       function edit($option){
         isLogin();
@@ -274,28 +275,30 @@ EOM;
 
       function follow($option){
         isLogin();
-        special_echo('Controllerのfollow()が呼び出されました。');
-        $this->action = 'follow';
-        $this->display();
-        $this->displayProf();
-        header('Location: ../index');
+        $this->user->follow($option);
+        $referer = get_last_referer();
+        $referer_resource = $referer[4];
+        $referer_action = $referer[5];
+        $referer_option = $referer[6];
+        header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
-
       function unfollow($option){
         isLogin();
-        special_echo('Controllerのunfollow()が呼び出されました。');
-        $this->action = 'unfollow';
-        $this->display();
-        $this->displayProf();
-        header('Location: ../index');
+        $this->user->unfollow($option);
+        $referer = get_last_referer();
+        $referer_resource = $referer[4];
+        $referer_action = $referer[5];
+        $referer_option = $referer[6];
+        header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
 
-      function followings($option, $list_id){
-        isLogin();
+      function followings($option){
+        $this->followings = $this->user->followings();
         $this->displayProf($option, $list_id);
       }
-      function followers($option, $list_id){
-        isLogin();
+
+      function followers($option){
+        $this->followers = $this->user->followers();
         $this->displayProf($option, $list_id);
       }
       function display($option){
@@ -305,5 +308,4 @@ EOM;
         require('views/layouts/application_prof.php');
       }
     }
-
 ?>

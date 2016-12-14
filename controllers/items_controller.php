@@ -48,6 +48,9 @@
       case 'delete':
         $controller->delete($post);
         break;
+        case 'add':
+        $controller->add();
+        break;
       default:
         break;
     }
@@ -176,14 +179,8 @@
           }
       }
 
-      function show($option) {
-        isLogin();
-        specialEcho('Controllerのshow()が呼び出されました。');
-        specialEcho('$idは' . $option . 'です。');
-        $this->viewOptions = $this->item->show($option);
-        specialVarDump($this->viewOptions);
-        $this->action = 'show';
-        $this->display();
+      isLogin();
+      function show() {
       }
 
       function search(){

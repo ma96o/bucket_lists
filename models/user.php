@@ -4,7 +4,7 @@
       private $dbconnect;
 
       function __construct(){
-        require('dbconnects.php');
+        require('dbconnect.php');
         $this->dbconnect = $db;
       }
 
@@ -12,9 +12,19 @@
         $error = array();
         $email = isset($post['email']) ? $post['email'] : NULL;
 
+        $sql = sprintf('SELECT COUNT(*) AS cnt FROM `users` WHERE `email`="%s"',
+            mysqli_real_escape_string($this->dbconnect,$email)
+            );
+        $record = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        $table = mysqli_fetch_assoc($record);
+        if ($table['cnt'] > 0){
+          $error['email'] = 'duplicate';
+        }
+
         if ($post['email'] == '') {
               $error['email'] = 'blank';
           }
+
 
         if(!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email)){
              $error['emali'] = 'false';
@@ -25,6 +35,7 @@
       function pre_create($post) {
         $email = isset($post['email']) ? $post['email'] : NULL;
         $url = "http://bucket-list.sakura.ne.jp/bucket_lists/users/signup"."?url_token=".$_SESSION['url_token'];
+
 
         $sql = sprintf('INSERT INTO `pre_users` SET
                 `url_token`="%s",
@@ -137,13 +148,62 @@
           );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
       }
-      function follow(){
+      function follow($option){
+
+        $sql = sprintf('INSERT INTO `followings`
+                        SET `follower_id` = %d, `following_id` = %d',
+                        mysqli_real_escape_string($this->dbconnect,$_SESSION['id']),
+                        mysqli_real_escape_string($this->dbconnect,$option)
+                        );
+        mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
       }
-      function unfollow(){
+
+      function unfollow($option){
+        $sql = sprintf('DELETE FROM `followings`
+                        WHERE `follower_id` = %d
+                        AND `following_id` = %d',
+                        mysqli_real_escape_string($this->dbconnect,$_SESSION['id']),
+                        mysqli_real_escape_string($this->dbconnect,$option)
+                        );
+        mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+
+
       }
+
       function followings(){
+        $sql = sprintf('SELECT u.*, f.`following_id`
+                        FROM `users`
+                        AS u
+                        LEFT JOIN `followings`
+                        AS f
+                        ON u.`user_id` = f.`following_id`
+                        WHERE u.`user_id` = f.`following_id`
+                        AND f.`follower_id` = %d',
+               mysqli_real_escape_string($this->dbconnect,$_SESSION['id']));
+        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        $rtn = array();
+        while($result = mysqli_fetch_assoc($results)){
+                $rtn[] = $result;
+        }
+        return $rtn;
       }
+
       function followers(){
+        $sql = sprintf('SELECT u.*,f.`follower_id`, f.`following_id`
+                        FROM `users`
+                        AS u
+                        LEFT JOIN `followings`
+                        AS f
+                        ON u.`user_id` = f.`follower_id`
+                        WHERE u.`user_id` = f.`follower_id`
+                        AND f.`following_id` = %d',
+               mysqli_real_escape_string($this->dbconnect,$_SESSION['id']));
+        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        $rtn = array();
+        while($result = mysqli_fetch_assoc($results)){
+                $rtn[] = $result;
+        }
+        return $rtn;
       }
     }
 

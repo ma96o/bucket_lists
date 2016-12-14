@@ -6,6 +6,7 @@
         $user_flag = 1;
     }
     $user = aboutUser($option);
+    $rtn = follow_all($option);
 
 ?>
 <!DOCTYPE html>
@@ -72,8 +73,10 @@
 <?php if($user_flag == 0): ?>
                     <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </span>
-<?php else: ?>
+<?php elseif($user_flag == 1 && empty($rtn)): ?>
                     <a href="/bucket_lists/users/follow/<?php echo $user['user_id']; ?>" class="btn btn-pink">フォロー</a>
+<?php elseif($user_flag == 1 && !empty($rtn)): ?>
+                    <a href="/bucket_lists/users/unfollow/<?php echo $user['user_id'] ?>" class="btn btn-pink">フォローを外す</a>
 <?php endif; ?>
                     </h3>
                     <p><?php echo $user['description']; ?></p>
@@ -104,10 +107,25 @@
             BUCKET LISTS 
         </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
     <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
 <!--      if($this->action == "index"){
          echo "
  -->
+<script>
+    /*ワクワク度表示*/
+    $.fn.raty.defaults.path = "/bucket_lists/views/image";
+    $('.starRating').raty({
+      // hints: [0,1,2,3,4,5]
+      // click: function($score, $evt) {
+      //          $.post('/bucket_lists/items/create',{score:$score, url:$evt.currentTarget.baseURI},
+      //                 function(data){
+      //                   location.href = '/bucket_lists/items/create';
+      //                 }
+      //                );
+      // }
+    });
+</script>
         <script>
           $('#edit_list').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
@@ -126,6 +144,7 @@
           var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
           var recipientTitle = button.data('title') //data-whatever の値を取得
           var recipientId = button.data('id')
+
           //Ajaxの処理はここに
 
           var modal = $(this)  //モーダルを取得
@@ -153,6 +172,7 @@
           var recipientComment = button.data('comment')
           var recipientDeadline = button.data('deadline')
           //Ajaxの処理はここに
+          var recipientPriority = button.data('priority')
 
           var modal = $(this)  //モーダルを取得
           //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
@@ -160,6 +180,7 @@
           modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
           modal.find('.modal-body input#comment').val(recipientComment)
           modal.find('.modal-body input#deadline').val(recipientDeadline)
+          modal.find('.modal-body div.starRating input').val(recipientPriority)
           });
         </script>
         <script>
@@ -170,6 +191,8 @@
           var recipientComment = button.data('comment')
           var recipientDeadline = button.data('deadline')
           var recipientStatus = button.data('status')
+          var recipientPriority = button.data('priority')
+
           //Ajaxの処理はここに
 
           var modal = $(this)  //モーダルを取得
@@ -180,6 +203,7 @@
           modal.find('.modal-body p#item_comment').text(recipientComment)
           modal.find('.modal-body span#item_deadline').text(recipientDeadline)
           modal.find('.modal-body span#status').text(recipientStatus)
+          modal.find('.modal-body img#wkwk').attr("src", "/bucket_lists/views/image/"+recipientPriority+".png")
           });
         </script>
         <script>
@@ -190,6 +214,7 @@
           var recipientComment = button.data('comment')
           var recipientCreated = button.data('created')
           //Ajaxの処理はここに
+          var recipientPriority = button.data('priority')
 
           var modal = $(this)  //モーダルを取得
           //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
@@ -198,6 +223,7 @@
           // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
           modal.find('.modal-body p#item_comment').text(recipientComment)
           modal.find('.modal-body span#item_created').text(recipientCreated)
+          modal.find('.modal-body img#wkwk').attr("src", "/bucket_lists/views/image/"+recipientPriority+".png")
           });
         </script>
         <script>
@@ -208,6 +234,7 @@
           var recipientComment = button.data('comment')
           var recipientCreated = button.data('created')
           //Ajaxの処理はここに
+          var recipientPriority = button.data('priority')
 
           var modal = $(this)  //モーダルを取得
           //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
@@ -216,6 +243,7 @@
           // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
           modal.find('.modal-body p#item_comment').text(recipientComment)
           modal.find('.modal-body span#item_created').text(recipientCreated)
+          modal.find('.modal-body img#wkwk').attr("src", "/bucket_lists/views/image/"+recipientPriority+".png")
           });
         </script>
         <script>

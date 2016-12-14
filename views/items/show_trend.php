@@ -22,7 +22,7 @@
                                                 <a href="users_mypage"><img src="image/plofile_fb_n.jpg"></a>
                                                 <a href="users_mypage"><img src="image/plofile_fb_n.jpg"></a>
                                                 <br>
-                                                <span><a href="users_doing">doing一覧へ</a></span>
+                                                <a href="users_doing" id="doing">doing一覧へ</a>
                                             </div>
                                         </div>
 
@@ -35,7 +35,7 @@
                                                 <a href="users_mypage"><img src="image/plofile_fb_n.jpg"></a>
                                                 <a href="users_mypage"><img src="image/plofile_fb_n.jpg"></a>
                                                 <br>
-                                                <span><a href="users_done">done一覧へ</a></span>
+                                                <a href="users_done" id="done">done一覧へ</a>
                                             </div>
                                         </div>
                                     

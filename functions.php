@@ -42,7 +42,7 @@
 
 //指定したユーザについての情報を配列データとして返す
     function aboutUser($user_id){
-      require('dbconnects.php');
+      require('dbconnect.php');
 
         $sql = sprintf('SELECT * FROM `users` WHERE `user_id`=%d',
                         mysqli_real_escape_string($db, $user_id)
@@ -55,7 +55,7 @@
 
 //フォロー数
     function countFollowing($user_id){
-      require('dbconnects.php');
+      require('dbconnect.php');
       $sql = sprintf('SELECT COUNT(*) AS `cnt` FROM `followings` WHERE `following_id`=%d',
         mysqli_real_escape_string($db, $user_id)
         );
@@ -67,7 +67,7 @@
 
 //フォロワー数
     function countFollower($user_id){
-      require('dbconnects.php');
+      require('dbconnect.php');
       $sql = sprintf('SELECT COUNT(*) AS `cnt` FROM `followings` WHERE `follower_id`=%d',
         mysqli_real_escape_string($db, $user_id)
         );
@@ -79,7 +79,7 @@
 
 //doingユーザ数
     function countDoing($item_id){
-      require('dbconnects.php');
+      require('dbconnect.php');
       $sql = sprintf('SELECT COUNT(*) AS `cnt` FROM `items` WHERE `item_id`=%d AND `status`=1',
         mysqli_real_escape_string($db, $item_id)
         );
@@ -91,7 +91,7 @@
 
 //doneユーザ数
     function countDone($item_id){
-      require('dbconnects.php');
+      require('dbconnect.php');
       $sql = sprintf('SELECT COUNT(*) AS `cnt` FROM `items` WHERE `item_id`=%d AND `status`=2',
         mysqli_real_escape_string($db, $item_id)
         );
@@ -103,7 +103,7 @@
 
 //いいね数
     function countLike($item_id){
-      require('dbconnects.php');
+      require('dbconnect.php');
       $sql = sprintf('SELECT COUNT(*) AS `cnt` FROM `likes` WHERE `item_id`=%d',
         mysqli_real_escape_string($db, $item_id)
         );
@@ -112,6 +112,7 @@
 
       return $row['cnt'];
     }
+
 
 //フォローしているユーザのIdを取得
     function followingsId($follower_id){
@@ -172,9 +173,24 @@
     function get_last_referer() {
       specialEcho('get_last_referer関数が呼び出されました');
       $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null; // 遷移元のURLが存在すれば取得
-      // var_dump($referer);
       $referer = explode('/', $referer);
       return $referer;
+    }
+
+
+    // followingsテーブルからデータを取得
+    function follow_all($option){
+       require('dbconnect.php');
+       $sql = sprintf('SELECT *
+                       FROM `followings`
+                       WHERE `follower_id` = %d
+                       AND `following_id` = %d',
+              mysqli_real_escape_string($db, $_SESSION['id']),
+              mysqli_real_escape_string($db, $option)
+               );
+       $results = mysqli_query($db, $sql) or die(mysqli_error($db));
+       $rtn = mysqli_fetch_assoc($results);
+       return $rtn;
     }
 
 //いいね判定 0->いいねしてない、1->いいねしてる
@@ -191,6 +207,19 @@
       }
 
       return $like_flag;
+
+    }
+
+    function getLast(){
+      require('dbconnect.php');
+      $sql = 'SELECT `id` FROM `items` WHERE 1';
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+      $last = 0;
+      while($table = mysqli_fetch_assoc($rec)){
+        $last = $table['id'];
+      }
+      return ++$last;
     }
 
 ?>

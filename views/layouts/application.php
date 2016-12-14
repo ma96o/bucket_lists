@@ -76,12 +76,30 @@
         </footer>';
     }
 ?>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
     <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
 
 <!--      if($this->action == 'trend'){
          echo "
  -->
+
+
+<script>
+    /*ワクワク度表示*/
+    $.fn.raty.defaults.path = "/bucket_lists/views/image";
+    $('.starRating').raty({
+      // hints: [0,1,2,3,4,5]
+      // click: function($score, $evt) {
+      //          $.post('/bucket_lists/items/create',{score:$score, url:$evt.currentTarget.baseURI},
+      //                 function(data){
+      //                   location.href = '/bucket_lists/items/create';
+      //                 }
+      //                );
+      // }
+    });
+</script>
         <script src='/bucket_lists/webroot/assets/js/pin.js'></script>
         <script>
           $('#add_new').on('show.bs.modal', function (event) {
@@ -104,6 +122,7 @@
           var recipientComment = button.data('comment')
           var recipientDoing = button.data('doing')
           var recipientDone = button.data('done')
+          var recipientId = button.data('id')
           //Ajaxの処理はここに
 
           var modal = $(this)  //モーダルを取得
@@ -113,6 +132,8 @@
           modal.find('.modal-body span#doing').text(recipientDoing)
           modal.find('.modal-body span#done').text(recipientDone)
           modal.find('.modal-body p#item_comment').text(recipientComment)
+          modal.find('.modal-body a#doing').attr("href", "/bucket_lists/items/doing/"+recipientId)
+          modal.find('.modal-body a#done').attr("href", "/bucket_lists/items/done/"+recipientId)
           });
         </script>
 <!--          ";
