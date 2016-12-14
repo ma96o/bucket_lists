@@ -137,9 +137,8 @@
       function update($post){
 
         $picture_path = date('YmdHis') . $post['picture_path'];
-        echo $post['tmp_picture_path'];
 
-        move_uploaded_file($post['tmp_picture_path'], '/bucket_lists/views/pf_image/'.$picture_path);
+        move_uploaded_file($post['tmp_picture_path'], $post['dirname'].'/views/pf_image/'.$picture_path);
 
         $sql = sprintf('UPDATE `users` SET `nick_name`="%s", `picture_path`="%s", `description`="%s" WHERE `user_id`=%d',
           mysqli_real_escape_string($this->dbconnect, $post['nick_name']),
