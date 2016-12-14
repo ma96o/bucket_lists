@@ -726,7 +726,7 @@ fieldset[disabled] .btn-pink.active {
   color:#00bcd4;
 }
 
-.modal-content img{
+.modal-content .starRating img{
   width: 85px;
 }
 
