@@ -222,7 +222,7 @@ EOM;
       function auth($post) {
             $login_flag = $this->user->auth($post);
             if ($login_flag) {
-                header('Location: home');
+                header('Location: ../items/trend');
                 exit();
             } else {
                 header('Location: login');
