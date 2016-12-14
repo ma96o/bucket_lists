@@ -7,7 +7,7 @@
     switch ($action) {
 
       case 'home';
-        $controller->home($post);
+        $controller->home($post,$option);
         break;
 
       case 'pre_create';
@@ -100,13 +100,13 @@
         $this->viewOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
         }
 
-      function home($post) {
+      function home($post,$option) {
         if (!empty($post)) {
           $error = $this->user->home_valid($post);
             if (!empty($error)) {
               $this->viewOptions = $post;
               $this->viewErrors = $error;
-              $this->display();
+              $this->display($option);
           } else {
               $_SESSION['users'] = $post;
               header('Location: pre_create');
@@ -169,7 +169,7 @@ EOM;
 
       function pre_thanks() {
         $this->action = 'pre_thanks';
-        $this->display();
+        $this->display($option);
       }
 
       function signup($post, $option) {

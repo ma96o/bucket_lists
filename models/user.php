@@ -12,9 +12,19 @@
         $error = array();
         $email = isset($post['email']) ? $post['email'] : NULL;
 
+        $sql = sprintf('SELECT COUNT(*) AS cnt FROM `users` WHERE `email`="%s"',
+            mysqli_real_escape_string($this->dbconnect,$email)
+            );
+        $record = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+        $table = mysqli_fetch_assoc($record);
+        if ($table['cnt'] > 0){
+          $error['email'] = 'duplicate';
+        }
+
         if ($post['email'] == '') {
               $error['email'] = 'blank';
           }
+
 
         if(!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email)){
              $error['emali'] = 'false';
@@ -25,6 +35,7 @@
       function pre_create($post) {
         $email = isset($post['email']) ? $post['email'] : NULL;
         $url = "http://bucket-list.sakura.ne.jp/bucket_lists/users/signup"."?url_token=".$_SESSION['url_token'];
+
 
         $sql = sprintf('INSERT INTO `pre_users` SET
                 `url_token`="%s",

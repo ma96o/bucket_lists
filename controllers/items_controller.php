@@ -48,6 +48,9 @@
       case 'delete':
         $controller->delete($post);
         break;
+        case 'add':
+        $controller->add();
+        break;
       default:
         break;
     }
