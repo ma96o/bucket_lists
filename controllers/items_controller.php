@@ -179,12 +179,12 @@
           }
       }
 
-      isLogin();
       function show() {
+          isLogin();
       }
 
       function search(){
-        isLogin();
+          isLogin();
       }
       function updateSuccess($post){
         isLogin();
