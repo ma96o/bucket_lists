@@ -56,12 +56,14 @@
                           <p class="calendar"><?php echo $item['deadline']; ?></p>
 
           <?php if(isLike($item['id']) == 0): ?>
-                  <p class="like"><a href="/bucket_lists/items/like/<?php echo $item['id'] ?>">応援する<?php echo countLike($item['id']); ?></a></p>
+                <p><a href="/bucket_lists/items/like/<?php echo $item['id'] ?>"><i class="fa fa-smile-o" aria-hidden="true"></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
+
           <?php else: ?>
-                  <p class="unlike"><a href="/bucket_lists/items/unlike/<?php echo $item['id'] ?>">んー<?php echo countLike($item['id']); ?></a></p>
+                <p><a href="/bucket_lists/items/unlike/<?php echo $item['id'] ?>"><i class="fa fa-smile-o" aria-hidden="true" style="color:#00bcd4;"></i></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
+
           <?php endif; ?>
 
-                    <p><img src="/bucket_lists/views/image/<?php echo $item['priority']; ?>.png"></p>
+                <p><img src="/bucket_lists/views/image/<?php echo $item['priority']; ?>.png"></p>
                 </div>
             </li>
         </a>
