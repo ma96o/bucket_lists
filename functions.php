@@ -221,4 +221,16 @@
       return ++$last_id['user_id'];
     }
 
+    function getLast(){
+      require('dbconnect.php');
+      $sql = 'SELECT `id` FROM `items` WHERE 1';
+      $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+      $last = 0;
+      while($table = mysqli_fetch_assoc($rec)){
+        $last = $table['id'];
+      }
+      return ++$last;
+    }
+
 ?>

@@ -7,7 +7,7 @@
     switch ($action) {
 
       case 'home';
-        $controller->home($post);
+        $controller->home($post,$option);
         break;
 
       case 'pre_create';
@@ -99,7 +99,7 @@
         $this->viewOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
         }
 
-      function home($post) {
+      function home($post,$option) {
         if (!empty($post)) {
           $error = $this->user->home_valid($post);
             if (!empty($error)) {
@@ -225,6 +225,7 @@ EOM;
         }
 
       function logout() {
+        isLogin();
         $_SESSION = array();
 
         if(ini_get("session.use_cookeis")){
@@ -244,6 +245,7 @@ EOM;
 
 
       function mypage($option, $list_id){
+        isLogin();
         if($list_id == 0){
           $list_id = getFirstListId($option);
           header('location: /bucket_lists/users/mypage/'.$option.'/'.$list_id);
@@ -255,15 +257,18 @@ EOM;
 
       }
       function edit($option){
+        isLogin();
         $this->user->edit($option);
         $this->display($option);
       }
       function update($post){
+        isLogin();
         $this->user->update($post);
         header('location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
       }
 
       function follow($option){
+        isLogin();
         $this->user->follow($option);
         $referer = get_last_referer();
         $referer_resource = $referer[4];
@@ -272,6 +277,7 @@ EOM;
         header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
       function unfollow($option){
+        isLogin();
         $this->user->unfollow($option);
         $referer = get_last_referer();
         $referer_resource = $referer[4];

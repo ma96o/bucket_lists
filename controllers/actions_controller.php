@@ -26,6 +26,7 @@
         $this->viewsOptions = array();
       }
       function index(){
+        isLogin();
         $this->viewsOptions = $this->timeline->index();
 
         $this->display();

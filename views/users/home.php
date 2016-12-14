@@ -1,5 +1,5 @@
 <div class="msg" style="margin-top: 100px;">
-  <form method="post" action="/bucket_lists/users/pre_create" class="form-horizontal" role="form">
+  <form method="post" action="/bucket_lists/users/home" class="form-horizontal" role="form">
     <div class="form-group">
       <label for="email" class="col-md-3 control-label">メールアドレス</label>
       <div class="col-md-9">
@@ -8,6 +8,8 @@
           <p style="color:red;">* メールアドレスを入力してください</p>
         <?php elseif(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'false'): ?>
           <p style="color:red;">* 正しい形式で入力してください</p>
+        <?php elseif(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'duplicate'): ?>
+          <p style="color:red;">* メールアドレスが既に登録されています。</p>
         <?php endif; ?>
       </div>
     </div>
