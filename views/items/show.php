@@ -33,7 +33,7 @@
                 <div class="col-sm-4">
                   <dl class="modal_status">
                     <dt><i class="fa fa-star" aria-hidden="true"></i></dt>
-                    <dd>wkwk</dd>
+                    <dd>ワクワク度</dd>
                     <!--0-1の画像で出し分け-->
                     <img id="wkwk" src="/bucket_lists/views/image/.png">
                   </dl>

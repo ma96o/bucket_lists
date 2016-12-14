@@ -727,7 +727,7 @@ fieldset[disabled] .btn-pink.active {
 }
 
 .modal-content .starRating img{
-  width: 85px;
+  width: 20px;
 }
 
 .modal-content .modal_status{
@@ -752,6 +752,16 @@ fieldset[disabled] .btn-pink.active {
   color:#ababab;
 }
 
+.modal-content .item_success dd{
+  display: block;
+  margin-left: 50px;
+  color:#ababab;
+}
+
+.modal-content .modal_status img{
+  width:85px;
+}
+
 .modal-content .modal_status span{
   display: block;
   margin-left: 50px;
@@ -771,6 +781,13 @@ fieldset[disabled] .btn-pink.active {
   color:#00bcd4; 
 }
 
+.show_trend h4:before{
+  font-family: FontAwesome;
+  content: '\f055'; /* アイコンのunicode */
+  padding-right: 5px;
+  color:#00bcd4; 
+}
+
 .edit_item h4:before{
   font-family: FontAwesome;
   content: '\f040'; /* アイコンのunicode */
@@ -786,9 +803,9 @@ fieldset[disabled] .btn-pink.active {
 
 /*---star----------------------------------------------------*/
 
-.starRating img{
+/*.starRating img{
   width:auto;
-}
+}*/
 
 /*---footer----------------------------------------------------*/
 
