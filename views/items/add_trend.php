@@ -1,5 +1,5 @@
-<div class="modal fade" id="add_trend" tabindex="-1" role="dialog">
-<div class="modal-dialog modal-lg">  
+<div class="modal fade" id="add_new" tabindex="-1" role="dialog">
+<div class="modal-dialog modal-lg">
               <div class="modal-content">
                   <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -29,8 +29,8 @@
                                             <input type="date" class="form-control" id="exampleInput1" name="deadline">
                                         </div>
 
-        <label for="name" class="col-md-3 control-label">tag_id</label>
-        <textarea name="tag_id" class="form-control" cols="30" rows="1"></textarea>
+        <!-- <label for="name" class="col-md-3 control-label">tag_id</label>
+        <textarea name="tag_id" class="form-control" cols="30" rows="1"></textarea> -->
 
                                         <label>わくわく度</label>
                                         <div class="starRating">
