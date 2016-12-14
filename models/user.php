@@ -135,10 +135,17 @@
       function edit(){
       }
       function update($post){
+        $about_user = aboutUser($_SESSION['user_id']);
+        $pre_picture_path = $about_user['picture_path'];
 
-        $picture_path = date('YmdHis') . $post['picture_path'];
+        if(empty($post['picture_path'])){
+          $picture_path = $pre_picture_path;
 
-        move_uploaded_file($post['tmp_picture_path'], $post['dirname'].'/views/pf_image/'.$picture_path);
+        } else {
+          $picture_path = date('YmdHis') . $post['picture_path'];
+          unlink($post['dirname'].'/views/pf_image/'.$pre_picture_path);
+          move_uploaded_file($post['tmp_picture_path'], $post['dirname'].'/views/pf_image/'.$picture_path);
+        }
 
         $sql = sprintf('UPDATE `users` SET `nick_name`="%s", `picture_path`="%s", `description`="%s" WHERE `user_id`=%d',
           mysqli_real_escape_string($this->dbconnect, $post['nick_name']),

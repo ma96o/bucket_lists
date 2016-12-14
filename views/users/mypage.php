@@ -45,7 +45,7 @@
                  <?php echo $i++; ?>
                         <dl>
                             <dt<?php if($item['status'] == 2){echo ' class="success"';}elseif($item['status'] == 3){echo ' class="trash"';} ?>><?php echo $item['item_name']; ?></dt>
-                        <?php if($user_flag == 0): ?>
+                        <?php if($user_flag == 0 && $item['status'] == 1): ?>
                             <dd><a data-toggle="modal" href="" data-target="#edit_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>" data-priority="<?php echo $item['priority']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
                             <dd><a data-toggle="modal" href="" data-target="#trash_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id'] ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
                             <dd><a data-toggle="modal" href="" data-target="#success_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
