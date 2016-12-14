@@ -25,11 +25,11 @@
 //ログイン判定
     function isLogin(){
       require('dbconnect.php');
-      if(isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()){
+      if(isset($_SESSION['user_id']) && $_SESSION['time'] + 3600 > time()){
         $_SESSION['time'] = time();
 
         $sql = sprintf('SELECT * FROM `users` WHERE `user_id`=%d',
-                        mysqli_real_escape_string($db, $_SESSION['id'])
+                        mysqli_real_escape_string($db, $_SESSION['user_id'])
                       );
         $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
         $user = mysqli_fetch_assoc($rec);
@@ -184,7 +184,7 @@
                        FROM `followings`
                        WHERE `follower_id` = %d
                        AND `following_id` = %d',
-              mysqli_real_escape_string($db, $_SESSION['id']),
+              mysqli_real_escape_string($db, $_SESSION['user_id']),
               mysqli_real_escape_string($db, $option)
                );
        $results = mysqli_query($db, $sql) or die(mysqli_error($db));
@@ -196,7 +196,7 @@
     function isLike($item_id){
       require('dbconnect.php');
       $sql = sprintf('SELECT * FROM `likes` WHERE `user_id`=%d AND `item_id`=%d',
-        mysqli_real_escape_string($db, $_SESSION['id']),
+        mysqli_real_escape_string($db, $_SESSION['user_id']),
         mysqli_real_escape_string($db, $item_id)
         );
       $rec = mysqli_query($db, $sql) or die(mysqli_error($db));

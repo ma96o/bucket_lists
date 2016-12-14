@@ -63,10 +63,10 @@
             </div>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['id']; ?>/<?php echo getFirstListId($_SESSION['id']); ?>">マイページ</a>
+                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['user_id']; ?>/<?php echo getFirstListId($_SESSION['user_id']); ?>">マイページ</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
+                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['user_id']; ?>">タイムライン</a>
                     </li>
                     <li class="page-scroll">
                         <a href="/bucket_lists/items/trend">トレンディング</a>

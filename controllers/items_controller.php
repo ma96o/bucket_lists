@@ -83,12 +83,12 @@
       }
       function create($post) {
           if (empty($post['list_id']) || empty($post['comment']) || empty($post['deadline'])) {
-              header('location: /bucket_lists/users/mypage/'.$_SESSION['id']);
+              header('location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
               exit();
           }
           specialEcho('Controllerのcreate()が呼び出されました。');
           $this->item->create($post);
-          header('Location: /bucket_lists/users/mypage/'.$_SESSION['id'].'/'.$post['list_id']);
+          header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
       }
       function index(){
       }
@@ -100,13 +100,13 @@
       function update($post) {
             $this->item->update($post);
             // あとでindexに飛ぶように戻す。location:editは消す。header('Location: index');
-          header('Location: /bucket_lists/users/mypage/'.$_SESSION['id'].'/'.$post['list_id']);
+          header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
       }
       function conglaturation(){
       }
       function tassei($post){
         $this->item->tassei($post);
-        header('location: /bucket_lists/items/success/'.$_SESSION['id']);
+        header('location: /bucket_lists/items/success/'.$_SESSION['user_id']);
       }
       function undone(){
       }
@@ -119,7 +119,7 @@
       }
       function delete($post){
         $this->item->delete($post);
-        header('location: /bucket_lists/items/trash/'.$_SESSION['id']);
+        header('location: /bucket_lists/items/trash/'.$_SESSION['user_id']);
       }
       function undelete(){
 
@@ -169,11 +169,11 @@
       }
       function updateSuccess($post){
         $this->item->updateSuccess($post);
-        header('location: /bucket_lists/items/success/'.$_SESSION['id']);
+        header('location: /bucket_lists/items/success/'.$_SESSION['user_id']);
       }
       function updateTrash($post){
         $this->item->updateTrash($post);
-        header('location: /bucket_lists/items/trash/'.$_SESSION['id']);
+        header('location: /bucket_lists/items/trash/'.$_SESSION['user_id']);
       }
       function display($option){
         require('views/layouts/application.php');

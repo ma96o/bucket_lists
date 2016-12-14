@@ -7,7 +7,7 @@
                 <!--フォロー一覧-->
             <div class="follow_list">
 
-              <?php foreach($this->followers as $follower): ?>
+              <?php foreach($this->viewsOptions as $follower): ?>
                 <?php $followall = follow_all($follower['user_id']); ?>
                    <?php if($follower['following_id'] !== $followall['follower_id'] && $follower['follower_id'] !== $followall['following_id']): ?>
                      <div>

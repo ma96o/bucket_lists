@@ -216,7 +216,7 @@ EOM;
       function auth($post) {
             $login_flag = $this->user->auth($post);
             if ($login_flag) {
-                header('Location: /bucket_lists/users/mypage/'.$_SESSION['id']);
+                header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
                 exit();
             } else {
                 header('Location: login');
@@ -260,7 +260,7 @@ EOM;
       }
       function update($post){
         $this->user->update($post);
-        header('location: /bucket_lists/users/mypage/'.$_SESSION['id']);
+        header('location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
       }
 
       function follow($option){
@@ -281,12 +281,12 @@ EOM;
       }
 
       function followings($option){
-        $this->followings = $this->user->followings();
+        $this->viewsOptions = $this->user->followings();
         $this->displayProf($option, 0);
       }
 
       function followers($option){
-        $this->followers = $this->user->followers();
+        $this->viewsOptions = $this->user->followers();
         $this->displayProf($option, 0);
       }
       function search($post){

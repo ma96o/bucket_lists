@@ -18,7 +18,7 @@
                                         <label>リスト選択</label>
                                           <select name="list_id" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">list
                                           <span class="caret"></span>
-                                      <?php $lists = getList($_SESSION['id']); foreach($lists as $list): ?>
+                                      <?php $lists = getList($_SESSION['user_id']); foreach($lists as $list): ?>
                                             <option value="<?php echo $list['list_id']; ?>"><?php echo $list['list_name']; ?></option>
                                       <?php endforeach; ?>
                                           </select>

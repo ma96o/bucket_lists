@@ -5,7 +5,7 @@
             <section class="col-sm-10 col-xs-offset-1 main-content">
                 <!--フォロー一覧-->
 
-                <?php foreach($this->followings as $following): ?>
+                <?php foreach($this->viewsOptions as $following): ?>
                     <div class="follow_list">
                         <div>
                             <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">

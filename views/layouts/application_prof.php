@@ -1,6 +1,6 @@
 <?php
 
-    if(!empty($_SESSION['id']) && $option == $_SESSION['id']){
+    if(!empty($_SESSION['user_id']) && $option == $_SESSION['user_id']){
         $user_flag = 0;
     } else {
         $user_flag = 1;
@@ -63,10 +63,10 @@
             </div>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['id']; ?>/<?php echo getFirstListId($_SESSION['id']); ?>">マイページ</a>
+                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['user_id']; ?>/<?php echo getFirstListId($_SESSION['user_id']); ?>">マイページ</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
+                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['user_id']; ?>">タイムライン</a>
                     </li>
                     <li class="page-scroll">
                         <a href="/bucket_lists/items/trend">トレンディング</a>
@@ -85,7 +85,7 @@
                     <img class="center-block img-responsive img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
                     <h3><?php echo $user['nick_name']; ?>
 <?php if($user_flag == 0): ?>
-                    <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['user_id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </span>
 <?php elseif($user_flag == 1 && empty($rtn)): ?>
                     <a href="/bucket_lists/users/follow/<?php echo $user['user_id']; ?>" class="btn btn-pink">フォロー</a>

@@ -60,6 +60,6 @@
         </div>
     </div>
 
-    <?php include('views/items/add.php'); ?>
+    <?php include('views/items/add_trend.php'); ?>
 
     <?php include('views/items/show_trend.php'); ?>
