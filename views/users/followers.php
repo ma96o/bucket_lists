@@ -4,7 +4,7 @@
 
             <section class="col-sm-10 col-xs-offset-1 main-content">
 
-                <!--フォロー一覧-->
+                <!--フォロワー一覧-->
           <?php if($user_flag == 0): ?>
             <div class="follow_list">
               <?php foreach($this->followers as $follower): ?>
@@ -25,11 +25,11 @@
                               フォローを外す
                           </a>
                       </div>
+                      </div>
                   <?php endif; ?>
               <?php endforeach; ?>
-           </div>
 
-           <?php elseif($user_flag == 0): ?>
+           <?php elseif($user_flag == 1): ?>
             <div class="follow_list">
               <?php foreach($this->followers as $follower): ?>
                 <?php $followall = follow_all($follower['user_id']); ?>
