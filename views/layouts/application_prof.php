@@ -48,6 +48,23 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+
+                    <li class="page-scroll">
+                      <div id="custom-search-input">
+                        <form action="/bucket_lists/users/search" method="post" class="navbar-form navbar-right" role="search">
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="search_word" placeholder="ユーザ検索">
+                              <span class="input-group-btn">
+                                <button class="btn btn-pink" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                              </span>
+                            </div>                     
+                        </form>
+                      </div>
+                    </li>
+
+
                     <li class="page-scroll">
                         <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['id']; ?>/<?php echo getFirstListId($_SESSION['id']); ?>">マイページ</a>
                     </li>
