@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    $_SESSION['id'] = 1;
+    $_SESSION['user_id'] = 1;
     require('functions.php');
 
     $para = explode('/', $_GET['url']);
