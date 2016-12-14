@@ -10,6 +10,7 @@ a,
 a:hover,
 a:focus{
   text-decoration: none;
+  outline: none;
   color: #5e5e5e;
 }
 
@@ -429,6 +430,7 @@ font-size: 16px;
 }
 
 .main-content li dt span,
+.main-content li dt.doing span,
 .main-content li dt.success span,
 .main-content li dt.trash span{
   font-size: 14px;
@@ -442,6 +444,15 @@ font-size: 16px;
   margin-right: .3em;
   line-height: 1.9em;
 }
+
+.main-content li dt.doing:before{
+  display: inline;
+  font-family: FontAwesome;
+  content: '\f0f6';
+  font-size: 20px;
+  margin-right: 10px;
+}
+
 
 .main-content li dt.success:before{
   display: inline;
@@ -491,18 +502,19 @@ font-size: 16px;
   padding-right: 5px;
 }
 
+/*
 .main-content div.status-icon p.like:before{
   font-family: FontAwesome;
-  content: '\f118'; /* アイコンのunicode */
+  content: '\f118';
   padding-right: 5px;
 }
 
 .main-content div.status-icon p.unlike:before{
   font-family: FontAwesome;
-  content: '\f11a'; /* アイコンのunicode */
+  content: '\f11a';
   padding-right: 5px;
 }
-
+*/
 .main-content div.status-icon p img{
   width:85px;
   vertical-align: top;
@@ -675,6 +687,96 @@ fieldset[disabled] .btn-pink.active {
 }
 
 /*---modal----------------------------------------------------*/
+
+.modal-lg{
+  width:70%;
+}
+
+.modal-content{
+   color:#888;
+   background-color: #fafafa;
+}
+
+.modal-content h4{
+  font-size: 15px;
+}
+
+.modal-content h4 i{
+  color:#00bcd4;
+}
+
+/*conglaturation*/
+.modal-content p.modal-title{
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.modal-content div .comment{
+  word-wrap: break-word;
+  background-color: #FFF;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.modal-content p.modal-title:before{
+  font-family: FontAwesome;
+  content: '\f0f6'; /* アイコンのunicode */
+  padding-right: 5px;
+  color:#00bcd4;
+}
+
+.modal-content img{
+  width: 85px;
+}
+
+.modal-content .modal_status{
+  margin: 5px;
+  vertical-align: 
+  clear: both;
+}
+
+.modal-content dl{
+  margin-bottom: 0px;
+}
+
+.modal-content .modal_status dt{
+  font-size: 45px;
+  float: left;
+}
+
+.modal-content .modal_status dd{
+  display: block;
+  padding-top: 15px;
+  margin-left: 50px;
+  color:#ababab;
+}
+
+.modal-content .modal_status span{
+  display: block;
+  margin-left: 50px;
+}
+
+.show_item h4:before{
+  font-family: FontAwesome;
+  content: '\f0f6'; /* アイコンのunicode */
+  padding-right: 5px;
+  color:#00bcd4;
+}
+
+.item_success h4:before{
+  font-family: FontAwesome;
+  content: '\f00c'; /* アイコンのunicode */
+  padding-right: 5px;
+  color:#00bcd4; 
+}
+
+.edit_item h4:before{
+  font-family: FontAwesome;
+  content: '\f040'; /* アイコンのunicode */
+  padding-right: 5px;
+  color:#00bcd4;
+}
 
 .modal-box{
   background-color: #f5f5f5;
