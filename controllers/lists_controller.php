@@ -29,10 +29,12 @@
       }
 
       function create($post){
+        isLogin();
         $this->list->create($post);
         header('Location: /bucket_lists/users/mypage/'.$_SESSION['id']);
       }
       function update($post){
+        isLogin();
         $this->list->update($post);
         header('Location: /bucket_lists/users/mypage/'.$_SESSION['id']);
       }
