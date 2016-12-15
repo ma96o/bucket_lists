@@ -10,7 +10,7 @@
         $controller->index($option);
         break;
       default:
-        header('location: /bucket_lists/users/home');
+        echo own_header('users/home');
         break;
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-    define('DEBUG', false);
+    define('DEBUG', true);
 
     function specialEcho($val){
       if(DEBUG){
@@ -231,6 +231,18 @@
         $last = $table['id'];
       }
       return ++$last;
+    }
+
+    function makePath($path){
+      if(DEBUG){
+        return '/bucket_lists/'.$path;
+      } else {
+        return '/portfolio/bucket_lists/' . $path;
+      }
+    }
+
+    function own_header($path){
+      return '<script>window.location.href = "/bucket_lists/' . $path . '";</script>';
     }
 
 ?>

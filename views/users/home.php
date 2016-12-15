@@ -13,7 +13,7 @@
                     <!--新規登録-->
                     <div class="side_content">
                     <h4><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;アカウント登録</h4>
-                        <form method="post" action="/bucket_lists/users/home" class="form-inline">
+                        <form method="post" action="<?php echo makePath('users/home'); ?>" class="form-inline">
                             <div class="form-group">
                                 <p>メールアドレスを入力して下さい</p>
                                 <input type="email" name="email" class="form-control" placeholder="hogehoge@egmail.com">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -32,7 +32,7 @@
                     <!--ログイン-->
                     <div class="side_content">
                     <h4><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;ログイン</h4>
-                    <form method="post" action="/bucket_lists/users/home" role="form">
+                    <form method="post" action="<?php echo makePath('users/home'); ?>" role="form">
                         <div class="form-group">
                         <?php if(!empty($this->viewErrors) && $this->viewErrors == 'false'): ?>
                               <p class="blue">メールアドレスとパスワードを正確に入力してください。</p>

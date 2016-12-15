@@ -7,7 +7,7 @@
               <h4 class="modal-title"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;新規追加</h4>
           </div>
                     <div class="modal-body">
-                      <form method="post" action="/bucket_lists/items/create" role="form">
+                      <form method="post" action="<?php echo makePath('items/create'); ?>" role="form">
                           <input type="hidden" name="item_id" value="<?php echo getLast(); ?>">
                               <div class="form-group">
                                   <label>項目名</label>

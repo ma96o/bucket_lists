@@ -6,7 +6,7 @@
       <ul class="list-unstyled">
 
       <?php $lists = getList($option); foreach($lists as $list): ?>
-        <a href="/bucket_lists/users/mypage/<?php echo $option; ?>/<?php echo $list['list_id']; ?>">
+        <a href="<?php echo makePath('users/mypage/'); ?><?php echo $option; ?>/<?php echo $list['list_id']; ?>">
             <li<?php if($list_id == $list['list_id']){echo ' class="active"';} ?>><?php echo $list['list_name'] ?>
             <?php if($user_flag == 0): ?>
             <p><a id="button" data-toggle="modal" href="" data-target="#edit_list" data-title="<?php echo $list['list_name']; ?>" data-id="<?php echo $list['list_id']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
@@ -56,14 +56,14 @@
                           <p class="calendar"><?php echo $item['deadline']; ?></p>
 
           <?php if(isLike($item['id']) == 0): ?>
-                <p><a href="/bucket_lists/items/like/<?php echo $item['id'] ?>"><i class="fa fa-smile-o" aria-hidden="true"></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
+                <p><a href="<?php echo makePath('items/like/'); ?><?php echo $item['id'] ?>"><i class="fa fa-smile-o" aria-hidden="true"></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
 
           <?php else: ?>
-                <p><a href="/bucket_lists/items/unlike/<?php echo $item['id'] ?>"><i class="fa fa-smile-o" aria-hidden="true" style="color:#00bcd4;"></i></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
+                <p><a href="<?php echo makePath('items/unlike/'); ?><?php echo $item['id'] ?>"><i class="fa fa-smile-o" aria-hidden="true" style="color:#00bcd4;"></i></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
 
           <?php endif; ?>
 
-                <p><img src="/bucket_lists/views/image/<?php echo $item['priority']; ?>.png"></p>
+                <p><img src="<?php echo makePath('views/image/'); ?><?php echo $item['priority']; ?>.png"></p>
                 </div>
             </li>
         </a>

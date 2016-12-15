@@ -109,7 +109,7 @@
         }
         session_destroy();
 
-        header('Location: thanks');
+        echo own_header('users/thanks');
         exit();
       }
 

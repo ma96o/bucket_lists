@@ -1,12 +1,12 @@
 
     <div class="container">
         <section class="content-main info">
-            <form method="post" action="/bucket_lists/users/update" role="form" enctype="multipart/form-data">
+            <form method="post" action="<?php echo makePath('users/update'); ?>" role="form" enctype="multipart/form-data">
             <div class="row">
             <?php $user = aboutUser($_SESSION['user_id']); ?>
 
                 <div class="col-md-10 col-xs-offset-1">
-                    <img class="center-block img-responsive img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
+                    <img class="center-block img-responsive img-circle" src="<?php echo makePath('views/pf_image/'); ?><?php echo $user["picture_path"]; ?>" alt="" width="150" height="150">
                 </div>
                 <br />
                 <br>

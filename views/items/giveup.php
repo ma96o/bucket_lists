@@ -6,7 +6,7 @@
                    <h4><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;GIVEUP!</h4>
 
                   </div>
-                  <form method="post" action="/bucket_lists/items/delete">
+                  <form method="post" action="<?php echo makePath('items/delete'); ?>">
                   <div class="modal-body">
                     <p class="modal-title"></p>
                     <p>GiveUpコメントを入力して下さい。</p>
