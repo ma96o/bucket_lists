@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-xs-8 col-xs-offset-2">
                     <p>
-                       <input type="text" class="form-control" name="description" placeholder="一言コメントを入力してください"> value="<?php echo $user['description']; ?>">
+                       <input type="text" class="form-control" name="description" placeholder="一言コメントを入力してください" value="<?php echo $user['description']; ?>">
                     </p>
                 </div>
                 </div>
