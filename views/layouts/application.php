@@ -10,17 +10,16 @@
 
     <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo makePath('webroot/assets/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo makePath('webroot/assets/font-awesome/css/font-awesome.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo makePath('webroot/assets/css/main.css'); ?>">
 
 <?php 
     if($this->action == 'trend'){
-        echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/trending.css">';
+        echo '<link rel="stylesheet" type="text/css" href="'. makePath("webroot/assets/css/trending.css").'">';
     } 
 
 ?>
-
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -38,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/bucket_lists/items/trend">BUCKET LISTS</a>
+                <a class="navbar-brand" href="<?php echo makePath('items/trend'); ?>">BUCKET LISTS</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
 <?php if($this->action != 'home'): ?>
@@ -49,7 +48,7 @@
                     </li>
                     <li class="page-scroll">
                       <div id="custom-search-input">
-                        <form action="/bucket_lists/users/search" method="post" class="navbar-form navbar-right" role="search">
+                        <form action="<?php echo makePath('users/search'); ?>" method="post" class="navbar-form navbar-right" role="search">
                             <div class="input-group">
                               <input type="text" class="form-control" name="search_word" placeholder="ユーザ検索">
                               <span class="input-group-btn">
@@ -62,16 +61,16 @@
                       </div>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['user_id']; ?>/<?php echo getFirstListId($_SESSION['user_id']); ?>">マイページ</a>
+                        <a href="<?php echo makePath('users/mypage/'); ?><?php echo $_SESSION['user_id']; ?>/<?php echo getFirstListId($_SESSION['user_id']); ?>">マイページ</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['user_id']; ?>">タイムライン</a>
+                        <a href="<?php echo makePath('actions/index/'); ?><?php echo $_SESSION['user_id']; ?>">タイムライン</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/items/trend">トレンディング</a>
+                        <a href="<?php echo makePath('items/trend'); ?>">トレンディング</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/users/logout">ログアウト</a>
+                        <a href="<?php echo makePath('users/logout'); ?>">ログアウト</a>
                     </li>
                 </ul>
             </div>
@@ -95,8 +94,8 @@
 ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
-    <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo makePath('webroot/assets/js/jquery.raty.js'); ?>"></script>
+    <script src="<?php echo makePath('webroot/assets/js/bootstrap.min.js'); ?>"></script>
 
 <!--      if($this->action == 'trend'){
          echo "
@@ -105,19 +104,19 @@
 
 <script>
     /*ワクワク度表示*/
-    $.fn.raty.defaults.path = "/bucket_lists/views/image";
+    $.fn.raty.defaults.path = "<?php echo makePath('views/image'); ?>";
     $('.starRating').raty({
       // hints: [0,1,2,3,4,5]
       // click: function($score, $evt) {
-      //          $.post('/bucket_lists/items/create',{score:$score, url:$evt.currentTarget.baseURI},
+      //          $.post('./items/create',{score:$score, url:$evt.currentTarget.baseURI},
       //                 function(data){
-      //                   location.href = '/bucket_lists/items/create';
+      //                   location.href = './items/create';
       //                 }
       //                );
       // }
     });
 </script>
-        <script src='/bucket_lists/webroot/assets/js/pin.js'></script>
+        <script src='<?php echo makePath('webroot/assets/js/pin.js'); ?>'></script>
         <script>
           $('#add_new').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
@@ -149,8 +148,8 @@
           modal.find('.modal-body span#doing').text(recipientDoing)
           modal.find('.modal-body span#done').text(recipientDone)
           modal.find('.modal-body p#item_comment').text(recipientComment)
-          modal.find('.modal-body a#doing').attr("href", "/bucket_lists/items/doing/"+recipientId)
-          modal.find('.modal-body a#done').attr("href", "/bucket_lists/items/done/"+recipientId)
+          modal.find('.modal-body a#doing').attr("href", "<?php echo makePath('items/doing/'); ?>"+recipientId)
+          modal.find('.modal-body a#done').attr("href", "<?php echo makePath('items/done/'); ?>"+recipientId)
           });
         </script>
 <!--          ";

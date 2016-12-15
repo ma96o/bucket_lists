@@ -5,7 +5,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <h4><i class="fa fa-check" aria-hidden="true"></i>&nbsp;CONGLATURATION!</h4>
                   </div>
-                  <form method="post" action="/bucket_lists/items/tassei">
+                  <form method="post" action="<?php echo makePath('items/tassei'); ?>">
                   <div class="modal-body">
                   <p class="modal-title"></p>
                   <p>達成おめでとうございます。達成コメントを入力して下さい。</p>

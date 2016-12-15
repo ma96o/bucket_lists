@@ -21,9 +21,10 @@
 
     <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo makePath('webroot/assets/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo makePath('webroot/assets/font-awesome/css/font-awesome.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo makePath('webroot/assets/css/main.css'); ?>">
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -41,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/bucket_lists/items/trend">BUCKET LISTS</a>
+                <a class="navbar-brand" href="<?php echo makePath('items/trend'); ?>">BUCKET LISTS</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -51,7 +52,7 @@
                     </li>
                     <li class="page-scroll">
                       <div id="custom-search-input">
-                        <form action="/bucket_lists/users/search" method="post" class="navbar-form navbar-right" role="search">
+                        <form action="<?php echo makePath('users/search'); ?>" method="post" class="navbar-form navbar-right" role="search">
                             <div class="input-group">
                               <input type="text" class="form-control" name="search_word" placeholder="ユーザ検索">
                               <span class="input-group-btn">
@@ -65,16 +66,16 @@
                     </li>
 
                     <li class="page-scroll">
-                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['user_id']; ?>/<?php echo getFirstListId($_SESSION['user_id']); ?>">マイページ</a>
+                        <a href="<?php echo makePath('users/mypage/'); ?><?php echo $_SESSION['user_id']; ?>/<?php echo getFirstListId($_SESSION['user_id']); ?>">マイページ</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['user_id']; ?>">タイムライン</a>
+                        <a href="<?php echo makePath('actions/index/'); ?><?php echo $_SESSION['user_id']; ?>">タイムライン</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/items/trend">トレンディング</a>
+                        <a href="<?php echo makePath('items/trend'); ?>">トレンディング</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/users/logout">ログアウト</a>
+                        <a href="<?php echo makePath('users/logout'); ?>">ログアウト</a>
                     </li>
                 </ul>
             </div>
@@ -87,15 +88,15 @@
         <section class="content-main info">
             <div class="row">
                 <div class="col-md-10 col-xs-offset-1">
-                    <img class="center-block img-responsive img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
+                    <img class="center-block img-responsive img-circle" src="<?php echo makePath('views/pf_image/'); ?><?php echo $user["picture_path"]; ?>" alt="" width="150" height="150">
                     <h3><?php echo $user['nick_name']; ?>
 <?php if($user_flag == 0): ?>
-                    <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['user_id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <span class="edit_info"><a href="<?php echo makePath('users/edit/'); ?><?php echo $_SESSION['user_id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </span>
 <?php elseif($user_flag == 1 && empty($rtn)): ?>
-                    <a href="/bucket_lists/users/follow/<?php echo $user['user_id']; ?>" class="btn btn-pink">フォロー</a>
+                    <a href="<?php echo makePath('users/follow/'); ?><?php echo $user['user_id']; ?>" class="btn btn-pink">フォロー</a>
 <?php elseif($user_flag == 1 && !empty($rtn)): ?>
-                    <a href="/bucket_lists/users/unfollow/<?php echo $user['user_id'] ?>" class="btn btn-pink">フォローを外す</a>
+                    <a href="<?php echo makePath('users/unfollow/'); ?><?php echo $user['user_id'] ?>" class="btn btn-pink">フォローを外す</a>
 <?php endif; ?>
                     </h3>
                     <p><?php echo $user['description']; ?></p>
@@ -108,15 +109,15 @@
         <section class="row">
             <div class="col-md-8 col-xs-offset-2">
                   <ul class="nav nav-pills nav-justified">
-                    <li<?php if($this->action == 'mypage'){echo ' class="active"';} ?>><a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>/<?php echo getFirstListId($user['user_id']); ?>">バケットリスト</a></li>
-                    <li<?php if($this->action == 'success'){echo ' class="active"';} ?>><a href="/bucket_lists/items/success/<?php echo $user['user_id']; ?>">達成リスト</a></li>
-                    <li<?php if($this->action == 'trash'){echo ' class="active"';} ?>><a href="/bucket_lists/items/trash/<?php echo $user['user_id']; ?>">ゴミ箱リスト</a></li>
+                    <li<?php if($this->action == 'mypage'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/mypage/'); ?><?php echo $user['user_id']; ?>/<?php echo getFirstListId($user['user_id']); ?>">バケットリスト</a></li>
+                    <li<?php if($this->action == 'success'){echo ' class="active"';} ?>><a href="<?php echo makePath('items/success/'); ?><?php echo $user['user_id']; ?>">達成リスト</a></li>
+                    <li<?php if($this->action == 'trash'){echo ' class="active"';} ?>><a href="<?php echo makePath('items/trash/'); ?><?php echo $user['user_id']; ?>">ゴミ箱リスト</a></li>
     <?php if($user_flag == 0): ?>
-                    <li<?php if($this->action == 'followers'){echo ' class="active"';} ?>><a href="/bucket_lists/users/followings/<?php echo $user['user_id']; ?>">フォロー <?php echo countFollowing($user['user_id']); ?></a></li>
-                    <li<?php if($this->action == 'followings'){echo ' class="active"';} ?>><a href="/bucket_lists/users/followers/<?php echo $user['user_id']; ?>">フォロワー <?php echo countFollower($user['user_id']); ?></a></li>
+                    <li<?php if($this->action == 'followers'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/followings/'); ?><?php echo $user['user_id']; ?>">フォロー <?php echo countFollowing($user['user_id']); ?></a></li>
+                    <li<?php if($this->action == 'followings'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/followers/'); ?><?php echo $user['user_id']; ?>">フォロワー <?php echo countFollower($user['user_id']); ?></a></li>
     <?php elseif($user_flag == 1): ?>
-                    <li<?php if($this->action == 'followings'){echo ' class="active"';} ?>><a href="/bucket_lists/users/followings/<?php echo $user['user_id']; ?>">フォロー <?php echo countFollower($user['user_id']); ?></a></li>
-                    <li<?php if($this->action == 'followers'){echo ' class="active"';} ?>><a href="/bucket_lists/users/followers/<?php echo $user['user_id']; ?>">フォロワー <?php echo countFollowing($user['user_id']); ?></a></li>
+                    <li<?php if($this->action == 'followings'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/followings/'); ?><?php echo $user['user_id']; ?>">フォロー <?php echo countFollower($user['user_id']); ?></a></li>
+                    <li<?php if($this->action == 'followers'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/followers/'); ?><?php echo $user['user_id']; ?>">フォロワー <?php echo countFollowing($user['user_id']); ?></a></li>
     <?php endif; ?>
                   </ul>
             </div>
@@ -131,20 +132,20 @@
             BUCKET LISTS 
         </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/bucket_lists/webroot/assets/js/jquery.raty.js"></script>
-    <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo makePath('webroot/assets/js/jquery.raty.js'); ?>"></script>
+    <script src="<?php echo makePath('webroot/assets/js/bootstrap.min.js'); ?>"></script>
 <!--      if($this->action == "index"){
          echo "
  -->
 <script>
     /*ワクワク度表示*/
-    $.fn.raty.defaults.path = "/bucket_lists/views/image";
+    $.fn.raty.defaults.path = "<?php echo makePath('views/image'); ?>";
     $('.starRating').raty({
       // hints: [0,1,2,3,4,5]
       // click: function($score, $evt) {
-      //          $.post('/bucket_lists/items/create',{score:$score, url:$evt.currentTarget.baseURI},
+      //          $.post('./items/create',{score:$score, url:$evt.currentTarget.baseURI},
       //                 function(data){
-      //                   location.href = '/bucket_lists/items/create';
+      //                   location.href = './items/create';
       //                 }
       //                );
       // }
@@ -227,7 +228,7 @@
           modal.find('.modal-body p#item_comment').text(recipientComment)
           modal.find('.modal-body span#item_deadline').text(recipientDeadline)
           modal.find('.modal-body span#status').text(recipientStatus)
-          modal.find('.modal-body img#wkwk').attr("src", "/bucket_lists/views/image/"+recipientPriority+".png")
+          modal.find('.modal-body img#wkwk').attr("src", "<?php echo makePath('views/image/'); ?>"+recipientPriority+".png")
           });
         </script>
         <script>
@@ -247,7 +248,7 @@
           // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
           modal.find('.modal-body p#item_comment').text(recipientComment)
           modal.find('.modal-body span#item_created').text(recipientCreated)
-          modal.find('.modal-body img#wkwk').attr("src", "/bucket_lists/views/image/"+recipientPriority+".png")
+          modal.find('.modal-body img#wkwk').attr("src", "<?php echo makePath('views/image/'); ?>"+recipientPriority+".png")
           });
         </script>
         <script>
@@ -267,7 +268,7 @@
           // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
           modal.find('.modal-body p#item_comment').text(recipientComment)
           modal.find('.modal-body span#item_created').text(recipientCreated)
-          modal.find('.modal-body img#wkwk').attr("src", "/bucket_lists/views/image/"+recipientPriority+".png")
+          modal.find('.modal-body img#wkwk').attr("src", "<?php echo makePath('views/image/'); ?>"+recipientPriority+".png")
           });
         </script>
         <script>

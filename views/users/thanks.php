@@ -15,7 +15,7 @@
                     <br />
                     <br />
 
-                      <a href="/bucket_lists/users/login" class="btn btn-info">ログイン画面へ</a>&nbsp;&nbsp;
+                      <a href="<?php echo makePath('users/home'); ?>" class="btn btn-info">ログイン画面へ</a>&nbsp;&nbsp;
 
                     <br />
                     <br />

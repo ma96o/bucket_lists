@@ -42,7 +42,7 @@
         if (!empty($post['email']) && !empty($post['password'])) {
             $controller->auth($post);
         } else {
-            header('Location: /bucket_lists/users/home');
+            echo own_header('users/home');
             exit();
         }
         break;
@@ -82,7 +82,7 @@
         $controller->search($post);
         break;
       default:
-        header('location: /bucket_lists/users/home');
+        echo own_header('users/home');
         break;
     }
 
@@ -111,7 +111,7 @@
               $this->display(1);
             } else {
               $_SESSION['users'] = $post;
-              header('Location: pre_create');
+              echo own_header('users/pre_create');
               exit();
             }
           } else {
@@ -123,7 +123,7 @@
               $this->viewErrors = $error_login;
               $this->display(1);
             } else {
-              header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
+              echo own_header('users/mypage/'.$_SESSION['user_id']);
               exit();
             }
           }
@@ -176,7 +176,7 @@ EOM;
             setcookie("PHPSESSID", '', time() - 1800, '/');
         }
         session_destroy();
-        header('Location: pre_thanks');
+        echo own_header('users/pre_thanks');
         exit();
         }
 
@@ -198,7 +198,7 @@ EOM;
               $this->display(1);
           } else {
               $_SESSION['users'] = $post;
-              header('Location: check');
+              echo own_header('users/check');
               exit();
             }
         } else {
@@ -247,7 +247,7 @@ EOM;
 
         session_destroy();
 
-        header('location: /bucket_lists/users/home');
+        echo own_header('users/home');
         exit();
 
       }
@@ -257,7 +257,7 @@ EOM;
         isLogin();
         if($list_id == 0){
           $list_id = getFirstListId($option);
-          header('location: /bucket_lists/users/mypage/'.$option.'/'.$list_id);
+          echo own_header('users/mypage/'.$option.'/'.$list_id);
         }
 
 
@@ -277,7 +277,7 @@ EOM;
       function update($post){
         isLogin();
         $this->user->update($post);
-        header('location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
+        echo own_header('users/mypage/'.$_SESSION['user_id']);
       }
 
       function follow($option){
@@ -287,7 +287,7 @@ EOM;
         $referer_resource = $referer[4];
         $referer_action = $referer[5];
         $referer_option = $referer[6];
-        header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
+        echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
       function unfollow($option){
         isLogin();
@@ -296,7 +296,7 @@ EOM;
         $referer_resource = $referer[4];
         $referer_action = $referer[5];
         $referer_option = $referer[6];
-        header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
+        echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
 
 

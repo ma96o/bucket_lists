@@ -24,11 +24,11 @@
     <div class="col-md-8 col-xs-offset-2">
           <ul class="nav nav-pills nav-justified">
           <?php if(!empty($option) && $option == 'hot'): ?>
-              <li><a href="/bucket_lists/items/trend">NEW</a></li>
-              <li class="active"><a href="/bucket_lists/items/trend/hot">HOT</a></li>
+              <li><a href="<?php echo makePath('items/trend'); ?>">NEW</a></li>
+              <li class="active"><a href="<?php echo makePath('items/trend/hot'); ?>">HOT</a></li>
           <?php else: ?>
-              <li class="active"><a href="/bucket_lists/items/trend">NEW</a></li>
-              <li><a href="/bucket_lists/items/trend/hot">HOT</a></li>
+              <li class="active"><a href="<?php echo makePath('items/trend'); ?>">NEW</a></li>
+              <li><a href="<?php echo makePath('items/trend/hot'); ?>">HOT</a></li>
           <?php endif; ?>
           </ul>
     </div>

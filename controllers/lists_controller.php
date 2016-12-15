@@ -12,7 +12,7 @@
         $controller->update($post);
         break;
       default:
-        header('location: /bucket_lists/users/home');
+        echo own_header('users/home');
         break;
     }
 
@@ -32,12 +32,12 @@
       function create($post){
         isLogin();
         $this->list->create($post);
-        header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
+        echo own_header('users/mypage/'.$_SESSION['user_id']);
       }
       function update($post){
         isLogin();
         $this->list->update($post);
-        header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
+        echo own_header('users/mypage/'.$_SESSION['user_id']);
       }
     }
 
