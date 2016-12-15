@@ -40,7 +40,7 @@
         <section id="pinBoot">
 
           <!--content-->  
-<?php foreach($this->viewsOptions as $item): ?>
+<?php foreach($this->viewOptions as $item): ?>
         　<article class="white-panel">
             <a href="" data-toggle="modal" data-target="#item_detail" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>" data-done="<?php echo countDone($item['item_id']); ?>" data-doing="<?php echo countDoing($item['item_id']); ?>" data-id="<?php echo $item['item_id']; ?>">
                 <h4 class="item_name"><?php echo $item['item_name']; ?></h4>

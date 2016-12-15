@@ -56,30 +56,30 @@
       private $item;
       private $resource;
       private $action;
-      private $viewsOptions;
+      private $viewOptions;
 
       function __construct($resource, $action){
         $this->item = new Item();
         $this->resource = $resource;
         $this->action = $action;
-        $this->viewsOptions = array();
+        $this->viewOptions = array();
       }
 
       function trend($option, $post){
         isLogin();
-        $this->viewsOptions = $this->item->trend($option, $post);
+        $this->viewOptions = $this->item->trend($option, $post);
 
         $this->display($option);
       }
       function doing($option){
         isLogin();
-        $this->viewsOptions = $this->item->doing($option);
+        $this->viewOptions = $this->item->doing($option);
 
         $this->display($option);
       }
       function done($option){
         isLogin();
-        $this->viewsOptions = $this->item->done($option);
+        $this->viewOptions = $this->item->done($option);
 
         $this->display($option);
       }
@@ -104,7 +104,7 @@
       }
       function success($option){
         isLogin();
-        $this->viewsOptions = $this->item->success($option);
+        $this->viewOptions = $this->item->success($option);
 
         $this->displayProf($option);
       }
@@ -127,7 +127,7 @@
       }
       function trash($option){
         isLogin();
-        $this->viewsOptions = $this->item->trash($option);
+        $this->viewOptions = $this->item->trash($option);
 
         $this->displayProf($option);
       }

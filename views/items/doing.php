@@ -8,7 +8,7 @@
                   <!--doing一覧-->
                   <div class="do_list">
                     <h4><i class="fa fa-tags" aria-hidden="true"></i>  doingユーザー一覧</h4>
-                  <?php foreach($this->viewsOptions as $viewsOption): $user = aboutUser($viewsOption['user_id']); ?>
+                  <?php foreach($this->viewOptions as $viewsOption): $user = aboutUser($viewsOption['user_id']); ?>
                       <div>
                         <a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>/<?php echo getFirstListId($user['user_id']); ?>">
                           <img class="img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" width="50" height="50">

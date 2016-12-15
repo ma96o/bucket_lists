@@ -11,7 +11,7 @@
 
 
               <ul class="list-unstyled">
-              <?php foreach($this->viewsOptions as $follower): ?>
+              <?php foreach($this->viewOptions as $follower): ?>
                 <?php echo var_dump($follower['user_id']) ;?>
                     <?php echo var_dump($_SESSION['user_id']) ;?>
                     <?php echo var_dump($follower['follower_id']) ;?>

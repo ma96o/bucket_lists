@@ -18,17 +18,17 @@
       private $timeline;
       private $resource;
       private $action;
-      private $viewsOptions;
+      private $viewOptions;
 
       function __construct($resource, $action){
         $this->timeline = new Action();
         $this->resource = $resource;
         $this->action = $action;
-        $this->viewsOptions = array();
+        $this->viewOptions = array();
       }
       function index(){
         isLogin();
-        $this->viewsOptions = $this->timeline->index();
+        $this->viewOptions = $this->timeline->index();
 
         $this->display();
       }

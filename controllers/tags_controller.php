@@ -20,13 +20,13 @@
       private $tag;
       private $resource;
       private $action;
-      private $viewsOptions;
+      private $viewOptions;
 
       function __construct($resource, $action){
         $this->tag = new Tag();
         $this->resource = $resource;
         $this->action = $action;
-        $this->viewsOptions = array();
+        $this->viewOptions = array();
       }
 
       function create(){

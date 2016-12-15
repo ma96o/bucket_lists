@@ -260,7 +260,7 @@ EOM;
           header('location: /bucket_lists/users/mypage/'.$option.'/'.$list_id);
         }
 
-        $this->viewsOptions = $this->user->mypage($option, $list_id);
+        $this->viewOptions = $this->user->mypage($option, $list_id);
 
         $this->displayProf($option, $list_id);
 
@@ -296,16 +296,16 @@ EOM;
       }
 
       function followings($option){
-        $this->viewsOptions = $this->user->followings($option);
+        $this->viewOptions = $this->user->followings($option);
         $this->displayProf($option, 0);
       }
 
       function followers($option){
-        $this->viewsOptions = $this->user->followers($option);
+        $this->viewOptions = $this->user->followers($option);
         $this->displayProf($option, 0);
       }
       function search($post){
-        $this->viewsOptions = $this->user->search($post);
+        $this->viewOptions = $this->user->search($post);
         $this->display($post['search_word']);
       }
       function display($option){

@@ -9,7 +9,7 @@
                     <h4><i class="fa fa-user-circle" aria-hidden="true"></i>  follow</h4>
 
                 <ul class="list-unstyled">
-                <?php foreach($this->viewsOptions as $following): ?>
+                <?php foreach($this->viewOptions as $following): ?>
                     <?php echo var_dump($following['user_id']) ;?>
                     <?php echo var_dump($_SESSION['user_id']) ;?>
                     <?php echo var_dump($following['follower_id']) ;?>
