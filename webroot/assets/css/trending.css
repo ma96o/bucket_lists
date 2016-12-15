@@ -10,7 +10,10 @@ font-style:normal;
 } 
 
 body {
- background-color:#eee;   
+ background-color:#efefef;
+ font-family: 'Rancho', cursive;
+font-family:Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
+
 }    
 
 #pinBoot {
@@ -32,14 +35,23 @@ body {
   padding-bottom:10px;
   border-bottom: 1px dotted #e1e1e1;
   word-wrap: break-word;
+  color:#888;
 
 }
 
 #pinBoot h4.item_name:before{
   font-family: FontAwesome;
-  content: '\f02e'; /* アイコンのunicode */
+  /*content: '\f02e';*/ 
+  content: '\f08d';
   margin-right: 10px;
-  color:#00bcd4;
+  /*color:#00bcd4;*/
+  color:#ff4081;
+}
+
+#pinBoot span{
+  display: block;
+  margin: 5px;
+  padding: 5px;
 }
 
 #pinBoot span.doing:before{
@@ -47,13 +59,15 @@ body {
   content: '\f0f6'; /* アイコンのunicode */
   margin-right: 10px;
   color:#00bcd4;
+  font-size: 20px;
 }
 
 #pinBoot span.done:before{
   font-family: FontAwesome;
-  content: '\f05d'; /* アイコンのunicode */
+  content: '\f00c'; /* アイコンのunicode */
   margin-right: 10px;
   color:#00bcd4;
+  font-size: 20px;
 }
 
 #pinBoot p{

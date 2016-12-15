@@ -48,9 +48,10 @@
                 <span class="done">done <?php echo countDone($item['item_id']); ?></span>
             </a>
             <p>
-            <button type="button" class="btn btn-pink btn-circle center-block" data-toggle="modal" data-target="#add_trend" data-id="<?php echo $item['item_id']; ?>" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>">
+              <a href="/bucket_lists/users/unfollow/<?php echo $follower['user_id'] ?>" class="btn btn-pink" style="width:30%; float:right; color:#fff;">add</a>
+            <!--button type="button" class="btn btn-pink btn-circle center-block" data-toggle="modal" data-target="#add_trend" data-id="<?php echo $item['item_id']; ?>" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>">
                 <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
+            </button-->
             </p>
             
         　</article>
