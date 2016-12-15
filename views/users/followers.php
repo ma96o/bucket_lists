@@ -9,6 +9,7 @@
                 <div class="follow_follower_list">
                     <h4><i class="fa fa-user-circle" aria-hidden="true"></i>  follower</h4>
 
+
               <ul class="list-unstyled">
               <?php foreach($this->viewsOptions as $follower): ?>
                 <?php $followall = follow_all($option); ?>

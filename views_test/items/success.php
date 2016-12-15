@@ -2,7 +2,7 @@
     session_start();
     require('../../dbconnect.php');
         $sql = sprintf('SELECT * FROM `likes` WHERE `user_id`=%d',
-      mysqli_real_escape_string($db, $_SESSION['id'])
+      mysqli_real_escape_string($db, $_SESSION['user_id'])
       );
     $rec = mysqli_query($db, $sql) or die(mysqli_error($db));
     $like_items = array();

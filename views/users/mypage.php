@@ -7,7 +7,7 @@
 
       <?php $lists = getList($option); foreach($lists as $list): ?>
         <a href="/bucket_lists/users/mypage/<?php echo $option; ?>/<?php echo $list['list_id']; ?>">
-            <li><?php if($list_id == $list['list_id']){echo ' class="active"';} ?><?php echo $list['list_name'] ?>
+            <li<?php if($list_id == $list['list_id']){echo ' class="active"';} ?>><?php echo $list['list_name'] ?>
             <?php if($user_flag == 0): ?>
             <p><a id="button" data-toggle="modal" href="" data-target="#edit_list" data-title="<?php echo $list['list_name']; ?>" data-id="<?php echo $list['list_id']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
             <?php endif; ?>
@@ -41,27 +41,29 @@
       <?php endif; ?>
         <!--項目一覧-->
          <ul class="list-unstyled">
-         <?php $i = 1; foreach($this->viewsOptions as $item): ?>
-        <a data-toggle="modal" href="" data-target="#show_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>" <?php if($item['status'] == 1){echo 'data-status="doing"';}else{echo 'data-status="done"';} ?> data-priority="<?php echo $item['priority']; ?>">
-            <li>
-                <dl>
-                    <dt><span><?php echo $i++; ?></span><?php if($item['status'] == 2){echo ' class="success"';}elseif($item['status'] == 3){echo ' class="trash"';} ?><?php echo $item['item_name']; ?></dt>
-                <?php if($user_flag == 0): ?>
-                    <dd><a data-toggle="modal" href="" data-target="#edit_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>" data-priority="<?php echo $item['priority']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
-                    <dd><a data-toggle="modal" href="" data-target="#trash_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id'] ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
-                    <dd><a data-toggle="modal" href="" data-target="#success_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
-                <?php endif; ?>
-                </dl>
-                <div class="status-icon">
-                    <p class="calendar"><?php echo $item['deadline']; ?></p>
+               <?php $i = 1; foreach($this->viewsOptions as $item): ?>
+              <a data-toggle="modal" href="" data-target="#show_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>" <?php if($item['status'] == 1){echo 'data-status="doing"';}else{echo 'data-status="done"';} ?> data-priority="<?php echo $item['priority']; ?>">
+                  <li>
+                      <dl>
+                          <dt<?php if($item['status'] == 2){echo ' class="success"';}elseif($item['status'] == 3){echo ' class="trash"';} ?>><span><?php echo $i++; ?></span><?php echo $item['item_name']; ?></dt>
+                      <?php if($user_flag == 0 && $item['status'] == 1): ?>
+                          <dd><a data-toggle="modal" href="" data-target="#edit_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>" data-comment="<?php echo $item['comment']; ?>" data-deadline="<?php echo $item['deadline']; ?>" data-priority="<?php echo $item['priority']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></dd>
+                          <dd><a data-toggle="modal" href="" data-target="#trash_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id'] ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></dd>
+                          <dd><a data-toggle="modal" href="" data-target="#success_item" data-title="<?php echo $item['item_name']; ?>" data-id="<?php echo $item['id']; ?>"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a></dd>
+                      <?php endif; ?>
+                      </dl>
+                      <div class="status-icon">
+                          <p class="calendar"><?php echo $item['deadline']; ?></p>
 
           <?php if(isLike($item['id']) == 0): ?>
-                  <p class="like"><a href="/bucket_lists/items/like/<?php echo $item['id'] ?>">応援する<?php echo countLike($item['id']); ?></a></p>
+                <p><a href="/bucket_lists/items/like/<?php echo $item['id'] ?>"><i class="fa fa-smile-o" aria-hidden="true"></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
+
           <?php else: ?>
-                  <p class="unlike"><a href="/bucket_lists/items/unlike/<?php echo $item['id'] ?>">んー<?php echo countLike($item['id']); ?></a></p>
+                <p><a href="/bucket_lists/items/unlike/<?php echo $item['id'] ?>"><i class="fa fa-smile-o" aria-hidden="true" style="color:#00bcd4;"></i></i>&nbsp;<?php echo countLike($item['id']); ?></a></p>
+
           <?php endif; ?>
 
-                    <p><img src="/bucket_lists/views/image/<?php echo $item['priority']; ?>.png"></p>
+                <p><img src="/bucket_lists/views/image/<?php echo $item['priority']; ?>.png"></p>
                 </div>
             </li>
         </a>

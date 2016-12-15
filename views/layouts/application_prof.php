@@ -1,6 +1,6 @@
 <?php
 
-    if(!empty($_SESSION['id']) && $option == $_SESSION['id']){
+    if(!empty($_SESSION['user_id']) && $option == $_SESSION['user_id']){
         $user_flag = 0;
     } else {
         $user_flag = 1;
@@ -49,10 +49,25 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['id']; ?>/<?php echo getFirstListId($_SESSION['id']); ?>">マイページ</a>
+                      <div id="custom-search-input">
+                        <form action="/bucket_lists/users/search" method="post" class="navbar-form navbar-right" role="search">
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="search_word" placeholder="ユーザ検索">
+                              <span class="input-group-btn">
+                                <button class="btn btn-pink" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                              </span>
+                            </div>                     
+                        </form>
+                      </div>
+                    </li>
+
+                    <li class="page-scroll">
+                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['user_id']; ?>/<?php echo getFirstListId($_SESSION['user_id']); ?>">マイページ</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
+                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['user_id']; ?>">タイムライン</a>
                     </li>
                     <li class="page-scroll">
                         <a href="/bucket_lists/items/trend">トレンディング</a>
@@ -68,10 +83,10 @@
         <section class="content-main info">
             <div class="row">
                 <div class="col-md-10 col-xs-offset-1">
-                    <img class="center-block img-responsive img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
+                    <img class="center-block img-responsive img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
                     <h3><?php echo $user['nick_name']; ?>
 <?php if($user_flag == 0): ?>
-                    <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <span class="edit_info"><a href="/bucket_lists/users/edit/<?php echo $_SESSION['user_id']; ?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </span>
 <?php elseif($user_flag == 1 && empty($rtn)): ?>
                     <a href="/bucket_lists/users/follow/<?php echo $user['user_id']; ?>" class="btn btn-pink">フォロー</a>

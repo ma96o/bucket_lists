@@ -1,17 +1,17 @@
 
     <div class="container">
         <section class="content-main info">
-            <form method="post" action="/bucket_lists/users/update" role="form">
+            <form method="post" action="/bucket_lists/users/update" role="form" enctype="multipart/form-data">
             <div class="row">
-            <?php $user = aboutUser($_SESSION['id']); ?>
+            <?php $user = aboutUser($_SESSION['user_id']); ?>
 
                 <div class="col-md-10 col-xs-offset-1">
-                    <img class="center-block img-responsive img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
+                    <img class="center-block img-responsive img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" alt="" width="150" height="150">
                 </div>
                 <br />
                 <br>
                 <div class="col-xs-4 col-xs-offset-4">
-                    <input type="file" name="picture_path" class="form-control">
+                    <input type="file" name="picture_path" class="form-control" value="<?php echo $user['picture_path']; ?>">
                         <!--div class="preview" /-->    
                     <h3><input type="text" class="form-control" name="nick_name" value="<?php echo $user['nick_name']; ?>">
                     </h3>

@@ -74,9 +74,12 @@
       case 'edit':
         $controller->edit($option);
         break;
+
       case 'update':
         $controller->update($post);
-
+        break;
+      case 'search':
+        $controller->search($post);
         break;
       default:
         break;
@@ -87,16 +90,12 @@
       private $resource;
       private $action;
       private $viewOptions;
-      private $followings;
-      private $followers;
       private $viewErrors;
 
       function __construct($resource, $action) {
         $this->user = new User();
         $this->resource = $resource;
         $this->action = $action;
-        $this->followings = array();
-        $this->followers = array();
         $this->viewOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
         }
 
@@ -106,14 +105,14 @@
             if (!empty($error)) {
               $this->viewOptions = $post;
               $this->viewErrors = $error;
-              $this->display($option);
+              $this->display(1);
           } else {
               $_SESSION['users'] = $post;
               header('Location: pre_create');
               exit();
                 }
         } else {
-            $this->display($option);
+            $this->display(1);
         }
       }
 
@@ -163,12 +162,10 @@ EOM;
         header('Location: pre_thanks');
         exit();
         }
-          $this->display();
 
         }
 
       function pre_thanks() {
-        $this->action = 'pre_thanks';
         $this->display($option);
       }
 
@@ -181,7 +178,7 @@ EOM;
             if (!empty($error)) {
               $this->viewOptions = $post;
               $this->viewErrors = $error;
-              $this->display();
+              $this->display(1);
           } else {
               $_SESSION['users'] = $post;
               header('Location: check');
@@ -194,14 +191,13 @@ EOM;
             if (!empty($_GET)) {
                $url_token = $_GET['url_token'];
             }
-              $this->display();
+              $this->display(1);
             }
       }
 
       function check() {
         $this->viewOptions = $_SESSION['users'];
-        $this->action = 'check';
-        $this->display();
+        $this->display(1);
 
       }
 
@@ -210,19 +206,18 @@ EOM;
       }
 
       function thanks(){
-        $this->action = 'thanks';
-        $this->display();
+        $this->display(1);
       }
 
       function login(){
-        $this->action = 'login';
-        $this->display($option);
+        $this->display(1);
       }
 
       function auth($post) {
             $login_flag = $this->user->auth($post);
             if ($login_flag) {
-                header('Location: ../items/trend');
+
+                header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
                 exit();
             } else {
                 header('Location: login');
@@ -270,7 +265,7 @@ EOM;
       function update($post){
         isLogin();
         $this->user->update($post);
-        header('location: /bucket_lists/users/mypage/'.$_SESSION['id']);
+        header('location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
       }
 
       function follow($option){
@@ -293,13 +288,17 @@ EOM;
       }
 
       function followings($option){
-        $this->followings = $this->user->followings($option);
-        $this->displayProf($option, $list_id);
+        $this->viewsOptions = $this->user->followings();
+        $this->displayProf($option, 0);
       }
 
       function followers($option){
-        $this->followers = $this->user->followers($option);
-        $this->displayProf($option, $list_id);
+        $this->viewsOptions = $this->user->followers();
+        $this->displayProf($option, 0);
+      }
+      function search($post){
+        $this->viewsOptions = $this->user->search($post);
+        $this->display($post['search_word']);
       }
       function display($option){
         require('views/layouts/application.php');

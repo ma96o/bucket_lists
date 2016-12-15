@@ -82,7 +82,7 @@
                         mysqli_real_escape_string($this->dbconnect,$post['comment']),
                         mysqli_real_escape_string($this->dbconnect,$post['score']),
                         mysqli_real_escape_string($this->dbconnect,$post['list_id']),
-                        mysqli_real_escape_string($this->dbconnect,$_SESSION['id'])
+                        mysqli_real_escape_string($this->dbconnect,$_SESSION['user_id'])
                         // mysqli_real_escape_string($this->dbconnect,$post['tag_id'])
                     );
             mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
@@ -90,7 +90,7 @@
       function index(){
       }
       function success($option){
-        $sql = sprintf('SELECT i.*, a.`created` FROM `items` i, `actions` a WHERE i.`user_id`=%d AND i.`status`=2 AND i.`id`=a.`item_id`',
+        $sql = sprintf('SELECT i.*, a.`created` FROM `items` i, `actions` a WHERE i.`user_id`=%d AND i.`status`=2 AND i.`id`=a.`item_id` AND a.`user_id`=i.`user_id`',
             mysqli_real_escape_string($this->dbconnect, $option)
             );
         $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
@@ -129,14 +129,14 @@
 
         $sql = sprintf('INSERT INTO `actions` SET `item_id`=%d, `user_id`=%d, `status_id`=2, `created`=now()',
           mysqli_real_escape_string($this->dbconnect, $post['id']),
-          mysqli_real_escape_string($this->dbconnect, $_SESSION['id'])
+          mysqli_real_escape_string($this->dbconnect, $_SESSION['user_id'])
           );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
       }
       function undone(){
       }
       function trash($option){
-        $sql = sprintf('SELECT i.*, a.`created` FROM `items` i, `actions` a WHERE i.`user_id`=%d AND i.`status`=3 AND i.`id`=a.`item_id`',
+        $sql = sprintf('SELECT i.*, a.`created` FROM `items` i, `actions` a WHERE i.`user_id`=%d AND i.`status`=3 AND i.`id`=a.`item_id` AND a.`user_id`=i.`user_id`',
             mysqli_real_escape_string($this->dbconnect, $option)
             );
         $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
@@ -159,7 +159,7 @@
 
         $sql = sprintf('INSERT INTO `actions` SET `item_id`=%d, `user_id`=%d, `status_id`=3, `created`=now()',
           mysqli_real_escape_string($this->dbconnect, $post['id']),
-          mysqli_real_escape_string($this->dbconnect, $_SESSION['id'])
+          mysqli_real_escape_string($this->dbconnect, $_SESSION['user_id'])
           );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
       }
@@ -169,7 +169,7 @@
         specialEcho ('モデルのlikeメソッド呼び出し');
         $sql = sprintf('INSERT INTO `likes`
                         SET `user_id`=%d, `item_id`=%d',
-                        mysqli_real_escape_string($this->dbconnect, $_SESSION['id']),
+                        mysqli_real_escape_string($this->dbconnect, $_SESSION['user_id']),
                         mysqli_real_escape_string($this->dbconnect, $option)
                         );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
@@ -179,7 +179,7 @@
         $sql = sprintf('DELETE FROM `likes`
                         WHERE `user_id`=%d
                         AND`item_id`=%d',
-                        mysqli_real_escape_string($this->dbconnect, $_SESSION['id']),
+                        mysqli_real_escape_string($this->dbconnect, $_SESSION['user_id']),
                         mysqli_real_escape_string($this->dbconnect, $option)
                         );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));

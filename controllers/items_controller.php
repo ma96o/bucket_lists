@@ -21,11 +21,7 @@
         $controller->trash($option);
         break;
       case 'create':
-        if (!empty($post['list_id']) && !empty($post['comment']) && !empty($post['deadline'])) {
-            $controller->create($post);
-        } else {
-            $controller->success($option);
-        }
+        $controller->create($post);
         break;
       case 'update':
         $controller->update($post);
@@ -94,9 +90,13 @@
       }
       function create($post) {
         isLogin();
+          if (empty($post['list_id']) || empty($post['comment']) || empty($post['deadline'])) {
+              header('location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
+              exit();
+          }
           specialEcho('Controllerのcreate()が呼び出されました。');
           $this->item->create($post);
-          header('Location: /bucket_lists/users/mypage/'.$_SESSION['id'].'/'.$post['list_id']);
+          header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
       }
       function index(){
         isLogin();
@@ -111,7 +111,7 @@
         isLogin();
             $this->item->update($post);
             // あとでindexに飛ぶように戻す。location:editは消す。header('Location: index');
-          header('Location: /bucket_lists/users/mypage/'.$_SESSION['id'].'/'.$post['list_id']);
+          header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
       }
       function conglaturation(){
         isLogin();
@@ -119,7 +119,7 @@
       function tassei($post){
         isLogin();
         $this->item->tassei($post);
-        header('location: /bucket_lists/items/success/'.$_SESSION['id']);
+        header('location: /bucket_lists/items/success/'.$_SESSION['user_id']);
       }
       function undone(){
         isLogin();
@@ -136,7 +136,7 @@
       function delete($post){
         isLogin();
         $this->item->delete($post);
-        header('location: /bucket_lists/items/trash/'.$_SESSION['id']);
+        header('location: /bucket_lists/items/trash/'.$_SESSION['user_id']);
       }
       function undelete(){
         isLogin();
@@ -189,12 +189,12 @@
       function updateSuccess($post){
         isLogin();
         $this->item->updateSuccess($post);
-        header('location: /bucket_lists/items/success/'.$_SESSION['id']);
+        header('location: /bucket_lists/items/success/'.$_SESSION['user_id']);
       }
       function updateTrash($post){
         isLogin();
         $this->item->updateTrash($post);
-        header('location: /bucket_lists/items/trash/'.$_SESSION['id']);
+        header('location: /bucket_lists/items/trash/'.$_SESSION['user_id']);
       }
       function display($option){
         isLogin();
