@@ -10,10 +10,10 @@
                     <h4><i class="fa fa-user-circle" aria-hidden="true"></i>  follow</h4>
 
                 <ul class="list-unstyled">
-                <?php foreach($this->viewOptions as $following): ?>
+                <?php foreach($this->viewsOptions as $following): ?>
                     <a href="">
                         <li class="follow_followers">
-                            <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
+                            <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
                             <span><?php echo $following['nick_name']; ?></span>
                             <a href="/bucket_lists/users/unfollow/<?php echo $following['user_id'] ?>" class="btn btn-default" style="float: right;">
                                 フォローを外す</a>
@@ -25,4 +25,5 @@
              </section>
             </div>
           </div>
+        </div>
         </div>

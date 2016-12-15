@@ -16,7 +16,7 @@
                    <?php if($follower['following_id'] !== $followall['follower_id'] && $follower['follower_id'] !== $followall['following_id']): ?>
                      <a href="">
                      <li class="follow_followers">
-                            <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
+                            <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
                             <span><?php echo $follower['nick_name']; ?></span>
                             <a href="/bucket_lists/users/follow/<?php echo $follower['user_id']; ?>" class="btn btn-pink" style="float: right;">
                                 フォロー</a>
