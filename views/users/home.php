@@ -13,14 +13,15 @@
                     <!--新規登録-->
                     <div class="side_content">
                     <h4><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;アカウント登録</h4>
-                        <form class="form-inline">
+                        <form method="post" action="/bucket_lists/users/home" class="form-inline">
                             <div class="form-group">
                                 <p>メールアドレスを入力して下さい</p>
-                                <input type="email" name="email" class="form-control" value="<?php echo $this->viewsOptions['email']; ?>" placeholder="hogehoge@egmail.com">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="email" name="email" class="form-control" placeholder="hogehoge@egmail.com">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <?php if(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'blank'): ?>
-                                  <p class="blue">メールアドレスを入力してください</p>
                                 <?php elseif(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'false'): ?>
                                   <p class="blue">正しい形式で入力してください</p>
+                                <?php elseif(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'duplicate'): ?>
+                                  <p style="color:red;">* メールアドレスが既に登録されています。</p>
                                 <?php endif; ?>
                                   <input type="hidden" name="token" value="<?=$token?>">
                                   <input type="submit" class="btn btn-pink" style="float: right;"  value="登録">
@@ -31,9 +32,14 @@
                     <!--ログイン-->
                     <div class="side_content">
                     <h4><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;ログイン</h4>
-                    <form method="post" action="/bucket_lists/users/auth" role="form">
+                    <form method="post" action="/bucket_lists/users/home" role="form">
                         <div class="form-group">
+                        <?php if(!empty($this->viewErrors) && $this->viewErrors == 'false'): ?>
+                              <p class="blue">メールアドレスとパスワードを正確に入力してください。</p>
+                            <input type="email" name="email" class="form-control pd" placeholder="hogehoge@egmail.com" value="<?php echo $this->viewOptions['email']; ?>">
+                        <?php else: ?>
                             <input type="email" name="email" class="form-control pd" placeholder="hogehoge@egmail.com">
+                        <?php endif; ?>
                             <input type="password" name="password" class="form-control pd" placeholder="password">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <button class="btn btn-pink" type="submit" style="float: right;">ログイン</button>
                         </div>

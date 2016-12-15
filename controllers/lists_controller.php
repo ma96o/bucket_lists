@@ -20,7 +20,7 @@
       private $list;
       private $resource;
       private $action;
-      private $viewsOptions;
+      private $viewOptions;
 
       function __construct($resource, $action){
         $this->list = new Lists();

@@ -11,7 +11,13 @@
 
 
               <ul class="list-unstyled">
-              <?php foreach($this->viewsOptions as $follower): ?>
+
+              <?php foreach($this->viewOptions as $follower): ?>
+                <?php echo var_dump($follower['user_id']) ;?>
+                    <?php echo var_dump($_SESSION['user_id']) ;?>
+                    <?php echo var_dump($follower['follower_id']) ;?>
+                    <?php echo var_dump($follower['following_id']) ;?>
+
                 <?php if($follower['user_id'] != $follower['follower_id']): ?>
                      <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
                      <li class="follow_followers">

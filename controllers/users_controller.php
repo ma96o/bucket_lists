@@ -90,7 +90,7 @@
       private $user;
       private $resource;
       private $action;
-      private $viewsOptions;
+      private $viewOptions;
       private $viewErrors;
 
       function __construct($resource, $action) {
@@ -102,16 +102,32 @@
 
       function home($post,$option) {
         if (!empty($post)) {
+          if(!empty($post['token'])){
+//新規登録処理
           $error = $this->user->home_valid($post);
             if (!empty($error)) {
               $this->viewOptions = $post;
               $this->viewErrors = $error;
               $this->display(1);
-          } else {
+            } else {
               $_SESSION['users'] = $post;
               header('Location: pre_create');
               exit();
-                }
+            }
+          } else {
+
+//ログイン処理
+          $error_login = $this->user->auth($post);
+            if(!empty($error_login) && $error_login = "false"){
+              $this->viewOptions = $post;
+              $this->viewErrors = $error_login;
+              $this->display(1);
+            } else {
+              header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
+              exit();
+            }
+          }
+
         } else {
             $this->display(1);
         }
@@ -215,15 +231,6 @@ EOM;
       }
 
       function auth($post) {
-            $login_flag = $this->user->auth($post);
-            if ($login_flag) {
-
-                header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
-                exit();
-            } else {
-                header('Location: /bucket_lists/users/home');
-                exit();
-            }
         }
 
       function logout() {
@@ -252,7 +259,11 @@ EOM;
           $list_id = getFirstListId($option);
           header('location: /bucket_lists/users/mypage/'.$option.'/'.$list_id);
         }
-        $this->viewsOptions = $this->user->mypage($option, $list_id);
+
+
+        $this->viewOptions = $this->user->mypage($option, $list_id);
+
+
         $this->displayProf($option, $list_id);
 
       }
@@ -290,16 +301,16 @@ EOM;
 
 
       function followings($option){
-        $this->viewsOptions = $this->user->followings($option);
+        $this->viewOptions = $this->user->followings($option);
         $this->displayProf($option, 0);
       }
 
       function followers($option){
-        $this->viewsOptions = $this->user->followers($option);
+        $this->viewOptions = $this->user->followers($option);
         $this->displayProf($option, 0);
       }
       function search($post){
-        $this->viewsOptions = $this->user->search($post);
+        $this->viewOptions = $this->user->search($post);
         $this->display($post['search_word']);
 
       }
