@@ -1,4 +1,3 @@
-<!-- フォローしている人の一覧 -->
         <div class="container">
 
         <div class="container-fluid">
@@ -11,7 +10,29 @@
 
                 <ul class="list-unstyled">
                 <?php foreach($this->viewsOptions as $following): ?>
-                    <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
+                    <?php echo var_dump($following['user_id']) ;?>
+                    <?php echo var_dump($_SESSION['user_id']) ;?>
+                    <?php echo var_dump($following['follower_id']) ;?>
+                    <?php echo var_dump($following['following_id']) ;?>
+                    <?php echo var_dump($option) ; ?>
+                <?php if($following['user_id'] != $_SESSION['user_id']): ?>
+                        <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
+                        <li class="follow_followers">
+                            <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
+                            <span><?php echo $following['nick_name']; ?></span>
+                            <a href="/bucket_lists/users/follow/<?php echo $following['user_id'] ?>" class="btn btn-default" style="float: right;">
+                                フォローする</a>
+                        </li>
+                        </a>
+                <?php elseif($following['user_id'] == $_SESSION['user_id']): ?>
+                        <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
+                        <li class="follow_followers">
+                            <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
+                            <span><?php echo $following['nick_name']; ?></span>
+                        </li>
+                        </a>
+                <?php else :?>
+                        <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
                         <li class="follow_followers">
                             <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
                             <span><?php echo $following['nick_name']; ?></span>
@@ -19,6 +40,7 @@
                                 フォローを外す</a>
                         </li>
                         </a>
+                <?php endif; ?>
                 <?php endforeach; ?>
                 </ul>
                 </div>

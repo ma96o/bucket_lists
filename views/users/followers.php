@@ -12,8 +12,11 @@
 
               <ul class="list-unstyled">
               <?php foreach($this->viewsOptions as $follower): ?>
-                <?php $followall = follow_all($option); ?>
-                   <?php if($follower['following_id'] !== $followall['follower_id'] && $follower['follower_id'] !== $followall['following_id']): ?>
+                <?php echo var_dump($follower['user_id']) ;?>
+                    <?php echo var_dump($_SESSION['user_id']) ;?>
+                    <?php echo var_dump($follower['follower_id']) ;?>
+                    <?php echo var_dump($follower['following_id']) ;?>
+                <?php if($follower['user_id'] != $follower['follower_id']): ?>
                      <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
                      <li class="follow_followers">
                             <img class="img-circle" src="views/pf_image/<?php echo $follower['picture_path'] ;?>" width="50" height="50">
@@ -22,6 +25,13 @@
                                 フォロー</a>
                             </li>
                             </a>
+                    <?php elseif($follower['user_id'] == $_SESSION['user_id']): ?>
+                        <a href="/bucket_lists/users/mypage/<?php echo $follower['user_id']; ?>/">
+                        <li class="follow_followers">
+                            <img class="img-circle" src="views/pf_image/<?php echo $follower['picture_path'] ;?>" width="50" height="50">
+                            <span><?php echo $follower['nick_name']; ?></span>
+                        </li>
+                        </a>
                     <?php else: ?>
                       <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
                       <li class="follow_followers">
