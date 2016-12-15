@@ -293,12 +293,12 @@ EOM;
       }
 
       function followings($option){
-        $this->followings = $this->user->followings();
+        $this->followings = $this->user->followings($option);
         $this->displayProf($option, $list_id);
       }
 
       function followers($option){
-        $this->followers = $this->user->followers();
+        $this->followers = $this->user->followers($option);
         $this->displayProf($option, $list_id);
       }
       function display($option){

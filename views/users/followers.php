@@ -1,46 +1,42 @@
-<?php
+              <!-- フォローされている人の一覧 -->
+ <div class="container">
 
-    if(!empty($_SESSION['id']) && $option == $_SESSION['id']){
-        $user_flag = 0;
-    } else {
-        $user_flag = 1;
-    }
-    $user = aboutUser($option);
-    $rtn = follow_all($option);
-
-?>
         <div class="container-fluid">
           <div class="row">
+            <div class="content-main">
+              <section class="col-sm-8 col-xs-offset-2 main-content">
 
-            <section class="col-sm-10 col-xs-offset-1 main-content">
+                <div class="follow_follower_list">
+                    <h4><i class="fa fa-user-circle" aria-hidden="true"></i>  follower</h4>
 
-                <!--フォロー一覧-->
-            <div class="follow_list">
-
-              <?php foreach($this->followers as $follower): ?>
-                <?php $followall = follow_all($follower['user_id']); ?>
+              <ul class="list-unstyled">
+              <?php foreach($this->viewsOptions as $follower): ?>
+                <?php $followall = follow_all($option); ?>
                    <?php if($follower['following_id'] !== $followall['follower_id'] && $follower['follower_id'] !== $followall['following_id']): ?>
-                     <div>
+                     <a href="">
+                     <li class="follow_followers">
                             <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
                             <span><?php echo $follower['nick_name']; ?></span>
                             <a href="/bucket_lists/users/follow/<?php echo $follower['user_id']; ?>" class="btn btn-pink" style="float: right;">
-                                フォロー
+                                フォロー</a>
+                            </li>
                             </a>
-                        </div>
                     <?php else: ?>
-                      <div>
+                      <a href="">
+                      <li class="follow_followers">
                           <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
                           <span><?php echo $follower['nick_name']; ?></span>
                           <a href="/bucket_lists/users/unfollow/<?php echo $follower['user_id'] ?>" class="btn btn-default" style="float: right;">
                               フォローを外す
                           </a>
-                      </div>
+                          </li>
+                        </a>
                   <?php endif; ?>
               <?php endforeach; ?>
-           </div>
-
-                
-
+              </ul>
+              </div>
             </section>
           </div>
         </div>
+      </div>
+  </div>

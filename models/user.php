@@ -167,19 +167,15 @@
                         );
         mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
 
-
       }
 
-      function followings(){
-        $sql = sprintf('SELECT u.*, f.`following_id`,f.`following_id`
-                        FROM `users`
-                        AS u
-                        LEFT JOIN `followings`
-                        AS f
+function followings($option){
+        $sql = sprintf('SELECT u.*, f.*
+                        FROM `users` AS u
+                        LEFT JOIN `followings` AS f
                         ON u.`user_id` = f.`following_id`
-                        WHERE u.`user_id` = f.`following_id`
-                        AND f.`following_id` = %d',
-               mysqli_real_escape_string($this->dbconnect,$_SESSION['id']));
+                        WHERE f.`follower_id` = %d',
+               mysqli_real_escape_string($this->dbconnect,$option));
         $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
         $rtn = array();
         while($result = mysqli_fetch_assoc($results)){
@@ -188,16 +184,13 @@
         return $rtn;
       }
 
-      function followers(){
-        $sql = sprintf('SELECT u.*,f.`follower_id`, f.`following_id`
-                        FROM `users`
-                        AS u
-                        LEFT JOIN `followings`
-                        AS f
+      function followers($option){
+        $sql = sprintf('SELECT u.*,f.*
+                        FROM `users` AS u
+                        LEFT JOIN `followings` AS f
                         ON u.`user_id` = f.`follower_id`
-                        WHERE u.`user_id` = f.`follower_id`
-                        AND f.`following_id` = %d',
-               mysqli_real_escape_string($this->dbconnect,$_SESSION['id']));
+                        WHERE f.`following_id` = %d',
+               mysqli_real_escape_string($this->dbconnect,$option));
         $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
         $rtn = array();
         while($result = mysqli_fetch_assoc($results)){
@@ -206,5 +199,6 @@
         return $rtn;
       }
     }
+
 
 ?>
