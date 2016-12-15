@@ -19,6 +19,7 @@
     <title>Bucket Lists</title>
 
 
+    <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
@@ -71,6 +72,9 @@
                     </li>
                     <li class="page-scroll">
                         <a href="/bucket_lists/items/trend">トレンディング</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/bucket_lists/users/logout">ログアウト</a>
                     </li>
                 </ul>
             </div>

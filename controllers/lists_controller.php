@@ -12,6 +12,7 @@
         $controller->update($post);
         break;
       default:
+        header('location: /bucket_lists/users/home');
         break;
     }
 

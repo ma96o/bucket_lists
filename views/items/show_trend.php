@@ -19,7 +19,7 @@
                     <dl class="modal_status">
                     <a href="" id="done">
                         <dt><i class="fa fa-file-text-o" aria-hidden="true"></i></dt>
-                        <dd>doing</dd>
+                        <dd>doingユーザ一覧</dd>
                         <span id="doing"></span>
                     </a>
                     </dl>
@@ -30,15 +30,12 @@
                     <dl class="modal_status">
                     <a href="" id="done">
                         <dt><i class="fa fa-check" aria-hidden="true"></i></dt>
-                        <dd>達成</dd> 
+                        <dd>達成ユーザ一覧</dd> 
                         <span id="done"></span>
                     </a>
                     </dl>
                 </div>
             </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-pink" id="modal-save" data-dismiss="modal">add</button>
             </div>
         </div>
     </div>

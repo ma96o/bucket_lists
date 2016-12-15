@@ -20,7 +20,11 @@
                 </div>
 
                 <div class="col-sm-4">
-                  <label><i class="fa fa-play-circle-o" aria-hidden="true"></i>&nbsp;status</label>done
+                  <dl class="modal_status">
+                  <dt><i class="fa fa-thermometer-half" aria-hidden="true"></i></dt>
+                  <dd>status</dd>
+                  <span>success</span>
+                  </dl>
                 </div>
 
                 <div class="col-sm-4">

@@ -8,7 +8,7 @@
     <title>Bucket Lists</title>
 
 
-
+    <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
@@ -17,9 +17,7 @@
 <?php 
     if($this->action == 'trend'){
         echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/trending.css">';
-    } elseif($this->resource == 'actions' && $this->action == 'index') {
-        echo '<link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">';
-    }
+    } 
 
 ?>
 
@@ -43,6 +41,7 @@
                 <a class="navbar-brand" href="/bucket_lists/items/trend">BUCKET LISTS</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
+<?php if($this->action != 'home'): ?>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
@@ -71,8 +70,12 @@
                     <li class="page-scroll">
                         <a href="/bucket_lists/items/trend">トレンディング</a>
                     </li>
+                    <li class="page-scroll">
+                        <a href="/bucket_lists/users/logout">ログアウト</a>
+                    </li>
                 </ul>
             </div>
+<?php endif; ?>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
