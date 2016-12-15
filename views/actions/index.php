@@ -9,7 +9,7 @@
                     <h4><i class="fa fa-tags" aria-hidden="true"></i>  timeline</h4>
 
                     <?php foreach($this->viewsOptions as $action): $user = aboutUser($action['user_id']); $item = aboutItem($action['item_id']); ?>
-                      <?php if($action['user_id'] == 1): ?>
+                      <?php if($action['user_id'] == $_SESSION['user_id']): ?>
 
                             <div class="timeline">
                                   <img class="img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" width="50" height="50">
