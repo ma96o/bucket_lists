@@ -90,7 +90,7 @@
       function index(){
       }
       function success($option){
-        $sql = sprintf('SELECT i.*, a.`created` FROM `items` i, `actions` a WHERE i.`user_id`=%d AND i.`status`=2 AND i.`id`=a.`item_id`',
+        $sql = sprintf('SELECT i.*, a.`created` FROM `items` i, `actions` a WHERE i.`user_id`=%d AND i.`status`=2 AND i.`id`=a.`item_id` AND a.`user_id`=i.`user_id`',
             mysqli_real_escape_string($this->dbconnect, $option)
             );
         $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
@@ -136,7 +136,7 @@
       function undone(){
       }
       function trash($option){
-        $sql = sprintf('SELECT i.*, a.`created` FROM `items` i, `actions` a WHERE i.`user_id`=%d AND i.`status`=3 AND i.`id`=a.`item_id`',
+        $sql = sprintf('SELECT i.*, a.`created` FROM `items` i, `actions` a WHERE i.`user_id`=%d AND i.`status`=3 AND i.`id`=a.`item_id` AND a.`user_id`=i.`user_id`',
             mysqli_real_escape_string($this->dbconnect, $option)
             );
         $rec = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
