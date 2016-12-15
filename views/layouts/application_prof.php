@@ -19,6 +19,7 @@
     <title>Bucket Lists</title>
 
 
+    <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
