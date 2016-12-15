@@ -16,7 +16,7 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <p>メールアドレスを入力して下さい</p>
-                                <input type="email" name="email" class="form-control" value="<?php echo $this->viewOptions['email']; ?>" placeholder="hogehoge@egmail.com">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="email" name="email" class="form-control" value="<?php echo $this->viewsOptions['email']; ?>" placeholder="hogehoge@egmail.com">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <?php if(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'blank'): ?>
                                   <p class="blue">メールアドレスを入力してください</p>
                                 <?php elseif(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'false'): ?>
