@@ -3,16 +3,16 @@
             <div class="center-block">
                 <div class="col-md-10 col-xs-offset-1">
                     <!--search box-->
-                    <div class="input-group">
                     <form action="" method="post">
+                    <div class="input-group">
                       <input type="text" class="form-control" name="search_word">
                       <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
+                        <button class="btn btn-pink" type="submit">
                           <i class='glyphicon glyphicon-search'></i>
                         </button>
                       </span>
-                    </form>
                     </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -34,7 +34,7 @@
     </div>
     </div>
 </div>
- 
+ <br />
     <div class="container">
       <div class="row">
         <section id="pinBoot">
@@ -43,16 +43,16 @@
 <?php foreach($this->viewsOptions as $item): ?>
         　<article class="white-panel">
             <a href="" data-toggle="modal" data-target="#item_detail" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>" data-done="<?php echo countDone($item['item_id']); ?>" data-doing="<?php echo countDoing($item['item_id']); ?>" data-id="<?php echo $item['item_id']; ?>">
-                <h4><i class="fa fa-sticky-note-o" aria-hidden="true"></i><?php echo $item['item_name']; ?></h4>
-                <span><i class="fa fa-star-half-o" aria-hidden="true"></i> doing <?php echo countDoing($item['item_id']); ?></span>
-                <span><i class="fa fa-star" aria-hidden="true"></i> done <?php echo countDone($item['item_id']); ?></span>
+                <h4 class="item_name"><?php echo $item['item_name']; ?></h4>
+                <span class="doing">doing <?php echo countDoing($item['item_id']); ?></span>
+                <span class="done">done <?php echo countDone($item['item_id']); ?></span>
             </a>
-
             <p>
-            <button type="button" class="btn btn-default btn-circle center-block" data-toggle="modal" data-target="#add_new" data-id="<?php echo $item['item_id']; ?>" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>">
+            <button type="button" class="btn btn-pink btn-circle center-block" data-toggle="modal" data-target="#add_new" data-id="<?php echo $item['item_id']; ?>" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>">
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
             </p>
+            
         　</article>
 <?php endforeach; ?>
 
@@ -60,6 +60,6 @@
         </div>
     </div>
 
-    <?php include('views/items/add.php'); ?>
+    <?php include('views/items/add_trend.php'); ?>
 
     <?php include('views/items/show_trend.php'); ?>

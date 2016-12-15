@@ -29,9 +29,11 @@
       }
 
       function create(){
+        isLogin();
         $this->tag->create();
       }
       function delete(){
+        isLogin();
       }
     }
 

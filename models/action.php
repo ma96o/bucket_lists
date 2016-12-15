@@ -9,8 +9,8 @@
       }
 
       function index(){
-        $following_id = followingsId(1);
-        $following_id[] = 1;
+        $following_id = followingsId($_SESSION['user_id']);
+        $following_id[] = $_SESSION['user_id'];
         $id_string = implode(',', $following_id);
 
         $sql = 'SELECT * FROM `actions` WHERE `user_id` IN ('.$id_string.') ORDER BY `created` DESC';

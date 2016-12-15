@@ -49,10 +49,24 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['id']; ?>/<?php echo getFirstListId($_SESSION['id']); ?>">マイページ</a>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                      <form action="/bucket_lists/users/search" method="post">
+                        <input type="text" class="form-control input-lg" name="search_word" placeholder="ユーザ検索">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                      </form>
+                </div>
+            </div>
                     </li>
                     <li class="page-scroll">
-                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['id']; ?>">タイムライン</a>
+                        <a href="/bucket_lists/users/mypage/<?php echo $_SESSION['user_id']; ?>/<?php echo getFirstListId($_SESSION['user_id']); ?>">マイページ</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/bucket_lists/actions/index/<?php echo $_SESSION['user_id']; ?>">タイムライン</a>
                     </li>
                     <li class="page-scroll">
                         <a href="/bucket_lists/items/trend">トレンディング</a>

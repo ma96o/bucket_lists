@@ -11,7 +11,7 @@
                   <?php foreach($this->viewsOptions as $viewsOption): $user = aboutUser($viewsOption['user_id']); ?>
                       <div>
                         <a href="/bucket_lists/users/mypage/<?php echo $user['user_id']; ?>/<?php echo getFirstListId($user['user_id']); ?>">
-                          <img class="img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" width="50" height="50">
+                          <img class="img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" width="50" height="50">
                           <span><?php echo $user['nick_name']; ?></span>
                         </a>
                       </div>

@@ -12,7 +12,7 @@
                             <label></label>
                             <input type="text" class="form-control" id="list_title" name="list_name" value="">
                             <input type="hidden" id="hidden" name="list_id">
-                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
+                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                         </div>
                     </div>
                 </div>

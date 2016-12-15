@@ -7,7 +7,7 @@
     switch ($action) {
 
       case 'home';
-        $controller->home($post);
+        $controller->home($post,$option);
         break;
 
       case 'pre_create';
@@ -74,9 +74,12 @@
       case 'edit':
         $controller->edit($option);
         break;
+
       case 'update':
         $controller->update($post);
-
+        break;
+      case 'search':
+        $controller->search($post);
         break;
       default:
         break;
@@ -86,34 +89,30 @@
       private $user;
       private $resource;
       private $action;
-      private $viewOptions;
-      private $followings;
-      private $followers;
+      private $viewsOptions;
       private $viewErrors;
 
       function __construct($resource, $action) {
         $this->user = new User();
         $this->resource = $resource;
         $this->action = $action;
-        $this->followings = array();
-        $this->followers = array();
-        $this->viewOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
+        $this->viewsOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
         }
 
-      function home($post) {
+      function home($post,$option) {
         if (!empty($post)) {
           $error = $this->user->home_valid($post);
             if (!empty($error)) {
               $this->viewOptions = $post;
               $this->viewErrors = $error;
-              $this->display();
+              $this->display(1);
           } else {
               $_SESSION['users'] = $post;
               header('Location: pre_create');
               exit();
                 }
         } else {
-            $this->display($option);
+            $this->display(1);
         }
       }
 
@@ -163,13 +162,11 @@ EOM;
         header('Location: pre_thanks');
         exit();
         }
-          $this->display();
 
         }
 
       function pre_thanks() {
-        $this->action = 'pre_thanks';
-        $this->display();
+        $this->display($option);
       }
 
       function signup($post, $option) {
@@ -181,7 +178,7 @@ EOM;
             if (!empty($error)) {
               $this->viewOptions = $post;
               $this->viewErrors = $error;
-              $this->display();
+              $this->display(1);
           } else {
               $_SESSION['users'] = $post;
               header('Location: check');
@@ -194,14 +191,13 @@ EOM;
             if (!empty($_GET)) {
                $url_token = $_GET['url_token'];
             }
-              $this->display();
+              $this->display(1);
             }
       }
 
       function check() {
         $this->viewOptions = $_SESSION['users'];
-        $this->action = 'check';
-        $this->display();
+        $this->display(1);
 
       }
 
@@ -210,19 +206,17 @@ EOM;
       }
 
       function thanks(){
-        $this->action = 'thanks';
-        $this->display();
+        $this->display(1);
       }
 
       function login(){
-        $this->action = 'login';
-        $this->display($option);
+        $this->display(1);
       }
 
       function auth($post) {
             $login_flag = $this->user->auth($post);
             if ($login_flag) {
-                header('Location: home');
+                header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
                 exit();
             } else {
                 header('Location: login');
@@ -231,6 +225,7 @@ EOM;
         }
 
       function logout() {
+        isLogin();
         $_SESSION = array();
 
         if(ini_get("session.use_cookeis")){
@@ -250,26 +245,30 @@ EOM;
 
 
       function mypage($option, $list_id){
+        isLogin();
         if($list_id == 0){
           $list_id = getFirstListId($option);
           header('location: /bucket_lists/users/mypage/'.$option.'/'.$list_id);
         }
-
         $this->viewsOptions = $this->user->mypage($option, $list_id);
-
         $this->displayProf($option, $list_id);
 
       }
-      function edit(){
-        $this->user->edit();
+
+      function edit($option){
+        isLogin();
+        $this->user->edit($option);
+
         $this->display($option);
       }
       function update($post){
+        isLogin();
         $this->user->update($post);
-        header('location: /bucket_lists/users/mypage/'.$_SESSION['id']);
+        header('location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
       }
 
       function follow($option){
+        isLogin();
         $this->user->follow($option);
         $referer = get_last_referer();
         $referer_resource = $referer[4];
@@ -278,6 +277,7 @@ EOM;
         header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
       function unfollow($option){
+        isLogin();
         $this->user->unfollow($option);
         $referer = get_last_referer();
         $referer_resource = $referer[4];
@@ -288,13 +288,18 @@ EOM;
 
 
       function followings($option){
-        $this->followings = $this->user->followings();
-        $this->displayProf($option,$list_id);
+        $this->viewsOptions = $this->user->followings();
+        $this->displayProf($option, 0);
       }
 
       function followers($option){
-        $this->followers = $this->user->followers();
-        $this->displayProf($option,$list_id);
+        $this->viewsOptions = $this->user->followers();
+        $this->displayProf($option, 0);
+      }
+      function search($post){
+        $this->viewsOptions = $this->user->search($post);
+        $this->display($post['search_word']);
+
       }
       function display($option){
         require('views/layouts/application.php');

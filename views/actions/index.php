@@ -12,7 +12,7 @@
                       <?php if($action['user_id'] == 1): ?>
 
                             <div class="timeline">
-                                  <img class="img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" width="50" height="50">
+                                  <img class="img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" width="50" height="50">
                                   <p>自分！！！！</p>
                                   <span class="date"><?php echo $action['created']; ?></span>
                           <?php if($action['status_id'] == 1): ?>
@@ -30,7 +30,7 @@
                       <?php else: ?>
 
                         <div class="timeline">
-                              <img class="img-circle" src="/bucket_lists/views/image/<?php echo $user['picture_path']; ?>" width="50" height="50">
+                              <img class="img-circle" src="/bucket_lists/views/pf_image/<?php echo $user['picture_path']; ?>" width="50" height="50">
                               <p><?php echo $user['nick_name']; ?></p>
                               <span class="date"><?php echo $action['created']; ?></span>
                       <?php if($action['status_id'] == 1): ?>
