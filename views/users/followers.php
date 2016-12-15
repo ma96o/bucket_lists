@@ -14,16 +14,16 @@
               <?php foreach($this->viewsOptions as $follower): ?>
                 <?php $followall = follow_all($option); ?>
                    <?php if($follower['following_id'] !== $followall['follower_id'] && $follower['follower_id'] !== $followall['following_id']): ?>
-                     <a href="">
+                     <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
                      <li class="follow_followers">
-                            <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
+                            <img class="img-circle" src="views/pf_image/<?php echo $follower['picture_path'] ;?>" width="50" height="50">
                             <span><?php echo $follower['nick_name']; ?></span>
                             <a href="/bucket_lists/users/follow/<?php echo $follower['user_id']; ?>" class="btn btn-pink" style="float: right;">
                                 フォロー</a>
                             </li>
                             </a>
                     <?php else: ?>
-                      <a href="">
+                      <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
                       <li class="follow_followers">
                           <img class="img-circle" src="image/plofile_fb_n.jpg" width="50" height="50">
                           <span><?php echo $follower['nick_name']; ?></span>

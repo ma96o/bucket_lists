@@ -11,7 +11,7 @@
 
                 <ul class="list-unstyled">
                 <?php foreach($this->viewsOptions as $following): ?>
-                    <a href="">
+                    <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
                         <li class="follow_followers">
                             <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
                             <span><?php echo $following['nick_name']; ?></span>
