@@ -73,6 +73,9 @@
                     <li class="page-scroll">
                         <a href="/bucket_lists/items/trend">トレンディング</a>
                     </li>
+                    <li class="page-scroll">
+                        <a href="/bucket_lists/users/logout">ログアウト</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

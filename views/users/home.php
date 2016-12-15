@@ -16,7 +16,7 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <p>メールアドレスを入力して下さい</p>
-                                <input type="email" class="form-control"　value="<?php echo $this->viewOptions['email']; ?>" placeholder="hogehoge@egmail.com">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="email" name="email" class="form-control" value="<?php echo $this->viewOptions['email']; ?>" placeholder="hogehoge@egmail.com">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <?php if(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'blank'): ?>
                                   <p class="blue">メールアドレスを入力してください</p>
                                 <?php elseif(isset($this->viewErrors['email']) && $this->viewErrors['email'] == 'false'): ?>
@@ -34,7 +34,7 @@
                     <form method="post" action="/bucket_lists/users/auth" role="form">
                         <div class="form-group">
                             <input type="email" name="email" class="form-control pd" placeholder="hogehoge@egmail.com">
-                            <input type="password" class="form-control pd" placeholder="password">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="password" name="password" class="form-control pd" placeholder="password">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <button class="btn btn-pink" type="submit" style="float: right;">ログイン</button>
                         </div>
                     </form>

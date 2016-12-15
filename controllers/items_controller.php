@@ -48,6 +48,7 @@
         $controller->add();
         break;
       default:
+        header('location: /bucket_lists/users/home');
         break;
     }
 

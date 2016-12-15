@@ -35,7 +35,7 @@
         $user = mysqli_fetch_assoc($rec);
         return $user;
       } else {
-        header('location: /bucket_lists/users/login');
+        header('location: /bucket_lists/users/home');
         exit();
       }
     }

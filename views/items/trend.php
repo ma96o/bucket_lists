@@ -5,7 +5,7 @@
                     <!--search box-->
                     <form action="" method="post">
                     <div class="input-group">
-                      <input type="text" class="form-control" name="search_word">
+                      <input type="text" class="form-control" name="search_word" placeholder="項目検索">
                       <span class="input-group-btn">
                         <button class="btn btn-pink" type="submit">
                           <i class='glyphicon glyphicon-search'></i>

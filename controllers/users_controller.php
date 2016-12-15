@@ -42,7 +42,7 @@
         if (!empty($post['email']) && !empty($post['password'])) {
             $controller->auth($post);
         } else {
-            header('Location: login');
+            header('Location: /bucket_lists/users/home');
             exit();
         }
         break;
@@ -82,6 +82,7 @@
         $controller->search($post);
         break;
       default:
+        header('location: /bucket_lists/users/home');
         break;
     }
 
@@ -219,7 +220,7 @@ EOM;
                 header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
                 exit();
             } else {
-                header('Location: login');
+                header('Location: /bucket_lists/users/home');
                 exit();
             }
         }
@@ -238,7 +239,7 @@ EOM;
 
         session_destroy();
 
-        header('location:');
+        header('location: /bucket_lists/users/home');
         exit();
 
       }
