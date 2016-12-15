@@ -217,6 +217,7 @@ EOM;
       function auth($post) {
             $login_flag = $this->user->auth($post);
             if ($login_flag) {
+
                 header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
                 exit();
             } else {
@@ -289,12 +290,12 @@ EOM;
 
 
       function followings($option){
-        $this->viewsOptions = $this->user->followings();
+        $this->viewsOptions = $this->user->followings($option);
         $this->displayProf($option, 0);
       }
 
       function followers($option){
-        $this->viewsOptions = $this->user->followers();
+        $this->viewsOptions = $this->user->followers($option);
         $this->displayProf($option, 0);
       }
       function search($post){
