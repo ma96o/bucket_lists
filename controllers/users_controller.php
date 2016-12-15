@@ -102,16 +102,32 @@
 
       function home($post,$option) {
         if (!empty($post)) {
+          if(!empty($post['token'])){
+//新規登録処理
           $error = $this->user->home_valid($post);
             if (!empty($error)) {
               $this->viewOptions = $post;
               $this->viewErrors = $error;
               $this->display(1);
-          } else {
+            } else {
               $_SESSION['users'] = $post;
               header('Location: pre_create');
               exit();
-                }
+            }
+          } else {
+
+//ログイン処理
+          $error_login = $this->user->auth($post);
+            if(!empty($error_login) && $error_login = "false"){
+              $this->viewOptions = $post;
+              $this->viewErrors = $error_login;
+              $this->display(1);
+            } else {
+              header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
+              exit();
+            }
+          }
+
         } else {
             $this->display(1);
         }
@@ -215,14 +231,7 @@ EOM;
       }
 
       function auth($post) {
-            $login_flag = $this->user->auth($post);
-            if ($login_flag) {
-                header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
-                exit();
-            } else {
-                header('Location: /bucket_lists/users/home');
-                exit();
-            }
+
         }
 
       function logout() {
