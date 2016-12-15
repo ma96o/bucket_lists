@@ -26,12 +26,9 @@
           $list_id = $para[3];
         }
 
-
-
         require('controllers/'.$resource.'_controller.php');
     } else {
       header('location: /bucket_lists/users/home');
     }
-
 
 ?>
