@@ -111,7 +111,7 @@
       function update($post) {
         isLogin();
         $this->item->update($post);
-        own_header('users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
+        echo own_header('users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
 
       }
       function conglaturation(){
