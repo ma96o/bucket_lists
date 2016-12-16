@@ -10,11 +10,6 @@
 
                 <ul class="list-unstyled">
                 <?php foreach($this->viewsOptions as $following): ?>
-                    <?php echo var_dump($following['user_id']) ;?>
-                    <?php echo var_dump($_SESSION['user_id']) ;?>
-                    <?php echo var_dump($following['follower_id']) ;?>
-                    <?php echo var_dump($following['following_id']) ;?>
-                    <?php echo var_dump($option) ; ?>
                 <?php if($following['user_id'] != $_SESSION['user_id']): ?>
                         <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
                         <li class="follow_followers">
