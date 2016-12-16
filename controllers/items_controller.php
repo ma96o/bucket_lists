@@ -110,8 +110,9 @@
       }
       function update($post) {
         isLogin();
-            $this->item->update($post);
-            // あとでindexに飛ぶように戻す。location:editは消す。echo own_header('     echo own_header('users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
+        $this->item->update($post);
+        own_header('users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
+
       }
       function conglaturation(){
         isLogin();
