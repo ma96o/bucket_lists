@@ -12,7 +12,7 @@
                 <ul class="list-unstyled">
 
                 <?php foreach($this->viewsOptions as $following): ?>
-                <?php if($following['user_id'] != $_SESSION['user_id']): ?>
+                <?php if($following['user_id'] !== $_SESSION['user_id']): ?>
                         <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
                         <li class="follow_followers">
                             <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
