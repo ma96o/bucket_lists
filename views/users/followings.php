@@ -11,6 +11,8 @@
 
                 <ul class="list-unstyled">
 
+            <?php if(empty($this->viewOptions)): ?>
+            <?php else : ?>
                 <?php foreach($this->viewOptions as $following): ?>
                 <?php if($following['count'] == false) :?>
                     <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
@@ -39,6 +41,7 @@
                         </a>
                 <?php endif; ?>
                 <?php endforeach; ?>
+            <?php endif ; ?>
                 </ul>
                 </div>
              </section>
