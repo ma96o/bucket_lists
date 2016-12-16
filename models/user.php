@@ -82,7 +82,7 @@
         $sql = sprintf('INSERT INTO `users` SET
                 `nick_name`="%s",
                 `email`="%s",
-                `picture_path`="0.jpg",
+                `picture_path`="user-icon.png",
                 `password`="%s",
                 `created`=NOW()',
                 mysqli_real_escape_string($this->dbconnect,$post['nick_name']),
@@ -154,7 +154,9 @@
 
         } else {
           $picture_path = date('YmdHis') . $post['picture_path'];
-          unlink($post['dirname'].'/views/pf_image/'.$pre_picture_path);
+          if($pre_picture_path != 'user-icon.png'){
+            unlink($post['dirname'].'/views/pf_image/'.$pre_picture_path);
+          }
           move_uploaded_file($post['tmp_picture_path'], $post['dirname'].'/views/pf_image/'.$picture_path);
         }
 
@@ -168,7 +170,6 @@
       }
 
       function follow($option){
-
         $sql = sprintf('INSERT INTO `followings`
                         SET `follower_id` = %d, `following_id` = %d',
                         mysqli_real_escape_string($this->dbconnect,$_SESSION['user_id']),

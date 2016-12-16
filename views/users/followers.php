@@ -11,6 +11,7 @@
 
 
               <ul class="list-unstyled">
+
               <?php foreach($this->viewOptions as $follower): ?>
                 <?php if($follower['user_id'] != $follower['follower_id']): ?>
                      <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
