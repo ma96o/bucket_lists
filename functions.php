@@ -242,7 +242,7 @@
     }
 
     function own_header($path){
-      return '<script>window.location.href = "/bucket_lists/' . $path . '";</script>';
+      return '<script>window.location.href = "'.makePath($path).'"</script>';
     }
 
 ?>
