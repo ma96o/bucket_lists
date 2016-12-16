@@ -47,13 +47,3 @@
       </div>
 </div>
 
-<!--edit_item-->
-
-      <?php include('views/items/edit.php'); ?>
-
-<!--trash_item-->
-       <?php include('views/items/giveup.php'); ?>
-
-<!--success_item-->
-       <?php include('views/items/conglaturation.php'); ?>
-
