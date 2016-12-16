@@ -195,12 +195,35 @@ function followings($option){
                         ON u.`user_id` = f.`following_id`
                         WHERE f.`follower_id` = %d',
                mysqli_real_escape_string($this->dbconnect,$option));
-        $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-        $rtn = array();
-        while($result = mysqli_fetch_assoc($results)){
+               $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+               $result = array();
+        while($result = mysqli_fetch_assoc($results)) {
+
+                $sql = sprintf('SELECT u.*, f.*
+                                        FROM `users` AS u
+                                        LEFT JOIN `followings` AS f
+                                        ON u.`user_id` = f.`following_id`
+                                        WHERE f.`follower_id` = %d
+                                        AND f.`following_id` = %d',
+                               mysqli_real_escape_string($this->dbconnect,$_SESSION['user_id']),
+                               mysqli_real_escape_string($this->dbconnect,$result['following_id'])
+                               );
+                $count_record = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
+
+                if ($count_result = mysqli_fetch_assoc($count_record)) {
+
+                    // データがあった場合はcountする
+                    $count = true;
+                } else {
+                    $count = false;
+                }
+
+                $result = array_merge($result, array('count' => $count));
                 $rtn[] = $result;
         }
+
         return $rtn;
+
       }
 
       function followers($option){
@@ -215,6 +238,7 @@ function followings($option){
         while($result = mysqli_fetch_assoc($results)){
                 $rtn[] = $result;
         }
+        return $rtn;
         return $rtn;
       }
 
