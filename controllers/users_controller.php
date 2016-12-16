@@ -97,7 +97,7 @@
         $this->user = new User();
         $this->resource = $resource;
         $this->action = $action;
-        $this->viewOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
+        $this->viewsOptions = array('nick_name' => '', 'email' => '', 'password' => '',);
         }
 
       function home($post,$option) {
@@ -260,14 +260,18 @@ EOM;
           echo own_header('users/mypage/'.$option.'/'.$list_id);
         }
 
+
         $this->viewOptions = $this->user->mypage($option, $list_id);
+
 
         $this->displayProf($option, $list_id);
 
       }
+
       function edit($option){
         isLogin();
         $this->user->edit($option);
+
         $this->display($option);
       }
       function update($post){
@@ -295,6 +299,7 @@ EOM;
         echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option);
       }
 
+
       function followings($option){
         $this->viewOptions = $this->user->followings($option);
         $this->displayProf($option, 0);
@@ -307,6 +312,7 @@ EOM;
       function search($post){
         $this->viewOptions = $this->user->search($post);
         $this->display($post['search_word']);
+
       }
       function display($option){
         require('views/layouts/application.php');

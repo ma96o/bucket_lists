@@ -26,9 +26,12 @@
           $list_id = $para[3];
         }
 
+
         require('controllers/'.$resource.'_controller.php');
     } else {
       echo own_header('users/home');
     }
 
+
 ?>
+
