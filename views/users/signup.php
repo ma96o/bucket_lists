@@ -10,7 +10,7 @@
                     <br />
                     <p>ここから本登録だよ。情報を入力してねん</p>
                     <br />
-                    <form method="post" action="/bucket_lists/users/signup?url_token=$_GET['url_token']" role="form">
+                    <form method="post" action="<?php echo makePath('users/'); ?>signup?url_token=$_GET['url_token']" role="form">
                             <div class="form-group">
                             <label>E-mail</label>
                             <p><?php echo $this->viewOptions['email']; ?></p>

@@ -6,7 +6,7 @@
                   <h4 class="modal-title"><i class="fa fa-plus-circle" aria-hidden="true"></i></h4>
                   </div>
                   <div class="modal-body">
-                      <form method="post" action="/bucket_lists/items/create" role="form">
+                      <form method="post" action="<?php echo makePath('items/create'); ?>" role="form">
 
                                     <input type="hidden" id="hidden" name="item_id">
                                         <div class="form-group">

@@ -6,7 +6,7 @@
                   <h4><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;達成コメント編集</h4>
 
                   </div>
-                <form method="post" action="/bucket_lists/items/updateSuccess">
+                <form method="post" action="<?php echo makePath('items/updateSuccess'); ?>">
                   <div class="modal-body">
                  <p class="modal-title"></p>
                   <textarea type="text" name="comment" class="form-control" rows="6" id="comment" value=""></textarea>

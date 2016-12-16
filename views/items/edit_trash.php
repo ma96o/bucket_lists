@@ -5,7 +5,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;GIVEUPコメント編集</h4>
                   </div>
-                <form method="post" action="/bucket_lists/items/updateTrash">
+                <form method="post" action="<?php echo makePath('items/updateTrash'); ?>">
                   <div class="modal-body">
                    <p class="modal-title"></p>
                   <textarea type="text" name="comment" class="form-control" rows="6" id="comment" value=""></textarea>

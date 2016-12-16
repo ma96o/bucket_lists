@@ -6,7 +6,7 @@
                       <h4 class="modal-title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></h4>
                   </div>
                   <div class="modal-body">
-                  <form method="post" action="/bucket_lists/items/update">
+                  <form method="post" action="<?php echo makePath('items/update'); ?>">
 
                                         <div class="form-group">
                                             <label for="exampleInput3">内容詳細</label>

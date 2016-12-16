@@ -109,25 +109,25 @@
         }
         session_destroy();
 
-        header('Location: thanks');
+        echo own_header('users/thanks');
         exit();
       }
 
+      function login_valid($post){}
       function auth($post) {
-         $sql = sprintf('SELECT * FROM `users` WHERE `email`="%s" AND `password`="%s"',
+        $sql = sprintf('SELECT * FROM `users` WHERE `email`="%s" AND `password`="%s"',
                            mysqli_real_escape_string($this->dbconnect,$post['email']),
                            mysqli_real_escape_string($this->dbconnect, sha1($post['password']))
-                  );
-            $record = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($db));
-            $login_flag = false;
-            if ($table = mysqli_fetch_assoc($record)) {
-                $_SESSION['user_id'] = $table['user_id'];
-                $_SESSION['time'] = time();
-                $login_flag = true;
-            } else {
-                $login_flag = false;
-            }
-            return $login_flag;
+                );
+        $record = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($db));
+        if ($table = mysqli_fetch_assoc($record)) {
+            $_SESSION['user_id'] = $table['user_id'];
+            $_SESSION['time'] = time();
+            $login_flag = "";
+        } else {
+            $login_flag = "false";
+        }
+        return $login_flag;
       }
       function mypage($option, $list_id){
         $sql = sprintf('SELECT * FROM `items` WHERE `user_id`=%d AND `list_id`=%d',

@@ -48,7 +48,7 @@
         $controller->add();
         break;
       default:
-        header('location: /bucket_lists/users/home');
+        echo own_header('users/home');
         break;
     }
 
@@ -56,30 +56,30 @@
       private $item;
       private $resource;
       private $action;
-      private $viewsOptions;
+      private $viewOptions;
 
       function __construct($resource, $action){
         $this->item = new Item();
         $this->resource = $resource;
         $this->action = $action;
-        $this->viewsOptions = array();
+        $this->viewOptions = array();
       }
 
       function trend($option, $post){
         isLogin();
-        $this->viewsOptions = $this->item->trend($option, $post);
+        $this->viewOptions = $this->item->trend($option, $post);
 
         $this->display($option);
       }
       function doing($option){
         isLogin();
-        $this->viewsOptions = $this->item->doing($option);
+        $this->viewOptions = $this->item->doing($option);
 
         $this->display($option);
       }
       function done($option){
         isLogin();
-        $this->viewsOptions = $this->item->done($option);
+        $this->viewOptions = $this->item->done($option);
 
         $this->display($option);
       }
@@ -92,27 +92,26 @@
       function create($post) {
         isLogin();
           if (empty($post['list_id']) || empty($post['comment']) || empty($post['deadline'])) {
-              header('location: /bucket_lists/users/mypage/'.$_SESSION['user_id']);
+              echo own_header('users/mypage/'.$_SESSION['user_id']);
               exit();
           }
           specialEcho('Controllerのcreate()が呼び出されました。');
           $this->item->create($post);
-          header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
+          echo own_header('users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
       }
       function index(){
         isLogin();
       }
       function success($option){
         isLogin();
-        $this->viewsOptions = $this->item->success($option);
+        $this->viewOptions = $this->item->success($option);
 
         $this->displayProf($option);
       }
       function update($post) {
         isLogin();
             $this->item->update($post);
-            // あとでindexに飛ぶように戻す。location:editは消す。header('Location: index');
-          header('Location: /bucket_lists/users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
+            // あとでindexに飛ぶように戻す。location:editは消す。echo own_header('     echo own_header('users/mypage/'.$_SESSION['user_id'].'/'.$post['list_id']);
       }
       function conglaturation(){
         isLogin();
@@ -120,14 +119,14 @@
       function tassei($post){
         isLogin();
         $this->item->tassei($post);
-        header('location: /bucket_lists/items/success/'.$_SESSION['user_id']);
+        echo own_header('items/success/'.$_SESSION['user_id']);
       }
       function undone(){
         isLogin();
       }
       function trash($option){
         isLogin();
-        $this->viewsOptions = $this->item->trash($option);
+        $this->viewOptions = $this->item->trash($option);
 
         $this->displayProf($option);
       }
@@ -137,7 +136,7 @@
       function delete($post){
         isLogin();
         $this->item->delete($post);
-        header('location: /bucket_lists/items/trash/'.$_SESSION['user_id']);
+        echo own_header('items/trash/'.$_SESSION['user_id']);
       }
       function undelete(){
         isLogin();
@@ -155,9 +154,9 @@
           $referer_option = $referer[6];
           if(isset($referer[7])){
           $referer_list_id = $referer[7];
-          header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option.'/'.$referer_list_id);
+          echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option.'/'.$referer_list_id);
           } else {
-          header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
+          echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option);
           }
       }
 
@@ -174,9 +173,9 @@
           $referer_option = $referer[6];
           if(isset($referer[7])){
           $referer_list_id = $referer[7];
-          header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option.'/'.$referer_list_id);
+          echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option.'/'.$referer_list_id);
           } else {
-          header('Location: /bucket_lists/'.$referer_resource.'/'.$referer_action.'/'.$referer_option);
+          echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option);
           }
       }
 
@@ -190,12 +189,12 @@
       function updateSuccess($post){
         isLogin();
         $this->item->updateSuccess($post);
-        header('location: /bucket_lists/items/success/'.$_SESSION['user_id']);
+        echo own_header('items/success/'.$_SESSION['user_id']);
       }
       function updateTrash($post){
         isLogin();
         $this->item->updateTrash($post);
-        header('location: /bucket_lists/items/trash/'.$_SESSION['user_id']);
+        echo own_header('items/trash/'.$_SESSION['user_id']);
       }
       function display($option){
         isLogin();

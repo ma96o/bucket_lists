@@ -24,11 +24,11 @@
     <div class="col-md-8 col-xs-offset-2">
           <ul class="nav nav-pills nav-justified">
           <?php if(!empty($option) && $option == 'hot'): ?>
-              <li><a href="/bucket_lists/items/trend">NEW</a></li>
-              <li class="active"><a href="/bucket_lists/items/trend/hot">HOT</a></li>
+              <li><a href="<?php echo makePath('items/trend'); ?>">NEW</a></li>
+              <li class="active"><a href="<?php echo makePath('items/trend/hot'); ?>">HOT</a></li>
           <?php else: ?>
-              <li class="active"><a href="/bucket_lists/items/trend">NEW</a></li>
-              <li><a href="/bucket_lists/items/trend/hot">HOT</a></li>
+              <li class="active"><a href="<?php echo makePath('items/trend'); ?>">NEW</a></li>
+              <li><a href="<?php echo makePath('items/trend/hot'); ?>">HOT</a></li>
           <?php endif; ?>
           </ul>
     </div>
@@ -40,7 +40,7 @@
         <section id="pinBoot">
 
           <!--content-->  
-<?php foreach($this->viewsOptions as $item): ?>
+<?php foreach($this->viewOptions as $item): ?>
         　<article class="white-panel">
             <a href="" data-toggle="modal" data-target="#item_detail" data-title="<?php echo $item['item_name']; ?>" data-comment="<?php echo $item['comment']; ?>" data-done="<?php echo countDone($item['item_id']); ?>" data-doing="<?php echo countDoing($item['item_id']); ?>" data-id="<?php echo $item['item_id']; ?>">
                 <h4 class="item_name"><?php echo $item['item_name']; ?></h4>
