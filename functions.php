@@ -218,7 +218,7 @@
       while($table = mysqli_fetch_assoc($rec)){
         $last_id = $table;
       }
-      return ++$last_id['user_id'];
+      return $last_id['user_id'];
     }
 
     function getLast(){
