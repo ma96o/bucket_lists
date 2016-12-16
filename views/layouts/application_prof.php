@@ -113,11 +113,11 @@
                     <li<?php if($this->action == 'success'){echo ' class="active"';} ?>><a href="<?php echo makePath('items/success/'); ?><?php echo $user['user_id']; ?>">達成リスト</a></li>
                     <li<?php if($this->action == 'trash'){echo ' class="active"';} ?>><a href="<?php echo makePath('items/trash/'); ?><?php echo $user['user_id']; ?>">ゴミ箱リスト</a></li>
     <?php if($user_flag == 0): ?>
-                    <li<?php if($this->action == 'followers'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/followings/'); ?><?php echo $user['user_id']; ?>">フォロー <?php echo countFollowing($user['user_id']); ?></a></li>
-                    <li<?php if($this->action == 'followings'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/followers/'); ?><?php echo $user['user_id']; ?>">フォロワー <?php echo countFollower($user['user_id']); ?></a></li>
-    <?php elseif($user_flag == 1): ?>
                     <li<?php if($this->action == 'followings'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/followings/'); ?><?php echo $user['user_id']; ?>">フォロー <?php echo countFollower($user['user_id']); ?></a></li>
                     <li<?php if($this->action == 'followers'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/followers/'); ?><?php echo $user['user_id']; ?>">フォロワー <?php echo countFollowing($user['user_id']); ?></a></li>
+    <?php elseif($user_flag == 1): ?>
+                    <li<?php if($this->action == 'followings'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/followings/'); ?><?php echo $user['user_id']; ?>">フォロー <?php echo countFollower($user['user_id']); ?></a></li>
+                    <li<?php if($this->action == 'followers'){echo ' class="active"';} ?>><a href="<?php echo makePath('users/followings/'); ?><?php echo $user['user_id']; ?>">フォロワー <?php echo countFollowing($user['user_id']); ?></a></li>
     <?php endif; ?>
                   </ul>
             </div>

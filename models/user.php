@@ -197,7 +197,7 @@ function followings($option){
                         WHERE f.`follower_id` = %d',
                mysqli_real_escape_string($this->dbconnect,$option));
                $results = mysqli_query($this->dbconnect, $sql) or die(mysqli_error($this->dbconnect));
-               $result = array();
+               $rtn = array();
         while($result = mysqli_fetch_assoc($results)) {
 
                 $sql = sprintf('SELECT u.*, f.*
