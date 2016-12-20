@@ -15,27 +15,27 @@
             <?php else : ?>
                 <?php foreach($this->viewOptions as $following): ?>
                 <?php if($following['count'] == false) :?>
-                    <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
+                    <a href="<?php echo makePath('users/mypage/'); ?><?php echo $following['user_id']; ?>/">
                         <li class="follow_followers">
-                            <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
+                            <img class="img-circle" src="<?php echo makePath('views/pf_image/'); ?><?php echo $following['picture_path'] ;?>" width="50" height="50">
                             <span><?php echo $following['nick_name']; ?></span>
-                            <a href="/bucket_lists/users/follow/<?php echo $following['user_id'] ?>" class="btn btn-default" style="float: right;">
+                            <a href="<?php echo makePath('users/follow/'); ?><?php echo $following['user_id'] ?>" class="btn btn-default" style="float: right;">
                                 フォローする</a>
                         </li>
                         </a>
                 <?php elseif($following['user_id'] == $_SESSION['user_id']): ?>
-                        <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
+                        <a href="<?php echo makePath('users/mypage/'); ?><?php echo $following['user_id']; ?>/">
                         <li class="follow_followers">
-                            <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
+                            <img class="img-circle" src="<?php echo makePath('views/pf_image/'); ?><?php echo $following['picture_path'] ;?>" width="50" height="50">
                             <span><?php echo $following['nick_name']; ?></span>
                         </li>
                         </a>
                 <?php elseif($following['count'] == true): ?>
-                        <a href="/bucket_lists/users/mypage/<?php echo $following['user_id']; ?>/">
+                        <a href="<?php echo makePath('users/mypage/'); ?><?php echo $following['user_id']; ?>/">
                         <li class="follow_followers">
-                            <img class="img-circle" src="views/pf_image/<?php echo $following['picture_path'] ;?>" width="50" height="50">
+                            <img class="img-circle" src="<?php echo makePath('views/pf_image/'); ?><?php echo $following['picture_path'] ;?>" width="50" height="50">
                             <span><?php echo $following['nick_name']; ?></span>
-                            <a href="/bucket_lists/users/unfollow/<?php echo $following['user_id'] ?>" class="btn btn-default" style="float: right;">
+                            <a href="<?php echo makePath('users/unfollow/'); ?><?php echo $following['user_id'] ?>" class="btn btn-default" style="float: right;">
                                 フォローを外す</a>
                         </li>
                         </a>

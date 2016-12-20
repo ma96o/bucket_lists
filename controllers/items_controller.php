@@ -150,11 +150,11 @@
 
           $referer = get_last_referer();
 
-          $referer_resource = $referer[4];
-          $referer_action = $referer[5];
-          $referer_option = $referer[6];
-          if(isset($referer[7])){
-          $referer_list_id = $referer[7];
+          $referer_resource = $referer[5];
+          $referer_action = $referer[6];
+          $referer_option = $referer[7];
+          if(isset($referer[8])){
+          $referer_list_id = $referer[8];
           echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option.'/'.$referer_list_id);
           } else {
           echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option);
@@ -169,11 +169,11 @@
 
           $referer = get_last_referer();
 
-          $referer_resource = $referer[4];
-          $referer_action = $referer[5];
-          $referer_option = $referer[6];
-          if(isset($referer[7])){
-          $referer_list_id = $referer[7];
+          $referer_resource = $referer[5];
+          $referer_action = $referer[6];
+          $referer_option = $referer[7];
+          if(isset($referer[8])){
+          $referer_list_id = $referer[8];
           echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option.'/'.$referer_list_id);
           } else {
           echo own_header($referer_resource.'/'.$referer_action.'/'.$referer_option);

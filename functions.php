@@ -1,6 +1,6 @@
 <?php
 
-    define('DEBUG', true);
+    define('DEBUG', false);
 
     function specialEcho($val){
       if(DEBUG){

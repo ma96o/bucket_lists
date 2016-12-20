@@ -5,7 +5,7 @@
           <div class="row">
             <div class="content-main">
                 <div class="col-md-8 site_info">
-                    <h1>BUCKET LIST</h1>
+                    <h1>BUCKET LISTS</h1>
                     <p>死ぬまでにしたい100のことを共有して、同じ思いを持つひとと繋がろう。</p>
                 </div>
                 <div class="col-md-4">

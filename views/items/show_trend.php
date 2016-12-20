@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-sm-6 ">
                     <dl class="modal_status">
-                    <a href="" id="done">
+                    <a href="" id="doing">
                         <dt><i class="fa fa-file-text-o" aria-hidden="true"></i></dt>
                         <dd>doingユーザ一覧</dd>
                         <span id="doing"></span>
