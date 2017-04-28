@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20170428091446) do
-
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.text     "comment",    limit: 65535
@@ -26,4 +25,10 @@ ActiveRecord::Schema.define(version: 20170428091446) do
     t.index ["user_id_id"], name: "index_items_on_user_id_id", using: :btree
   end
 
+ActiveRecord::Schema.define(version: 20170428093326) do
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end
