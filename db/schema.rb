@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170428091446) do
     t.index ["list_id_id"], name: "index_items_on_list_id_id", using: :btree
     t.index ["user_id_id"], name: "index_items_on_user_id_id", using: :btree
   end
+end
 
 ActiveRecord::Schema.define(version: 20170428093326) do
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -32,3 +33,15 @@ ActiveRecord::Schema.define(version: 20170428093326) do
     t.datetime "updated_at", null: false
   end
 end
+
+ActiveRecord::Schema.define(version: 20170428101818) do
+  create_table "lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lists_on_user_id", using: :btree
+  end
+end
+
+  add_foreign_key "lists", "users"
