@@ -6,8 +6,6 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.datetime :dead_line
       t.integer :status
       t.integer :priority
-      t.references :user_id
-      t.references :list_id
 
       t.timestamps
     end
