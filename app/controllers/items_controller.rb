@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  layout 'application_prof'
 
   def index
     @user = User.find(params[:user_id])
