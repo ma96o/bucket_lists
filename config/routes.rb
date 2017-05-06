@@ -4,4 +4,5 @@ Rails.application.routes.draw do
       resources :items, only: %i(index)
     end
   end
+  resources :items, except: %i(index)
 end
