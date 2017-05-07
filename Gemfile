@@ -56,3 +56,5 @@ gem 'haml-rails'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
+
+gem 'pry-rails'

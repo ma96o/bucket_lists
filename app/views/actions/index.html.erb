@@ -1,307 +1,55 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <div class="container">
 
-    <title>Bucket Lists</title>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="content-main">
+              <section class="col-sm-10 col-xs-offset-1 main-content">
+  
+                <div class="timeline_list">
+                    <h4><i class="fa fa-tags" aria-hidden="true"></i>  timeline</h4>
 
+                    <% @actions.each do |action| %>
+                      <% if false # ?php if($action['user_id'] == $_SESSION['user_id']): %>
 
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+                            <div class="timeline">
+                                  <img class="img-circle" src="#" width="50" height="50">
+                                  <p class="name"><a href="#">Your action</a></p>
+                                  <p class="date"><%= action.created_at %></p>
+                          <% if action.status == 1 %>
+                                  <span class="detail_doing"><q><%= action.item.name %></q>を<a href="#">バケットリスト</a>に追加しました。
+                                </span>
+                          <% elsif action.status == 2 %>
+                                  <span class="detail_done"><q><%= action.item.name %></q>を<a href="#">達成リスト</a>に追加しました。
+                                </span>
+                          <% elsif action.status == 3 %>
+                                  <span class="detail_trash"><q><%= action.item.name %></q>を<a href="#">ゴミ箱リスト</a>に追加しました。
+                                </span>
+                          <% end %>
+                            </div>
 
-  </head>
-  <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#page-top">BUCKET LISTS</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#portfolio">マイページ</a>
-                    </li>
-                    <li class="page-scroll active">
-                        <a href="#about">タイムライン</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact">トレンディング</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+                      <% else %>
+
+                        <div class="timeline bg_w">
+                              <img class="img-circle" src="/plofile_fb_n.jpg" width="50" height="50">
+                              <p class="name"><a href="#"><%= action.user.name %></a></p>
+                              <p class="date"><%= action.created_at %></p>
+                          <% if action.status == 1 %>
+                              <span class="detail_doing"><a href="#"><%= action.user.name %></a>ちゃんが<q><%= action.item.name %></q>を<a href="#">バケットリスト</a>に追加しました。
+                                </span>
+                          <% elsif action.status == 2 %>
+                              <span class="detail_done"><a href="#"><%= action.user.name %></a>ちゃんが「<%= action.item.name %>」を<a href="#">達成リスト</a>に追加しました。
+                                </span>
+                          <% elsif action.status == 3 %>
+                              <span class="detail_trash"><a href="#"><%= action.user.name %></a>ちゃんが「<%= action.item.name %>」を<a href="#">ゴミ箱リスト</a>に追加しました。
+                                </span>
+                      <% end %>
+                        </div>
+
+                      <% end %>
+                    <% end %>
+
+            </section>
+          </div>
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-
-    <div class="container-fluid content-main">
-
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 content-margin-top">
-
-    <div class="qa-message-list" id="wallmessages">
-                    <div class="message-item" id="m16">
-                        <div class="message-inner">
-                            <div class="message-head clearfix">
-                                <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
-                                <div class="user-detail">
-                                    <h5 class="handle">Oleg Kolesnichenko</h5>
-                                    <div class="post-meta">
-                                        <div class="asker-meta">
-                                            <span class="qa-message-what"></span>
-                                            <span class="qa-message-when">
-                                                <span class="qa-message-when-data">Jan 21</span>
-                                            </span>
-                                            <span class="qa-message-who">
-                                                <span class="qa-message-who-pad">by </span>
-                                                <span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="qa-message-content">
-                                Yo!
-                            </div>
-                    </div></div>
-                    
-                    <div class="message-item" id="m9">
-                        <div class="message-inner">
-                            <div class="message-head clearfix">
-                                <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=amiya"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
-                                <div class="user-detail">
-                                    <h5 class="handle">amiya</h5>
-                                    <div class="post-meta">
-                                        <div class="asker-meta">
-                                            <span class="qa-message-what"></span>
-                                            <span class="qa-message-when">
-                                                <span class="qa-message-when-data">Nov 24, 2013</span>
-                                            </span>
-                                            <span class="qa-message-who">
-                                                <span class="qa-message-who-pad">by </span>
-                                                <span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=amiya">amiya</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="qa-message-content">
-                                Nice theme . Excellent one .
-                            </div>
-                    </div></div>
-                    
-                    <div class="message-item" id="m7">
-                        <div class="message-inner">
-                            <div class="message-head clearfix">
-                                <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=russell"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
-                                <div class="user-detail">
-                                    <h5 class="handle">russell</h5>
-                                    <div class="post-meta">
-                                        <div class="asker-meta">
-                                            <span class="qa-message-what"></span>
-                                            <span class="qa-message-when">
-                                                <span class="qa-message-when-data">Oct 25, 2013</span>
-                                            </span>
-                                            <span class="qa-message-who">
-                                                <span class="qa-message-who-pad">by </span>
-                                                <span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=russell">russell</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="qa-message-content">
-                                Nullam porta leo vitae ipsum feugiat viverra. In sed placerat mi. Nullam euismod, quam in euismod rhoncus, tellus velit posuere tortor, non cursus nunc velit et lacus.
-                            </div>
-                    </div></div>
-                    
-                    <div class="message-item" id="m6">
-                        <div class="message-inner">
-                            <div class="message-head clearfix">
-                                <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=juggornot"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
-                                <div class="user-detail">
-                                    <h5 class="handle">juggornot</h5>
-                                    <div class="post-meta">
-                                        <div class="asker-meta">
-                                            <span class="qa-message-what"></span>
-                                            <span class="qa-message-when">
-                                                <span class="qa-message-when-data">Oct 24, 2013</span>
-                                            </span>
-                                            <span class="qa-message-who">
-                                                <span class="qa-message-who-pad">by </span>
-                                                <span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=juggornot">juggornot</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="qa-message-content">
-                                Integer vitae arcu vitae ligula Cras vestibulum suscipit odio ac dapibus. In hac habitasse platea dictumst. Cras pulvinar erat et nunc fringilla, quis molestie
-                            </div>
-                    </div></div>
-                    
-                    <div class="message-item" id="m5">
-                        <div class="message-inner">
-                            <div class="message-head clearfix">
-                                <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=one_eyed"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
-                                <div class="user-detail">
-                                    <h5 class="handle">one_eyed</h5>
-                                    <div class="post-meta">
-                                        <div class="asker-meta">
-                                            <span class="qa-message-what"></span>
-                                            <span class="qa-message-when">
-                                                <span class="qa-message-when-data">Oct 24, 2013</span>
-                                            </span>
-                                            <span class="qa-message-who">
-                                                <span class="qa-message-who-pad">by </span>
-                                                <span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=one_eyed">one_eyed</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="qa-message-content">
-                                Nulla dui ante, pulvinar ac auctor vitae, sollicitudin et tortor. Cras vestibulum suscipit odio ac dapibus. In hac habitasse platea dictumst. Cras pulvinar erat et nunc fringilla, quis molestie diam pulvinar.
-                            </div>
-                    </div></div>
-                    
-                    <div class="message-item" id="m4">
-                        <div class="message-inner">
-                            <div class="message-head clearfix">
-                                <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=muboy"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
-                                <div class="user-detail">
-                                    <h5 class="handle">muboy</h5>
-                                    <div class="post-meta">
-                                        <div class="asker-meta">
-                                            <span class="qa-message-what"></span>
-                                            <span class="qa-message-when">
-                                                <span class="qa-message-when-data">Oct 24, 2013</span>
-                                            </span>
-                                            <span class="qa-message-who">
-                                                <span class="qa-message-who-pad">by </span>
-                                                <span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=muboy">muboy</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="qa-message-content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum iaculis mi, non dapibus nulla eleifend sed. Etiam ac commodo leo. <br>
-Donec non sem id tellus mattis convallis. Morbi dapibus nulla ac dui lacinia,
-                            </div>
-                    </div></div>
-                    
-                    <div class="message-item" id="m3">
-                        <div class="message-inner">
-                            <div class="message-head clearfix">
-                                <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=monu"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
-                                <div class="user-detail">
-                                    <h5 class="handle">monu</h5>
-                                    <div class="post-meta">
-                                        <div class="asker-meta">
-                                            <span class="qa-message-what"></span>
-                                            <span class="qa-message-when">
-                                                <span class="qa-message-when-data">Oct 24, 2013</span>
-                                            </span>
-                                            <span class="qa-message-who">
-                                                <span class="qa-message-who-pad">by </span>
-                                                <span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=monu">monu</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="qa-message-content">
-                                Suspendisse varius mi consectetur nulla volutpat, nec fermentum turpis vehicula. Curabitur dapibus odio mauris, vitae accumsan sapien auctor non. Duis tempus ante id nulla vestibulum mattis.
-                            </div>
-                    </div></div>
-                    
-                    <div class="message-item" id="m2">
-                        <div class="message-inner">
-                            <div class="message-head clearfix">
-                                <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=Fynn"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
-                                <div class="user-detail">
-                                    <h5 class="handle">Fynn</h5>
-                                    <div class="post-meta">
-                                        <div class="asker-meta">
-                                            <span class="qa-message-what"></span>
-                                            <span class="qa-message-when">
-                                                <span class="qa-message-when-data">Oct 24, 2013</span>
-                                            </span>
-                                            <span class="qa-message-who">
-                                                <span class="qa-message-who-pad">by </span>
-                                                <span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Fynn">Fynn</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="qa-message-content">
-                                Nunc ante neque, feugiat at dictum ut, dignissim sed sapien. Pellentesque congue eu nisl sit amet cursus. Integer dapibus adipiscing metus ac vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            </div>
-                    </div></div>
-                    
-                    <div class="message-item" id="m1">
-                        <div class="message-inner">
-                            <div class="message-head clearfix">
-                                <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=admin"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
-                                <div class="user-detail">
-                                    <h5 class="handle">admin</h5>
-                                    <div class="post-meta">
-                                        <div class="asker-meta">
-                                            <span class="qa-message-what"></span>
-                                            <span class="qa-message-when">
-                                                <span class="qa-message-when-data">Oct 24, 2013</span>
-                                            </span>
-                                            <span class="qa-message-who">
-                                                <span class="qa-message-who-pad">by </span>
-                                                <span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=admin">admin</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="qa-message-content">
-                                Nunc ante neque, feugiat at dictum ut, dignissim sed sapien. Pellentesque congue eu nisl sit amet cursus. Integer dapibus adipiscing metus ac vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum iaculis mi, non dapibus nulla eleifend sed. Etiam ac commodo leo. Donec non sem id tellus mattis convallis. Morbi dapibus nulla ac dui lacinia,
-                            </div>
-                    </div></div>
-                    
-                </div>
-
-
-        </div>
-      </div>
     </div>
-
-
-    <div class="content-wrapper">
-
-
-        <footer class="container-fluid" style="min-height:200px; background-color:#18bc9c;color:#fff;text-align:center;padding-top:50px;">
-            BUCKET LISTS 
-        </footer>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
-  </body>
-</html>
+</div>
