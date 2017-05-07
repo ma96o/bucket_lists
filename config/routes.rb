@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :items, except: %i(index)
 
   get 'users/:user_id/success' => 'items#success'
+  get 'users/:user_id/trash' => 'items#trash'
 
 end

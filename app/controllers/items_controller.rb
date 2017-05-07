@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   layout 'application_prof'
 
-  before_action :get_user, only: %i(index success)
+  before_action :get_user, only: %i(index success trash)
   before_action :get_list, only: %i(index)
 
   def index
@@ -10,7 +10,11 @@ class ItemsController < ApplicationController
   end
 
   def success
-    @items = @user.items.where('status = ?', 2)
+    @items = @user.items.where(status: 2)
+  end
+
+  def trash
+    @items = @user.items.where(status: 3)
   end
 
   private
