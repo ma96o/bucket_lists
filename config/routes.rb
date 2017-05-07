@@ -6,4 +6,7 @@ Rails.application.routes.draw do
     end
   end
   resources :items, except: %i(index)
+
+  get 'users/:user_id/success' => 'items#success'
+
 end
