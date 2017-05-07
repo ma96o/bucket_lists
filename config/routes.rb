@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/success' => 'items#success'
   get 'users/:user_id/trash' => 'items#trash'
-
+  get 'items/trend/:hot_new' => 'items#trend'
 end

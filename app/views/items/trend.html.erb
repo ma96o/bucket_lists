@@ -1,161 +1,64 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Bucket Lists</title>
-
-
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/bucket_lists/webroot/assets/css/timeline.css">
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-  </head>
-  <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#page-top">BUCKET LISTS</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#portfolio">マイページ</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">タイムライン</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact">トレンディング</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <div class="container-fluid content-main">
-
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 content-margin-top">
-
-    <div class="page-header text-center">
-        <h1 id="timeline">トレンディング</h1>
-    </div>
-    <ul class="timeline">
-        <li>
-<!--           <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div> -->
-          <div class="timeline-panel">
-<!--             <div class="timeline-heading">
-              <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-              
-            </div> -->
-            <div class="timeline-body">
-              <p><strong>世界一周する</strong></p>
-              
-            </div>
-            
-            <div class="timeline-footer">
-                <hr class="star-light">
-                <a>done</a>
-                <a class="pull-right">doing</a>
-            </div>
-          </div>
-        </li>
-        
-        <li  class="timeline-inverted">
-<!--           <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div> -->
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-<!--               <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-              
-            </div> -->
-            <div class="timeline-body">
-              <p><strong>ロードバイク買う</strong></p>
-             
-            </div>
-            
-            <div class="timeline-footer">
-                <hr class="star-light">
-                <a>done</a>
-                <a class="pull-right">doing</a>
-            </div>
-          </div>
-        </li>
-        <li>
-<!--           <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div> -->
-          <div class="timeline-panel">
-<!--             <div class="timeline-heading">
-              <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-              
-            </div> -->
-            <div class="timeline-body">
-              <p><strong>エンジニアになる</strong></p>
-              
-            </div>
-            
-            <div class="timeline-footer">
-                <hr class="star-light">
-                <a>done</a>
-                <a class="pull-right">doing</a>
+    <div class="container">
+        <section class="content-main">
+            <div class="center-block">
+                <div class="col-md-10 col-xs-offset-1">
+                    <!--search box-->
+                    <form action="" method="post">
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="search_word" placeholder="項目検索">
+                      <span class="input-group-btn">
+                        <button class="btn btn-pink" type="submit">
+                          <i class='glyphicon glyphicon-search'></i>
+                        </button>
+                      </span>
+                    </div>
+                    </form>
                 </div>
-          </div>
-        </li>
-        
-        <li  class="timeline-inverted">
-<!--           <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div> -->
-          <div class="timeline-panel">
-<!--             <div class="timeline-heading">
-              <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-              
-            </div> -->
-            <div class="timeline-body">
-              <p><strong>留学に行く</strong></p>
-              
             </div>
-            
-            <div class="timeline-footer">
-                <hr class="star-light">
-                <a>done</a>
-                <a class="pull-right">doing</a>
-            </div>
-          </div>
-        </li>
+        </section>
+    </div>
 
-    </ul>
+<br>
+<div class="container">
+    <div class="center-block">
+    <div class="col-md-8 col-xs-offset-2">
+          <ul class="nav nav-pills nav-justified">
+          <% if @genre == 'hot' %>
+              <li><a href="#">NEW</a></li>
+              <li class="active"><a href="#">HOT</a></li>
+          <% else %>
+              <li class="active"><a href="#">NEW</a></li>
+              <li><a href="#">HOT</a></li>
+          <% end %>
+          </ul>
+    </div>
+    </div>
+</div>
+ <br />
+    <div class="container">
+      <div class="row">
+        <section id="pinBoot">
 
+          <!--content-->
+<% @items.each do |item| %>
+          <article class="white-panel">
+            <a href="" data-toggle="modal" data-target="#item_detail" data-title="<%= item.id %>" data-comment="<%= item.comment %>" data-done="13" data-doing="122" data-id="<%= item.id %>">
+                <h4 class="item_name"><%= item.name %></h4>
+                <span class="doing">doing 122</span>
+                <span class="done">done 13</span>
+            </a>
+            <p>
+            <button type="button" class="btn btn-pink btn-circle center-block" data-toggle="modal" data-target="#add_new" data-id="<%= item.id %>" data-title="<%= item.name %>" data-comment="<%= item.comment %>">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+            </p>
+          </article>
+<% end %>
+
+        </section>
         </div>
-      </div>
     </div>
 
-    <div class="content-wrapper">
+    <!-- <?php include('views/items/add_trend.php'); ?> -->
 
-
-        <footer class="container-fluid" style="min-height:200px; background-color:#18bc9c;color:#fff;text-align:center;padding-top:50px;">
-            BUCKET LISTS 
-        </footer>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/bucket_lists/webroot/assets/js/bootstrap.min.js"></script>
-  </body>
-</html>
+    <!-- <?php include('views/items/show_trend.php'); ?> -->

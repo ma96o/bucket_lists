@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  layout 'application_prof'
+  layout 'application_prof', except: %i(trend)
 
   before_action :get_user, only: %i(index success trash)
   before_action :get_list, only: %i(index)
@@ -15,6 +15,11 @@ class ItemsController < ApplicationController
 
   def trash
     @items = @user.items.where(status: 3)
+  end
+
+  def trend
+    @items = Item.all
+    @genre = params[:hot_new]
   end
 
   private
