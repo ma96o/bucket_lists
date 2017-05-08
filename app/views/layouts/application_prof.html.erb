@@ -53,16 +53,11 @@
         <footer class="container-fluid" style="min-height:200px; background-color:#00bcd4;color:#fff;text-align:center;padding-top:50px;">
             BUCKET LISTS 
         </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo makePath('webroot/assets/js/jquery.raty.js'); ?>"></script>
-    <script src="<?php echo makePath('webroot/assets/js/bootstrap.min.js'); ?>"></script>
-<!--      if($this->action == "index"){
-         echo "
- -->
+
 <script>
     /*ワクワク度表示*/
-    $.fn.raty.defaults.path = "<?php echo makePath('views/image'); ?>";
-    $('.starRating').raty({
+    // $.fn.raty.defaults.path = "<?php echo makePath('views/image'); ?>";
+    // $('.starRating').raty({
       // hints: [0,1,2,3,4,5]
       // click: function($score, $evt) {
       //          $.post('./items/create',{score:$score, url:$evt.currentTarget.baseURI},
@@ -71,7 +66,7 @@
       //                 }
       //                );
       // }
-    });
+    // });
 </script>
         <script>
           $('#edit_list').on('show.bs.modal', function (event) {
