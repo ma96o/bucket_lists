@@ -173,7 +173,7 @@ $(function() {
   modal.find('.modal-body span#doing').text(recipientDoing);
   modal.find('.modal-body span#done').text(recipientDone);
   modal.find('.modal-body p#item_comment').text(recipientComment);
-  modal.find('.modal-body a#doing').attr("href", "<?php echo makePath('items/doing/'); ?>"+recipientId);
-  modal.find('.modal-body a#done').attr("href", "<?php echo makePath('items/done/'); ?>"+recipientId);
+  modal.find('.modal-body a#doing').attr("href", "#");
+  modal.find('.modal-body a#done').attr("href", "#");
   });
 });
