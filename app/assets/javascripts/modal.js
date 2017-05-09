@@ -1,4 +1,4 @@
-$(function($) {
+$(function() {
   $('#edit_list').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); //モーダルを呼び出すときに使われたボタンを取得
   var recipientTitle = button.data('title'); //data-whatever の値を取得
@@ -139,5 +139,41 @@ $(function($) {
   modal.find('.modal-title').text(recipientTitle);
   modal.find('.modal-body input#comment').val(recipientComment);
   modal.find('.modal-body input#hidden').val(recipientId); //inputタグにも表示
+  });
+
+
+  // trendページモーダル
+
+  $('#add_new').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); //モーダルを呼び出すときに使われたボタンを取得
+  var recipientTitle = button.data('title'); //data-whatever の値を取得
+  var recipientId = button.data('id');
+  //Ajaxの処理はここに
+
+  var modal = $(this);  //モーダルを取得
+  modal.find('.modal-title').text(recipientTitle); //モーダルのタイトルに値を表示
+  // modal.find('.comment').text(recipientComment)
+  modal.find('.modal-body input#title').val(recipientTitle);
+  modal.find('.modal-body input#hidden').val(recipientId); //inputタグにも表示
+  });
+
+  $('#item_detail').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); //モーダルを呼び出すときに使われたボタンを取得
+  var recipientTitle = button.data('title'); //data-whatever の値を取得
+  var recipientComment = button.data('comment');
+  var recipientDoing = button.data('doing');
+  var recipientDone = button.data('done');
+  var recipientId = button.data('id');
+  //Ajaxの処理はここに
+
+  var modal = $(this);  //モーダルを取得
+  //modal.find('.modal-title').text(recipientTitle) //モーダルのタイトルに値を表示
+  modal.find('.modal-title').text(recipientTitle);
+  // modal.find('.modal-body input#hidden').val(recipientId) //inputタグにも表示
+  modal.find('.modal-body span#doing').text(recipientDoing);
+  modal.find('.modal-body span#done').text(recipientDone);
+  modal.find('.modal-body p#item_comment').text(recipientComment);
+  modal.find('.modal-body a#doing').attr("href", "<?php echo makePath('items/doing/'); ?>"+recipientId);
+  modal.find('.modal-body a#done').attr("href", "<?php echo makePath('items/done/'); ?>"+recipientId);
   });
 });

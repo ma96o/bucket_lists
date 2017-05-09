@@ -42,7 +42,7 @@
           <!--content-->
 <% @items.each do |item| %>
           <article class="white-panel">
-            <a href="" data-toggle="modal" data-target="#item_detail" data-title="<%= item.id %>" data-comment="<%= item.comment %>" data-done="13" data-doing="122" data-id="<%= item.id %>">
+            <a href="" data-toggle="modal" data-target="#item_detail" data-title="<%= item.name %>" data-comment="<%= item.comment %>" data-done="13" data-doing="122" data-id="<%= item.id %>">
                 <h4 class="item_name"><%= item.name %></h4>
                 <span class="doing">doing 122</span>
                 <span class="done">done 13</span>
@@ -60,5 +60,7 @@
     </div>
 
     <!-- <?php include('views/items/add_trend.php'); ?> -->
+    <%= render 'items/add_trend' %>
 
     <!-- <?php include('views/items/show_trend.php'); ?> -->
+    <%= render 'items/show_trend' %>
